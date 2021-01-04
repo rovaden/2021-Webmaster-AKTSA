@@ -1,0 +1,362 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Lato;
+}
+div {
+  box-sizing: border-box;
+}
+
+/*styling navigation bar*/
+.navbar {
+  background: rgb(240, 240, 240);
+  padding: 1em 1em;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 10;
+  color: gray;
+}
+.navbar ul {
+  margin: 0;
+  padding: 0;
+}
+.navbar ul li {
+  position: relative;
+  list-style: none;
+  display: inline-block;
+  margin: 0.5em 1.5em;
+  transition: 0.2s ease;
+}
+.navbar ul li a {
+  color: inherit;
+  text-decoration: none;
+  transition: inherit;
+}
+.navbar ul li a:hover {
+  color: black;
+}
+.navbar ul li a::after {
+  display: block;
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  transform: scale(0, 1);
+  background: black;
+  transition: inherit;
+}
+.navbar ul li a:hover::after, .navbar li.nav-active a::after {
+  transform: scale(1, 1);
+}
+.navbar span.navName, .navbar span.navName a {
+  color: inherit;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: none;
+  outline: none;
+  transition: inherit;
+}
+.navbar .navName a:hover {
+  color: gray;
+}
+.navbar .navName a:hover::after {
+  transform: scale(0, 1);
+}
+.navbar.light, .navbar.light .navName a:hover {
+  color: white;
+}
+.navbar ul li.nav-active a {
+  pointer-events: none;
+  color: black;
+}
+.navbar #navMenu, .navbar .navName.nav-backup {
+  display: none;
+}
+
+/*navbar "light" styling with white text*/
+.navbar.light {
+  position: absolute;
+  top: 0;
+  background: transparent;
+}
+.navbar.light *, .navbar.light ul li a, .navbar.light ul li .navName a:hover {
+  color: white;
+}
+.navbar.light ul li a::after {
+  background: white;
+}
+.navbar.light ul li a {
+  opacity: 0.8;
+}
+.navbar.light ul li a:hover, .navbar.light ul li .navName a {
+  opacity: 1;
+}
+
+/*mobile version of navigation*/
+@media (max-width: 45em){
+  .navbar {
+    width: 100%;
+  }
+  .navbar .navName.nav-backup {
+    display: block;
+    margin: 0.5em 1.5em;
+  }
+  .navbar div.navbar-collapse {
+    width: 100%;
+    height: 100vh;
+    max-height: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.95);
+    color: white;
+    transition: 0.5s ease;
+    overflow: hidden;
+  }
+  .navbar div.navbar-collpase * {
+    position: relative;
+    z-index: inherit;
+  }
+  .navbar div.navbar-collapse ul {
+    height: 100%;
+    margin: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .navbar div.navbar-collapse ul li.nav-active, .navbar div.navbar-collapse ul li a {
+    color: white;
+  }
+  .navbar div.navbar-collapse ul li {
+    margin: 1em 0;
+  }
+  .navbar div.navbar-collapse ul li a {
+    opacity: 0.8;
+  }
+  .navbar div.navbar-collapse ul li .navName {
+    opacity: 1;
+    font-size: 1.2em;
+  }
+  .navbar div.navbar-collapse ul li:hover, .navbar div.navbar-collapse ul li.nav-active {
+    opacity: 1;
+  }
+  .navbar div.navbar-collapse ul li a::after, .navbar div.navbar-collapse ul li.nav-active a::after {
+    background-color: white;
+  }
+  .navbar.active div.navbar-collapse {
+    max-height: 100vh;
+  }
+  .navbar.active #navMenu {
+    color: white;
+    position: fixed;
+  }
+  .navbar #navMenu {
+    display: block;
+    position: absolute;
+    top: 0.5em;
+    right: 0.5em;
+    font-size: 2em;
+    z-index: 11;
+    transition: 0.2s ease;
+  }
+  .navbar #navMenu:hover {
+    cursor: pointer;
+  }
+}
+
+
+/*general section title styling*/
+.pageHeading {
+  width: 100%;
+  padding: 2em 1em;
+  background: rgb(240, 240, 240);
+  font-size: 1.5em;
+  text-align: center;
+}
+
+/*general content styling*/
+div.content {
+  padding: 4em 20%;
+  color: gray;
+}
+div.content.light-gray {
+  background-color: rgb(240, 240, 240);
+}
+div.content.light {
+  background-color: #c0d0df;
+  text-shadow: 0 1px white;
+  color: black;
+}
+div.content.dark {
+  background-color: #073763;
+  color: white;
+}
+div.content > h2 {
+  position: relative;
+  font-size: 1.9em;
+  text-align: center;
+  margin-top: 0.5em;
+  margin-bottom: 1.5em;
+  color: black;
+}
+div.content.dark > h2 {
+  color: white;
+}
+div.content > h2::after {
+  content: "_";
+  display: block;
+  position: absolute;
+  bottom: -0.5em;
+  width: 100%;
+  text-align: center;
+  color: inherit;
+}
+div.content p {
+  margin: 1.75em auto;
+}
+div.content ul li {
+  margin: 0.9em auto;
+}
+div.content.has-image::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+
+/*images styling*/
+div.content img.float-right {
+  float: right;
+  margin: 1em 0 1em 1em;
+  box-shadow: 10px 10px rgba(7, 55, 99, 0.8);
+  max-width: 50%;
+}
+div.content img.float-left {
+  float: left;
+  margin: 1em 1em 1em 0;
+  box-shadow: 10px -10px rgba(7, 55, 99, 0.8);
+  max-width: 50%;
+}
+@media (max-width: 45em) {
+  div.content img.float-right, div.content img.float-left {
+    margin: 1em auto;
+    float: none;
+    max-width: 100%;
+  }
+}
+
+
+/*button styling*/
+.pageLink {
+  position: relative;
+  display: block;
+  padding: 0.6em 1.5em;
+  margin: 0 auto;
+  font-size: 1em;
+  letter-spacing: 2px;
+  border: 1px solid;
+  outline: none;
+  background: transparent;
+  overflow: hidden;
+  transition: 0.3s ease;
+}
+.pageLink a {
+  position: relative;
+  color: inherit;
+  text-decoration: none;
+  z-index: 1;
+}
+.pageLink::before, .pageLink::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 50%;
+  transform: translateX(-100%);
+  opacity: 0;
+  background: black;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  transition: inherit;
+}
+.pageLink::after {
+  top: 50%;
+  transform: translateX(100%);
+}
+.pageLink:hover, .pageLink:focus {
+  cursor: pointer;
+  color: white;
+}
+.pageLink.light {
+  border-color: white;
+  color: white;
+}
+.pageLink.light::before, .pageLink.light::after {
+  background: white;
+}
+.pageLink.light:hover {
+  color: #073763;
+}
+.pageLink:hover::before, .pageLink:hover::after, .pageLink:focus::before, .pageLink:focus::after {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/*footer styling*/
+footer.footer {
+  padding: 2.5em 20% 1.5em 20%;
+  background: #073763;
+  color: white;
+}
+footer.footer h1 {
+  font-size: 1.2em;
+}
+footer.footer .footer-container {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 1.5em;
+}
+footer.footer .footer-left {
+  width: 75%;
+  padding-right: 1.5em;
+  border-right: 2px solid white;
+}
+footer.footer .contact {
+  padding-left: 1.5em;
+}
+footer.footer .footer-text {
+  text-align: center;
+  font-size: 0.9em;
+}
+
+/*responsive adjustment to larger displays*/
+@media (max-width: 40em) {
+  footer, div.content {
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+}
+@media (min-width: 70em){
+  body {
+    font-size: 1.1em;
+    line-height: 1.45em;
+  }
+}
+@media (min-width: 120em){
+  body {
+    font-size: 1.2em;
+    line-height: 1.6em;
+  }
+}
+@media (min-width: 160em){
+  body {
+    font-size: 1.3em;
+    line-height: 1.7em;
+  }
+}
