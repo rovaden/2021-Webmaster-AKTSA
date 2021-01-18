@@ -2,12 +2,11 @@
 #titleHome {
   position: relative;
   width: 100%;
-  min-height: 100vh;
   background-image: url('https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1352&q=80');
   background-attachment: fixed;
   background-size: cover;
   background-position: center center;
-  padding: 0.5em 10%;
+  padding: 30vh 10%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -86,12 +85,17 @@
 }
 @media (min-width: 60em){
   #statsHome {
+    margin: 2em auto;
     display: flex;
     justify-content: center;
   }
   .stats {
     flex: 1 120px;
     text-align: center;
+    border-right: 2px solid rgba(0, 0, 0, 0.4);
+  }
+  .stats:last-of-type {
+    border-right: none;
   }
   .stats .statNumber {
     display: block;
@@ -106,50 +110,152 @@
 
 
 /*products styling*/
-#productsContainer {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-bottom: 1.5em;
+.productDiv {
+  margin: 4em 0;
+  text-align: center;
 }
-.productCard {
-  flex: 0 200px;
-  margin: 1.5em;
-  background: white;
-  border-radius: 5px;
-  box-shadow: 0 2px 20px black;
-}
-.productCard .productImgWrapper {
+.productDiv .productContent h3 {
   position: relative;
-  width: 100%;
-  height: 120px;
-  border-radius: 5px 5px 0 0;
-  overflow: hidden;
+  font-size: 1.3em;
+  margin-bottom: 1em;
 }
-.productCard .productImgWrapper img {
+.productDiv .productImg {
+  position: relative;
+  height: 30vh;
+  width: 60%;
+  margin: 0 auto;
+}
+.productDiv .productImg  img {
+  z-index: 1;
+}
+.productDiv .productImg .imgWrapper {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-}
-.productCard .productBody {
-  padding: 0.6em 1.5em;
-}
-.productCard h3 {
-  font-size: 1.2em;
-}
-.productCard .productBody {
-  color: gray;
 }
 
-/*accounting for smaller displays in products*/
-@media (max-width: 50em) {
-  .productCard {
-    flex: 0 100%;
-    margin: 20px 0; 
+/*accounting for larger displays in products*/
+@media (min-width: 60em) {
+  .productDiv {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 3em 0;
+    min-height: 70vh;
+    text-align: left;
+  }
+  .productDiv:nth-of-type(2n + 1){
+    flex-direction: row-reverse;
+  }
+  .productDiv:nth-of-type(2n + 1) .productImg {
+    margin-right: 0;
+    margin-left: 4em;
+  }
+  .productDiv .productImg {
+    flex-grow: 0;
+    margin-right: 4em;
+    width: 50%;
+    height: 70vh;
+  }
+  .productDiv .productContent {
+    width: 50%;
+  }
+
+  /*product image styling*/
+  .productDiv .productImg::before, .productDiv .productImg::after {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    content: "";
+    display: block;
+    position: absolute;
+    background: transparent;
+    box-sizing: border-box;
+    border: 1em solid rgba(255, 255, 255, 0.3);
+  }
+  .productDiv .productImg::before {
+    transform: translate(-2em, -2em);
+  }
+  .productDiv .productImg::after {
+    border: none;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(2em, 2em);
+    z-index: 0;
+  }
+  .productDiv:nth-of-type(2n) .productImg::before {
+    transform: translate(2em, 2em);
+  }
+  .productDiv:nth-of-type(2n) .productImg::after {
+    transform: translate(-2em, -2em);
+  }
+
+  /*product h3 styling*/
+  .productDiv .productContent h3::before, .productDiv .productContent h3::after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 2em;
+    height: 2em;
+    top: -3em;
+    left: -3em;
+    box-sizing: border-box;
+    border: 8px solid rgba(255, 255, 255, 0.3);
+  }
+  .productDiv .productContent h3::after {
+    width: 1.2em;
+    height: 1.2em;
+    top: -1.75em;
+    left: -1.75em;
+    border-width: 4px;
+  }
+  .productDiv:nth-of-type(2n) .productContent h3::before {
+    left: 100%;
+  }
+  .productDiv:nth-of-type(2n) .productContent h3::after {
+    left: calc(100% - 0.42em);
   }
 }
 
+
+/*home newspage styling*/
+#homeNews {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 4em;
+}
+#homeNews .home-news-container {
+  flex: 1 300px;
+  margin: 1em;
+  box-shadow: 0 2px 15px gray;
+  transition: 0.2s ease;
+}
+#homeNews .home-news-container .home-news-content {
+  padding: 0 1em 5em 1em;
+}
+#homeNews .home-news-container .home-news-img {
+  width: 100%;
+  height: 12em;
+}
+#homeNews .home-news-container .home-news-label {
+  margin: 0.7em 0;
+  font-size: 0.9em;
+  text-transform: uppercase;
+}
+#homeNews .home-news-container h3 {
+  margin-top: 0.5em;
+  font-size: 1.3em;
+}
+#homeNews .home-news-container h3 a {
+  text-decoration: none;
+  color: black;
+  transition: 0.2s ease;
+}
+#homeNews .home-news-container:hover {
+  box-shadow: 0 2px 25px gray;
+}
+#homeNews .home-news-container:hover a:hover {
+  color: #1155cc;
+}
 
 /*testimonials styling*/
 #testimonials .testimonial {
@@ -202,13 +308,13 @@
   height: 120px;
   border-radius: 50%;
   text-align: center;
-  overflow: hidden;
   box-shadow: 15px 7px rgba(7, 55, 99, 0.2);
+  transform: scale(1);
+  transition: 0.3s ease;
 }
-#testimonials .testimonial img {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
+#testimonials .testimonial div.testimonial-img-wrapper:hover {
+  transform: scale(1.05);
+  box-shadow: 20px 15px rgba(7, 55, 99, 0.2);
 }
 
 /*responsive testimonial design*/
@@ -253,4 +359,43 @@
     margin: 0 auto;
     margin-bottom: 1em;
   }
+  #testimonials blockquote::before {
+    top: 0em;
+    left: -0.25em;
+  }
+}
+
+/*get started banner*/
+#homeGetStarted {
+  position: relative;
+  width: 100%;
+  background-image: url('https://images.pexels.com/photos/1103970/pexels-photo-1103970.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
+  background-attachment: relative;
+  background-size: cover;
+  background-position: center center;
+  padding-top: 6em;
+  padding-bottom: 6em;
+}
+#homeGetStarted * {
+  position: relative;
+  z-index: 1;
+}
+#homeGetStarted h2 {
+  color: white;
+  margin-bottom: 2em;
+}
+#homeGetStarted h2::after {
+  display: none;
+}
+#homeGetStarted::after {
+  display: block;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  background: linear-gradient(30deg, rgba(7, 55, 99, 0.2), rgba(7, 55, 99, 0.4));
+  z-index: 0;
 }
