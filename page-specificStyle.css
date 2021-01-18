@@ -323,7 +323,7 @@
   opacity: 0;
   transition: inherit;
 }
-.news-story:hover h2 a {
+.news-story:hover h2 a:hover {
   color: #1155cc;
 }
 .news-story:hover .news-img-wrapper img {

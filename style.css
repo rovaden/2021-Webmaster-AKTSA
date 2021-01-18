@@ -251,6 +251,23 @@ div.content img.float-left {
 }
 
 
+/*image wrapper styling*/
+.imgWrapper {
+  position: relative;
+  overflow: hidden;
+  transition: inherit;
+}
+.imgWrapper img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+}
+
+
 /*button styling*/
 .pageLink {
   position: relative;
@@ -316,23 +333,38 @@ footer.footer {
 }
 footer.footer h1 {
   font-size: 1.2em;
+  margin-top: 2em;
+  margin-bottom: 0em;
+}
+footer.footer h1 + p {
+  margin-top: 0.5em;
 }
 footer.footer .footer-container {
-  display: flex;
-  flex-direction: row;
   margin-bottom: 1.5em;
-}
-footer.footer .footer-left {
-  width: 75%;
-  padding-right: 1.5em;
-  border-right: 2px solid white;
-}
-footer.footer .contact {
-  padding-left: 1.5em;
 }
 footer.footer .footer-text {
   text-align: center;
   font-size: 0.9em;
+}
+footer.footer .footer-text i.material-icons {
+  font-size: 0.9em;
+}
+@media (min-width: 40em){
+  footer.footer .footer-container {
+    display: flex;
+    flex-direction: row;
+  }
+  footer.footer h1 {
+    margin-top: auto;
+  }
+  footer.footer .footer-left {
+    width: 75%;
+    padding-right: 1.5em;
+    border-right: 2px solid white;
+  }
+  footer.footer .contact {
+    padding-left: 1.5em;
+  }
 }
 
 /*responsive adjustment to larger displays*/
