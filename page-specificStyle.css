@@ -191,6 +191,22 @@
   transform: translate(-50%, -50%) scale(1.5, 1.5);
 }
 
+/**PRODUCTS PAGE STYLING**/
+/*coming soon*/
+.comingSoon {
+  position: relative;
+  margin: 2em 0;
+  background: white;
+  box-shadow: 10px 10px rgba(112, 62, 230, 0.2);
+  transition: 0.3s ease;
+  z-index: 1;
+}
+
+.comingSoon .title {
+  color: black;
+  font-size: 1.4em;
+  font-weight: bold;
+}
 
 /**NEWS HOMEPAGE STYLING**/
 /*featured story styling*/
