@@ -33,7 +33,7 @@ div {
   transition: inherit;
 }
 .navbar ul li a:hover {
-  color: #b8b2b2;
+  color: black;
 }
 .navbar ul li a::after {
   display: block;
