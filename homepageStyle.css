@@ -92,7 +92,7 @@
   .stats {
     flex: 1 120px;
     text-align: center;
-    border-right: 2px solid rgba(0, 0, 0, 0.4);
+    border-right: 1px solid rgba(0, 0, 0, 0.4);
   }
   .stats:last-of-type {
     border-right: none;
@@ -333,7 +333,7 @@
     margin-bottom: 0.7em;
   }
 }
-@media (min-width: 70em){
+@media (min-width: 75em){
   #testimonials #testimonial-container {
     display: flex;
     flex-wrap: wrap;
@@ -344,9 +344,11 @@
     display: flex;
     flex-direction: column;
     margin-top: 1em;
+    border-right: 1px solid rgba(7, 55, 99, 0.2);
   }
   #testimonials .testimonial:last-of-type {
     margin-bottom: 4.5em;
+    border-right: none;
   }
   #testimonials .testimonial div {
     margin-bottom: 1em;
