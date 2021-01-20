@@ -14,7 +14,7 @@ div {
   box-sizing: border-box;
   position: relative;
   z-index: 10;
-  color: #3a3042;
+  color: grey;
 }
 .navbar ul {
   margin: 0;
@@ -28,7 +28,7 @@ div {
   transition: 0.2s ease;
 }
 .navbar ul li a {
-  color: #f2f2f2;
+  color: inherit;
   text-decoration: none;
   transition: inherit;
 }
