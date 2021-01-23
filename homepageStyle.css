@@ -109,7 +109,7 @@
 }
 
 
-/*products styling*/
+/*products (platform) styling*/
 .productDiv {
   margin: 4em 0;
   text-align: center;
@@ -217,6 +217,50 @@
 }
 
 
+/*home medication div styling*/
+#home-medications {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 3em;
+}
+#home-medications img {
+  flex: 1 0 50%;
+  margin-right: 2em;
+}
+#home-medications div div {
+  display: flex;
+  align-items: center;
+  flex-basis: auto;
+  max-width: 100%;
+}
+#home-medications div div p {
+  margin-left: 0;
+  margin-right: 0;
+  display: inline;
+}
+#home-medications div div i.material-icons {
+  flex: none;
+  font-size: 3em;
+  vertical-align: middle;
+  margin-right: 0.5em;
+  color:rgba(7, 55, 99, 0.7);
+}
+@media (max-width: 70em) {
+  #home-medications {
+    display: block;
+  }
+  #home-medications div div {
+    justify-content: center;
+  }
+  #home-medications img {
+    float: none;
+    margin-right: 0;
+    width: 100%;
+    max-width: none;
+  }
+}
+
 /*home newspage styling*/
 #homeNews {
   display: flex;
@@ -275,7 +319,6 @@
   position: absolute;
   top: -0.25em;
   left: -0.2em;
-  vertical-align: top;
   z-index: 0;
   color: #073763;
   opacity: 0.2;
@@ -316,6 +359,10 @@
   transform: scale(1.05);
   box-shadow: 20px 15px rgba(7, 55, 99, 0.2);
 }
+#testimonials .testimonial > * {
+  align-self: stretch;
+  max-width: 100%; /*IE width fix*/
+}
 
 /*responsive testimonial design*/
 @media (max-width: 40em){
@@ -325,7 +372,7 @@
     margin-top: 1em;
   }
   #testimonials .testimonial div.testimonial-img-wrapper {
-    flex: 0 100px;
+    flex: 0 0 100px;
     width: 100px;
     height: 100px;
     display: block;
@@ -333,16 +380,17 @@
     margin-bottom: 0.7em;
   }
 }
-@media (min-width: 75em){
+@media (min-width: 70em){
   #testimonials #testimonial-container {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
   }
   #testimonials .testimonial {
-    flex: 1 200px;
+    flex: 1 0 200px;
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     margin-top: 1em;
     border-right: 1px solid rgba(7, 55, 99, 0.2);
   }
@@ -352,12 +400,13 @@
   }
   #testimonials .testimonial div {
     margin-bottom: 1em;
+    flex-basis: auto; /*IE height fix*/
+    flex-grow: 1;
   }
   #testimonials .testimonial div.testimonial-img-wrapper {
-    flex: 0 150px;
+    flex: none;
     width: 150px;
     height: 150px;
-    display: block;
     margin: 0 auto;
     margin-bottom: 1em;
   }
