@@ -222,7 +222,7 @@ div.content p {
 div.content ul li {
   margin: 0.9em auto;
 }
-div.content.has-image::after {
+div.has-image::after {
   content: "";
   display: block;
   clear: both;
@@ -230,16 +230,26 @@ div.content.has-image::after {
 
 
 /*images styling*/
+div.content img.boxShadowRight, div.content img.float-right {
+  box-shadow: 1em 1em rgba(7, 55, 99, 0.4);
+}
+div.content img.boxShadowLeft, div.content img.float-left {
+  box-shadow: -1em 1em rgba(7, 55, 99, 0.4);
+}
+div.content.dark img.boxShadowRight, div.content.dark img.float-right {
+  box-shadow: 1em 1em rgba(255, 255, 255, 0.4);
+}
+div.content.dark img.float-left, div.content.dark img.float-left {
+  box-shadow: -1em 1em rgba(255, 255, 255, 0.4);
+}
 div.content img.float-right {
   float: right;
   margin: 1em 0 1em 1em;
-  box-shadow: 10px 10px rgba(7, 55, 99, 0.8);
   max-width: 50%;
 }
 div.content img.float-left {
   float: left;
   margin: 1em 1em 1em 0;
-  box-shadow: 10px -10px rgba(7, 55, 99, 0.8);
   max-width: 50%;
 }
 @media (max-width: 45em) {
@@ -276,7 +286,7 @@ div.content img.float-left {
   margin: 0 auto;
   font-size: 1em;
   letter-spacing: 2px;
-  border: 1px solid;
+  border: 1px solid black;
   outline: none;
   background: transparent;
   overflow: hidden;
