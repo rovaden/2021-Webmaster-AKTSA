@@ -501,6 +501,19 @@ footer.footer h1 {
 footer.footer h1 + p {
   margin-top: 0.5em;
 }
+footer.footer a.aboutFooterLink {
+  margin-top: 1em;
+  font-weight: bold;
+  font-size: 1.2em;
+  color: white;
+  text-decoration: none;
+  padding-bottom: 0.1em;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.4);
+  transition: 0.2s ease;
+}
+footer.footer a.aboutFooterLink:hover {
+  border-bottom-color: rgba(255, 255, 255, 0.8);
+}
 footer.footer .footer-container {
   margin-bottom: 1.5em;
 }
