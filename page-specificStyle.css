@@ -228,16 +228,19 @@
   align-items: center;
   margin: 4em 0;
 }
-#platform-group img {
+#platform-group picture {
   flex: 0 0 auto;
   width: 50%;
   margin-right: 2em;
+}
+#platform-group picture img {
+  max-width: 100%;
 }
 @media (max-width: 60em){
   #platform-group {
     display: block;
   }
-  #platform-group img {
+  #platform-group picture {
     width: 100%;
     margin-right: 0;
   }
@@ -306,8 +309,11 @@
 #product-starting-steps {
   padding: 1em 0;
 }
-#product-starting-steps img {
+#product-starting-steps picture {
   margin-top: 3em;
+  max-width: 100%;
+}
+#product-starting-steps picture img {
   max-width: 100%;
   box-shadow: 20px 20px rgba(255, 255, 255, 0.3);
 }
@@ -365,7 +371,7 @@
   #product-starting-steps > div {
       width: 60%;
   }
-  #product-starting-steps img {
+  #product-starting-steps picture {
       flex: 0 0 auto;
       max-width: 40%;
       margin-top: 0;

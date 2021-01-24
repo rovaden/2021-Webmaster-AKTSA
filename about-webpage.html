@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>About Webpage</title>
+    <link href="style.css" rel="stylesheet" type="text/css"/>
+    <link href="page-specificStyle.css" rel="stylesheet" type="text/css"/>
+
+    <!--loading in fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Lato|Material+Icons&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <!--navigation bar-->
+    <nav class = "navbar">
+      <!--company name to display on mobile outside of menu-->
+      <span class = "navName nav-backup"><a href = "index.html">KatKure</a></span>
+      
+      <!--links-->
+      <div class = "navbar-collapse">
+        <ul>
+            <li><span class = "navName">KatKure</span></li>
+            <li><a href = "index.html">Home</a></li>
+            <li><a class = "dropdown-top">About</a>
+              <div>
+                <ul class = "dropdown">
+                  <li><a href = "about.html">Company</a></li>
+                  <li class = "nav-active"><a href = "about-webpage.html">This page</a></li>
+                </ul>
+              </div>
+            </li>
+            <li><a class = "dropdown-top">Products</a>
+              <div>
+                <ul class = "dropdown">
+                  <li><a href = "services.html">Platform</a></li>
+                  <li><a href = "products.html">Shop</a></li>
+                </ul>
+              </div>
+            </li>
+            <li><a href = "news/index.html">News</a></li>
+            <li><a href = "faq.html">FAQs</a></li>
+          </ul>
+      </div>
+
+      <!--menu icon for mobile display-->
+      <i class = "material-icons" id = "navMenu">menu</i>
+    </nav>
+
+    <!--page title-->
+    <div class = "pageHeading">
+      <h1>About This Webpage</h1>
+    </div>
+
+    <!--resources used-->
+    <div class = "content">
+      <p>List of resources used here.</p>
+    </div>
+
+    <!--footer-->
+    <footer class = "footer">
+      <div class = "footer-container">
+        <div class = "footer-left">
+          <h1>KatKure</h1>
+          <p>We create uplifting communities that last a lifetime, always there for you when you need it</p>
+        </div>
+        <div class = "contact">
+          <h1>Contact us</h1>
+          <p>1234 Healthful Drive<br>Charlotte, NC 5678</p>
+          <p>(+1) 704-867-5309</p> <!--please don't actually call this-->
+          <p>KatKure@gmail.com</p>
+        </div>
+      </div>
+      <div class = "footer-text">Copyright KatKure 2021 <i class = "material-icons">copyright</i></div>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
