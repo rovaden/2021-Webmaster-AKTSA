@@ -197,6 +197,109 @@
   transform: translate(-50%, -50%) scale(1.5, 1.5);
 }
 
+/**SERVICES PAGE STYLING**/
+/*styling the list of advantages*/
+#platform-advantages {
+  display: flex;
+}
+#platform-advantages .column {
+  flex: 1 1 50%;
+  padding: 0 0.5em;
+}
+#platform-advantages i.material-icons, #platform-advantages h3 {
+  color: #1155cc;
+}
+#platform-advantages i.material-icons {
+  font-size: 2.5em;
+  vertical-align: middle;
+  margin-right: 0.2em;
+}
+#platform-advantages h3 {
+  display: inline;
+  margin-bottom: 0.5em;
+}
+#platform-advantages h3 + p {
+  margin-top: 0;
+}
+
+/*group sessions div styling*/
+#platform-group {
+  display: flex;
+  align-items: center;
+  margin: 4em 0;
+}
+#platform-group img {
+  flex: 0 0 auto;
+  width: 50%;
+  margin-right: 2em;
+}
+@media (max-width: 60em){
+  #platform-group {
+    display: block;
+  }
+  #platform-group img {
+    width: 100%;
+    margin-right: 0;
+  }
+}
+
+/*pricing*/
+#pricing {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  pointer-events: none;
+}
+#pricing .price-plan {
+  position: relative;
+  flex: 1 1 30%;
+  font-size: 0.9em;
+  margin: 0.75em;
+  border: 1px solid rgba(7, 55, 99, 0.2);
+  border-radius: 10px;
+  box-shadow: 0 0 0 rgba(7, 55, 99, 0.2);
+  padding: 2em 1em;
+  pointer-events: auto;
+  transition: 0.3s ease;
+}
+#pricing .price-plan::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #073763;
+  opacity: 0;
+  transition: inherit;
+}
+#pricing .price-plan h3 {
+  font-size: 1.3em;
+  color: #1155cc;
+  margin-bottom: 0em;
+}
+#pricing .price-plan h3 + p {
+  margin-top: 0.5em;
+}
+#pricing .price-plan:hover {
+  border-color: transparent;
+  box-shadow: 0 0 20px rgba(7, 55, 99, 0.2);
+}
+#pricing:hover .price-plan::after {
+  opacity: 0.05;
+}
+#pricing:hover .price-plan:hover::after {
+  opacity: 0;
+}
+@media (max-width: 60em){
+  #pricing {
+    display: block;
+  }
+  #pricing .price-plan {
+    margin: 2em 0;
+  }
+}
 
 /**PRODUCTS PAGE STYLING**/
 /*get started steps styling*/
@@ -302,6 +405,9 @@
   max-height: 80vh;
   overflow: hidden;
 }
+#featuredNews #featuredCover img {
+  width: 100%;
+}
 @media (min-width: 70em) {
   #featuredNews {
     display: flex;
@@ -321,8 +427,7 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    min-width: 100%;
-    min-height: 100%;
+    width: 100%;
     transform: translate(-50%, -50%);
   }
 }
@@ -378,7 +483,8 @@
 .news-story .news-img-wrapper {
   position: relative;
   width: 100%;
-  height: 12em;
+  padding-top: 0;
+  padding-bottom: 67%;
   overflow: hidden;
   transition: inherit;
 }
@@ -386,8 +492,7 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  min-width: 100%;
-  min-height: 100%;
+  height: 100%;
   transform-origin: center;
   transform: translate(-50%, -50%);
   transition: inherit;
