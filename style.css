@@ -244,12 +244,12 @@ div.content.dark img.float-left, div.content.dark img.float-left {
 }
 div.content img.float-right {
   float: right;
-  margin: 1em 0 1em 1em;
+  margin: 2em 0 2em 2em;
   max-width: 50%;
 }
 div.content img.float-left {
   float: left;
-  margin: 1em 1em 1em 0;
+  margin: 2em 2em 2em 0;
   max-width: 50%;
 }
 @media (max-width: 45em) {

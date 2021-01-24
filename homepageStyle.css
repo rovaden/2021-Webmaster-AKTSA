@@ -2,7 +2,7 @@
 #titleHome {
   position: relative;
   width: 100%;
-  background-image: url('https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1352&q=80');
+  background-image: url('media/laptop_background.jpg');
   background-attachment: fixed;
   background-size: cover;
   background-position: center center;
@@ -121,16 +121,27 @@
 }
 .productDiv .productImg {
   position: relative;
-  height: 30vh;
   width: 60%;
   margin: 0 auto;
+  margin-bottom: 2em;
 }
-.productDiv .productImg  img {
+.productDiv .productImg img {
+  position: relative;
   z-index: 1;
+  width: 100%;
+  box-shadow: 1em 1em rgba(255, 255, 255, 0.3);
 }
-.productDiv .productImg .imgWrapper {
+.productDiv .productImg::before {
+  content: "";
+  display: block;
+  position: absolute;
   width: 100%;
   height: 100%;
+  top: -1em;
+  left: -1em;
+  box-sizing: border-box;
+  border: 0.5em solid rgba(255, 255, 255, 0.3);
+  z-index: 0;
 }
 
 /*accounting for larger displays in products*/
@@ -154,13 +165,15 @@
     flex-grow: 0;
     margin-right: 4em;
     width: 50%;
-    height: 70vh;
   }
   .productDiv .productContent {
     width: 50%;
   }
 
   /*product image styling*/
+  .productDiv .productImg img {
+    box-shadow: none;
+  }
   .productDiv .productImg::before, .productDiv .productImg::after {
     width: 100%;
     height: 100%;
@@ -278,7 +291,7 @@
 }
 #homeNews .home-news-container .home-news-img {
   width: 100%;
-  height: 12em;
+  padding-bottom: 67%;
 }
 #homeNews .home-news-container .home-news-label {
   margin: 0.7em 0;
@@ -420,7 +433,7 @@
 #homeGetStarted {
   position: relative;
   width: 100%;
-  background-image: url('https://images.pexels.com/photos/1103970/pexels-photo-1103970.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
+  background-image: url('media/fold_blue_background.jpg');
   background-attachment: relative;
   background-size: cover;
   background-position: center center;
