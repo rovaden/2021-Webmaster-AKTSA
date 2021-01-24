@@ -1,0 +1,88 @@
+/*news title styling*/
+.news-title {
+  position: relative;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center center;
+  width: 100%;
+  padding: 30vh 0;
+  color: white;
+}
+.news-title::after {
+  content: "";
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 0, 0, 0.4);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3));
+  z-index: 0;
+}
+.news-title div {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0 10%;
+  z-index: 1;
+}
+.news-title h1 {
+  font-size: 2em;
+  margin-bottom: 0;
+}
+.news-title h1::after {
+  content: "Blog";
+  display: inline-block;
+  margin-left: 2em;
+  padding: 0.3em 1em;
+  border-radius: 1.5em;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: inherit;
+  font-size: 0.4em;
+  font-weight: bold;
+}
+.news-title h1 + p {
+  margin-top: 0;
+  margin-bottom: 2em;
+}
+
+/*content styling*/
+.content.news-page {
+  background: white;
+  padding-left: 25%;
+  padding-right: 25%;
+}
+.content.news-page p {
+  margin-bottom: 0;
+}
+.content.news-page p:last-of-type {
+  margin-bottom: 1.75em;
+}
+.content.news-page ul, .content.news-page ul li {
+  margin-top: 0.125em;
+}
+.content.news-page ul {
+  margin-bottom: 1em;
+}
+.content.news-page h2 {
+  text-align: left;
+  font-size: 1.5em;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+}
+.content.news-page h2::after {
+  display: none;
+}
+.content.news-page h2 + p {
+  margin-top: 0;
+}
+@media (max-width: 40em) {
+  .news-title h1::after {
+    margin-left: 0.5em;
+  }
+  .content.news-page {
+    padding-left: 15%;
+    padding-right: 15%;
+  }
+}
