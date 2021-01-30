@@ -34,6 +34,7 @@ div {
   color: inherit;
   text-decoration: none;
   transition: inherit;
+  letter-spacing: 0.2em;
 }
 .navbar ul li a:hover, .navbar ul li:hover a.dropdown-top {
   color: black;
