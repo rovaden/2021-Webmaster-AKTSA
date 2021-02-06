@@ -221,6 +221,15 @@
 #platform-advantages h3 + p {
   margin-top: 0;
 }
+@media (max-width: 40em){
+  #platform-advantages {
+    display: block;
+  }
+  #platform-advantages .column {
+    width: 100%;
+    display: block;
+  }
+}
 
 /*group sessions div styling*/
 #platform-group {
@@ -643,4 +652,29 @@ div.faq-content > p {
 }
 div.faq-content > p:last-of-type {
   margin-bottom: 2em;
+}
+
+
+/**ABOUT WEBPAGE STYLING**/
+#resources h2 {
+  margin-top: 2.5em;
+}
+#resources ul {
+  word-wrap: break-word;
+}
+#resources a {
+  position: relative;
+  text-decoration: none;
+  padding-bottom: 2px;
+  border-bottom: 2px solid rgba(35, 138, 163, 0.3);
+  color: rgb(35, 138, 163);
+  background: linear-gradient(rgba(35, 138, 163, 0.1), rgba(35, 138, 163, 0.1));
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 100% 0%;
+  transition: 0.2s ease;
+}
+#resources a:hover, div.content a:focus {
+  color:rgb(76, 173, 197);
+  background-size: 100% 100%;
 }
