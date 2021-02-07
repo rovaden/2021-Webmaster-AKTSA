@@ -30,11 +30,11 @@ div {
 .navbar ul li a {
   position: relative;
   text-transform: uppercase;
-  font-weight: 600;
+  font-size: 0.9em;
   color: inherit;
   text-decoration: none;
   transition: inherit;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.1em;
 }
 .navbar ul li a:hover, .navbar ul li:hover a.dropdown-top {
   color: black;
@@ -43,21 +43,20 @@ div {
   display: block;
   content: "";
   position: absolute;
-  bottom: -2px;
+  bottom: -5px;
   left: 0;
   width: 100%;
-  height: 3px;
+  height: 2px;
   transform: scale(0, 1);
   background: black;
   transition: inherit;
-  margin: 0 0 -5px -1px; /*ND added- can delete*/
 }
 .navbar ul li > a:hover::after, .navbar li.nav-active > a::after, .navbar li:hover a.dropdown-top::after {
   transform: scale(1, 1);
 }
 .navbar span.navName, .navbar span.navName a {
   color: inherit;
-  font-size: 1.1em;
+  font-size: 1.3em;
   font-weight: bold;
   text-decoration: none;
   outline: none;
@@ -178,8 +177,6 @@ div {
 }
 .navbar.light ul li a::after {
   background: white;
-  height: 3px; /*ND added- can delete*/
-  margin: 0 0 -5px -1px; /*ND added- can delete*/
 }
 .navbar.light ul li a {
   opacity: 0.8;
