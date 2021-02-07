@@ -8,9 +8,10 @@ function ready() {
   var removeItemButtons = document.getElementsByClassName('delete-btn')
 
   for (var i = 0; i < removeItemButtons.length; i++) {
-          var button = removeItemButtons[i]
-          button.addEventListener('click', removeCartItem)
-      }
+    var button = removeItemButtons[i];
+    var buttonClickfunc = removeCartItemFuncCreator(button);
+    button.addEventListener('click', buttonClickfunc);
+  }
   var quantityInputs = document.getElementsByClassName('cart-quantity-input')
   for (var i = 0; i < quantityInputs.length; i++) {
     var input = quantityInputs[i]
@@ -24,10 +25,20 @@ function ready() {
   }
 }
 
-function removeCartItem(event){
-  var buttonClicked = event.target
-  buttonClicked.parentElement.parentElement.parentElement.remove()
-  updateCartTotal()
+function removeCartItemFuncCreator(button){
+  var button = button;
+  var target = button.parentElement.parentElement;
+  var target2 = target.parentElement;
+  target.style.maxHeight = target.parentElement.getBoundingClientRect().height + "px";
+  return function(){
+    window.setTimeout(function(){
+      target.remove();
+    }, 500);
+    target.style.animation = "removedItem 0.5s ease forwards";
+    target.style.maxHeight = "0";
+    target.style.padding = "0";
+    updateCartTotal();
+  }
 }
 
 function quantityChanged(event) {
@@ -83,8 +94,9 @@ function addItemToCart(title, price, imageSrc) {
       <div class="total-price">${price}</div>`
 
   cartRow.innerHTML = cartRowContent
-  cartItems.append(cartRow)
-  cartRow.getElementsByClassName('delete-btn')[0].addEventListener('click', removeCartItem)
+  cartItems.append(cartRow);
+  var buttonClickfunc = removeCartItemFuncCreator(button);
+  cartRow.getElementsByClassName('delete-btn')[0].addEventListener('click', buttonClickfunc)
   cartRow.getElementsByClassName('cart-quantity-input')[0].addEventListener('change', quantityChanged)
 }
 
@@ -106,3 +118,4 @@ function updateCartTotal() {
   total = Math.round(total*100)/100
   document.getElementsByClassName('cart-total-price')[0].innerText = "$" + total
 }
+updateCartTotal();
