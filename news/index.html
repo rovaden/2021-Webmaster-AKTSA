@@ -8,6 +8,9 @@
     <link href="../style.css" rel="stylesheet" type="text/css"/>
     <link href="../page-specificStyle.css" rel="stylesheet" type="text/css"/>
 
+    <!--animation-->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
     <!--loading in fonts-->
     <link href="https://fonts.googleapis.com/css?family=Lato|Material+Icons&display=swap" rel="stylesheet">
   </head>
@@ -60,19 +63,19 @@
 
     <!--featured story-->
     <div class = "content" id = "featuredNews">
-      <div id = "featuredContent">
+      <div id = "featuredContent" data-aos = "fade-right">
         <h2 id = "featuredTitle">A look back on 2020</h2>
         <p>Aditi Koratpallikar, 1/24/2021</p>
         <p>To say 2020 was a rough year would be a massive understatement. Read more to see how KatKure is providing a positive outlet.</p>
         <button class = "pageLink"><a href = "news-articles/a-look-back-2020.html">Read more</a></button>
       </div>
-      <div id = "featuredCover">
+      <div id = "featuredCover" data-aos = "fade-left">
         <img src = "../media/look_back_vertical.jpg"/>
       </div>
     </div>
 
     <!--stories-->
-    <div class = "content" id = "newsStories">
+    <div class = "content" id = "newsStories" data-aos = "fade-up" data-aos-duration = "1000">
       <div class = "news-story">
         <div class = "news-img-wrapper">
           <img src = "../media/whats_new_horizontal.jpg"/>
@@ -136,6 +139,10 @@
       </div>
       <div class = "footer-text">Copyright KatKure 2021 <i class = "material-icons">copyright</i></div>
     </footer>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init({ disable: "mobile", duration: 500 });
+    </script>
     <script src="../script.js"></script>
   </body>
 </html>
