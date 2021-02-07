@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>KatKure</title>
+    <link href="style.css" rel="stylesheet" type="text/css"/>
+    <link href="page-specificStyle.css" rel="stylesheet" type="text/css"/>
+    <link href="cart.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!--loading in fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Lato|Material+Icons&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+    <!--navigation bar-->
+    <nav class = "navbar">
+      <!--company name to display on mobile outside of menu-->
+      <span class = "navName nav-backup">KatKure</span>
+
+      <!--links-->
+      <div class = "navbar-collapse">
+        <ul>
+          <li><span class = "navName">KatKure</span></li>
+          <li class = "nav-active"><a href = "index.html">Home</a></li>
+          <li><a class = "dropdown-top">About</a>
+            <div>
+              <ul class = "dropdown">
+                <li><a href = "about.html">Company</a></li>
+                <li><a href = "about-webpage.html">This page</a></li>
+              </ul>
+            </div>
+          </li>
+          <li><a class = "dropdown-top">Products</a>
+            <div>
+              <ul class = "dropdown">
+                <li><a href = "services.html">Platform</a></li>
+                <li><a href = "products.html">Shop</a></li>
+              </ul>
+            </div>
+          </li>
+          <li><a href = "news/index.html">News</a></li>
+          <li><a href = "faq.html">FAQs</a></li>
+        </ul>
+      </div>
+      <!--menu icon for mobile display-->
+      <i class = "material-icons" id = "navMenu">menu</i>
+    </nav>
+
+    <div class = "pageHeading">
+      <h1>Cart</h1>
+    </div>
+
+    <div class = "content">
+      <div class="shopping-cart">
+      <!-- Title -->
+      <div class="title">
+        Shopping Bag
+      </div>
+
+      <!-- Product #1 -->
+      <div class="item">
+        <div class="buttons">
+          <span class="delete-btn"><i class="material-icons">delete</i></span>
+        </div>
+
+        <div class="image">
+          <img src="media/herbal.jpg" alt="herbal" width="100"/>
+        </div>
+
+        <div class="description">
+          <span class="cart-item-title">30mg Fresh Herbal Mix</span>
+          <span>Dogsy</span>
+        </div>
+
+        <div class="quantity">
+          <input class="cart-quantity-input" type="number" value="1">
+        </div>
+
+        <div class="total-price">$549</div>
+      </div>
+
+      <!-- Product #2 -->
+      <div class="item">
+        <div class="buttons">
+          <span class="delete-btn"><i class="material-icons">delete</i></span>
+        </div>
+        <div class="image">
+          <img src="media/turmeric.jpg" alt="turmeric" width="100"/>
+        </div>
+
+        <div class="description">
+          <span class="cart-item-title">20mg Turmeric Tablets</span>
+          <span>Finnish Line</span>
+        </div>
+
+        <div class="quantity">
+          <input class="cart-quantity-input" type="number" value="1">
+        </div>
+
+        <div class="total-price">$870</div>
+      </div>
+
+    </div>
+
+    <div class="cart-total">
+      <strong class="cart-total-title">Total</strong>
+      <span class="cart-total-price">$0</span>
+    </div>
+
+    </div>
+
+    <footer class = "footer">
+        <div class = "footer-container">
+          <div class = "footer-left">
+            <h1>KatKure</h1>
+            <p>We create uplifting communities that last a lifetime, always there for you when you need it</p>
+            <a href = "about-webpage.html" class = "aboutFooterLink">About this webpage</a>
+          </div>
+          <div class = "contact">
+            <h1>Contact us</h1>
+            <p>1234 Healthful Drive<br>Charlotte, NC 5678</p>
+            <p>(+1) 011-111-1111</p> <!--please don't actually call this-->
+            <p>katkure@katkure.com</p>
+          </div>
+        </div>
+        <div class = "footer-text">Copyright KatKure 2021 <i class = "material-icons">copyright</i></div>
+    </footer>
+
+    <script src="cart.js" async></script>
+
+  </body>
+</html>
