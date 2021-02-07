@@ -23,6 +23,8 @@ function ready() {
     var button = addToCartButtons[i]
     button.addEventListener('click', addToCartClick)
   }
+
+  updateCartTotal();
 }
 
 function removeCartItemFuncCreator(button){
@@ -78,20 +80,22 @@ function addItemToCart(title, price, imageSrc) {
         <span class="delete-btn"><i class="material-icons">delete</i></span>
       </div>
 
-      <div class="image">
-        <img src="${imageSrc}" alt="herbal" width="100"/>
-      </div>
+      <div class = "item-info-div">
+        <div class="image">
+          <img src="${imageSrc}" alt="herbal" width="100"/>
+        </div>
 
-      <div class="description">
-        <span>${title}</span>
-        <span>Dogsy</span>
-      </div>
+        <div class="description">
+          <span>${title}</span>
+          <span>Dogsy</span>
+        </div>
 
-      <div class="quantity">
-        <input class="cart-quantity-input" type="number" value="1">
-      </div>
+        <div class="quantity">
+          <input class="cart-quantity-input" type="number" value="1">
+        </div>
 
-      <div class="total-price">${price}</div>`
+        <div class="total-price">${price}</div>
+      </div>`
 
   cartRow.innerHTML = cartRowContent
   cartItems.append(cartRow);
@@ -112,10 +116,9 @@ function updateCartTotal() {
     var price = parseFloat(priceElement.innerText.replace('$', ''))
     var quantity = quantityElement.value
 
-    total = total + (price*quantity)
+    total += (price*quantity)
   }
 
   total = Math.round(total*100)/100
   document.getElementsByClassName('cart-total-price')[0].innerText = "$" + total
 }
-updateCartTotal();

@@ -2,7 +2,6 @@
 @keyframes removedItem {
   from {
     transform: scale(1, 1);
-    transform-origin: center;
     opacity: 1;
   }
   to {
@@ -35,6 +34,7 @@
   align-items: center;
   border-bottom: 1px solid #E1E8EE;
   transition: 0.5s ease;
+  transform-origin: center;
 }
 
 .item div.item-info-div {
@@ -58,16 +58,6 @@
 .delete-btn:hover {
   color: black;
 }
-
-.is-active {
-  animation-name: animate;
-  animation-duration: .8s;
-  animation-iteration-count: 1;
-  animation-timing-function: steps(28);
-  animation-fill-mode: forwards;
-}
-
-
 
 /* Product Image */
 .image {
