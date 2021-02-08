@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>About</title>
+    <link rel = "icon" href = "favicon.ico"/>
+    <link href="style.css" rel="stylesheet" type="text/css"/>
+    <link href="page-specificStyle.css" rel="stylesheet" type="text/css"/>
+
+    <!--animation-->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <!--loading in fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Lato|Material+Icons&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <!--navigation bar-->
+    <nav class = "navbar">
+      <!--company name to display on mobile outside of menu-->
+      <span class = "navName nav-backup"><a href = "index.html">KatKure</a></span>
+      
+      <!--links-->
+      <div class = "navbar-collapse">
+        <ul>
+            <li><span class = "navName">KatKure</span></li>
+            <li><a href = "index.html">Home</a></li>
+            <li><a class = "dropdown-top">About</a>
+              <div>
+                <ul class = "dropdown">
+                  <li class = "nav-active"><a href = "about.html">Company</a></li>
+                  <li><a href = "about-webpage.html">This page</a></li>
+                </ul>
+              </div>
+            </li>
+            <li><a class = "dropdown-top">Products</a>
+              <div>
+                <ul class = "dropdown">
+                  <li><a href = "services.html">Platform</a></li>
+                  <li><a href = "products.html">Shop</a></li>
+                  <li><a href = "cart.html">Cart</a></li>
+                </ul>
+              </div>
+            </li>
+            <li><a href = "news/index.html">News</a></li>
+            <li><a href = "faq.html">FAQs</a></li>
+          </ul>
+      </div>
+
+      <!--menu icon for mobile display-->
+      <i class = "material-icons" id = "navMenu">menu</i>
+    </nav>
+
+    <!--page title-->
+    <div class = "pageHeading">
+      <h1>About Us</h1>
+    </div>
+
+    <!--mission, vision, and values-->
+    <div class = "content has-image">
+      <p id = "mission">We believe that everybody deserves a second chance to turn their life around. Our company offers former drug addicts a way to receive alternative medications for their ailments in order to redirect the prescripton misuse cycle and permanently keep former drug addicts from using again.</p>
+      <img src = "media/coffee_meeting.jpg" alt = "People sitting around the table in a meeting" class = "float-right"/>
+      <p>It's why we're dedicated to creating alternative medicines that doesn't contain addictive substances and drugs. With the current pandemic, many former addicts are refusing treatments for their ongoing illnesses due to the fear of relapsing. In addition, many physicians are faced with tough decisions in trying to prescribe pain medications due to the inadequate pain relief caused by the limited opiod exposure as well as the fear of indirectly causing a new relapse.</p>
+      <p>With the complete removal of opiods and addictive substances from our medication, we are offering a life-changing and efficient alternative to both addicts and their physicians. With this in mind, we mandate that each purchase from our company shall be accompanied by a physician's note.</p>
+    </div>
+
+    <!--values-->
+    <div class = "content" id = "value-section">
+      <h2>Our Values</h2>
+      <p>We provide our service for <b>you.</b> We believe that a strong mentality is the first step to a change, the next is us.</p>
+      <div id = "value-container" data-aos = "fade-up">
+        <div class = "value">
+          <i class = "material-icons">groups</i>
+          <p>Mental Strength</p>
+        </div>
+        <div class = "value">
+          <i class = "material-icons">favorite</i>
+          <p>Personal Interactions</p>
+        </div>
+        <div class = "value">
+          <i class = "material-icons">emoji_events</i>
+          <p>Community Effort</p>
+        </div>
+        <div class = "value">
+          <i class = "material-icons">health_and_safety</i>
+          <p>Health for All</p>
+        </div>
+      </div>
+    </div>
+
+    <!--founders/people-->
+    <div class = "content light">
+      <h2>Our Team</h2>
+      <div class = "founder">
+        <img src = "media/founder_1.jpg"/>
+        <div class = "founder-text" data-aos = "fade-left">
+          <h3>Jane Doe</h3>
+          <p class = "founder-position">President and Founder</p>
+          <p class = "founder-description">Jane grew up witnessing the drastic effects of addiction to drugs. Her main goal became to provide a platform to help those who want to change. With more and more research being done on alternative medicines and techniques to combat addiction, KatKure is the answer.</p>
+        </div>  
+      </div>
+      <div class = "founder">
+        <img src = "media/founder_2.jpg"/> 
+        <div class = "founder-text" data-aos = "fade-right">
+          <h3>Mary Lamb</h3>
+          <p class = "founder-position">Vice-President</p>
+          <p class = "founder-description">With a background in software and website development, Mary found KatKure to be an exciting journey. Although she always loved to code the "behind-the-scenes," she wanted to use her skills for a bigger cause - KatKure. Providing a platform for those in need, especially in the pandemic, seemed to be the piece that completed her puzzle.</p>
+        </div> 
+      </div>
+      <div class = "founder">
+        <img src = "media/founder_3.jpg"/> 
+        <div class = "founder-text" data-aos = "fade-left">
+          <h3>John Smith</h3>
+          <p class = "founder-position">COO</p>
+          <p class = "founder-description">Growing up, John was always told about using alternative medicines for certain illnesses, and this piqued his interest in the future. What if a common issue, like drug addiction, could be combated with natural and homeopathic medicines? Through continuous efforts and research in this evolving area, he was able to provide the resources for KatKure.</p>
+        </div> 
+      </div>
+    </div>
+
+    <!--timeline/story-->
+    <div class = "content light-gray">
+      <h2>Our Story</h2>
+      <div id = "timeline">
+        <div class = "timepoint" data-aos = "fade-up">
+          <p class = "timeTitle">Handling a Pandemic</p>
+          <p class = "year">February 2020</p>
+          <p>The global COVID-19 pandemic took hold this year, but we're proud to say we rose to the challenge. We expanded our delivery networks, hired more qualified counselors, offered more and more alternative medications in our store, and last but not certainly not least, added the option for group therapy on our platform! It was a tough year for everyone, but we tried to make it the best we could for our customers.</p>
+        </div>
+        <div class = "timepoint" data-aos = "fade-up">
+          <p class = "timeTitle">Therapy Launch</p>
+          <p class = "year">August 2019</p>
+          <p>Only about a year after our successful launch of our store, we introduced our next big leap - a platform on which we could help addicts in other ways, namely through therapy. We were excited to see in what other ways we could help improve the quality of others' lives!</p>
+        </div>
+        <div class = "timepoint" data-aos = "fade-up">
+          <p class = "timeTitle">Official Launch</p>
+          <p class = "year">October 2018</p>
+          <p>KatKure was officially launched and ready for customers! Through a whole year of patient development and testing , we were proud to finally deliver our quality product straight to people's doors!</p>
+        </div>
+        <div class = "timepoint" data-aos = "fade-up">
+          <p class = "timeTitle">The Beginning</p>
+          <p class = "year">March 2017</p>
+          <p>The month where KatKure all started. It wasn't a sudden lightning strike of inspiration, but rather the realization of a vision that our founders had always had. It was a what-if possibiliy that suddenly could be done--and that is where our journey began.</p>
+        </div>
+      </div>
+    </div>
+
+    <!--footer-->
+    <footer class = "footer">
+      <div class = "footer-container">
+        <div class = "footer-left">
+          <h1>KatKure</h1>
+          <p>We create uplifting communities that last a lifetime, always there for you when you need it</p>
+          <a href = "about-webpage.html" class = "aboutFooterLink">About this webpage</a>
+        </div>
+        <div class = "contact">
+          <h1>Contact us</h1>
+          <p>1234 Healthful Drive<br>Charlotte, NC 5678</p>
+          <p>(+1) 011-111-1111</p> <!--please don't actually call this-->
+          <p>katkure@katkure.com</p>
+        </div>
+      </div>
+      <div class = "footer-text">Copyright KatKure 2021 <i class = "material-icons">copyright</i></div>
+    </footer>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init({ disable: "mobile", duration: 500 });
+    </script>
+    <script src="script.js"></script>
+  </body>
+</html>

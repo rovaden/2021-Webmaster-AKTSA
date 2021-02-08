@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Frequently Asked Questions</title>
+    <link rel = "icon" href = "favicon.ico"/>
+    <link href="style.css" rel="stylesheet" type="text/css"/>
+    <link href="page-specificStyle.css" rel="stylesheet" type="text/css"/>
+
+    <!--loading in fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Lato|Material+Icons&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <!--navigation bar-->
+    <nav class = "navbar">
+      <!--company name to display on mobile outside of menu-->
+      <span class = "navName nav-backup"><a href = "index.html">KatKure</a></span>
+      
+      <!--links-->
+      <div class = "navbar-collapse">
+        <ul>
+          <li><span class = "navName">KatKure</span></li>
+          <li><a href = "index.html">Home</a></li>
+          <li><a class = "dropdown-top">About</a>
+            <div>
+              <ul class = "dropdown">
+                <li><a href = "about.html">Company</a></li>
+                <li><a href = "about-webpage.html">This page</a></li>
+              </ul>
+            </div>
+          </li>
+          <li><a class = "dropdown-top">Products</a>
+            <div>
+              <ul class = "dropdown">
+                <li><a href = "services.html">Platform</a></li>
+                <li><a href = "products.html">Shop</a></li>
+                <li><a href = "cart.html">Cart</a></li>
+              </ul>
+            </div>
+          </li>
+          <li><a href = "news/index.html">News</a></li>
+          <li class = "nav-active"><a href = "faq.html">FAQs</a></li>
+        </ul>
+      </div>
+
+      <!--menu icon for mobile display-->
+      <i class = "material-icons" id = "navMenu">menu</i>
+    </nav>
+
+    <!--page title-->
+    <div class = "pageHeading">
+      <h1>FAQs</h1>
+    </div>
+
+    <!--content-->
+    <div class = "content" id = "faq-container">
+      <div class = "faq">
+        <div class = "faq-question">
+          <p>Is this a scam?</p>
+        </div>
+        <div class = "faq-content">
+          <p>No, we are a real company tailored towards providing better services to provide medications</p>
+        </div>
+      </div>
+      <div class = "faq">
+        <div class = "faq-question">
+          <p>How do I send my verification for my patient’s prescription?</p>
+        </div>
+        <div class = "faq-content">
+          <p>You can send it electronically to verification@katkure.com or by Fax to 011-222-1113</p>
+        </div>
+      </div>
+      <div class = "faq">
+        <div class = "faq-question">
+          <p>My medication isn’t there, where do I get it?</p>
+        </div>
+        <div class = "faq-content">
+          <p>Sometimes the medication you need is not there! Please email help@katkure.com</p>
+        </div>
+      </div>
+      <div class = "faq">
+        <div class = "faq-question">
+          <p>Even if I don't have a drug addiction, can I still use KatKure?</p>
+        </div>
+        <div class = "faq-content">
+          <p>Of course! We provide for anyone who is in need.</p>
+        </div>
+      </div>
+      <div class = "faq">
+        <div class = "faq-question">
+          <p>How do I change my shipping address?</p>
+        </div>
+        <div class = "faq-content">
+          <p>We do not store your address- when you enter in your details, you may put your new address there!</p>
+        </div>
+      </div>
+    </div>
+
+    <!--footer-->
+    <footer class = "footer">
+      <div class = "footer-container">
+        <div class = "footer-left">
+          <h1>KatKure</h1>
+          <p>We create uplifting communities that last a lifetime, always there for you when you need it</p>
+          <a href = "about-webpage.html" class = "aboutFooterLink">About this webpage</a>
+        </div>
+        <div class = "contact">
+          <h1>Contact us</h1>
+          <p>1234 Healthful Drive<br>Charlotte, NC 5678</p>
+          <p>(+1) 011-111-1111</p> <!--please don't actually call this-->
+          <p>katkure@katkure.com</p>
+        </div>
+      </div>
+      <div class = "footer-text">Copyright KatKure 2021 <i class = "material-icons">copyright</i></div>
+    </footer>
+    <script src="script.js"></script>
+
+    <!--faq specific-->
+    <script>
+      //creating a click function that toggles activeness on the question + allowing response to be seen
+      let clickFunction = function(question, content){
+        let clicks = 0;
+        const faqQuestion = question;
+        const target = content;
+        const height = content.scrollHeight;
+        return function(){
+          clicks++;
+          faqQuestion.classList.toggle("active");
+          if(clicks % 2 === 0){
+            target.style.maxHeight = "0";
+          }
+          else {
+            target.style.maxHeight = height + "px";
+          }
+        }
+      };
+
+      //loop through elements
+      const faqArr = document.getElementById("faq-container").getElementsByClassName("faq");
+      for(let i = 0; i < faqArr.length; i++){
+        //add event listener on question, so when it's clicked it will execute the function
+        const faqEls = faqArr[i].getElementsByTagName("div");
+        const clickFunc = clickFunction(faqEls[0], faqEls[1]);
+        faqEls[0].addEventListener("click", clickFunc);
+      }
+    </script>
+  </body>
+</html>
