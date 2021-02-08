@@ -1,7 +1,7 @@
 const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://pagesHosting:AUreD9BtHZY0aWT4@cluster0.tqgec.mongodb.net/webmaster?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true});
-const dbName = 'webmaster';
+const client = new MongoClient(uri, { useNewUrlParser: true,  useUnifiedTopology: true});
+var db;
 const express = require('express');
 const app = express();
 const path = require('path');
@@ -12,7 +12,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 console.log('Server-side code running');
 
 client.connect(err => {
-  const collection = client.db("test").collection("devices");
+  db = client.db("webmaster"); 
   console.log("we are connected!");
   // perform actions on the collection object
   // start the express web server listening on 8080
@@ -33,7 +33,7 @@ app.post('/clicked', (req, res) => {
   console.log(click);
   console.log(db);
 
-  db.collection('clicks').save(click, (err, result) => {
+  db.collection('test').save(click, (err, result) => {
     if (err) {
       return console.log(err);
     }
@@ -44,7 +44,7 @@ app.post('/clicked', (req, res) => {
 
 // get the click data from the database
 app.get('/clicks', (req, res) => {
-  db.collection('clicks').find().toArray((err, result) => {
+  db.collection('test').find().toArray((err, result) => {
     if (err) return console.log(err);
     res.send(result);
   });
