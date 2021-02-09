@@ -338,6 +338,7 @@ div {
 div.content {
   padding: 4em 20%;
   color: gray;
+  overflow: hidden;
 }
 div.content.light-gray {
   background-color: rgb(240, 240, 240);
