@@ -126,34 +126,51 @@ function updateCartTotal() {
 }
 
 function logCart(){
+  // var cartnames = ["start"];
+  // var cartquantity = ["start" ];
+  // var cartItemContainer = document.getElementsByClassName('shopping-cart')[0];
+  // var cartItems = cartItemContainer.getElementsByClassName('item');
+  // console.log(cartItems);
+  // for (var i=0; i < cartItems.length; i++){
+  //   cartnames.push(document.getElementsByClassName('cart-item-title')[i].textContent);
+  //   cartquantity.push(document.getElementsByClassName('cart-quantity-input')[i].textContent);
+  // }
+  // var data = {
+  //   cart: cartnames,
+  //   cartquantity: cartquantity,
+  //   total: document.getElementById('cart-total-price').textContent
+  // }
   var button = document.getElementById('cart-check-out');
   button.addEventListener('click', function(e) {
-  console.log('button was clicked');
-
-  fetch('/clicked', {method: 'POST'})
-    .then(function(response) {
-      if(response.ok) {
-        console.log('click was recorded');
-        return;
-      }
-      throw new Error('Request failed.');
+    console.log('button was clicked');
+    fetch('/click', {
+      method: 'POST', 
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
     })
-    .catch(function(error) {
-      console.log(error);
+    .then(response => response.json())
+    .then(data => {
+      console.log('Success:', data);
+    })
+    .catch((error) => {
+      console.error('Error:', error);
     });
   });
 
-  setInterval(function() {
-    fetch('/clicks', {method: 'GET'})
-      .then(function(response) {
-        if(response.ok) return response.json();
-        throw new Error('Request failed.');
-      })
-      .then(function(data) {
-        document.getElementById('counter').innerHTML = `Button was clicked ${data.length} times`;
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
-  }, 1000);
+
+//   setInterval(function() {
+//     fetch('/clicks', {method: 'GET'})
+//       .then(function(response) {
+//         if(response.ok) return response.json();
+//         throw new Error('Request failed.');
+//       })
+//       .then(function(data) {
+//         document.getElementById('counter').innerHTML = `Button was clicked ${data.length} times`;
+//       })
+//       .catch(function(error) {
+//         console.log(error);
+//       });
+//   }, 1000);
 }
