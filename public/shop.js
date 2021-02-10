@@ -14,6 +14,17 @@ function ready() {
   // }
 }
 
+function addAlert(message){
+  var alertEl = document.getElementsByClassName("alerts")[0];
+  var newAlert = document.createElement("div");
+  newAlert.className = "shop-alert";
+  newAlert.innerHTML = "<h3>Success!</h3><p>" + message + "</p>";
+  alertEl.appendChild(newAlert);
+  window.setTimeout(function(){
+    newAlert.remove();
+  }, 30000);
+}
+
 function addToCartClick(index) {
   console.log("clicked!")
   var title = document.getElementsByClassName('shop-item-title')[index].innerText
@@ -21,6 +32,7 @@ function addToCartClick(index) {
   var imageSrc = document.getElementsByClassName('shop-item-image')[index].src
 
   addItemToCart(title, price, imageSrc)
+  addAlert(title + " has been added to your cart!");
 }
 
 function addItemToCart(title, price, imageSrc) {

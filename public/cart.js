@@ -50,7 +50,7 @@ function logCart(){
   .then(response => response.json())
   .then(data => {
     console.log('Success:', data);
-    alert("Success! We have received your cart! \nUnfortunately KatKure isn't a real company so your request was useless. \n(  ◞‸◟)")
+    addAlert("Success!", "We have received your order!");
   })
   .catch((error) => {
     console.error('Error:', error);
@@ -96,6 +96,17 @@ function removeCartItemFuncCreator(button){
     target.style.padding = "0";
     updateCartTotal();
   }
+}
+
+function addAlert(headMessage, message){
+  var alertEl = document.getElementsByClassName("alerts")[0];
+  var newAlert = document.createElement("div");
+  newAlert.className = "shop-alert";
+  newAlert.innerHTML = "<h3>" + headMessage + "</h3><p>" + message + "</p>";
+  alertEl.appendChild(newAlert);
+  window.setTimeout(function(){
+    newAlert.remove();
+  }, 30000);
 }
 
 function buildCart(index){
