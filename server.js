@@ -12,6 +12,7 @@ const path = require('path');
 let indexFile = path.join(__dirname, "../public/index.html");
 // serve files from the public directory
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.json());
 
 console.log('Server-side code running');
 // app.listen(8080, ()=> {
@@ -31,12 +32,12 @@ client.connect(err => {
   app.listen(8080, () => {
     console.log('listening on 8080');
   });
-  client.db("webmaster").collection("test").insertOne(
-    {
-      name: "test",
-      desc: "fhsdjkahfsdjkhfsjklahs"
-    }
-  );
+  // client.db("webmaster").collection("test").insertOne(
+  //   {
+  //     name: "test",
+  //     desc: "fhsdjkahfsdjkhfsjklahs"
+  //   }
+  // );
 });
 
 
@@ -49,15 +50,15 @@ app.get('/', (req, res) => {
 
 // add a document to the DB collection recording the click event
 app.post('/cart', (req, res) => {
-  const click = {clickTime: new Date()};
-  console.log(click);
-  console.log(db.collection('test'));
-  db.collection('test').insertOne(click, (err, result) => {
+  // console.log(db.collection('test'));
+  console.log(req.query.toString() + "afhdjksahfjksdh" + req.body.toString());
+  var data = [req.body];
+  db.collection('test').insertOne(req.body, (err, result) => {
     if (err) {
       return console.log(err);
     }
     console.log('click added to db');
-    res.sendStatus(201);
+    res.json({requestBody: req.body});
   });
 });
 

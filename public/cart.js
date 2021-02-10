@@ -140,13 +140,18 @@ function logCart(){
   //   cartquantity: cartquantity,
   //   total: document.getElementById('cart-total-price').textContent
   // }
+  var data = {
+    cart: "aaaaaaaaaaaa",
+    quanitiyitity: 1234231
+  }
   var button = document.getElementById('cart-check-out');
   button.addEventListener('click', function(e) {
     console.log('button was clicked');
-    fetch('/click', {
+    fetch('/cart', {
       method: 'POST', 
       headers: {
         'Content-Type': 'application/json',
+        'Accept': 'application/json'
       },
       body: JSON.stringify(data),
     })
