@@ -51,8 +51,7 @@ app.get('/', (req, res) => {
 // add a document to the DB collection recording the click event
 app.post('/cart', (req, res) => {
   // console.log(db.collection('test'));
-  console.log(req.query.toString() + "afhdjksahfjksdh" + req.body.toString());
-  var data = [req.body];
+  // console.log(req.query.toString() + "afhdjksahfjksdh" + req.body.toString());
   db.collection('test').insertOne(req.body, (err, result) => {
     if (err) {
       return console.log(err);
