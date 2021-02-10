@@ -39,3 +39,13 @@ function addItemToCart(title, price, imageSrc) {
   localStorage.setItem(title, [title, price, imageSrc])
   console.log(localStorage.getItem(title).split(',')[1])
 }
+
+/*adding event listeners for click on shop buttons*/
+var allItems = document.getElementsByClassName("shop-item");
+for(let i = 0; i < allItems.length; i++){
+  var itemButton = allItems[i].getElementsByTagName("button")[0];
+  itemButton.dataset.index = i.toString();
+  itemButton.addEventListener("click", function(){
+    addToCartClick(i);
+  })
+}
