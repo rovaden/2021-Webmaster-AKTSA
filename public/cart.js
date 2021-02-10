@@ -50,6 +50,7 @@ function logCart(){
   .then(response => response.json())
   .then(data => {
     console.log('Success:', data);
+    alert("Success! We have received your cart! \nUnfortunately KatKure isn't a real company so your request was useless. \n(  ◞‸◟)")
   })
   .catch((error) => {
     console.error('Error:', error);
