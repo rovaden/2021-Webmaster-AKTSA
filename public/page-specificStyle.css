@@ -505,6 +505,12 @@ div.alerts {
 .shop-alert h3 + p {
   margin-top: 0.5em;
 }
+@media (max-width: 25em) {
+  div.alerts {
+    bottom: 0em;
+    width: 100%;
+  }
+}
 
 /**NEWS HOMEPAGE STYLING**/
 /*featured story styling*/
