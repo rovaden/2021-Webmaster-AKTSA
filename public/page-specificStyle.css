@@ -443,6 +443,10 @@
   border: 1px solid rgba(7, 55, 99, 0.2);
   border-radius: 5px;
 }
+#shop-container .shop-item-image {
+  max-width: 100%;
+  width: 70%;
+}
 #shop-container .shop-item button, .shop-button {
   padding: 0.5em 1.75em;
   border-radius: 2em;
