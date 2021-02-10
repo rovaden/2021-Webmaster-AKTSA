@@ -5,23 +5,25 @@ if (document.readyState == 'loading'){
 }
 
 function ready() {
+  localStorage.clear()
+  console.log()
   var addToCartButtons = document.getElementsByClassName('shop-item-button')
-  for (var i = 0; i < addToCartButtons.length; i++) {
-    var button = addToCartButtons[i]
-    button.addEventListener('click', addToCartClick)
-  }
+  // for (var i = 0; i < addToCartButtons.length; i++) {
+  //   addToCartButtons[i].addEventListener('click', addToCartClick(addToCartButtons[i]))
+  //   console.log(addToCartButtons[i])
+  // }
 }
 
-function addToCartClick(event) {
-  var button = event.target
-  var shopItem = button.parentElement.parentElement
-  var title = shopItem.getElementsByClassName('shop-item-title')[0].innerText
-  var price = shopItem.getElementsByClassName('shop-item-price')[0].innerText
-  var imageSrc = shopItem.getElementsByClassName('shop-item-image')[0].src
+function addToCartClick(index) {
+  console.log("clicked!")
+  var title = document.getElementsByClassName('shop-item-title')[index].innerText
+  var price = document.getElementsByClassName('shop-item-price')[index].innerText
+  var imageSrc = document.getElementsByClassName('shop-item-image')[index].src
 
   addItemToCart(title, price, imageSrc)
 }
 
 function addItemToCart(title, price, imageSrc) {
-  localStorage.setItem("item " + title, [title, price, imageSrc])
+  localStorage.setItem(title, [title, price, imageSrc])
+  console.log(localStorage.getItem(title).split(',')[1])
 }

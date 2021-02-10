@@ -8,8 +8,8 @@ function ready(){
   for (var i =0; i<localStorage.length; i++){
     buildCart(i)
   }
-  var button = document.getElementById('cart-check-out')
-  button.addEventListener('click', logCart())  
+  // var button = document.getElementById('cart-check-out')
+  // button.addEventListener('click', logCart())  
   var removeItemButtons = document.getElementsByClassName('delete-btn')
   for (var i = 0; i < removeItemButtons.length; i++) {
     var button = removeItemButtons[i];
@@ -84,9 +84,7 @@ function updateCartTotal() {
 }
 
 function removeCartItemFuncCreator(button){
-  var button = button;
   var target = button.parentElement.parentElement;
-  var target2 = target.parentElement;
   target.style.maxHeight = target.parentElement.getBoundingClientRect().height + "px";
   return function(){
     window.setTimeout(function(){
@@ -100,13 +98,13 @@ function removeCartItemFuncCreator(button){
 }
 
 function buildCart(index){
-  var title = localStorage.getItem(localStorage.key(index))
-  var price = localStorage.getItem(localStorage.key(index))[1]
-  var imageSrc = localStorage.getItem(localStorage.key(index))[2]
+  var title = localStorage.key(index)
+  var price = localStorage.getItem(title).split(',')[1]
+  var imageSrc = localStorage.getItem(title).split(',')[2]
   var cartRow = document.createElement('div')
-  console.log(title + " fdjafjklsd " + price + " fkdhafhsk " + imageSrc)
+  console.log(localStorage.key(index))
   cartRow.classList.add('item')
-  var cartItems = document.getElementsByClassName('shopping-cart')[0]
+  var cartItems = document.getElementsByClassName('cart-items')[0]
   var cartItemNames = cartItems.getElementsByClassName('cart-item-title')
   for (var i=0; i < cartItemNames.length; i++) {
     if (cartItemNames[i].innerText == title){
@@ -123,7 +121,7 @@ function buildCart(index){
           <img src="${imageSrc}" alt="herbal" width="100"/>
         </div>
         <div class="description">
-          <span>${title}</span>
+          <span class = "cart-item-title">${title}</span>
           <span>Dogsy</span>
         </div>
         <div class="quantity">
@@ -133,7 +131,6 @@ function buildCart(index){
       </div>`
   cartRow.innerHTML = cartRowContent
   cartItems.append(cartRow);
-  var buttonClickfunc = removeCartItemFuncCreator(button);
-  cartRow.getElementsByClassName('delete-btn')[0].addEventListener('click', buttonClickfunc)
+  cartRow.getElementsByClassName('delete-btn')[0].addEventListener('click', removeCartItemFuncCreator(document.getElementsByClassName("delete-btn")[index]))
   cartRow.getElementsByClassName('cart-quantity-input')[0].addEventListener('change', quantityChanged)
 }
