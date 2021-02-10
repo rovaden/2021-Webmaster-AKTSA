@@ -50,7 +50,7 @@ function logCart(){
   .then(response => response.json())
   .then(data => {
     console.log('Success:', data);
-    addAlert("Success!", "We have received your order!");
+    addAlert("We have received your order!");
   })
   .catch((error) => {
     console.error('Error:', error);
@@ -98,11 +98,11 @@ function removeCartItemFuncCreator(button){
   }
 }
 
-function addAlert(headMessage, message){
+function addAlert(message){
   var alertEl = document.getElementsByClassName("alerts")[0];
   var newAlert = document.createElement("div");
   newAlert.className = "shop-alert";
-  newAlert.innerHTML = "<h3>" + headMessage + "</h3><p>" + message + "</p>";
+  newAlert.innerHTML = "<h3>Success!</h3><p>" + message + "</p>";
   alertEl.appendChild(newAlert);
   window.setTimeout(function(){
     newAlert.remove();
