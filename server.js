@@ -5,6 +5,7 @@ var db;
 const express = require('express');
 const app = express();
 const path = require('path');
+const PORT = process.env.PORT || 8080;
 let indexFile = path.join(__dirname, "../public/index.html");
 
 // serve files from the public directory
@@ -16,8 +17,8 @@ console.log('Server-side code running');
 client.connect(err => {
   db = client.db('webmaster');
   console.log("we are connected!");
-  app.listen(process.env.PORT || 8080,  () => {
-    console.log('listening on :' + process.env.PORT);
+  app.listen(PORT, '0.0.0.0',  () => {
+    console.log('listening on :' + PORT);
   });
 });
 
