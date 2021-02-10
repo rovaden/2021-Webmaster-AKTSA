@@ -630,10 +630,15 @@
 .faq-question {
   position: relative;
   display: block;
-  padding: 1em 0.5em;
+  padding: 1.25em 0.75em;
+  padding-right: 2.5em;
   background-color: #1155cc;
+  border-bottom: 1px solid #0d3a8a;
   color: white;
   transition: 0.2s ease;
+}
+div.faq-question:last-of-type {
+  border-bottom: none;
 }
 div.faq-question > p {
   margin: 0;
@@ -661,7 +666,6 @@ div.faq-question > p {
 }
 .faq-content {
   display: block;
-  max-height: 0;
   overflow: hidden;
   padding: 0;
   background-color: white;
@@ -673,6 +677,9 @@ div.faq-content > p {
 div.faq-content > p:last-of-type {
   margin-bottom: 2em;
 }
+div.faq + h2 {
+  margin-top: 3em;
+}
 
 
 /**ABOUT WEBPAGE STYLING**/
@@ -682,7 +689,7 @@ div.faq-content > p:last-of-type {
 #resources ul {
   word-wrap: break-word;
 }
-#resources a {
+#resources a, div.faq-content a {
   position: relative;
   text-decoration: none;
   padding-bottom: 2px;
@@ -694,7 +701,7 @@ div.faq-content > p:last-of-type {
   background-size: 100% 0%;
   transition: 0.2s ease;
 }
-#resources a:hover, div.content a:focus {
+#resources a:hover, #resources a:focus, div.faq-content a:hover, div.faq-content a:focus {
   color:rgb(76, 173, 197);
   background-size: 100% 100%;
 }
