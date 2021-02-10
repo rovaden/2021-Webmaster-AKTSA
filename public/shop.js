@@ -22,7 +22,7 @@ function addAlert(message){
   alertEl.appendChild(newAlert);
   window.setTimeout(function(){
     newAlert.remove();
-  }, 30000);
+  }, 3000);
 }
 
 function addToCartClick(index) {

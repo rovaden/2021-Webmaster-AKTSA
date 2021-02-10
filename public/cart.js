@@ -98,17 +98,6 @@ function removeCartItemFuncCreator(button){
   }
 }
 
-function addAlert(message){
-  var alertEl = document.getElementsByClassName("alerts")[0];
-  var newAlert = document.createElement("div");
-  newAlert.className = "shop-alert";
-  newAlert.innerHTML = "<h3>Success!</h3><p>" + message + "</p>";
-  alertEl.appendChild(newAlert);
-  window.setTimeout(function(){
-    newAlert.remove();
-  }, 30000);
-}
-
 function buildCart(index){
   var title = localStorage.key(index)
   var price = localStorage.getItem(title).split(',')[1]
