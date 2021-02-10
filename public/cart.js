@@ -23,8 +23,6 @@ function ready() {
     var button = addToCartButtons[i]
     button.addEventListener('click', addToCartClick)
   }
-
-  updateCartTotal();
 }
 
 function removeCartItemFuncCreator(button){
