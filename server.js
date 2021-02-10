@@ -16,13 +16,10 @@ console.log('Server-side code running');
 client.connect(err => {
   db = client.db('webmaster');
   console.log("we are connected!");
-  app.listen(8080, () => {
-    console.log('listening on 8080');
+  app.listen(process.env.PORT || 8080,  () => {
+    console.log('listening on :' + process.env.PORT);
   });
 });
-
-
-
 
 // serve the homepage
 app.get('/', (req, res) => {
