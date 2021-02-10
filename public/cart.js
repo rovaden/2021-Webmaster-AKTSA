@@ -4,9 +4,13 @@ if (document.readyState == 'loading'){
   ready()
 }
 
-function ready() {
+function ready(){
+  for (var i =0; i<localStorage.length; i++){
+    buildCart(i)
+  }
+  var button = document.getElementById('cart-check-out')
+  button.addEventListener('click', logCart())  
   var removeItemButtons = document.getElementsByClassName('delete-btn')
-
   for (var i = 0; i < removeItemButtons.length; i++) {
     var button = removeItemButtons[i];
     var buttonClickfunc = removeCartItemFuncCreator(button);
@@ -17,28 +21,39 @@ function ready() {
     var input = quantityInputs[i]
     input.addEventListener('change', quantityChanged)
   }
-
-  var addToCartButtons = document.getElementsByClassName('shop-item-button')
-  for (var i = 0; i < addToCartButtons.length; i++) {
-    var button = addToCartButtons[i]
-    button.addEventListener('click', addToCartClick)
-  }
+  localStorage.clear();
+  updateCartTotal();
 }
 
-function removeCartItemFuncCreator(button){
-  var button = button;
-  var target = button.parentElement.parentElement;
-  var target2 = target.parentElement;
-  target.style.maxHeight = target.parentElement.getBoundingClientRect().height + "px";
-  return function(){
-    window.setTimeout(function(){
-      target.remove();
-    }, 500);
-    target.style.animation = "removedItem 0.5s ease forwards";
-    target.style.maxHeight = "0";
-    target.style.padding = "0";
-    updateCartTotal();
+function logCart(){
+  console.log('button was clicked');
+  var data = {};
+  var cartItemContainer = document.getElementsByClassName('shopping-cart')[0];
+  var cartItems = cartItemContainer.getElementsByClassName('item');
+  console.log(document.getElementsByClassName('cart-total-price')[0].innerHTML);
+  for (var i=0; i < cartItems.length; i++){
+    data["item " + (i+1)] = {
+      itemName: document.getElementsByClassName('cart-item-title')[i].innerText, 
+      itemQuantity: document.getElementsByClassName('cart-quantity-input')[i].value,
+      itemTotalPrice: document.getElementsByClassName('total-price')[i].innerText
+    };
   }
+  data["totalCartPrice"] = document.getElementsByClassName('cart-total-price')[0].innerHTML;
+  fetch('/cart', {
+    method: 'POST', 
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    },
+    body: JSON.stringify(data),
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log('Success:', data);
+  })
+  .catch((error) => {
+    console.error('Error:', error);
+  });
 }
 
 function quantityChanged(event) {
@@ -47,59 +62,6 @@ function quantityChanged(event) {
     input.value = 1
   }
   updateCartTotal()
-}
-
-function addToCartClick(event) {
-  var button = event.target
-  var shopItem = button.parentElement.parentElement
-  var title = shopItem.getElementsByClassName('shop-item-title')[0].innerText
-  var price = shopItem.getElementsByClassName('shop-item-price')[0].innerText
-  var imageSrc = shopItem.getElementsByClassName('shop-item-image')[0].src
-
-  addItemToCart(title, price, imageSrc)
-
-  updateCartTotal()
-}
-
-function addItemToCart(title, price, imageSrc) {
-  var cartRow = document.createElement('div')
-  cartRow.classList.add('item')
-  var cartItems = document.getElementsByClassName('shopping-cart')[0]
-  var cartItemNames = cartItems.getElementsByClassName('cart-item-title')
-  for (var i=0; i < cartItemNames.length; i++) {
-    if (cartItemNames[i].innerText == title){
-      alert('This item has already been added to the cart')
-      return
-    }
-  }
-
-  var cartRowContent = `
-      <div class="buttons">
-        <span class="delete-btn"><i class="material-icons">delete</i></span>
-      </div>
-
-      <div class = "item-info-div">
-        <div class="image">
-          <img src="${imageSrc}" alt="herbal" width="100"/>
-        </div>
-
-        <div class="description">
-          <span>${title}</span>
-          <span>Dogsy</span>
-        </div>
-
-        <div class="quantity">
-          <input class="cart-quantity-input" type="number" value="1">
-        </div>
-
-        <div class="total-price">${price}</div>
-      </div>`
-
-  cartRow.innerHTML = cartRowContent
-  cartItems.append(cartRow);
-  var buttonClickfunc = removeCartItemFuncCreator(button);
-  cartRow.getElementsByClassName('delete-btn')[0].addEventListener('click', buttonClickfunc)
-  cartRow.getElementsByClassName('cart-quantity-input')[0].addEventListener('change', quantityChanged)
 }
 
 function updateCartTotal() {
@@ -119,4 +81,59 @@ function updateCartTotal() {
 
   total = Math.round(total*100)/100
   document.getElementsByClassName('cart-total-price')[0].innerText = "$" + total
+}
+
+function removeCartItemFuncCreator(button){
+  var button = button;
+  var target = button.parentElement.parentElement;
+  var target2 = target.parentElement;
+  target.style.maxHeight = target.parentElement.getBoundingClientRect().height + "px";
+  return function(){
+    window.setTimeout(function(){
+      target.remove();
+    }, 500);
+    target.style.animation = "removedItem 0.5s ease forwards";
+    target.style.maxHeight = "0";
+    target.style.padding = "0";
+    updateCartTotal();
+  }
+}
+
+function buildCart(index){
+  var title = localStorage.getItem(localStorage.key(index))
+  var price = localStorage.getItem(localStorage.key(index))[1]
+  var imageSrc = localStorage.getItem(localStorage.key(index))[2]
+  var cartRow = document.createElement('div')
+  console.log(title + " fdjafjklsd " + price + " fkdhafhsk " + imageSrc)
+  cartRow.classList.add('item')
+  var cartItems = document.getElementsByClassName('shopping-cart')[0]
+  var cartItemNames = cartItems.getElementsByClassName('cart-item-title')
+  for (var i=0; i < cartItemNames.length; i++) {
+    if (cartItemNames[i].innerText == title){
+      alert('This item has already been added to the cart')
+      return
+    }
+  }
+  var cartRowContent = `
+      <div class="buttons">
+        <span class="delete-btn"><i class="material-icons">delete</i></span>
+      </div>
+      <div class = "item-info-div">
+        <div class="image">
+          <img src="${imageSrc}" alt="herbal" width="100"/>
+        </div>
+        <div class="description">
+          <span>${title}</span>
+          <span>Dogsy</span>
+        </div>
+        <div class="quantity">
+          <input class="cart-quantity-input" type="number" value="1">
+        </div>
+        <div class="total-price">${price}</div>
+      </div>`
+  cartRow.innerHTML = cartRowContent
+  cartItems.append(cartRow);
+  var buttonClickfunc = removeCartItemFuncCreator(button);
+  cartRow.getElementsByClassName('delete-btn')[0].addEventListener('click', buttonClickfunc)
+  cartRow.getElementsByClassName('cart-quantity-input')[0].addEventListener('change', quantityChanged)
 }
