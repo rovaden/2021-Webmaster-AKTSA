@@ -126,28 +126,21 @@ function updateCartTotal() {
 }
 
 function logCart(){
-
-  // var data = {
-  //   cart: "aaaaaaaaaaaa",
-  //   quanitiyitity: 1234231
-  // }
   var button = document.getElementById('cart-check-out');
   button.addEventListener('click', function(e) {
     console.log('button was clicked');
-    var cartnames = [];
-    var cartquantity = [];
+    var data = {};
     var cartItemContainer = document.getElementsByClassName('shopping-cart')[0];
     var cartItems = cartItemContainer.getElementsByClassName('item');
     console.log(document.getElementsByClassName('cart-total-price')[0].innerHTML);
     for (var i=0; i < cartItems.length; i++){
-      cartnames.push(document.getElementsByClassName('cart-item-title')[i].innerText);
-      cartquantity.push(document.getElementsByClassName('cart-quantity-input')[i].value);
+      data["item " + (i+1)] = {
+        itemName: document.getElementsByClassName('cart-item-title')[i].innerText, 
+        itemQuantity: document.getElementsByClassName('cart-quantity-input')[i].value,
+        itemTotalPrice: document.getElementsByClassName('total-price')[i].innerText
+      };
     }
-    var data = {
-      cart: cartnames,
-      cartquantity: cartquantity,
-      total: document.getElementsByClassName('cart-total-price')[0].innerHTML
-    }
+    data["totalCartPrice"] = document.getElementsByClassName('cart-total-price')[0].innerHTML;
     fetch('/cart', {
       method: 'POST', 
       headers: {
@@ -164,19 +157,4 @@ function logCart(){
       console.error('Error:', error);
     });
   });
-
-
-//   setInterval(function() {
-//     fetch('/clicks', {method: 'GET'})
-//       .then(function(response) {
-//         if(response.ok) return response.json();
-//         throw new Error('Request failed.');
-//       })
-//       .then(function(data) {
-//         document.getElementById('counter').innerHTML = `Button was clicked ${data.length} times`;
-//       })
-//       .catch(function(error) {
-//         console.log(error);
-//       });
-//   }, 1000);
 }
