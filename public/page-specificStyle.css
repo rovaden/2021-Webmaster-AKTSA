@@ -389,6 +389,17 @@
 
 
 /**SHOP STYLING**/
+@keyframes fadeOutIn {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 #shop-top-div {
   display: flex;
   justify-content: space-between;
@@ -433,10 +444,9 @@
   align-items: center;
 }
 #shop-container .shop-item {
-  flex: 1 0 auto;
+  flex: 1 0 300px;
   align-self: stretch;
-  min-width: 200px;
-  max-width: 100%;
+  max-width: 600px;
   margin: 0.5em;
   padding: 2em 1em;
   text-align: center;
@@ -463,10 +473,15 @@
   background: #0d3a8a;
   box-shadow: 0 5px 20px rgb(200, 200, 200);
 }
+#search-no-results {
+  text-align: center;
+  padding: 15vh 0;
+  display: none;
+}
 @media (min-width: 400px) {
   #shop-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-gap: 0em;
   }
 }

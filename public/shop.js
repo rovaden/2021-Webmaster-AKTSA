@@ -5,12 +5,46 @@ if (document.readyState == 'loading'){
 }
 
 function ready() {
-  console.log()
-  var addToCartButtons = document.getElementsByClassName('shop-item-button')
-  // for (var i = 0; i < addToCartButtons.length; i++) {
-  //   addToCartButtons[i].addEventListener('click', addToCartClick(addToCartButtons[i]))
-  //   console.log(addToCartButtons[i])
-  // }
+  //adding event listeners for click on shop buttons
+  var allItems = document.getElementsByClassName("shop-item");
+  for(let i = 0; i < allItems.length; i++){
+    var itemButton = allItems[i].getElementsByTagName("button")[0];
+    itemButton.dataset.index = i.toString();
+    var clickFunc = createAddCartFunction(i);
+    itemButton.addEventListener("click", clickFunc)
+  }
+
+  //shop search function
+  var searchForm = document.getElementById("shop-search")
+  searchBar = searchForm.getElementsByTagName("input")[0],
+  searchButton = document.getElementById("search-submit");
+  var searchNoResults = document.getElementById("search-no-results");
+  var shopContainer = document.getElementById("shop-container")
+  searchButton.addEventListener("click", function(){
+    var searchWord = searchBar.value;
+    var numberShowing = 0;
+    for(let i = 0; i < allItems.length; i++){
+      if(allItems[i].textContent.toLowerCase().indexOf(searchWord) === -1){
+        allItems[i].style.display = "none";
+      }
+      else {
+        numberShowing++;
+        allItems[i].style.display = "block";
+      }
+    }
+    if(numberShowing === 0){
+      searchNoResults.style.display = "block";
+    }
+    else {
+      searchNoResults.style.display = "none";
+      if(numberShowing === 1){
+        shopContainer.style.display = "flex";
+      }
+      else {
+        shopContainer.style.display = "grid";
+      }
+    }
+  })
 }
 
 function addAlert(headerMessage, message){
@@ -50,13 +84,4 @@ function createAddCartFunction(index){
 function addItemToCart(title, price, imageSrc, quantity) {
   localStorage.setItem(title, [title, price, imageSrc, quantity])
   console.log(localStorage.getItem(title).split(',')[1])
-}
-
-/*adding event listeners for click on shop buttons*/
-var allItems = document.getElementsByClassName("shop-item");
-for(let i = 0; i < allItems.length; i++){
-  var itemButton = allItems[i].getElementsByTagName("button")[0];
-  itemButton.dataset.index = i.toString();
-  var clickFunc = createAddCartFunction(i);
-  itemButton.addEventListener("click", clickFunc)
 }
