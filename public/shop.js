@@ -5,7 +5,6 @@ if (document.readyState == 'loading'){
 }
 
 function ready() {
-  localStorage.clear()
   console.log()
   var addToCartButtons = document.getElementsByClassName('shop-item-button')
   // for (var i = 0; i < addToCartButtons.length; i++) {
