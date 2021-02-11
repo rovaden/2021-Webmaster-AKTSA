@@ -21,7 +21,6 @@ function ready(){
     var input = quantityInputs[i]
     input.addEventListener('change', quantityChanged)
   }
-  localStorage.clear();
   updateCartTotal();
 }
 
@@ -50,9 +49,10 @@ function logCart(){
   .then(response => response.json())
   .then(data => {
     console.log('Success:', data);
-    addAlert("We have received your order!");
+    addAlert("Success!", "We have received your order!");
   })
   .catch((error) => {
+    addAlert("Oh no!", "Sorry, something went wrong :(");
     console.error('Error:', error);
   });
 }
@@ -87,6 +87,7 @@ function updateCartTotal() {
 function removeCartItemFuncCreator(button){
   var target = button.parentElement.parentElement;
   target.style.maxHeight = target.parentElement.getBoundingClientRect().height + "px";
+  var localStorageName = target.getElementsByClassName('cart-item-title')[0].innerText;
   return function(){
     window.setTimeout(function(){
       target.remove();
@@ -94,14 +95,17 @@ function removeCartItemFuncCreator(button){
     target.style.animation = "removedItem 0.5s ease forwards";
     target.style.maxHeight = "0";
     target.style.padding = "0";
+    localStorage.removeItem(localStorageName);
     updateCartTotal();
   }
 }
 
 function buildCart(index){
   var title = localStorage.key(index)
-  var price = localStorage.getItem(title).split(',')[1]
-  var imageSrc = localStorage.getItem(title).split(',')[2]
+  var currentData = localStorage.getItem(title).split(",");
+  var price = currentData[1]
+  var imageSrc = currentData[2]
+  var quantity = currentData[3] || 1;
   var cartRow = document.createElement('div')
   console.log(localStorage.key(index))
   cartRow.classList.add('item')
@@ -126,7 +130,7 @@ function buildCart(index){
           <span>Dogsy</span>
         </div>
         <div class="quantity">
-          <input class="cart-quantity-input" type="number" value="1">
+          <input class="cart-quantity-input" type="number" value="${quantity}">
         </div>
         <div class="total-price">${price}</div>
       </div>`
