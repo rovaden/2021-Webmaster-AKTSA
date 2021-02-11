@@ -46,6 +46,30 @@
   margin-top: 0;
   margin-bottom: 2em;
 }
+@media (max-height: 700px){
+  .news-title { 
+    padding: 12em 0;
+  }
+}
+
+/*nav*/
+.navbar.light a.dropdown-top + div > ul.dropdown {
+  z-index: 40;
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 10px 50px rgb(255, 255, 255, 0.4);
+}
+.navbar.light a.dropdown-top + div > ul.dropdown a {
+  color: gray;
+}
+.navbar.light a.dropdown-top + div > ul.dropdown a::after {
+  background-color: black;
+}
+.navbar.light a.dropdown-top + div > ul.dropdown a:hover {
+  color: black;
+}
+.navbar.light a.dropdown-top + div > ul.dropdown::before {
+  border-bottom-color: rgba(255, 255, 255, 0.85)
+}
 
 /*content styling*/
 .content.news-page {
