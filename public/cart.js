@@ -128,7 +128,7 @@ function buildCart(index){
         </div>
         <div class="description">
           <span class = "cart-item-title">${title}</span>
-          <span>Dogsy</span>
+          <span>Dogsy Research and Production</span>
         </div>
         <div class="quantity">
           <input class="cart-quantity-input" type="number" value="${quantity}" min = "1">
