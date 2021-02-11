@@ -406,6 +406,7 @@
   margin-bottom: 2em;
 }
 #cartLink {
+  text-align: center;
   padding: 0.2em 1.5em;
   border-radius: 5px;
   font-weight: bold;
@@ -477,6 +478,17 @@
   text-align: center;
   padding: 15vh 0;
   display: none;
+}
+@media (max-width: 50em) {
+  #search-submit {
+    margin: 1em 0;
+  }
+  #cartLink {
+    align-self: center;
+  }
+  #cartLink i.material-icons {
+    margin-right: 0;
+  }
 }
 @media (min-width: 400px) {
   #shop-container {

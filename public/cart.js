@@ -124,7 +124,7 @@ function buildCart(index){
       </div>
       <div class = "item-info-div">
         <div class="image">
-          <img src="${imageSrc}" alt="herbal" width="100"/>
+          <img src="${imageSrc}" alt="medicine"/>
         </div>
         <div class="description">
           <span class = "cart-item-title">${title}</span>
