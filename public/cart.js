@@ -59,9 +59,10 @@ function logCart(){
 
 function quantityChanged(event) {
   var input = event.target
-  if (isNaN(input.value) || input.value <= 0) {
-    input.value = 1
-  }
+  var parentEl = input.parentElement.parentElement, title = parentEl.getElementsByClassName('cart-item-title')[0].innerText;
+  var currentData = localStorage.getItem(title).split(",");
+  currentData[currentData.length - 1] = input.value;
+  localStorage.setItem(title, currentData.toString()); //updating it so that quantity changed is also stored locally
   updateCartTotal()
 }
 
@@ -130,7 +131,7 @@ function buildCart(index){
           <span>Dogsy</span>
         </div>
         <div class="quantity">
-          <input class="cart-quantity-input" type="number" value="${quantity}">
+          <input class="cart-quantity-input" type="number" value="${quantity}" min = "1">
         </div>
         <div class="total-price">${price}</div>
       </div>`

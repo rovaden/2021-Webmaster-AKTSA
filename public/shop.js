@@ -46,20 +46,6 @@ function createAddCartFunction(index){
     addItemToCart(title, price, imageSrc, quantity);
   }
 }
-function addToCartClick(index) {
-  console.log("clicked!")
-  var title = document.getElementsByClassName('shop-item-title')[index].innerText
-  var price = document.getElementsByClassName('shop-item-price')[index].innerText
-  var imageSrc = document.getElementsByClassName('shop-item-image')[index].src
-
-  if(localStorage.getItem(title) === null){
-    addItemToCart(title, price, imageSrc)
-    addAlert("Success!", title + " has been added to your cart!");
-  }
-  else {
-    addAlert("Success!", "You have added more " + title + " to your cart!");
-  }
-}
 
 function addItemToCart(title, price, imageSrc, quantity) {
   localStorage.setItem(title, [title, price, imageSrc, quantity])
