@@ -1,11 +1,14 @@
 /*importing fonts*/
-@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&family=Lato&display=swap');
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
 body {
   margin: 0;
   padding: 0;
-  font-family: Lato;
+  font-family: "Lato", sans-serif;
+}
+h1, h2, h3, h4, h5, h6, nav.navbar, button.pageLink {
+  font-family: "Comfortaa";
 }
 div {
   box-sizing: border-box;
@@ -84,7 +87,7 @@ div {
 }
 
 /*styling dropdown*/
-.navbar li a.dropdown-top::before {
+.navbar li a.dropdown-top::before { /*down caret next to nav li with dropdown */
   display: block;
   position: absolute;
   content: "";
@@ -97,7 +100,7 @@ div {
   border-width: 0 0 2px 2px;
   transform: translate(200%, -8px) rotate(-45deg);
 }
-.navbar li a.dropdown-top + div {
+.navbar li a.dropdown-top + div { /*container div, allows hover over gap*/
   position: absolute;
   top: 100%;
   left: 50%;
@@ -113,10 +116,11 @@ div {
   opacity: 1;
   text-align: center;
   padding: 0;
-  background: rgb(240, 240, 240);
-  box-shadow: 0 10px 30px rgba(100, 100, 100, 0.3);
+  background: rgb(245, 245, 245);
+  box-shadow: 0 8px 30px rgba(100, 100, 100, 0.3);
+  border-radius: 7px;
 }
-.navbar ul.dropdown::before, .navbar ul.dropdown li:first-of-type::after {
+.navbar ul.dropdown::before, .navbar ul.dropdown li:first-of-type::after { /*up caret at top of dropdown*/
   position: absolute;
   content: "";
   display: block;
@@ -124,7 +128,7 @@ div {
   height: 0;
   opacity: 1;
   border: 10px solid transparent;
-  border-bottom-color :rgb(240, 240, 240);
+  border-bottom-color :rgb(245, 245, 245);
   left: 50%;
   top: 0;
   transform: translate(-50%, -20px);
@@ -134,7 +138,14 @@ div {
   box-sizing: border-box;
   width: 100%;
   margin: 0;
-  padding: 0.5em 1em;
+  padding: 0;
+}
+.navbar ul.dropdown li a {
+  display: block;
+  padding: 0.6em 1em;
+}
+.navbar ul.dropdown li a::after {
+  display: none;
 }
 .navbar ul.dropdown li.nav-active {
   pointer-events: none;
@@ -146,8 +157,14 @@ div {
 .navbar ul.dropdown li.nav-active > a::after {
   display: none;
 }
+.navbar ul.dropdown li:first-of-type, .navbar ul.dropdown li:first-of-type a {
+  border-radius: 7px 7px 0 0;
+}
+.navbar ul.dropdown li:last-of-type, .navbar ul.dropdown li:last-of-type a {
+  border-radius: 0 0 7px 7px;
+}
 .navbar ul.dropdown li:first-of-type::after {
-  border-bottom-color: #073763;
+  border-bottom-color: rgba(7, 55, 99, 0.15);
   opacity: 0;
   transition: inherit;
 }
@@ -160,11 +177,11 @@ div {
 .navbar li:hover a.dropdown-top::before {
   border-color: black;
 }
-.navbar ul.dropdown li:hover {
-  background: rgba(7, 55, 99, 0.1);
+.navbar ul.dropdown a:hover {
+  background: rgba(7, 55, 99, 0.15);
 }
 .navbar ul.dropdown li:first-of-type:hover::after {
-  opacity: 0.1;
+  opacity: 1;
 }
 .navbar ul.dropdown li.nav-active::after {
   opacity: 0.3;
@@ -299,11 +316,22 @@ div {
     padding: 0;
     background: transparent;
   }
+  .navbar li ul.dropdown li a {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
   .navbar li ul.dropdown::before, .navbar ul.dropdown li:first-of-type::after {
     display: none;
   }
-  .navbar li ul.dropdown li.nav-active, .navbar ul.dropdown li:hover {
+  .navbar li ul.dropdown li.nav-active, .navbar ul.dropdown a:hover {
     background: transparent;
+  }
+  .navbar li ul.dropdown li.nav-active {
+    padding: 0.5em 1em;
+  }
+  .navbar li ul.dropdown li.nav-active a {
+    padding: 0;
+    display: inline;
   }
   .navbar li ul.dropdown li.nav-active > a::after {
     display: block;
@@ -442,10 +470,10 @@ div.content img.float-left {
 .pageLink {
   position: relative;
   display: block;
-  padding: 0.6em 1.5em;
+  padding: 0;
   margin: 0 auto;
   font-size: 1em;
-  letter-spacing: 2px;
+  letter-spacing: 1.5px;
   border: 1px solid black;
   outline: none;
   background: transparent;
@@ -453,10 +481,12 @@ div.content img.float-left {
   transition: 0.3s ease;
 }
 .pageLink a {
+  display: block;
   position: relative;
   color: inherit;
   text-decoration: none;
   z-index: 1;
+  padding: 0.6em 1.5em;
 }
 .pageLink::before, .pageLink::after {
   content: "";
