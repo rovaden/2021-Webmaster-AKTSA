@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Log In</title>
+    <link rel = "icon" href = "../favicon.ico"/>
+    <link href="../style.css" rel="stylesheet" type="text/css"/>
+    <link href="accountPageStyle.css" rel="stylesheet" type="text/css"/>
+  </head>
+  <body>
+    <!--navigation bar-->
+    <nav class = "navbar light">
+      <!--company name to display on mobile outside of menu-->
+      <span class = "navName nav-backup"><a href = "../index.html">KatKure</a></span>
+      
+      <!--links-->
+      <div class = "navbar-collapse">
+        <ul>
+          <li><span class = "navName">KatKure</span></li>
+          <li><a href = "../index.html">Home<a></li>
+          <li><a class = "dropdown-top">About</a>
+            <div>
+              <ul class = "dropdown">
+                <li><a href = "../about.html">Company</a></li>
+                <li><a href = "../about-webpage.html">This page</a></li>
+              </ul>
+            </div>
+          </li>
+          <li><a class = "dropdown-top">Products</a>
+            <div>
+              <ul class = "dropdown">
+                <li><a href = "../services.html">Platform</a></li>
+                <li><a href = "../products.html">Shop</a></li>
+                <li><a href = "../cart.html">Cart</a></li>
+              </ul>
+            </div>
+          </li>
+          <li><a href = "../news/index.html">News</a></li>
+          <li><a href = "../faq.html">FAQs</a></li>
+        </ul>
+      </div>
+
+      <!--menu icon for mobile display-->
+      <i class = "material-icons" id = "navMenu">menu</i>
+    </nav>
+
+    <!--login background-->
+    <div id = "loginBack">
+        <!--module-->
+        <div id = "loginModule">
+            <h1>Good to see you!</h1>
+
+            <!--login form-->
+            <form>
+                <div class = "input-container">
+                    <input type = "text" id = "username" placeholder = "Username"/>
+                    <i class = "material-icons">account_circle</i>
+                </div>
+                <div class = "input-container">
+                    <input type = "password" id = "password" placeholder = "Password"/>
+                    <i class = "material-icons">lock</i>
+                </div>
+                <span id = "loginNote">Note: please use <i>jane_doe</i> as the username and <i>12345</i> as the password for a trial log in</span>
+                <span id = "loginError"></span>
+                <button type = "button" id = "loginSubmit">Log in</button>
+            </form>
+        </div>
+    </div>
+
+    <!--footer-->
+    <footer class = "footer">
+      <div class = "footer-container">
+        <div class = "footer-left">
+          <h1>KatKure</h1>
+          <p>We create uplifting communities that last a lifetime, always there for you when you need it</p>
+          <a href = "../about-webpage.html" class = "aboutFooterLink">About this webpage</a>
+        </div>
+        <div class = "contact">
+          <h1>Contact us</h1>
+          <p>1234 Healthful Drive<br>Charlotte, NC 5678</p>
+          <p>(+1) 011-111-1111</p> <!--please don't actually call this-->
+          <p>katkure@katkure.com</p>
+        </div>
+      </div>
+      <div class = "footer-text">Copyright KatKure 2021 <i class = "material-icons">copyright</i></div>
+    </footer>
+    <script src="../script.js"></script>
+    <script>
+      const loginButton = document.getElementById("loginSubmit");
+      let checkLogIn = (function(){
+        const passwordEl = document.getElementById("password");
+        const usernameEl = document.getElementById("username");
+        const password = "12345"; 
+        const username = "jane_doe";
+        const errorEl = document.getElementById("loginError");
+        return function(){
+          if(passwordEl.value === password && usernameEl.value === username){
+            errorEl.textContent = "";
+            //window.location.href = "dashboard.html";
+            localStorage.setItem("katKureLoggedIn", "true");
+          }
+          else {
+            errorEl.textContent = "Sorry, either the username or password is incorrect. Please try again."
+          }
+        }
+      })();
+      loginButton.addEventListener("click", checkLogIn);
+    </script>
+  </body>
+</html>
