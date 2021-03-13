@@ -114,6 +114,10 @@
   margin: 4em 0;
   text-align: center;
 }
+.productDiv .productContent p {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
 .productDiv .productContent h3 {
   position: relative;
   font-size: 1.3em;
@@ -121,9 +125,9 @@
 }
 .productDiv .productImg {
   position: relative;
-  width: 60%;
-  margin: 0 auto;
-  margin-bottom: 2em;
+  width: 70%;
+  margin: 5em auto;
+  margin-bottom: 2.5em;
 }
 .productDiv .productImg img {
   position: relative;
@@ -247,12 +251,10 @@
   transform: scale(1, 1);
 }
 #home-medications {
-  position: relative;
   width: 100%;
   display: flex;
   align-items: center;
   margin-bottom: 3em;
-  z-index: 2;
 }
 #home-medications img {
   flex: 1 0 50%;
@@ -330,7 +332,8 @@ body[data-aos-duration = "501"] [data-aos = "news-fade-up"].aos-animate, [data-a
   flex: 1 300px;
   margin: 1em;
   box-shadow: 0 2px 15px gray;
-  
+  overflow: hidden;
+  border-radius: 7px;
 }
 #homeNews .home-news-container .home-news-content {
   padding: 0 1em 5em 1em;
@@ -347,6 +350,7 @@ body[data-aos-duration = "501"] [data-aos = "news-fade-up"].aos-animate, [data-a
 #homeNews .home-news-container h3 {
   margin-top: 0.5em;
   font-size: 1.3em;
+  margin-bottom: 0;
 }
 #homeNews .home-news-container h3 a {
   text-decoration: none;
@@ -358,6 +362,10 @@ body[data-aos-duration = "501"] [data-aos = "news-fade-up"].aos-animate, [data-a
 }
 #homeNews .home-news-container:hover a:hover {
   color: #1155cc;
+}
+#homeNews .home-news-container h3 + p {
+  margin-top: 0.5em;
+  font-size: 0.9em;
 }
 
 /*testimonials styling*/
