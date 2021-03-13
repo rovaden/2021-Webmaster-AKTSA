@@ -19,31 +19,48 @@ function ready() {
   searchBar = searchForm.getElementsByTagName("input")[0],
   searchButton = document.getElementById("search-submit");
   var searchNoResults = document.getElementById("search-no-results");
-  var shopContainer = document.getElementById("shop-container")
+  var shopContainer = document.getElementById("shop-container");
+  var searchPlaceholder = document.createElement("div");
+  shopContainer.appendChild(searchPlaceholder);
   searchButton.addEventListener("click", function(){
-    var searchWord = searchBar.value;
-    var numberShowing = 0;
-    for(let i = 0; i < allItems.length; i++){
-      if(allItems[i].textContent.toLowerCase().indexOf(searchWord) === -1){
-        allItems[i].style.display = "none";
+    shopContainer.style.opacity = "0";
+    searchNoResults.style.opacity = "0";
+    window.setTimeout(function(){
+      var searchWord = searchBar.value;
+      var numberShowing = 0;
+
+      //looping through items, showing if includes searchword, hiding if otherwise
+      for(let i = 0; i < allItems.length; i++){
+        if(allItems[i].textContent.toLowerCase().indexOf(searchWord) === -1){
+          allItems[i].style.display = "none";
+        }
+        else {
+          numberShowing++;
+          allItems[i].style.display = "block";
+        }
       }
+
+      //no results div
+      if(numberShowing === 0){
+        searchNoResults.style.display = "block";
+        window.setTimeout(function(){
+          searchNoResults.style.opacity = "1";
+        }, 10);
+      }
+
+      //handling shop-item being only one (not making it too large)
       else {
-        numberShowing++;
-        allItems[i].style.display = "block";
+        searchNoResults.style.opacity = "0";
+        searchNoResults.style.display = "none";
+        if(numberShowing === 1 && shopContainer.scrollWidth >= 600){
+          searchPlaceholder.style.display = "block";
+        }
+        else {
+          searchPlaceholder.style.display = "none";
+        }
+        shopContainer.style.opacity = "1";
       }
-    }
-    if(numberShowing === 0){
-      searchNoResults.style.display = "block";
-    }
-    else {
-      searchNoResults.style.display = "none";
-      if(numberShowing === 1){
-        shopContainer.style.display = "flex";
-      }
-      else {
-        shopContainer.style.display = "grid";
-      }
-    }
+    }, 250);
   })
 }
 

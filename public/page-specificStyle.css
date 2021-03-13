@@ -21,6 +21,7 @@
   flex: 0 15em;
   padding: 2em 1.5em;
   border-top: 4px solid #1155cc;
+  border-radius: 0 0 7px 7px;
   box-shadow: 0 5px 25px rgb(150, 150, 150);
   background: white;
   text-align: center;
@@ -426,8 +427,8 @@
 
 /*form/search styling*/
 #shop-search input {
-  padding: 0.5em 0.75em;
-  border-radius: 1em;
+  padding: 0.45em 1em;
+  border-radius: 1.5em;
   outline: none;
   border: 1px solid gray;
   font-size: 1.05em;
@@ -443,8 +444,10 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  transition: 0.25s ease;
 }
 #shop-container .shop-item {
+  position: relative;
   flex: 1 0 300px;
   align-self: stretch;
   max-width: 600px;
@@ -452,7 +455,27 @@
   padding: 2em 1em;
   text-align: center;
   border: 1px solid rgba(7, 55, 99, 0.2);
-  border-radius: 5px;
+  border-radius: 7px;
+  transition: 0.2s ease;
+}
+#shop-container .shop-item::after {
+  position: absolute;
+  display: block;
+  content: "";
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  box-shadow: 0 0em 1em rgba(7, 55, 99, 0.2);
+  opacity: 0;
+  transition: inherit;
+  z-index: -1;
+}
+#shop-container .shop-item:hover {
+  border: 1px solid rgba(7, 55, 99, 0.1);
+}
+#shop-container .shop-item:hover::after {
+  opacity: 0.8;
 }
 #shop-container .shop-item-image {
   max-width: 100%;
@@ -478,6 +501,8 @@
   text-align: center;
   padding: 15vh 0;
   display: none;
+  opacity: 0;
+  transition: display 0s, opacity 0.25s ease;
 }
 @media (max-width: 50em) {
   #search-submit {
@@ -613,6 +638,8 @@ div.alerts {
   margin: 0.5em;
   box-shadow: 0 0 20px gray;
   transition: 0.35s ease;
+  overflow: hidden;
+  border-radius: 7px;
 }
 .news-story .news-content {
   padding: 0 1.5em 1.5em 1.5em;
