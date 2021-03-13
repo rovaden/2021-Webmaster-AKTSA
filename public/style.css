@@ -16,12 +16,15 @@ div {
 
 /*styling navigation bar*/
 .navbar {
-  background: rgb(240, 240, 240);
+  width: 100%;
+  position: fixed;
+  top: 0;
+  background: transparent;
   padding: 1em 1em;
   box-sizing: border-box;
-  position: relative;
   z-index: 10;
   color: grey;
+  transition: 0.5s ease;
 }
 .navbar ul {
   margin: 0;
@@ -117,10 +120,10 @@ div {
   text-align: center;
   padding: 0;
   background: rgb(245, 245, 245);
-  box-shadow: 0 8px 30px rgba(100, 100, 100, 0.3);
+  box-shadow: 0 8px 2em rgba(100, 100, 100, 0.4);
   border-radius: 7px;
 }
-.navbar ul.dropdown::before, .navbar ul.dropdown li:first-of-type::after { /*up caret at top of dropdown*/
+.navbar ul.dropdown::before, .navbar ul.dropdown li:first-of-type a::before { /*up caret at top of dropdown*/
   position: absolute;
   content: "";
   display: block;
@@ -128,7 +131,7 @@ div {
   height: 0;
   opacity: 1;
   border: 10px solid transparent;
-  border-bottom-color :rgb(245, 245, 245);
+  border-bottom-color: rgb(245, 245, 245);
   left: 50%;
   top: 0;
   transform: translate(-50%, -20px);
@@ -163,8 +166,8 @@ div {
 .navbar ul.dropdown li:last-of-type, .navbar ul.dropdown li:last-of-type a {
   border-radius: 0 0 7px 7px;
 }
-.navbar ul.dropdown li:first-of-type::after {
-  border-bottom-color: rgba(7, 55, 99, 0.15);
+.navbar ul.dropdown li:first-of-type a::before { /*caret at top of first list item, coloring*/
+  border-bottom-color: rgba(7, 55, 99);
   opacity: 0;
   transition: inherit;
 }
@@ -180,19 +183,14 @@ div {
 .navbar ul.dropdown a:hover {
   background: rgba(7, 55, 99, 0.15);
 }
-.navbar ul.dropdown li:first-of-type:hover::after {
-  opacity: 1;
+.navbar ul.dropdown li:first-of-type a:hover::before {
+  opacity: 0.15;
 }
-.navbar ul.dropdown li.nav-active::after {
+.navbar ul.dropdown li.nav-active a::before {
   opacity: 0.3;
 }
 
 /*navbar "light" styling with white text*/
-.navbar.light {
-  position: absolute;
-  top: 0;
-  background: transparent;
-}
 .navbar.light *, .navbar.light ul li a, .navbar.light ul li .navName a:hover {
   color: white;
 }
@@ -218,6 +216,23 @@ div {
 }
 .navbar.light ul.dropdown::before {
   border-bottom-color: rgba(255, 255, 255, 0.4);
+}
+
+/*scrolled down version of navbar*/
+.navbar.scrolledDown {
+  background: rgb(250, 250, 250);
+  /*background: rgb(244, 249, 253);*/
+  box-shadow: 0 0.2em 1em rgba(0, 0, 0, 0.3);
+  padding: 0.5em 1em;
+}
+.navbar.scrolledDown li a.dropdown-top + div {
+  padding-top: 1.7em;
+}
+.navbar.scrolledDown ul.dropdown {
+  background: white;
+}
+.navbar.scrolledDown ul.dropdown::before {
+  border-bottom-color: white;
 }
 
 /*mobile version of navigation*/
@@ -361,6 +376,7 @@ div {
 .pageHeading {
   width: 100%;
   padding: 2em 1em;
+  padding-top: 5em;
   background: rgb(240, 240, 240);
   font-size: 1.5em;
   text-align: center;
