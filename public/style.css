@@ -17,7 +17,7 @@ div {
 /*styling navigation bar*/
 .navbar {
   width: 100%;
-  position: fixed;
+  position: absolute;
   top: 0;
   background: transparent;
   padding: 1em 1em;
@@ -29,6 +29,8 @@ div {
 .navbar ul {
   margin: 0;
   padding: 0;
+  display: flex;
+  align-items: center;
 }
 .navbar ul li {
   position: relative;
@@ -66,11 +68,13 @@ div {
 }
 .navbar span.navName, .navbar span.navName a {
   color: inherit;
-  font-size: 1.3em;
+  font-size: 1.2em;
   font-weight: bold;
   text-decoration: none;
   outline: none;
   transition: inherit;
+  text-transform: none;
+  letter-spacing: 0;
 }
 .navbar .navName a:hover {
   color: gray;
@@ -85,6 +89,47 @@ div {
   pointer-events: none;
   color: black;
 }
+
+/*sign in button styling*/
+.navbar li.accountLink {
+  margin-right: 1em;
+  margin-left: auto;
+}
+.navbar li.accountLink > a {
+  padding: 0.5em 1.5em;
+  border-radius: 2em;
+  background: rgba(0, 0, 0, 0.07);
+  border: 1px solid;
+}
+.navbar li.accountLink > a::after {
+  display: none;
+}
+.navbar li.accountLink > a:hover {
+  background: rgb(127, 149, 170);
+  color: white;
+  border-color: rgb(127, 149, 170);
+}
+
+/*logged in account styling*/
+.navbar li.accountLink > a.loggedIn {
+  padding: 0;
+  margin: 0.5em 1.5em;
+}
+.navbar li.accountLink > a.loggedIn, .navbar li.accountLink > a.loggedIn:hover {
+  border: none;
+  background: transparent;
+}
+.navbar li.accountLink > a.loggedIn::after {
+  display: block;
+}
+.navbar li.accountLink > a.loggedIn i.material-icons {
+  font-size: 1.3em;
+  vertical-align: middle;
+  margin-right: 0.25em;
+  transform: translateY(-0.1em);
+}
+
+/*nav menu styling*/
 .navbar #navMenu, .navbar .navName.nav-backup {
   display: none;
 }
@@ -173,17 +218,18 @@ div {
 }
 
 /*hover transitions with dropdown*/
-.navbar li:hover a.dropdown-top + div, .navbar li a.dropdown-top + div:hover {
+.navbar li:hover a.dropdown-top + div, .navbar li a.dropdown-top + div:hover,
+.navbar li:focus a.dropdown-top + div, .navbar li a.dropdown-top + div:focus {
   visibility: visible;
   opacity: 1;
 }
-.navbar li:hover a.dropdown-top::before {
+.navbar li:hover a.dropdown-top::before, .navbar li:focus a.dropdown-top::before {
   border-color: black;
 }
-.navbar ul.dropdown a:hover {
+.navbar ul.dropdown a:hover, .navbar ul.dropdown a:focus {
   background: rgba(7, 55, 99, 0.15);
 }
-.navbar ul.dropdown li:first-of-type a:hover::before {
+.navbar ul.dropdown li:first-of-type a:hover::before, .navbar ul.dropdown li:first-of-type a:focus::before {
   opacity: 0.15;
 }
 .navbar ul.dropdown li.nav-active a::before {
@@ -219,24 +265,24 @@ div {
 }
 
 /*scrolled down version of navbar*/
-.navbar.scrolledDown {
+.navbar.scrolledDown:not(.active) {
   background: rgb(250, 250, 250);
   /*background: rgb(244, 249, 253);*/
   box-shadow: 0 0.2em 1em rgba(0, 0, 0, 0.3);
   padding: 0.5em 1em;
 }
-.navbar.scrolledDown li a.dropdown-top + div {
+.navbar.scrolledDown:not(.active) li a.dropdown-top + div {
   padding-top: 1.7em;
 }
-.navbar.scrolledDown ul.dropdown {
+.navbar.scrolledDown:not(.active) ul.dropdown {
   background: white;
 }
-.navbar.scrolledDown ul.dropdown::before {
+.navbar.scrolledDown:not(.active) ul.dropdown::before {
   border-bottom-color: white;
 }
 
 /*mobile version of navigation*/
-@media (max-width: 45em){
+@media (max-width: 55em){
   .navbar {
     width: 100%;
   }
@@ -279,6 +325,9 @@ div {
   .navbar div.navbar-collapse ul li a {
     opacity: 0.8;
   }
+  .navbar.active .navName.nav-backup {
+    opacity: 0;
+  } 
   .navbar div.navbar-collapse ul li .navName {
     opacity: 1;
     font-size: 1.2em;
@@ -338,7 +387,7 @@ div {
   .navbar li ul.dropdown::before, .navbar ul.dropdown li:first-of-type::after {
     display: none;
   }
-  .navbar li ul.dropdown li.nav-active, .navbar ul.dropdown a:hover {
+  .navbar li ul.dropdown li.nav-active, .navbar ul.dropdown a:hover, .navbar ul.dropdown li a {
     background: transparent;
   }
   .navbar li ul.dropdown li.nav-active {
@@ -350,6 +399,19 @@ div {
   }
   .navbar li ul.dropdown li.nav-active > a::after {
     display: block;
+  }
+
+  /*handling account link*/
+  .navbar li.accountLink > a:hover, .navbar li.accountLink > a:focus {
+    background: white;
+    color: black;
+    border-color: black;
+  }
+  .navbar li.accountLink > a.loggedIn:hover, .navbar li.accountLink > a.loggedIn:focus {
+    background: transparent;
+    color: white;
+    border-color: transparent;
+    cursor: default;
   }
 
   /*menu symbol*/
