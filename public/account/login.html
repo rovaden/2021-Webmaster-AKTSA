@@ -97,7 +97,7 @@
         return function(){
           if(passwordEl.value === password && usernameEl.value === username){
             errorEl.textContent = "";
-            //window.location.href = "dashboard.html";
+            window.location.href = "dashboard.html";
             localStorage.setItem("katKureLoggedIn", "true");
           }
           else {

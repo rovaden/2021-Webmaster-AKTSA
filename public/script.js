@@ -27,7 +27,7 @@ if(loggedIn === "true"){
       newDashLink.innerHTML = "<a href = \"account/dashboard.html\">Dashboard</a>";
 
       //logout button
-      logOut.innerHTML = "<a href = \"" + location.href + "\">Log out</a>";
+      logOut.innerHTML = "<a href = \"" + location.href + "\" class = \"log-out-button\">Log out</a>";
       logOut.addEventListener("click", function(){
         localStorage.setItem("katKureLoggedIn", "false");
       });
@@ -40,12 +40,11 @@ if(loggedIn === "true"){
       accountEl.appendChild(newDropdown);
     }
     else {
-      const dropDown = accountEl.getElementsByTagName("div");
-      if(dropDown.length !== 0){
-        const listLinks = dropDown[0].getElementsByTagName("li")
-        let logOut = listLinks[listLinks.length - 1];
-        logOut.addEventListener("click", function(){
+      const logOuts = document.getElementsByClassName("log-out-button");
+      for(let i = 0; i < logOuts.length; i++){
+        logOuts[i].addEventListener("click", function(){
           localStorage.setItem("katKureLoggedIn", "false");
+          window.location.href = window.location.href.split("public/")[0] + "public/index.html";
         });
       }
     }
