@@ -67,6 +67,7 @@
     border-bottom: 2px solid rgb(200, 200, 200);
     font-size: 1em;
     vertical-align: middle;
+    box-sizing: border-box;
     transition: 0.3s ease;
 }
 #loginModule input:focus {
@@ -108,4 +109,416 @@
     cursor: pointer;
     background: #0d3a8a;
     box-shadow: 0 0.3em 1em rgb(0, 0, 0, 0.3);
+}
+
+/*changing navbar styling (top) in account pages*/
+nav.navbar.account-topNav, nav.navbar.account-topNav.scrolledDown {
+    position: sticky;
+    top: 0;
+    /*width: calc(100% - 15em);
+    margin-left: 15em;
+    box-sizing: border-box;*/
+    box-shadow: 0 0.2em 1em rgba(7, 55, 99, 0.3);
+}
+
+/*general account page navbar*/
+body {
+    position: relative; /*for position absolute on sidebar when height is small*/
+}
+nav.sidebar {
+    background: rgba(7, 55, 99);
+    /*background: rgb(35, 138, 163);*/
+    color: white;
+    height: 100vh;
+    padding: 6em 0;
+    padding-top: calc(4em + 5vh);
+    width: 15em;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    z-index: 2;
+    font-family: "Comfortaa";
+}
+nav.sidebar ul {
+    margin: 0;
+    padding-inline-start: 0;
+}
+nav.sidebar ul li {
+    position: relative;
+    display: block;
+    list-style: none;
+    margin: 0.5em 0;
+    padding: 0.75em 2em;
+    padding: calc(0.25em + 1vh) 2em;
+    color: rgba(255, 255, 255, 0.8);
+}
+nav.sidebar ul li i.material-icons {
+    font-size: 1.7em;
+    vertical-align: middle;
+    margin-right: 0.5em;
+}
+nav.sidebar ul li a {
+    transition: 0.2s ease;
+}
+nav.sidebar ul li a:hover {
+    cursor: pointer;
+    color: rgba(255, 255, 255, 1);
+}
+nav.sidebar ul li a:hover::after {
+    opacity: 0.4;
+}
+nav.sidebar ul li.nav-active {
+    color: white;
+    background: rgba(245, 245, 245, 0.1);
+    pointer-events: none;
+}
+nav.sidebar ul a::after {
+    position: absolute;
+    display: block;
+    content: "";
+    width: 4px;
+    height: 100%;
+    background: white;
+    border-radius: 0 10px 10px 0;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: 0.2s ease;
+}
+nav.sidebar ul li.nav-active a::after {
+    opacity: 1;
+}
+nav.sidebar ul li:last-of-type {
+    margin-top: 3.5em;
+    margin-top: calc(1em + 10vh);
+}
+nav.sidebar ul li:last-of-type::before {
+    position: absolute;
+    display: block;
+    content: "";
+    width: calc(100% - 4em);
+    height: 1px;
+    background: white;
+    left: 2em;
+    top: -1em;
+    top: calc(-0.5em - 1vh);
+}
+/*making scrollable with small height*/
+@media (max-height: 35em) {
+    nav.sidebar {
+        position: absolute;
+        height: 100%;
+        top: 0;
+    }
+}
+
+/*general account page styling*/
+.pageHeading, .account-content {
+    background: rgb(239, 242, 247);
+}
+.pageHeading {
+    padding-top: 4em;
+    padding-bottom: 1em;
+}
+.account-content h1, .account-content h2, .account-content h3, .account-content h4, .account-content h5, .account-content h6 {
+    color: rgb(7, 55, 99);
+}
+.account-content {
+    margin-left: 15em;
+    padding: 1em 1em;
+}
+footer.footer.account-footer {
+    background: transparent;
+    color: gray;
+}
+
+/*collapsing nav with small width*/
+@media (max-width: 45em) {
+    nav.sidebar {
+        width: 4em;
+        text-align: center;
+    }
+    nav.sidebar ul li {
+        padding-left: 1em;
+        padding-right: 1em;
+    }
+    nav.sidebar ul li i.material-icons {
+        margin-right: 0;
+    }
+    nav.sidebar ul li span {
+        position: absolute;
+        top: 50%;
+        left: 100%;
+        background: rgba(3, 28, 51, 0.9);
+        color: white;
+        padding: 0.4em 0.75em;
+        border-radius: 5px;
+        width: auto;
+        box-shadow: 0 0.1em 0.5em rgba(7, 55, 99, 0.3);
+        transform: translate(0.5em, -50%);
+        opacity: 0;
+        pointer-events: none;
+        transition: 0.2s ease;
+    }
+    nav.sidebar ul li span::after {
+        position: absolute;
+        display: block;
+        content: "";
+        border: 0.4em solid transparent;
+        border-right: 0.4em solid rgb(3, 28, 51, 0.9);
+        left: -0.8em;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    nav.sidebar ul li a:hover span, nav.sidebar ul li a:focus span {
+        opacity: 1;
+    }
+    nav.sidebar ul li:last-of-type::before {
+        display: none;
+    }
+    .account-content {
+        margin-left: 4em;
+    }
+}
+
+/*DASHBOARD STYLING*/
+.dashboard-card h2 {
+    margin-top: 1em;
+}
+.dashboard-card {
+    border-radius: 15px;
+    background: white;
+    padding: 1em 2em;
+    margin: 1em;
+    color: gray;
+    box-shadow: 0 0.3em 0.7em rgba(7, 55, 99, 0.15);
+}
+/*two-column layout with larger screens*/
+@media (min-width: 65em) {
+    #dashboard-container {
+        display: flex;
+        padding: 0 10%;
+    }
+    #dashboard-container div.dashboard-column {
+        flex-basis: 20%;
+        flex-grow: 2;
+    }
+    #dashboard-container div.dashboard-column > div {
+        margin-top: 2em;
+        margin-bottom: 2em;
+    }
+    #dashboard-container div.dashboard-column > div:first-of-type {
+        margin-top: 1em;
+    }
+    #dashboard-container div.dashboard-column > div:last-of-type {
+        margin-bottom: 1em;
+    }
+    #dashboard-container div.dashboard-column.left {
+        flex-grow: 1;
+    }
+}
+
+/*connections styling*/
+.connection {
+    display: flex;
+    align-items: center;
+    margin: 0.25em 0;
+    padding: 0.5em 1em;
+    border-radius: 7px;
+    transition: 0.2s ease;
+}
+.connection:hover {
+    cursor: pointer;
+    background: rgb(0, 0, 0, 0.05);
+}
+.connection img {
+    width: 5em;
+    height: 5em;
+    width: calc(3em + 3vw);
+    height: calc(3em + 3vw);
+    max-width: 6em;
+    max-height: 6em;
+    margin-right: 1em;
+}
+.connection p {
+    margin: 0.5em 0;
+}
+.connection p.connection-name {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: rgb(7, 55, 99);
+    margin-bottom: 0.25em;
+}
+.connection p.connection-description {
+    margin-top: 0;
+    font-size: 0.9em;
+}
+@media (max-width: 80em) and (min-width: 65em) {
+    .connection {
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        margin: 1em 0;
+    }
+    .connection img {
+        margin-right: 0;
+    }
+}
+
+/*appointment div styling*/
+#dashboard-appointment-container > div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.dashboard-appointment {
+    flex-basis: 9em;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    margin: 0.5em;
+    margin: calc(0.2em + 0.5vw);
+    padding: 1em 0.5em;
+    padding-top: 2em;
+    border: 1px solid rgba(17, 85, 204, 0.2);
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 0.1em 1em rgba(17, 85, 204, 0.05);
+}
+.dashboard-appointment i.material-icons {
+    position: relative;
+    font-size: 2.5em;
+    color: 	rgb(17, 85, 204);
+}
+.dashboard-appointment i.material-icons::after {
+    position: absolute;
+    display: block;
+    content: "";
+    width: 1em;
+    height: 1em;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1.5);
+    background: rgba(17, 85, 204, 0.08);
+    border-radius: 50%;
+}
+.dashboard-appointment p.appointment-title {
+    margin-bottom: 1.5em;
+    font-weight: bold;
+    color: rgb(7, 55, 99);
+}
+.dashboard-appointment p.appointment-date {
+    font-size: 0.9em;
+}
+.dashboard-appointment p:last-of-type {
+    margin-top: auto;
+    margin-bottom: 0;
+}
+
+/*alerts styling*/
+.alert {
+    margin: 1em 0;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(17, 85, 204, 0.2);
+}
+.alert:first-of-type {
+    margin-top: 0;
+}
+.alert:last-of-type {
+    margin-bottom: 0;
+    border-bottom: none;
+}
+.alert i.material-icons {
+    font-size: 2.5em;
+    color: rgb(17, 85, 204);
+}
+.alert > div {
+    margin-left: 1em;
+}
+p.alert-date {
+    font-style: italic;
+    font-size: 0.9em;
+    margin-top: 0;
+    margin-bottom: 0;
+    color: rgba(17, 85, 204, 0.7);
+}
+p.alert-date + p {
+    margin-top: 0.1em;
+}
+
+/*treatment plan overview*/
+#treatment-goal-arc {
+    margin: 0 auto;
+    flex-basis: 12em;
+    flex-shrink: 0;
+    flex-grow: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 13em;
+    height: 13em;
+    padding: 1em;
+    text-align: center;
+}
+#treatment-goal-arc > svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    stroke: #1155cc;
+    stroke-width: 2px;
+    stroke-linecap: round;
+    fill: none;
+}
+#treatment-goal-arc p#goal-days {
+    position: relative;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #1155cc;
+    margin-bottom: 1em;
+    margin-top: 0;
+}
+#treatment-goal-arc p#goal-days::after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 2em;
+    height: 0.1em;
+    background: rgb(240, 240, 240);
+    bottom: -0.6em;
+    left: 50%;
+    transform: translateX(-50%);
+}
+#treatment-goal-arc p#goal-days + p {
+    margin: 0;
+    font-size: 0.9em;
+}
+#treatment-goal h3 {
+    margin-bottom: 0.1em;
+}
+#treatment-goal h3 + * {
+    margin-top: 0;
+}
+/*side by side or more vertical layout*/
+@media (min-width: 95em), (min-width: 55em) and (max-width: 65em), (min-width: 40em) and (max-width: 45em) {
+    #treatment-goal {
+        display: flex;
+        align-items: center;
+    }
+    #treatment-goal-arc {
+        margin: 0 2em 0 0;
+    }
+    #treatment-goal-arc + div {
+        flex-basis: 0;
+        flex-grow: 1;
+    }
+}
+
+/*tip of the day*/
+p.tip {
+    font-style: italic;
 }
