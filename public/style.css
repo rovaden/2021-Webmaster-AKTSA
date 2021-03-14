@@ -249,6 +249,11 @@ div {
 .navbar.light ul li a:hover, .navbar.light ul li .navName a, .navbar.light ul li:hover a.dropdown-top {
   opacity: 1;
 }
+.navbar.light li.accountLink > a:hover {
+  background: white;
+  color: gray;
+  border-color: white;
+}
 
 /*navbar "light" styling dropdown*/
 .navbar.light ul li:hover a.dropdown-top {
