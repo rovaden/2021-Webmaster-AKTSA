@@ -1,49 +1,53 @@
 
 let hasSetUpMobile = false;
+let allowScrollAnim = true;
 const navBar = document.getElementsByTagName("nav")[0];
 
 //getting whether or not account is logged in, updating nav bar accordingly
 const loggedIn = localStorage.getItem("katKureLoggedIn");
 if(loggedIn === "true"){
   const accountEl = navBar.getElementsByClassName("accountLink")[0];
-  const linkEl = accountEl.getElementsByTagName("a")[0];
-  if(linkEl.textContent === "Log In") {
-    //inserting icon and changing content to name
-    let newIcon = document.createElement("i");
-    newIcon.className = "material-icons";
-    newIcon.textContent = "account_circle";
-    linkEl.textContent = "Jane Doe";
-    linkEl.href = "#";
-    linkEl.insertBefore(newIcon, linkEl.firstChild);
+  if(accountEl !== undefined){
+    const linkEl = accountEl.getElementsByTagName("a")[0];
+    if(linkEl.textContent === "Log In") {
+      //inserting icon and changing content to name
+      let newIcon = document.createElement("i");
+      newIcon.className = "material-icons";
+      newIcon.textContent = "account_circle";
+      linkEl.textContent = "Jane Doe";
+      linkEl.href = "#";
+      linkEl.insertBefore(newIcon, linkEl.firstChild);
 
-    //making it a dropdown menu
-    linkEl.className = "dropdown-top loggedIn";
-    let newDropdown = document.createElement("div"),
-    newDropList = document.createElement("ul"),
-    newDashLink = document.createElement("li"),
-    logOut = document.createElement("li");
-    newDashLink.innerHTML = "<a href = \"account/dashboard.html\">Dashboard</a>";
+      //making it a dropdown menu
+      linkEl.className = "dropdown-top loggedIn";
+      let newDropdown = document.createElement("div"),
+      newDropList = document.createElement("ul"),
+      newDashLink = document.createElement("li"),
+      logOut = document.createElement("li");
+      newDashLink.innerHTML = "<a href = \"account/dashboard.html\">Dashboard</a>";
 
-    //logout button
-    logOut.innerHTML = "<a href = \"" + location.href + "\">Log out</a>";
-    logOut.addEventListener("click", function(){
-      localStorage.setItem("katKureLoggedIn", "false");
-    });
-
-    //appending stuff
-    newDropList.appendChild(newDashLink);
-    newDropList.appendChild(logOut);
-    newDropList.className = "dropdown";
-    newDropdown.appendChild(newDropList);
-    accountEl.appendChild(newDropdown);
-  }
-  else {
-    const listLinks = accountEl.getElementsByTagName("div")[0].getElementsByTagName("li");
-    let logOut = listLinks[listLinks.length - 1];
-    if(logOut){
+      //logout button
+      logOut.innerHTML = "<a href = \"" + location.href + "\">Log out</a>";
       logOut.addEventListener("click", function(){
         localStorage.setItem("katKureLoggedIn", "false");
       });
+
+      //appending stuff
+      newDropList.appendChild(newDashLink);
+      newDropList.appendChild(logOut);
+      newDropList.className = "dropdown";
+      newDropdown.appendChild(newDropList);
+      accountEl.appendChild(newDropdown);
+    }
+    else {
+      const dropDown = accountEl.getElementsByTagName("div");
+      if(dropDown.length !== 0){
+        const listLinks = dropDown[0].getElementsByTagName("li")
+        let logOut = listLinks[listLinks.length - 1];
+        logOut.addEventListener("click", function(){
+          localStorage.setItem("katKureLoggedIn", "false");
+        });
+      }
     }
   }
 }
@@ -74,6 +78,7 @@ function setUpMobile(){
   //toggling active class when clicked
   navMenu.addEventListener("click", function(){
     navBar.classList.toggle("active");
+    allowScrollAnim = !allowScrollAnim;
   });
 
   //looping through dropdown menus in the navigation bar
@@ -93,7 +98,7 @@ let setUpNavScroll = (function(){
   const prevClassName = navBar.className;
   let scrollWait = false;
   let handleScroll = function(){
-    if(!scrollWait){
+    if(!scrollWait && allowScrollAnim){
       window.requestAnimationFrame(function(){
         if(document.body.scrollTop > 20 || document.documentElement.scrollTop > 20){
           navBar.className = "navbar scrolledDown";
@@ -106,21 +111,23 @@ let setUpNavScroll = (function(){
       scrollWait = true;
     }
   }
-  return function(initial){
+  return function(){
     scrollWait = false;
     window.addEventListener("scroll", handleScroll);
   }
 })();
 
 //handling both setting up mobile navigation and scrolling
-function handleAll(initial){
+function handleAll(){
   if(getComputedStyle(navMenu).display === "block"){
     if(!hasSetUpMobile){
       setUpMobile();
     }
   }
-  navBar.style.position = "fixed";
-  setUpNavScroll(initial);
+  if(document.getElementsByClassName("sidebar").length === 0){
+    navBar.style.position = "fixed";
+    setUpNavScroll();
+  }
 }
-handleAll(true);
+handleAll();
 window.addEventListener("resize", handleAll);
