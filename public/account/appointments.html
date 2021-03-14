@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Appointments</title>
+    <link rel = "icon" href = "../favicon.ico"/>
+    <link href="../style.css" rel="stylesheet" type="text/css"/>
+    <link href="accountPageStyle.css" rel="stylesheet" type="text/css"/>
+  </head>
+  <body>
+    <!--navigation bar-->
+    <nav class = "navbar account-topNav scrolledDown">
+      <!--company name to display on mobile outside of menu-->
+      <span class = "navName nav-backup"><a href = "../index.html">KatKure</a></span>
+      
+      <!--links-->
+      <div class = "navbar-collapse">
+        <ul>
+          <li><span class = "navName"><a href = "../index.html">KatKure</a></span></li>
+          <li><a href = "../index.html">Home</a></li>
+          <li><a class = "dropdown-top">About</a>
+            <div>
+              <ul class = "dropdown">
+                <li><a href = "../about.html">Company</a></li>
+                <li><a href = "../about-webpage.html">This page</a></li>
+              </ul>
+            </div>
+          </li>
+          <li><a class = "dropdown-top">Products</a>
+            <div>
+              <ul class = "dropdown">
+                <li><a href = "../services.html">Platform</a></li>
+                <li><a href = "../products.html">Shop</a></li>
+                <li><a href = "../cart.html">Cart</a></li>
+              </ul>
+            </div>
+          </li>
+          <li><a href = "../news/index.html">News</a></li>
+          <li><a href = "../faq.html">FAQs</a></li>
+          <li class = "accountLink"><a class = "dropdown-top loggedIn"><i class = "material-icons">account_circle</i>Jane Doe</a>
+            <div>
+              <ul class = "dropdown">
+                <li class = "nav-active"><a href = "dashboard.html">Dashboard</a></li>
+                <li><a href = "../index.html">Log Out</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!--menu icon for mobile display-->
+      <i class = "material-icons" id = "navMenu">menu</i>
+    </nav>
+
+    <!--side nav with account navigation-->
+    <nav class = "sidebar">
+      <ul>
+        <li><a href = "dashboard.html"><i class = "material-icons">space_dashboard</i><span>Dashboard</span></a></li>
+        <li class = "nav-active"><a href = "appointments.html"><i class = "material-icons">date_range</i><span>Appointments</span></a></li>
+        <li><a href = "conversations.html"><i class = "material-icons">question_answer</i><span>Conversations</span></a></li>
+        <li><a href = "explore.html"><i class = "material-icons">explore</i><span>Explore</span></a></li>
+        <li><a href = "settings.html"><i class = "material-icons">manage_accounts</i><span>Account</span></a></li>
+        <li><a class = "log-out-button"><i class = "material-icons">logout</i><span>Log out</span></a></li>
+      </ul>
+    </nav>
+
+    <div class = "account-content">
+      <div class = "pageHeading">
+        <h1>Appointments</h1>
+      </div>
+      <div id = "appointment-container">
+          <div id = "appointment-cont-heading">
+            <h2>Upcoming</h2>
+            <button id = "scheduleApp">Schedule</button>
+          </div>
+          <div id = "appointment-upcoming">
+            <div class = "appointment">
+              <p><span class = "appointment-date">Mar 14, 2021</span>
+              <span class = "appointment-time">9:00 - 10:00 AM</span></p>
+              <div class = "appointment-text">
+                <div class = "appointment-description">
+                  <p class = "appointment-title">Group session</p>
+                  <p>First meeting in a closed group meeting</p>
+                </div>
+                <div class = "appointment-person">
+                  <p class = "doctor-name">Hazel Jones</p>
+                  <p>Leader, LMHC</p>
+                </div>
+              </div>
+              <div class = "action-buttons">
+                <button class = "cancel">Cancel</button>
+                <button class = "meet">Meet</button>
+              </div>
+            </div>
+            <div class = "appointment">
+              <p><span class = "appointment-date">Mar 21, 2021</span>
+              <span class = "appointment-time">2:00 - 3:00 PM</span></p>
+              <div class = "appointment-text">
+                <div class = "appointment-description">
+                  <p class = "appointment-title">Individual session</p>
+                  <p>Weekly counseling meeting</p>
+                </div>
+                <div class = "appointment-person">
+                  <p class = "doctor-name">Alina Miller</p>
+                  <p>Counselor, LMHC</p>
+                </div>
+              </div>
+              <div class = "action-buttons">
+                <button class = "cancel">Cancel</button>
+                <button class = "meet">Meet</button>
+              </div>
+            </div>
+            <div class = "appointment">
+              <p><span class = "appointment-date">Mar 25, 2021</span>
+              <span class = "appointment-time">10:00 - 10:45 AM</span></p>
+              <div class = "appointment-text">
+                <div class = "appointment-description">
+                  <p class = "appointment-title">Live Event: How to Meditate</p>
+                  <p>A talk on the basics of meditation</p>
+                </div>
+                <div class = "appointment-person">
+                  <p class = "doctor-name">Taylor Peterson</p>
+                  <p>Speaker</p>
+                </div>
+              </div>
+              <div class = "action-buttons">
+                <button class = "cancel">Cancel</button>
+                <button class = "meet">Meet</button>
+              </div>
+            </div>
+          </div>
+      </div>
+
+      <!--footer-->
+      <footer class = "footer account-footer">
+        <div class = "footer-text">Copyright KatKure 2021 <i class = "material-icons">copyright</i></div>
+      </footer>
+    </div>
+    <script src = "../script.js"></script>
+  </body>
+</html>
