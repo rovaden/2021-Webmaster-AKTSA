@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Dashboard</title>
+    <link rel = "icon" href = "../favicon.ico"/>
+    <link href="../style.css" rel="stylesheet" type="text/css"/>
+    <link href="accountPageStyle.css" rel="stylesheet" type="text/css"/>
+  </head>
+  <body>
+    <!--navigation bar-->
+    <nav class = "navbar account-topNav scrolledDown">
+      <!--company name to display on mobile outside of menu-->
+      <span class = "navName nav-backup"><a href = "../index.html">KatKure</a></span>
+      
+      <!--links-->
+      <div class = "navbar-collapse">
+        <ul>
+          <li><span class = "navName"><a href = "../index.html">KatKure</a></span></li>
+          <li><a href = "../index.html">Home</a></li>
+          <li><a class = "dropdown-top">About</a>
+            <div>
+              <ul class = "dropdown">
+                <li><a href = "../about.html">Company</a></li>
+                <li><a href = "../about-webpage.html">This page</a></li>
+              </ul>
+            </div>
+          </li>
+          <li><a class = "dropdown-top">Products</a>
+            <div>
+              <ul class = "dropdown">
+                <li><a href = "../services.html">Platform</a></li>
+                <li><a href = "../products.html">Shop</a></li>
+                <li><a href = "../cart.html">Cart</a></li>
+              </ul>
+            </div>
+          </li>
+          <li><a href = "../news/index.html">News</a></li>
+          <li><a href = "../faq.html">FAQs</a></li>
+          <li class = "accountLink"><a class = "dropdown-top loggedIn"><i class = "material-icons">account_circle</i>Jane Doe</a>
+            <div>
+              <ul class = "dropdown">
+                <li class = "nav-active"><a href = "dashboard.html">Dashboard</a></li>
+                <li><a href = "../index.html">Log Out</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!--menu icon for mobile display-->
+      <i class = "material-icons" id = "navMenu">menu</i>
+    </nav>
+
+    <!--side nav with account navigation-->
+    <nav class = "sidebar">
+      <ul>
+        <li class = "nav-active"><a href = "dashboard.html"><i class = "material-icons">space_dashboard</i><span>Dashboard</span></a></li>
+        <li><a href = "appointments.html"><i class = "material-icons">date_range</i><span>Appointments</span></a></li>
+        <li><a href = "conversations.html"><i class = "material-icons">question_answer</i><span>Conversations</span></a></li>
+        <li><a href = "explore.html"><i class = "material-icons">explore</i><span>Explore</span></a></li>
+        <li><a href = "settings.html"><i class = "material-icons">manage_accounts</i><span>Account</span></a></li>
+        <li><a><i class = "material-icons">logout</i><span>Log out</span></a></li>
+      </ul>
+    </nav>
+
+    <div class = "account-content">
+      <div class = "pageHeading">
+        <h1>Welcome, Jane</h1>
+      </div>
+      <div id = "dashboard-container">
+        <div class = "dashboard-column">
+          <!--upcoming appointments-->
+          <div class = "dashboard-card" id = "dashboard-appointment-container">
+            <h2>Upcoming appointments</h2>
+            <div>
+              <div class = "dashboard-appointment">
+                <i class = "material-icons">group</i>
+                <p class = "appointment-title">Group session</p>
+                <p class = "appointment-date">3/14/21, 9:00 AM</p>
+              </div>
+              <div class = "dashboard-appointment">
+                <i class = "material-icons">person</i>
+                <p class = "appointment-title">Individual session</p>
+                <p class = "appointment-date">3/21/21, 2:00PM</p>
+              </div>
+              <div class = "dashboard-appointment">
+                <i class = "material-icons">self_improvement</i>
+                <p class = "appointment-title">Live Event: How to Meditate</p>
+                <p class = "appointment-date">3/25/21, 10:00 AM</p>
+              </div>
+            </div>
+          </div>
+
+          <!--alerts-->
+          <div class = "dashboard-card">
+            <h2>Alerts</h2>
+            <div>
+              <div class = "alert">
+                <i class = "material-icons">how_to_reg</i>
+                <div>
+                  <p class = "alert-date">Today, 9:00 AM</p>
+                  <p class = "alert-content">Your request to join a <i>Group Session</i> led by Hazel Jones has been approved.</p>
+                </div>
+              </div>
+              <div class = "alert">
+                <i class = "material-icons">grading</i>
+                <div>
+                  <p class = "alert-date">3/12/21, 2:00 PM</p>
+                  <p class = "alert-content">You have new recommendations to review! Check out the Explore tab for more.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--treatment overview-->
+          <div class = "dashboard-card">
+            <h2>Treatment Overview</h2>
+            <div>
+              <div id = "treatment-goal">
+                <div id = "treatment-goal-arc">
+                  <!--arc indication-->
+                  <svg viewBox = "-3 -3 56 56" xmlns="http://www.w3.org/2000/svg">
+                    <filter id = "dropBlur">
+                      <feGaussianBlur stdDeviation = "1.5"/>
+                    </filter>
+                    <path d ="M 10,45 A 25,25 0,1,1 40,45" style = "stroke: rgb(153, 197, 221)" filter = "url(#dropBlur)"/>
+                    <circle cx = "25" cy = "25" r = "25" style = "stroke: rgb(240, 240, 240)"/>
+                    <path d ="M 10,45 A 25,25 0,1,1 40,45"/>
+                  </svg>
+                  <p id = "goal-days">301 days</p>
+                  <p>of 365 days clean</p>
+                </div>
+                <!--text on side-->
+                <div>
+                  <h3>Goal:</h3>
+                  <p>To stay clean for a year and develop a more healthy, fulfilling lifestyle.</p>
+                  <h3>Objectives</h3>
+                  <ul>
+                    <li>Attend weekly meetings with counselor</li>
+                    <li>Learn new, healthy ways to deal with triggers</li>
+                    <li>Identify and participate in new hobbies</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--left column-->
+        <div class = "dashboard-column left">
+          <!--connections-->
+          <div class = "dashboard-card">
+            <h2>Connections</h2>
+            <div>
+              <div class = "connection">
+                <img src = "../media/testimonial_jane.png"/>
+                <div>
+                  <p class = "connection-name">Alina Miller</p>
+                  <p class = "connection-description">Counselor, LMHC</p>
+                </div>
+              </div>
+              <div class = "connection">
+                <img src = "../media/testimonial_luke.png"/>
+                <div>
+                  <p class = "connection-name">Group Session</p>
+                  <p class = "connection-description">Led by Hazel Jones, LMHC<br>14 people, meets on Wednesdays</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--tip of the day-->
+          <div class = "dashboard-card">
+            <h2>Tip of the Day</h2>
+            <p class = "tip">Get plenty of sleep!</p>
+            <p>Typically, 7-8 hours of rest will leave you energized and ready to face the day.</p>
+          </div>
+        </div>
+      </div>
+      
+      <!--footer-->
+      <footer class = "footer account-footer">
+        <div class = "footer-text">Copyright KatKure 2021 <i class = "material-icons">copyright</i></div>
+      </footer>
+    </div>
+    <script src = "../script.js"></script>
+  </body>
+</html>

@@ -150,6 +150,9 @@ nav.sidebar ul li {
     margin: 0.5em 0;
     padding: 0.75em 2em;
     padding: calc(0.25em + 1vh) 2em;
+}
+nav.sidebar ul li a {
+    text-decoration: none;
     color: rgba(255, 255, 255, 0.8);
 }
 nav.sidebar ul li i.material-icons {
@@ -168,9 +171,11 @@ nav.sidebar ul li a:hover::after {
     opacity: 0.4;
 }
 nav.sidebar ul li.nav-active {
-    color: white;
     background: rgba(245, 245, 245, 0.1);
     pointer-events: none;
+}
+nav.sidebar ul li.nav-active a {
+    color: white;
 }
 nav.sidebar ul a::after {
     position: absolute;
