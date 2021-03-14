@@ -104,11 +104,16 @@ function removeCartItemFuncCreator(button){
 function buildCart(index){
   var title = localStorage.key(index)
   var currentData = localStorage.getItem(title).split(",");
+  if(currentData.length !== 4){ //checking if data is right
+    return;
+  }
   var price = currentData[1]
   var imageSrc = currentData[2]
   var quantity = currentData[3] || 1;
+  if(price.split("$").length === 1){ //just another check if the data is right
+    return;
+  }
   var cartRow = document.createElement('div')
-  console.log(localStorage.key(index))
   cartRow.classList.add('item')
   var cartItems = document.getElementsByClassName('cart-items')[0]
   var cartItemNames = cartItems.getElementsByClassName('cart-item-title')

@@ -15,8 +15,11 @@ function ready() {
   }
 
   //shop search function
-  var searchForm = document.getElementById("shop-search")
-  searchBar = searchForm.getElementsByTagName("input")[0],
+  var searchForm = document.getElementById("shop-search");
+  if(searchForm === null){
+    return;
+  }
+  var searchBar = searchForm.getElementsByTagName("input")[0],
   searchButton = document.getElementById("search-submit");
   var searchNoResults = document.getElementById("search-no-results");
   var shopContainer = document.getElementById("shop-container");
