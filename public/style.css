@@ -115,7 +115,7 @@ div {
   padding: 0;
   margin: 0.5em 1.5em;
 }
-.navbar li.accountLink > a.loggedIn, .navbar li.accountLink > a.loggedIn:hover {
+.navbar li.accountLink > a.loggedIn, .navbar li.accountLink > a.loggedIn:hover, .navbar.light li.accountLink > a.loggedIn:hover {
   border: none;
   background: transparent;
 }

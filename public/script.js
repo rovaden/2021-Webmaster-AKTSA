@@ -56,18 +56,27 @@ let toggleDropdown = function(liEl, divEl){
   //getting elements + target height
   const aEl = liEl.firstChild;
   const target = divEl;
-  const maxHeight = divEl.scrollHeight;
   let clicks = 0;
+
+  //removing constraint on maxHeight to account for resize
+  function handleTransitionEnd(){
+    target.style.maxHeight = "none";
+    target.removeEventListener("transitionend", handleTransitionEnd);
+  }
 
   //event handler function that toggles height
   return function(){
     clicks++;
     aEl.classList.toggle("active");
     if(clicks % 2 === 0){
-      target.style.maxHeight = "0";
+      target.style.maxHeight = target.scrollHeight + "px";
+      window.setTimeout(function(){
+        target.style.maxHeight = "0";
+      }, 1);
     }
     else {
-      target.style.maxHeight = maxHeight + "px";
+      target.style.maxHeight = divEl.scrollHeight + "px";
+      target.addEventListener("transitionend", handleTransitionEnd);
     }
   };
 }
@@ -127,6 +136,7 @@ function handleAll(){
     navBar.style.position = "fixed";
     setUpNavScroll();
   }
+  navBar.classList.remove("active");
 }
 handleAll();
 window.addEventListener("resize", handleAll);
