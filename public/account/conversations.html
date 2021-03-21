@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Conversations</title>
+    <link rel = "icon" href = "../favicon.ico"/>
+    <link href="../style.css" rel="stylesheet" type="text/css"/>
+    <link href="accountPageStyle.css" rel="stylesheet" type="text/css"/>
+  </head>
+  <body id = "conversations-page">
+    <!--navigation bar-->
+    <nav class = "navbar account-topNav scrolledDown">
+      <!--company name to display on mobile outside of menu-->
+      <span class = "navName nav-backup"><a href = "../index.html">KatKure</a></span>
+      
+      <!--links-->
+      <div class = "navbar-collapse">
+        <ul>
+          <li><span class = "navName"><a href = "../index.html">KatKure</a></span></li>
+          <li><a href = "../index.html">Home</a></li>
+          <li><a class = "dropdown-top">About</a>
+            <div>
+              <ul class = "dropdown">
+                <li><a href = "../about.html">Company</a></li>
+                <li><a href = "../about-webpage.html">This page</a></li>
+              </ul>
+            </div>
+          </li>
+          <li><a class = "dropdown-top">Products</a>
+            <div>
+              <ul class = "dropdown">
+                <li><a href = "../services.html">Platform</a></li>
+                <li><a href = "../products.html">Shop</a></li>
+                <li><a href = "../cart.html">Cart</a></li>
+              </ul>
+            </div>
+          </li>
+          <li><a href = "../news/index.html">News</a></li>
+          <li><a href = "../faq.html">FAQs</a></li>
+          <li class = "accountLink"><a class = "dropdown-top loggedIn"><i class = "material-icons">account_circle</i>Jane Doe</a>
+            <div>
+              <ul class = "dropdown">
+                <li class = "nav-active"><a href = "dashboard.html">Dashboard</a></li>
+                <li><a href = "../index.html">Log Out</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!--menu icon for mobile display-->
+      <i class = "material-icons" id = "navMenu">menu</i>
+    </nav>
+
+    <!--side nav with account navigation-->
+    <nav class = "sidebar">
+      <ul>
+        <li><a href = "dashboard.html"><i class = "material-icons">space_dashboard</i><span>Dashboard</span></a></li>
+        <li><a href = "appointments.html"><i class = "material-icons">date_range</i><span>Appointments</span></a></li>
+        <li class = "nav-active"><a href = "conversations.html"><i class = "material-icons">question_answer</i><span>Conversations</span></a></li>
+        <li><a href = "explore.html"><i class = "material-icons">explore</i><span>Explore</span></a></li>
+        <li><a href = "settings.html"><i class = "material-icons">manage_accounts</i><span>Account</span></a></li>
+        <li><a class = "log-out-button"><i class = "material-icons">logout</i><span>Log out</span></a></li>
+      </ul>
+    </nav>
+
+    <div class = "account-content" id = "chat-content">
+      <!--list of people-->
+      <div id = "chat-side">
+        <h2>People</h2>
+        <div class = "chat-people active">
+          <img src = "../media/testimonial_jane.png"/>
+          <div>
+            <p class = "chat-name">Alina Miller</p>
+            <p>Counselor, LMHC</p>
+            <p class = "last-message">Alina: No worries, it's okay!</p>
+          </div>
+        </div>
+        <div class = "chat-people">
+          <img src = "../media/testimonial_luke.png"/>
+          <div>
+            <p class = "chat-name">Group Session</p>
+            <p>14 people</p>
+            <p class = "last-message">Rick: That's awesome!</p>
+          </div>
+        </div>
+        <div class = "chat-people">
+          <img src = "../media/testimonial_leia.png"/>
+          <div>
+            <p class = "chat-name">Hazel Jones</p>
+            <p>Counselor, LMHC</p>
+            <p class = "last-message">You: Okay, thank you so much!</p>
+          </div>
+        </div>
+      </div>
+
+      <!--chat (right side)-->
+      <div id = "chat-container">
+        <!--conversations-->
+        <div class = "conversation" data-for = "Alina">
+          <div class = "conversation-back">
+            <p class = "back-button"><i class = "material-icons">navigate_before</i> Back</p>
+            <p class = "conversation-name">Alina</p>
+          </div>
+          <div class = "message" data-chat-from = "other">
+            <img src = "../media/testimonial_jane.png"/>
+            <div class = "chat-text">
+              <p>message here</p>
+              <p>multiple lines possible :)</p>
+            </div>
+          </div>
+          <div class = "message" data-chat-from = "you">
+            <div class = "chat-text">
+              <p>sample message from you</p>
+            </div>
+          </div>
+          <div class = "time-divider">
+            <span>March 18 2021</span>
+          </div>
+          <div class = "message" data-chat-from = "other">
+            <img src = "../media/testimonial_jane.png"/>
+            <div class = "chat-text">
+              <p>another message here</p>
+            </div>
+          </div>
+          <div class = "message quickly-after" data-chat-from = "other">
+            <div class = "chat-text">
+              <p>quick reply</p>
+            </div>
+          </div>
+          <div class = "message" data-chat-from = "you">
+            <div class = "chat-text">
+              <p>another message from you</p>
+            </div>
+          </div>
+          <div class = "message quickly-after" data-chat-from = "you">
+            <div class = "chat-text">
+              <p>quick reply from you</p>
+            </div>
+          </div>
+          <div class = "message" data-chat-from = "other">
+            <img src = "../media/testimonial_jane.png"/>
+            <div class = "chat-text">
+              <p>sounds good</p>
+            </div>
+          </div>
+          <div class = "message" data-chat-from = "you">
+            <div class = "chat-text">
+              <p>great! thank you</p>
+            </div>
+          </div>
+          <div class = "time-divider">
+            <span>March 21 2021</span>
+          </div>
+          <div class = "message" data-chat-from = "you">
+            <div class = "chat-text">
+              <p>I had a question...</p>
+            </div>
+          </div>
+          <div class = "message quickly-after" data-chat-from = "you">
+            <div class = "chat-text">
+              <p>[insert question here?]</p>
+            </div>
+          </div>
+          <div class = "message" data-chat-from = "other">
+            <img src = "../media/testimonial_jane.png"/>
+            <div class = "chat-text">
+              <p>long, elaborate answer here lorum ipsum dolor amat sit latin gibberish</p>
+            </div>
+          </div>
+        </div>
+
+        <div class = "conversation" data-for = "Group">
+          <div class = "conversation-back">
+            <p class = "back-button"><i class = "material-icons">navigate_before</i> Back</p>
+            <p class = "conversation-name">Group Session</p>
+          </div>
+          <div class = "message" data-chat-from = "other">
+            <img src = "../media/testimonial_luke.png"/>
+            <div class = "chat-text">
+              <p>message here</p>
+            </div>
+          </div>
+          <div class = "message" data-chat-from = "you">
+            <div class = "chat-text">
+              <p>message from you</p>
+            </div>
+          </div>
+          <div class = "time-divider">
+            <span>March 18 2021</span>
+          </div>
+          <div class = "message" data-chat-from = "other">
+            <img src = "../media/testimonial_luke.png"/>
+            <div class = "chat-text">
+              <p>another message here</p>
+            </div>
+          </div>
+          <div class = "message quickly-after" data-chat-from = "other">
+            <div class = "chat-text">
+              <p>reply</p>
+            </div>
+          </div>
+          <div class = "message" data-chat-from = "you">
+            <div class = "chat-text">
+              <p>another message from you</p>
+            </div>
+          </div>
+          <div class = "message quickly-after" data-chat-from = "you">
+            <div class = "chat-text">
+              <p>quick reply from you</p>
+            </div>
+          </div>
+          <div class = "message" data-chat-from = "other">
+            <img src = "../media/testimonial_luke.png"/>
+            <div class = "chat-text">
+              <p>sounds good</p>
+            </div>
+          </div>
+          <div class = "message" data-chat-from = "you">
+            <div class = "chat-text">
+              <p>great! thank you</p>
+            </div>
+          </div>
+        </div>
+
+        <div class = "conversation" data-for = "Hazel">
+          <div class = "conversation-back">
+            <p class = "back-button"><i class = "material-icons">navigate_before</i> Back</p>
+            <p class = "conversation-name">Hazel</p>
+          </div>
+          <div class = "message" data-chat-from = "other">
+            <img src = "../media/testimonial_leia.png"/>
+            <div class = "chat-text">
+              <p>message here</p>
+            </div>
+          </div>
+          <div class = "message" data-chat-from = "you">
+            <div class = "chat-text">
+              <p>message from you</p>
+            </div>
+          </div>
+          <div class = "time-divider">
+            <span>March 18 2021</span>
+          </div>
+          <div class = "message" data-chat-from = "other">
+            <img src = "../media/testimonial_leia.png"/>
+            <div class = "chat-text">
+              <p>another message here</p>
+            </div>
+          </div>
+          <div class = "message quickly-after" data-chat-from = "other">
+            <div class = "chat-text">
+              <p>reply</p>
+            </div>
+          </div>
+          <div class = "message" data-chat-from = "you">
+            <div class = "chat-text">
+              <p>another message from you</p>
+            </div>
+          </div>
+          <div class = "message quickly-after" data-chat-from = "you">
+            <div class = "chat-text">
+              <p>quick reply from you</p>
+            </div>
+          </div>
+          <div class = "message" data-chat-from = "other">
+            <img src = "../media/testimonial_leia.png"/>
+            <div class = "chat-text">
+              <p>sounds good</p>
+            </div>
+          </div>
+          <div class = "message" data-chat-from = "you">
+            <div class = "chat-text">
+              <p>great! thank you</p>
+            </div>
+          </div>
+        </div>
+
+        <!--text box-->
+        <form id = "chat-typing-box">
+          <input autocomplete = "off" type = "text" id = "chatInput" placeholder = "Message Alina"/>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script src = "../script.js"></script>
+  <script>
+    const chatPeopleContainer = document.getElementById("chat-side");
+    const chatPeople = document.getElementsByClassName("chat-people");
+    const chatConvoContainer = document.getElementById("chat-container");
+    const conversations = document.getElementsByClassName("conversation");
+    const backButtons = document.getElementsByClassName("back-button");
+    const chatInput = document.getElementById("chatInput");
+    let activeIndex = 0;
+    let prevIndex = 0;
+    let isNarrow = getComputedStyle(chatPeopleContainer).position === "relative";
+    let showChatFuncWide = function(index){
+      const ind = index;
+      return function(){
+        prevIndex = activeIndex;
+        conversations[prevIndex].style.display = "none";
+        chatPeople[prevIndex].classList.remove("active");
+        activeIndex = ind;
+        conversations[activeIndex].style.display = "block";
+        chatPeople[activeIndex].classList.add("active");
+        chatInput.placeholder = "Message " + conversations[activeIndex].dataset.for;
+      }
+    }
+    let showChatFuncNarrow = function(index){
+      const target = conversations[index];
+      const ind = index;
+      return function(){
+        prevIndex = activeIndex;
+        conversations[prevIndex].style.display = "none";
+        chatPeople[prevIndex].classList.remove("active");
+        activeIndex = ind;
+        chatPeople[activeIndex].classList.add("active");
+        target.style.display = "block";
+        chatConvoContainer.style.transform = "translateX(0)";
+        chatInput.placeholder = "Message " + target.dataset.for;
+      }
+    }
+
+    let handleChatAll = (function(){
+      let hasSetUpBack = false;
+      let wideChatFuncs = [];
+      let narrowChatFuncs = [];
+      return function(initial){
+      //sliding on smaller width screens
+      if(isNarrow){
+        for(let i = 0; i < chatPeople.length; i++){
+          //adding click functions
+          if(!narrowChatFuncs[i]){
+            let chatFunc = showChatFuncNarrow(i);
+            narrowChatFuncs.push(chatFunc);
+          }
+          chatPeople[i].addEventListener("click", narrowChatFuncs[i]);
+
+          //removing conflicting wide chat click function
+          if(wideChatFuncs[i]){
+            chatPeople[i].removeEventListener("click", wideChatFuncs[i]);
+          }
+
+          //hiding other conversations initially
+          if(initial && i !== activeIndex){
+            conversations[i].style.display = "none";
+          }
+        }
+
+        //setting up back buttons
+        if(!hasSetUpBack){
+          for(let i = 0; i < backButtons.length; i++){
+            backButtons[i].addEventListener("click", function(){
+              chatConvoContainer.style.transform = "translateX(100%)";
+            });
+          }
+          hasSetUpBack = true;
+        }
+      }
+
+      //hiding/showing chat on larger screens
+      else {
+        for(let i = 0; i < chatPeople.length; i++){
+          //adding click functions
+          if(!wideChatFuncs[i]){
+            let chatFunc = showChatFuncWide(i);
+            wideChatFuncs.push(chatFunc);
+          }
+          chatPeople[i].addEventListener("click", wideChatFuncs[i]);
+
+          //removing conflicting narrow chat click function
+          if(narrowChatFuncs[i]){
+            chatPeople[i].removeEventListener("click", narrowChatFuncs[i]);
+          }
+
+          //hiding other conversations initially
+          if(initial && i !== activeIndex){
+            conversations[i].style.display = "none";
+          }
+        }
+      }
+    }
+    })();
+    handleChatAll(true);
+
+    //handling functions on resize
+    window.addEventListener("resize", function(){
+      //wide to narrow
+      if(getComputedStyle(chatPeopleContainer).position === "relative"){
+        if(!isNarrow){
+          isNarrow = true;
+          handleChatAll(false);
+        }
+      }
+
+      //narrow to wide
+      else {
+        if(isNarrow){
+          isNarrow = false;
+          chatConvoContainer.style.transform = "translateX(0)";
+          handleChatAll(false);
+        }
+      }
+    });
+  </script>
+</body>
+</html>
