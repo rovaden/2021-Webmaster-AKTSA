@@ -24,7 +24,7 @@ if(loggedIn === "true"){
       newDropList = document.createElement("ul"),
       newDashLink = document.createElement("li"),
       logOut = document.createElement("li");
-      newDashLink.innerHTML = "<a href = \"account/dashboard.html\">Dashboard</a>";
+      newDashLink.innerHTML = "<a href = \"" + window.location.href.split("public/")[0] + "public/account/dashboard.html\">Dashboard</a>";
 
       //logout button
       logOut.innerHTML = "<a href = \"" + location.href + "\" class = \"log-out-button\">Log out</a>";
