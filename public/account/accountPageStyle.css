@@ -1127,9 +1127,6 @@ p.tip {
     width: fit-content;
     display: inline;
 }
-#exploreSearchForm div.filter-container:first-of-type { /******REMOVE******/
-    display: none;
-}
 #exploreSearchForm div.filter, #groupSize {
     display: inline-block;
     position: relative;
@@ -1273,6 +1270,14 @@ p.tip {
 }
 #groupSize form input:focus {
     border-bottom-color: rgb(17, 85, 204);
+}
+
+/*no results div*/
+#noSearchResults {
+    text-align: center;
+    color: rgb(7, 55, 99);
+    padding: 10vh 0;
+    display: none;
 }
 
 /*explore tabs*/
@@ -1485,7 +1490,7 @@ div.group.recommended div.group-description > p:first-of-type::after {
 }
 .group .group-description .group-info .group-focus p {
     display: inline;
-    margin: 0.25em 0;
+    margin: 0.25em 0.25em;
     line-height: 2em;
 }
 .group .group-description .group-info .group-focus p:first-of-type {

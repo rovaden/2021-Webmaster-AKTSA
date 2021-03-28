@@ -80,133 +80,133 @@
           <div>
             <span id = "exploreFilter">Filters: </span>
             <!--filtering doctors-->
-            <div class = "filter-container" data-for = "doctor">
+            <div class = "filter-container">
               <!--license type-->
-              <div class = "filter">
+              <div class = "filter" data-for = "license">
                 <span class = "filter-title">License</span>
                 <form>
                   <div class = "checkLi">
-                    <input type = "checkbox" id = "LMHC" checked = "true"/>
+                    <input type = "checkbox" id = "LMHC" checked>
                     <label for = "LMHC">LMHC</label>
                   </div>
                   <div class = "checkLi">
-                    <input type = "checkbox" id = "LPC" checked = "true"/>
+                    <input type = "checkbox" id = "LPC" checked>
                     <label for = "LPC">LPC</label>
                   </div>
                   <div class = "checkLi">
-                    <input type = "checkbox" id = "LCSW" checked = "true"/>
+                    <input type = "checkbox" id = "LCSW" checked>
                     <label for = "LCSW">LCSW</label>
                   </div>
                   <div class = "checkLi">
-                    <input type = "checkbox" id = "psych" checked = "true"/>
-                    <label for = "psych">PsyD</label>
+                    <input type = "checkbox" id = "PsyD" checked>
+                    <label for = "PsyD">PsyD</label>
                   </div>
                 </form>
               </div>
               <!--focus of doctor-->
-              <div class = "filter" style = "min-width: 10em">
+              <div class = "filter" style = "min-width: 10em" data-for = "focus">
                 <span class = "filter-title">Focus</span>
                 <form>
                   <div class = "checkLi">
-                    <input type = "checkbox" id = "subAbuse" checked = "true"/>
+                    <input type = "checkbox" id = "subAbuse" checked>
                     <label for = "subAbuse">Substance abuse</label>
                   </div>
                   <div class = "checkLi">
-                    <input type = "checkbox" id = "recovery" checked = "true"/>
+                    <input type = "checkbox" id = "recovery" checked>
                     <label for = "recovery">Recovery</label>
                   </div>
                   <div class = "checkLi">
-                    <input type = "checkbox" id = "moodDis" checked = "true"/>
+                    <input type = "checkbox" id = "moodDis" checked>
                     <label for = "moodDis">Mood disorders</label>
                   </div>
                   <div class = "checkLi">
-                    <input type = "checkbox" id = "anxietyDis" checked = "true"/>
+                    <input type = "checkbox" id = "anxietyDis" checked>
                     <label for = "anxietyDis">Anxiety disorders</label><br>
                   </div>
                   <div class = "checkLi">
-                    <input type = "checkbox" id = "personDis" checked = "true"/>
+                    <input type = "checkbox" id = "personDis" checked>
                     <label for = "personDis">Personality disorders</label>
                   </div>
                 </form>
               </div>
             </div>
             <!--filtering groups-->
-            <div class = "filter-container" data-for = "group">
+            <div class = "filter-container">
               <!--focus-->
-              <div class = "filter" style = "min-width: 10em">
+              <div class = "filter" style = "min-width: 10em" data-for = "focus">
                 <span class = "filter-title">Focus</span>
                 <form>
                   <div class = "checkLi">
-                    <input type = "checkbox" id = "subAbuse" checked = "true"/>
-                    <label for = "subAbuse">Substance abuse</label>
+                    <input type = "checkbox" id = "subAbuseG" checked>
+                    <label for = "subAbuseG">Substance abuse</label>
                   </div>
                   <div class = "checkLi">
-                    <input type = "checkbox" id = "moodDis" checked = "true"/>
-                    <label for = "moodDis">Depression</label>
+                    <input type = "checkbox" id = "depression" checked>
+                    <label for = "depression">Depression</label>
                   </div>
                   <div class = "checkLi">
-                    <input type = "checkbox" id = "anxietyDis" checked = "true"/>
-                    <label for = "anxietyDis">Anxiety</label><br>
+                    <input type = "checkbox" id = "anxiety" checked>
+                    <label for = "anxiety">Anxiety</label><br>
                   </div>
                   <div class = "checkLi">
-                    <input type = "checkbox" id = "personDis" checked = "true"/>
-                    <label for = "personDis">Self-Improvement</label>
+                    <input type = "checkbox" id = "selfImprov" checked>
+                    <label for = "selfImprov">Self-Improvement</label>
                   </div>
                 </form>
               </div>
               <!--meeting frequency-->
-              <div class = "filter" style = "min-width: 11em">
+              <div class = "filter" style = "min-width: 11em" data-for = "meeting">
                 <span class = "filter-title">Meetings</span>
                 <form>
                   <label>Meeting Frequency</label>
                   <div class = "checkLi">
-                    <input type = "checkbox" id = "weekly" checked = "true"/>
+                    <input type = "checkbox" id = "weekly" checked>
                     <label for = "weekly">Weekly</label>
                   </div>
                   <div class = "checkLi">
-                    <input type = "checkbox" id = "biweekly" checked = "true"/>
+                    <input type = "checkbox" id = "biweekly" checked>
                     <label for = "biweekly">Biweekly</label>
                   </div>
                   <label>Meeting Length</label>
                   <div class = "checkLi">
-                    <input type = "checkbox" id = "45min" checked = "true"/>
+                    <input type = "checkbox" id = "45min" checked>
                     <label for = "45min">45 minutes</label>
                   </div>
                   <div class = "checkLi">
-                    <input type = "checkbox" id = "1hr" checked = "true"/>
+                    <input type = "checkbox" id = "1hr" checked>
                     <label for = "1hr">1 hour</label>
                   </div>
                   <div class = "checkLi">
-                    <input type = "checkbox" id = "1-halfhr" checked = "true"/>
+                    <input type = "checkbox" id = "1-halfhr" checked>
                     <label for = "1-halfhr">1.5 hours</label>
                   </div>
                   <div class = "checkLi">
-                    <input type = "checkbox" id = "2hr" checked = "true"/>
+                    <input type = "checkbox" id = "2hr" checked>
                     <label for = "2hr">2 hours</label>
                   </div>
                 </form>
               </div>
               <!--open/closed group-->
-              <div class = "filter">
+              <div class = "filter" data-for = "closed">
                 <span class = "filter-title">Type</span>
                 <form>
                   <div class = "checkLi">
-                    <input type = "checkbox" id = "openGroup" checked = "true"/>
+                    <input type = "checkbox" id = "openGroup" checked>
                     <label for = "openGroup">Open</label>
                   </div>
                   <div class = "checkLi">
-                    <input type = "checkbox" id = "closedGroup" checked = "true"/>
+                    <input type = "checkbox" id = "closedGroup" checked>
                     <label for = "closedGroup">Closed</label>
                   </div>
                 </form>
               </div>
               <!--group size-->
-              <div id = "groupSize">
+              <div id = "groupSize" data-for = "size">
                 <span class = "filter-title">Size: </span>
                 <form>
-                  <input type = "number" min = "5" max = "15" id = "groupMin"/>
+                  <input type = "number" min = "5" max = "15" id = "groupMin" value = "5"/>
                   <label for = "groupMax">to</label>
-                  <input type = "number" min = "5" max = "15" id = "groupMax"/>
+                  <input type = "number" min = "5" max = "15" id = "groupMax" value = "15"/>
                 </form>
               </div>
             </div>
@@ -238,79 +238,7 @@
         </div>
 
         <!--recommended-->
-        <div class = "explorePage">
-          <div class = "listing counselor recommended">
-            <img src = "../media/testimonial_jane.png"/>
-            <div class = "counselor-description">
-              <p>Alina Miller</p>
-              <p>License: LMHC</p>
-              <p class = "recommended">Recommended</p>
-              <p>Insert description here...Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tempor, tortor in bibendum egestas, metus elit mattis felis, eget tempor justo nibh quis sem. Praesent auctor felis et sapien venenatis fermentum. Fusce id auctor urna. Nulla semper metus felis, id placerat odio vulputate eget.</p>
-              <div class = "buttons">
-                <button class = "sendRequest grayedout accountButton">Sent</button>
-              </div>
-            </div>
-          </div>
-          <div class = "listing counselor recommended">
-            <img src = "../media/testimonial_leia.png"/>
-            <div class = "counselor-description">
-              <p>Another Name</p>
-              <p>License: LMHC</p>
-              <p class = "recommended">Recommended</p>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tempor, tortor in bibendum egestas, metus elit mattis felis, eget tempor justo nibh quis sem. Praesent auctor felis et sapien venenatis fermentum. Fusce id auctor urna. Nulla semper metus felis, id placerat odio vulputate eget.</p>
-              <div class = "buttons">
-                <button class = "sendRequest accountButton">Send Request</button>
-                <button class = "accountButton outline">Message</button>
-              </div>
-            </div>
-          </div>
-
-          <!--recommended groups-->
-          <div class = "listing group recommended">
-            <div class = "group-description">
-              <p>Recovering from Addiction Group</p>
-              <p>Led by Hazel Jones, LHMC</p>
-              <p class = "recommended">Recommended</p>
-              <div class = "group-info">
-                <div>
-                  <p><i class = "material-icons">calendar_today</i>Meets: Wednesdays from 3:00 - 4:00 PM</p>
-                  <p><i class = "material-icons">lock_open</i>Closed group</p>
-                </div>
-                <div class = "group-focus">
-                  <p>Focus:</p>
-                  <p class = "focus">Focus</p>
-                  <p class = "focus">Self-improvement</p>
-                </div>
-              </div>
-              <p>Insert description here...Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tempor, tortor in bibendum egestas, metus elit mattis felis, eget tempor justo nibh quis sem. Praesent auctor felis et sapien venenatis fermentum. Fusce id auctor urna. Nulla semper metus felis, id placerat odio vulputate eget.</p>
-            </div>
-            <div class = "buttons">
-              <button class = "sendRequest grayedout accountButton">Sent</button>
-            </div>
-          </div>
-          <div class = "listing group recommended">
-            <div class = "group-description">
-              <p>Title of Group</p>
-              <p>Led by Another Name</p>
-              <p class = "recommended">Recommended</p>
-              <div class = "group-info">
-                <div>
-                  <p><i class = "material-icons">calendar_today</i>Meets: Saturdays from 10:00 - 11:00 AM</p>
-                  <p><i class = "material-icons">lock_open</i>Open group</p>
-                </div>
-                <div class = "group-focus">
-                  <p>Focus:</p>
-                  <p class = "focus">Focus</p>
-                  <p class = "focus">Self-improvement</p>
-                </div>
-              </div>
-              <p>Insert description here...Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tempor, tortor in bibendum egestas, metus elit mattis felis, eget tempor justo nibh quis sem. Praesent auctor felis et sapien venenatis fermentum. Fusce id auctor urna. Nulla semper metus felis, id placerat odio vulputate eget.</p>
-            </div>
-            <div class = "buttons">
-              <button class = "sendRequest accountButton">Join</button>
-            </div>
-          </div>
-        </div>
+        <div class = "explorePage"></div>
 
         <!--counselors-->
         <div class = "explorePage"></div>
@@ -319,19 +247,12 @@
         <div class = "explorePage"></div>
 
         <!--events-->
-        <div class = "explorePage">
-          <div class = "listing event">
-            <div class = "imgWrapper">
-              <img src = "../media/herbal.jpg"/>
-            </div>
-            <div class = "event-description">
-              <p>Meditation: Event Title</p>
-              <p>Led by Some Person</p>
-              <p class = "event-date"><i class = "material-icons">calendar_today</i>March 20, 2021 <span class = "event-time">10:00 - 10:45 AM</span></p>
-              <p>Insert description here...Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tempor, tortor in bibendum egestas, metus elit mattis felis, eget tempor justo nibh quis sem. Praesent auctor felis et sapien venenatis fermentum. Fusce id auctor urna. Nulla semper metus felis, id placerat odio vulputate eget.</p>
-              <button class = "sendRequest accountButton">Sign Up</button>
-            </div>
-          </div>
+        <div class = "explorePage"></div>
+
+        <!--no search results-->
+        <div id = "noSearchResults">
+          <h2>Sorry, there doesn't seem to be any search results for this</h2>
+          <p>Please try searching for something else</p>
         </div>
       </div>
 
@@ -341,6 +262,7 @@
       </footer>
     </div>
     <script src = "../script.js"></script>
+    <script src = "exploreData.js"></script>
     <script>
       //setting up filters' dropdowns
       const filters = document.getElementsByClassName("filter");
@@ -372,6 +294,318 @@
         let clickFunc = createFilterDropFunc(i);
         filterDrop.addEventListener("click", clickFunc);
       }
+
+      //creating page content based on data
+      const explorePages = document.getElementsByClassName("explorePage");
+      function createCounselorDiv(obj, requested, ind){
+        let newDiv = document.createElement("div");
+        newDiv.className = "listing counselor" + (obj.recommended ? " recommended":"");
+        newDiv.dataset.index = ind;
+        let divContent = "<img src = \"" + obj.img + "\"/>" +
+          "<div class = \"counselor-description\">" +
+            "<p>" + obj.name + "</p>" +
+            "<p>License: " + obj.license + "</p>" +
+            (obj.recommended ? "<p class = \"recommended\">Recommended</p>":"") +
+            "<p>" + obj.description + "</p>" +
+            "<div class = \"buttons\">" +
+              "<button class = \"sendRequest accountButton" + (requested ? "grayedout":"") + "\">" + (requested ? "Sent":"Send request") + "</button>" +
+            "</div>" +
+          "</div>"
+        newDiv.innerHTML = divContent;
+        explorePages[1].appendChild(newDiv);
+        if(obj.recommended){
+          let copy = newDiv.cloneNode(true);
+          explorePages[0].appendChild(copy);
+        }
+      };
+      function createGroupDiv(obj, requested, ind){
+        let newDiv = document.createElement("div");
+        newDiv.className = "listing group" + (obj.recommended ? " recommended":"");
+        newDiv.dataset.index = ind;
+        let counselor = counselors[obj.leader];
+        let focusDiv = "";
+        for(let i = 0; i < obj.focus.length; i++){
+          focusDiv += "<p class = \"focus\">" + obj.focus[i] + "</p>";
+        }
+        let divContent = "<div class = \"group-description\">" +
+            "<p>" + obj.name + "</p>" +
+            "<p>Led by " + counselor.name + ", " + counselor.license + "</p>" +
+            (obj.recommended ? "<p class = \"recommended\">Recommended</p>":"") +
+            "<div class = \"group-info\">" +
+              "<div>" +
+                "<p><i class = \"material-icons\">calendar_today</i>Meets " + (obj.meetWeekly ? "weekly":"biweekly") + " " + obj.meetDay + " from " + obj.meetTime + "</p>" +
+                "<p><i class = \"material-icons\">lock_open</i>" + (obj.closed ? "Closed":"Open") + " group</p>" +
+                "<p><i class = \"material-icons\">people</i>" + obj.size + " people</p>" +
+              "</div>" +
+              "<div class = \"group-focus\"><p>Focus:</p>" + focusDiv + "</div>" +
+            "</div>" +
+            "<p>" + obj.description + "</p>" +
+          "</div>" +
+          "<div class = \"buttons\">" +
+            "<button class = \"sendRequest accountButton " + (requested || obj.closed ? "grayedout":"") + "\">" + (requested ? "Sent":"Join") + "</button>" +
+          "</div>";
+        newDiv.innerHTML = divContent;
+        explorePages[2].appendChild(newDiv);
+        if(obj.recommended){
+          let copy = newDiv.cloneNode(true);
+          explorePages[0].appendChild(copy);
+        }
+      }
+      function createEventDiv(obj, signedUp){
+        let newDiv = document.createElement("div");
+        newDiv.className = "listing event";
+        let divContent = "<div class = \"imgWrapper\">" +
+            "<img src = \"" + obj.img + "\">" +
+          "</div>" +
+          "<div class = \"event-description\">" +
+            "<p>" + obj.title + "</p>" +
+            "<p>" + obj.leader + "</p>" +
+            "<p class = \"event-date\"><i class = \"material-icons\">calendar_today</i>" + obj.date + "<span class = \"event-time\">" + obj.time + "</p>" +
+            "<p>" + obj.description + "</p>" +
+            "<button class = \"sendRequest accountButton" + (signedUp ? "grayedout":"") + "\">" + (signedUp ? "Signed up":"Sign Up") + "</button>" +
+          "</div>"
+        newDiv.innerHTML = divContent;
+        explorePages[3].appendChild(newDiv);
+      }
+      for(i in counselors){
+        createCounselorDiv(counselors[i], false, i);
+      }
+      for(let i = 0; i < groups.length; i++){
+        createGroupDiv(groups[i], false, i);
+      }
+      for(let i = 0; i < events.length; i++){
+        createEventDiv(events[i], false);
+      }
+
+      //setting up explore page changing
+      const exploreTabs = document.getElementById("exploreTabs").getElementsByTagName("div");
+      const filterSpanText = document.getElementById("exploreFilter");
+      const filterConts = document.getElementsByClassName("filter-container");
+      let curPage = 0;
+      let prevPage = 0;
+      let createTabClickFunc = function(ind){
+        const tabTarg = exploreTabs[ind];
+        const filterTarg = (ind === 1 || ind === 2) ? filterConts[ind - 1]:null;
+        const pageTarg = explorePages[ind];
+        const index = ind;
+        return function(){
+          //updating previous and current pages
+          prevPage = curPage;
+          explorePages[prevPage].style.display = "none";
+          curPage = index;
+          pageTarg.style.display = "block";
+          
+          //updating explore tabs
+          exploreTabs[prevPage].className = "";
+          tabTarg.className = "active";
+
+          //updating filters
+          for(var i = 0; i < filterConts.length; i++){
+            filterConts[i].style.display = "none";
+          }
+          if(filterTarg === null){
+            filterSpanText.style.display = "none";
+          }
+          else {
+            filterTarg.style.display = "inline";
+            filterSpanText.style.display = "inline";
+          }
+        }
+      }
+      for(let i = 0; i < exploreTabs.length; i++){
+        let clickFunc = createTabClickFunc(i);
+        exploreTabs[i].addEventListener("click", clickFunc);
+      }
+      //initial setup of hiding all pages except current one
+      for(let i = 0; i < explorePages.length; i++){
+        if(curPage !== i){
+          explorePages[i].style.display = "none";
+        }
+        if(i < filterConts.length){
+          filterConts[i].style.display = "none";
+        }
+      }
+      filterSpanText.style.display = "none";
+
+      //setting up search + filtering
+      const searchGo = document.getElementById("exploreGo");
+      let handleSearch = (function(){
+        //search bar stuff
+        const searchBar = document.getElementById("exploreSearch");
+        function applySearch(div){
+          if(div.textContent.toLowerCase().indexOf(searchBar.value) === -1){
+            div.dataset.hide = "true";
+          }
+        }
+        const noResultsDiv = document.getElementById("noSearchResults");
+
+        //function to filter based on a function
+        function checkFilter(curEl, curObj, filtersForm, checkFunc){
+          //skip if it's already hidden
+          if(curEl.dataset.hide === "true"){
+            return;
+          }
+
+          //otherwise, apply filters
+          let checkList = filtersForm.getElementsByTagName("input");
+          let show = checkFunc(curObj, checkList, curEl);
+
+          //check if it should be hidden or not
+          if(!show) {
+            curEl.dataset.hide = "true";
+          }
+        }
+        let meetTimes = [0.75, 1, 1.5, 2]; //for filtering by groups meeting times
+
+        //actual function on click
+        return function(){
+          let curPageEl = explorePages[curPage];
+          let allDivs = curPageEl.getElementsByClassName("listing");
+
+          //setting up filtering
+          let filterDiv = (curPage === 1 || curPage === 2) ? filterConts[curPage - 1]:null;
+          let filters = filterDiv ? filterDiv.getElementsByClassName("filter"):null;
+
+          //no results or not
+          let noResults = true;
+
+          //handling counselors
+          if(curPage === 1){
+            for(let i = 0; i < allDivs.length; i++){
+              let curEl = allDivs[i];
+              let curObj = counselors[Object.keys(counselors)[i]];
+              curEl.dataset.hide = "false";
+
+              //use search terms
+              applySearch(curEl);
+
+              //checking license
+              checkFilter(curEl, curObj, filters[0].getElementsByTagName("form")[0], function(curObj, checkList){
+                return document.getElementById(curObj.license).checked;
+              });
+
+              //checking focus
+              checkFilter(curEl, curObj, filters[1].getElementsByTagName("form")[0], function(curObj, checkList){
+                //loop through focus, and then loop through list of possible focuses - if one is checked and matches the focus text, include this group
+                for(let j = 0; j < curObj.focus.length; j++){
+                  for(let k = 0; k < checkList.length; k++){
+                    if(checkList[k].checked && checkList[k].nextElementSibling.textContent.toLowerCase() === curObj.focus[j].toLowerCase()){
+                      return true;
+                    }
+                  }
+                }
+                return false;
+              });
+
+              //hiding or not hiding based on the dataset
+              if(curEl.dataset.hide === "true"){
+                curEl.style.display = "none";
+              }
+              else {
+                curEl.style.display = "flex";
+                noResults = false;
+              }
+            }
+          }
+          
+          //handling groups
+          else if(curPage === 2){
+            for(let i = 0; i < allDivs.length; i++){
+              let curEl = allDivs[i];
+              let curObj = groups[parseFloat(curEl.dataset.index)];
+              curEl.dataset.hide = "false";
+
+              //use search terms
+              applySearch(curEl);
+
+              //checking focus
+              checkFilter(curEl, curObj, filters[0].getElementsByTagName("form")[0], function(curObj, checkList){
+                //loop through focus, and then loop through list of possible focuses - if one is checked and matches the focus text, include this group
+                for(let j = 0; j < curObj.focus.length; j++){
+                  for(let k = 0; k < checkList.length; k++){
+                    if(checkList[k].checked && checkList[k].nextElementSibling.textContent.toLowerCase() === curObj.focus[j].toLowerCase()){
+                      return true;
+                    }
+                  }
+                }
+                return false;
+              });
+
+              //checking meetings
+              checkFilter(curEl, curObj, filters[1].getElementsByTagName("form")[0], function(curObj, checkList){
+                //meeting weekly/biweekly check
+                if(curObj.meetWeekly && !checkList[0].checked){
+                  return false;
+                }
+                else if(!curObj.meetWeekly && !checkList[1].checked){
+                  return false;
+                }
+
+                //meeting length check
+                if(!checkList[meetTimes.indexOf(curObj.meetLength) + 2].checked){
+                  return false;
+                }
+                return true;
+              });
+
+              //checking type
+              checkFilter(curEl, curObj, filters[2].getElementsByTagName("form")[0], function(curObj, checkList){
+                //if open, first option must be checked
+                if(!curObj.closed && !checkList[0].checked){
+                  return false;
+                }
+                //if closed, second option must be checked
+                else if(curObj.closed && !checkList[1].checked){
+                  return false;
+                }
+                return true;
+              });
+
+              //checking size
+              checkFilter(curEl, curObj, document.getElementById("groupSize"), function(curObj, checkList, curEl){
+                if(curObj.size >= parseFloat(checkList[0].value) && curObj.size <= parseFloat(checkList[1].value)){
+                  return true;
+                }
+                return false;
+              });
+
+              //hiding or not hiding based on the dataset
+              if(curEl.dataset.hide === "true"){
+                curEl.style.display = "none";
+              }
+              else {
+                curEl.style.display = "flex";
+                noResults = false;
+              }
+            }
+          }
+
+          //handling everything else
+          else {
+            for(let i = 0; i < allDivs.length; i++){
+              let curEl = allDivs[i];
+              curEl.dataset.hide = "false";
+              applySearch(curEl);
+              if(curEl.dataset.hide === "true"){
+                curEl.style.display = "none";
+              }
+              else {
+                curEl.style.display = "flex";
+                noResults = false;
+              }
+            }
+          }
+
+          //handling no results
+          if(noResults){
+            noResultsDiv.style.display = "block";
+          }
+          else {
+            noResultsDiv.style.display = "none";
+          }
+        }
+      })();
+      searchGo.addEventListener("click", handleSearch);
     </script>
   </body>
 </html>
