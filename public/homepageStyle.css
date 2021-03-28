@@ -1,4 +1,14 @@
 /*homepage title div styling*/
+@keyframes headingOpen {
+  from {
+    opacity: 0;
+    transform: translateY(50%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
 #titleHome {
   position: relative;
   width: 100%;
@@ -19,11 +29,12 @@
 }
 #titleHome h1 {
   position: relative;
-  font-size: 4em;
+  font-size: 5.5em;
   margin: 0;
-  padding: 1em 0.5em;
+  padding: 0.5em;
   display: inline;
   align-self: center;
+  animation: headingOpen 1s ease forwards;
 }
 #titleHome::after {
   display: block;
@@ -33,7 +44,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.3);
   z-index: 0;
 }
 @media (max-width: 30em) {
@@ -41,26 +52,6 @@
     font-size: 2em;
   }
 }
-/* Potential title styling, still working it out
-@media (min-width: 60em) and (min-height: 50em) {
-  #titleHome h1::after, #titleHome h1::before {
-    position: absolute;
-    content: "";
-    display: block;
-    width: 50%;
-    height: 50%;
-    border-width: 0.1em 0 0 0.1em;
-    border-color: white;
-    border-style: solid;
-    top: -75%;
-    left: -50%;
-  }
-  #titleHome h1::after {
-    border-width: 0 0.1em 0.1em 0;
-    top: 125%;
-    left: 100%;
-  }
-}*/
 
 /*catchphrase after title screen*/
 #catchphrase {
