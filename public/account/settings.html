@@ -1,0 +1,158 @@
+id="symp"<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Account</title>
+    <link rel = "icon" href = "../favicon.ico"/>
+    <link href="../style.css" rel="stylesheet" type="text/css"/>
+    <link href="accountPageStyle.css" rel="stylesheet" type="text/css"/>
+    <link href="settings.css" rel="stylesheet" type="text/css"/>
+  </head>
+  <body>
+    <!--navigation bar-->
+    <nav class = "navbar account-topNav scrolledDown">
+      <!--company name to display on mobile outside of menu-->
+      <span class = "navName nav-backup"><a href = "../index.html">KatKure</a></span>
+
+      <!--links-->
+      <div class = "navbar-collapse">
+        <ul>
+          <li><span class = "navName"><a href = "../index.html">KatKure</a></span></li>
+          <li><a href = "../index.html">Home</a></li>
+          <li><a class = "dropdown-top">About</a>
+            <div>
+              <ul class = "dropdown">
+                <li><a href = "../about.html">Company</a></li>
+                <li><a href = "../about-webpage.html">This page</a></li>
+              </ul>
+            </div>
+          </li>
+          <li><a class = "dropdown-top">Products</a>
+            <div>
+              <ul class = "dropdown">
+                <li><a href = "../services.html">Platform</a></li>
+                <li><a href = "../products.html">Shop</a></li>
+                <li><a href = "../cart.html">Cart</a></li>
+              </ul>
+            </div>
+          </li>
+          <li><a href = "../news/index.html">News</a></li>
+          <li><a href = "../faq.html">FAQs</a></li>
+          <li class = "accountLink"><a class = "dropdown-top loggedIn"><i class = "material-icons">account_circle</i>Jane Doe</a>
+            <div>
+              <ul class = "dropdown">
+                <li class = "nav-active"><a href = "dashboard.html">Dashboard</a></li>
+                <li><a href = "../index.html">Log Out</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!--menu icon for mobile display-->
+      <i class = "material-icons" id = "navMenu">menu</i>
+    </nav>
+
+    <!--side nav with account navigation-->
+    <nav class = "sidebar">
+      <ul>
+        <li><a href = "dashboard.html"><i class = "material-icons">space_dashboard</i><span>Dashboard</span></a></li>
+        <li><a href = "appointments.html"><i class = "material-icons">date_range</i><span>Appointments</span></a></li>
+        <li><a href = "conversations.html"><i class = "material-icons">question_answer</i><span>Conversations</span></a></li>
+        <li><a href = "explore.html"><i class = "material-icons">explore</i><span>Explore</span></a></li>
+        <li class = "nav-active"><a href = "settings.html"><i class = "material-icons">manage_accounts</i><span>Account</span></a></li>
+        <li><a class = "log-out-button"><i class = "material-icons">logout</i><span>Log out</span></a></li>
+      </ul>
+    </nav>
+
+    <!--content-->
+    <div class = "account-content">
+      <div class = "pageHeading">
+        <h1>Account Settings</h1>
+      </div>
+
+      <div id = "dashboard-container">
+        <div class = "dashboard-column">
+          <div class="dashboard-card">
+            <!--<div class="settings-info">
+              <img class="stuf" id="pfp" src="../media/jane-pfp.png" height="100">
+              <h1 class="stuf" id="settings-name">Jane Doe</h1>
+              <h5>Email</h5>
+            </div>-->
+            <div class = "account-info">
+              <img src = "../media/jane-pfp.png"/>
+              <div>
+                <p class = "account-name">Jane Doe</p>
+                <p class = "account-email">janedoe@gmail.com</p>
+              </div>
+            </div>
+          </div>
+          <div class="dashboard-card">
+            <h2>Bio</h2>
+            <p>What's up, my name is Jane! I'm excited to work with KatKure! I enjoy playing soccer and tennis
+             in my free time. I also love to read thriller books, especially Stephen King. I am always free for a
+           conversation over tea, or I guess now it would be over Zoom. </p>
+          </div>
+        </div>
+
+        <div class = "dashboard-column left">
+          <div class = "dashboard-column">
+            <div class="dashboard-card">
+              <h4>Notes</h4>
+              <ul>
+                <li>Started KatKure October 2020</li>
+                <li>Previously had opoid addiction</li>
+                <li>Nausea</li>
+                <li>Sweating</li>
+                <li>Anxiety</li>
+              </ul>
+              <br>
+              <button id="settings-button">Add Symptoms</button>
+              <div id="myModal" class="modal">
+                <div id="modal-content">
+                  <span class="close">&times;</span>
+                  <form>
+                    <input type="checkbox" id="symp1" name="symp1" value="appetite">
+                    <label for="symp1"> Changes in appetite</label><br>
+
+                    <input type="checkbox" id="symp2" name="symp2" value="mood">
+                    <label for="symp2"> Changes in mood</label><br>
+
+                    <input type="checkbox" id="symp3" name="symp3" value="congestion">
+                    <label for="symp3"> Congestion</label><br>
+
+                    <input type="checkbox" id="symp4" name="symp4" value="nausea" checked>
+                    <label for="symp4"> Nausea</label><br>
+
+                    <input type="checkbox" id="symp5" name="symp5" value="vomiting">
+                    <label for="symp5"> Vomiting</label><br>
+
+                    <input type="checkbox" id="symp6" name="symp6" value="sweating" checked>
+                    <label for="symp6"> Sweating</label><br>
+
+                    <input type="checkbox" id="symp7" name="symp7" value="anxiety" checked>
+                    <label for="symp7"> Anxiety</label><br>
+
+                    <input type="checkbox" id="symp8" name="symp8" value="tremors">
+                    <label for="symp8"> Tremors</label><br><br>
+
+                    <button id="settings-button" type="button" onClick="saveInfo()">Submit</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer class="footer account-footer">
+        <div class="footer-text">Copyright KatKure 2021 <i class = "material-icons">copyright</i></div>
+      </footer>
+    </div>
+
+    <script src = "../script.js"></script>
+    <script src = "settings.js"></script>
+
+  </body>
+</html>
