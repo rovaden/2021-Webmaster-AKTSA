@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Explore</title>
+    <link rel = "icon" href = "../favicon.ico"/>
+    <link href="../style.css" rel="stylesheet" type="text/css"/>
+    <link href="accountPageStyle.css" rel="stylesheet" type="text/css"/>
+  </head>
+  <body>
+    <!--navigation bar-->
+    <nav class = "navbar account-topNav scrolledDown">
+      <!--company name to display on mobile outside of menu-->
+      <span class = "navName nav-backup"><a href = "../index.html">KatKure</a></span>
+      
+      <!--links-->
+      <div class = "navbar-collapse">
+        <ul>
+          <li><span class = "navName"><a href = "../index.html">KatKure</a></span></li>
+          <li><a href = "../index.html">Home</a></li>
+          <li><a class = "dropdown-top">About</a>
+            <div>
+              <ul class = "dropdown">
+                <li><a href = "../about.html">Company</a></li>
+                <li><a href = "../about-webpage.html">This page</a></li>
+              </ul>
+            </div>
+          </li>
+          <li><a class = "dropdown-top">Products</a>
+            <div>
+              <ul class = "dropdown">
+                <li><a href = "../services.html">Platform</a></li>
+                <li><a href = "../products.html">Shop</a></li>
+                <li><a href = "../cart.html">Cart</a></li>
+              </ul>
+            </div>
+          </li>
+          <li><a href = "../news/index.html">News</a></li>
+          <li><a href = "../faq.html">FAQs</a></li>
+          <li class = "accountLink"><a class = "dropdown-top loggedIn"><i class = "material-icons">account_circle</i>Jane Doe</a>
+            <div>
+              <ul class = "dropdown">
+                <li class = "nav-active"><a href = "dashboard.html">Dashboard</a></li>
+                <li><a href = "../index.html">Log Out</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!--menu icon for mobile display-->
+      <i class = "material-icons" id = "navMenu">menu</i>
+    </nav>
+
+    <!--side nav with account navigation-->
+    <nav class = "sidebar">
+      <ul>
+        <li><a href = "dashboard.html"><i class = "material-icons">space_dashboard</i><span>Dashboard</span></a></li>
+        <li><a href = "appointments.html"><i class = "material-icons">date_range</i><span>Appointments</span></a></li>
+        <li><a href = "conversations.html"><i class = "material-icons">question_answer</i><span>Conversations</span></a></li>
+        <li class = "nav-active"><a href = "explore.html"><i class = "material-icons">explore</i><span>Explore</span></a></li>
+        <li><a href = "settings.html"><i class = "material-icons">manage_accounts</i><span>Account</span></a></li>
+        <li><a class = "log-out-button"><i class = "material-icons">logout</i><span>Log out</span></a></li>
+      </ul>
+    </nav>
+
+    <div class = "account-content">
+      <div class = "pageHeading">
+        <h1>Explore</h1>
+      </div>
+
+      <!--search form-->
+      <div id = "exploreSearchForm">
+        <div>
+          <input type = "text" placeholder = "Search" id = "exploreSearch"/>
+          <i class = "material-icons">search</i>
+        </div>
+        <div>
+          <div>
+            <span id = "exploreFilter">Filters: </span>
+            <!--filtering doctors-->
+            <div class = "filter-container" data-for = "doctor">
+              <!--license type-->
+              <div class = "filter">
+                <span class = "filter-title">License</span>
+                <form>
+                  <div class = "checkLi">
+                    <input type = "checkbox" id = "LMHC" checked = "true"/>
+                    <label for = "LMHC">LMHC</label>
+                  </div>
+                  <div class = "checkLi">
+                    <input type = "checkbox" id = "LPC" checked = "true"/>
+                    <label for = "LPC">LPC</label>
+                  </div>
+                  <div class = "checkLi">
+                    <input type = "checkbox" id = "LCSW" checked = "true"/>
+                    <label for = "LCSW">LCSW</label>
+                  </div>
+                  <div class = "checkLi">
+                    <input type = "checkbox" id = "psych" checked = "true"/>
+                    <label for = "psych">PsyD</label>
+                  </div>
+                </form>
+              </div>
+              <!--focus of doctor-->
+              <div class = "filter" style = "min-width: 10em">
+                <span class = "filter-title">Focus</span>
+                <form>
+                  <div class = "checkLi">
+                    <input type = "checkbox" id = "subAbuse" checked = "true"/>
+                    <label for = "subAbuse">Substance abuse</label>
+                  </div>
+                  <div class = "checkLi">
+                    <input type = "checkbox" id = "recovery" checked = "true"/>
+                    <label for = "recovery">Recovery</label>
+                  </div>
+                  <div class = "checkLi">
+                    <input type = "checkbox" id = "moodDis" checked = "true"/>
+                    <label for = "moodDis">Mood disorders</label>
+                  </div>
+                  <div class = "checkLi">
+                    <input type = "checkbox" id = "anxietyDis" checked = "true"/>
+                    <label for = "anxietyDis">Anxiety disorders</label><br>
+                  </div>
+                  <div class = "checkLi">
+                    <input type = "checkbox" id = "personDis" checked = "true"/>
+                    <label for = "personDis">Personality disorders</label>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <!--filtering groups-->
+            <div class = "filter-container" data-for = "group">
+              <!--focus-->
+              <div class = "filter" style = "min-width: 10em">
+                <span class = "filter-title">Focus</span>
+                <form>
+                  <div class = "checkLi">
+                    <input type = "checkbox" id = "subAbuse" checked = "true"/>
+                    <label for = "subAbuse">Substance abuse</label>
+                  </div>
+                  <div class = "checkLi">
+                    <input type = "checkbox" id = "moodDis" checked = "true"/>
+                    <label for = "moodDis">Depression</label>
+                  </div>
+                  <div class = "checkLi">
+                    <input type = "checkbox" id = "anxietyDis" checked = "true"/>
+                    <label for = "anxietyDis">Anxiety</label><br>
+                  </div>
+                  <div class = "checkLi">
+                    <input type = "checkbox" id = "personDis" checked = "true"/>
+                    <label for = "personDis">Self-Improvement</label>
+                  </div>
+                </form>
+              </div>
+              <!--meeting frequency-->
+              <div class = "filter" style = "min-width: 11em">
+                <span class = "filter-title">Meetings</span>
+                <form>
+                  <label>Meeting Frequency</label>
+                  <div class = "checkLi">
+                    <input type = "checkbox" id = "weekly" checked = "true"/>
+                    <label for = "weekly">Weekly</label>
+                  </div>
+                  <div class = "checkLi">
+                    <input type = "checkbox" id = "biweekly" checked = "true"/>
+                    <label for = "biweekly">Biweekly</label>
+                  </div>
+                  <label>Meeting Length</label>
+                  <div class = "checkLi">
+                    <input type = "checkbox" id = "45min" checked = "true"/>
+                    <label for = "45min">45 minutes</label>
+                  </div>
+                  <div class = "checkLi">
+                    <input type = "checkbox" id = "1hr" checked = "true"/>
+                    <label for = "1hr">1 hour</label>
+                  </div>
+                  <div class = "checkLi">
+                    <input type = "checkbox" id = "1-halfhr" checked = "true"/>
+                    <label for = "1-halfhr">1.5 hours</label>
+                  </div>
+                  <div class = "checkLi">
+                    <input type = "checkbox" id = "2hr" checked = "true"/>
+                    <label for = "2hr">2 hours</label>
+                  </div>
+                </form>
+              </div>
+              <!--open/closed group-->
+              <div class = "filter">
+                <span class = "filter-title">Type</span>
+                <form>
+                  <div class = "checkLi">
+                    <input type = "checkbox" id = "openGroup" checked = "true"/>
+                    <label for = "openGroup">Open</label>
+                  </div>
+                  <div class = "checkLi">
+                    <input type = "checkbox" id = "closedGroup" checked = "true"/>
+                    <label for = "closedGroup">Closed</label>
+                  </div>
+                </form>
+              </div>
+              <!--group size-->
+              <div id = "groupSize">
+                <span class = "filter-title">Size: </span>
+                <form>
+                  <input type = "number" min = "5" max = "15" id = "groupMin"/>
+                  <label for = "groupMax">to</label>
+                  <input type = "number" min = "5" max = "15" id = "groupMax"/>
+                </form>
+              </div>
+            </div>
+            <button id = "exploreGo" class = "accountButton">Search</button>
+          </div>
+        </div>
+      </div>
+
+      <!--content-->
+      <div id = "exploreContent">
+        <!--tabs-->
+        <div id = "exploreTabs">
+          <div class = "active">
+            <i class = "material-icons">star</i>
+            <p>Recommended</p>
+          </div>
+          <div>
+            <i class = "material-icons">person</i>
+            <p>Counselors</p>
+          </div>
+          <div>
+            <i class = "material-icons">groups</i>
+            <p>Groups</p>
+          </div>
+          <div>
+            <i class = "material-icons">celebration</i>
+            <p>Events</p>
+          </div>
+        </div>
+
+        <!--recommended-->
+        <div class = "explorePage">
+          <div class = "listing counselor recommended">
+            <img src = "../media/testimonial_jane.png"/>
+            <div class = "counselor-description">
+              <p>Alina Miller</p>
+              <p>License: LMHC</p>
+              <p class = "recommended">Recommended</p>
+              <p>Insert description here...Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tempor, tortor in bibendum egestas, metus elit mattis felis, eget tempor justo nibh quis sem. Praesent auctor felis et sapien venenatis fermentum. Fusce id auctor urna. Nulla semper metus felis, id placerat odio vulputate eget.</p>
+              <div class = "buttons">
+                <button class = "sendRequest grayedout accountButton">Sent</button>
+              </div>
+            </div>
+          </div>
+          <div class = "listing counselor recommended">
+            <img src = "../media/testimonial_leia.png"/>
+            <div class = "counselor-description">
+              <p>Another Name</p>
+              <p>License: LMHC</p>
+              <p class = "recommended">Recommended</p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tempor, tortor in bibendum egestas, metus elit mattis felis, eget tempor justo nibh quis sem. Praesent auctor felis et sapien venenatis fermentum. Fusce id auctor urna. Nulla semper metus felis, id placerat odio vulputate eget.</p>
+              <div class = "buttons">
+                <button class = "sendRequest accountButton">Send Request</button>
+                <button class = "accountButton outline">Message</button>
+              </div>
+            </div>
+          </div>
+
+          <!--recommended groups-->
+          <div class = "listing group recommended">
+            <div class = "group-description">
+              <p>Recovering from Addiction Group</p>
+              <p>Led by Hazel Jones, LHMC</p>
+              <p class = "recommended">Recommended</p>
+              <div class = "group-info">
+                <div>
+                  <p><i class = "material-icons">calendar_today</i>Meets: Wednesdays from 3:00 - 4:00 PM</p>
+                  <p><i class = "material-icons">lock_open</i>Closed group</p>
+                </div>
+                <div class = "group-focus">
+                  <p>Focus:</p>
+                  <p class = "focus">Focus</p>
+                  <p class = "focus">Self-improvement</p>
+                </div>
+              </div>
+              <p>Insert description here...Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tempor, tortor in bibendum egestas, metus elit mattis felis, eget tempor justo nibh quis sem. Praesent auctor felis et sapien venenatis fermentum. Fusce id auctor urna. Nulla semper metus felis, id placerat odio vulputate eget.</p>
+            </div>
+            <div class = "buttons">
+              <button class = "sendRequest grayedout accountButton">Sent</button>
+            </div>
+          </div>
+          <div class = "listing group recommended">
+            <div class = "group-description">
+              <p>Title of Group</p>
+              <p>Led by Another Name</p>
+              <p class = "recommended">Recommended</p>
+              <div class = "group-info">
+                <div>
+                  <p><i class = "material-icons">calendar_today</i>Meets: Saturdays from 10:00 - 11:00 AM</p>
+                  <p><i class = "material-icons">lock_open</i>Open group</p>
+                </div>
+                <div class = "group-focus">
+                  <p>Focus:</p>
+                  <p class = "focus">Focus</p>
+                  <p class = "focus">Self-improvement</p>
+                </div>
+              </div>
+              <p>Insert description here...Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tempor, tortor in bibendum egestas, metus elit mattis felis, eget tempor justo nibh quis sem. Praesent auctor felis et sapien venenatis fermentum. Fusce id auctor urna. Nulla semper metus felis, id placerat odio vulputate eget.</p>
+            </div>
+            <div class = "buttons">
+              <button class = "sendRequest accountButton">Join</button>
+            </div>
+          </div>
+        </div>
+
+        <!--counselors-->
+        <div class = "explorePage"></div>
+
+        <!--groups-->
+        <div class = "explorePage"></div>
+
+        <!--events-->
+        <div class = "explorePage">
+          <div class = "listing event">
+            <div class = "imgWrapper">
+              <img src = "../media/herbal.jpg"/>
+            </div>
+            <div class = "event-description">
+              <p>Meditation: Event Title</p>
+              <p>Led by Some Person</p>
+              <p class = "event-date"><i class = "material-icons">calendar_today</i>March 20, 2021 <span class = "event-time">10:00 - 10:45 AM</span></p>
+              <p>Insert description here...Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tempor, tortor in bibendum egestas, metus elit mattis felis, eget tempor justo nibh quis sem. Praesent auctor felis et sapien venenatis fermentum. Fusce id auctor urna. Nulla semper metus felis, id placerat odio vulputate eget.</p>
+              <button class = "sendRequest accountButton">Sign Up</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--footer-->
+      <footer class = "footer account-footer">
+        <div class = "footer-text">Copyright KatKure 2021 <i class = "material-icons">copyright</i></div>
+      </footer>
+    </div>
+    <script src = "../script.js"></script>
+    <script>
+      //setting up filters' dropdowns
+      const filters = document.getElementsByClassName("filter");
+      let createFilterDropFunc = function(ind){
+        const target = filters[ind].getElementsByTagName("form")[0];
+        const parentEl = filters[ind];
+        let clicks = 0;
+        function handleTransitionEnd(){
+          target.style.display = "none";
+          target.removeEventListener("transitionend", handleTransitionEnd);
+        }
+        return function(){
+          clicks++;
+          if(clicks % 2 === 1){
+            target.style.display = "block";
+            window.setTimeout(function(){
+              target.style.opacity = "1";
+            }, 1);
+          }
+          else {
+            target.style.opacity = "0";
+            target.addEventListener("transitionend", handleTransitionEnd);
+          }
+          parentEl.classList.toggle("active");
+        }
+      }
+      for(let i = 0; i < filters.length; i++){
+        let filterDrop = filters[i].getElementsByClassName("filter-title")[0];
+        let clickFunc = createFilterDropFunc(i);
+        filterDrop.addEventListener("click", clickFunc);
+      }
+    </script>
+  </body>
+</html>
