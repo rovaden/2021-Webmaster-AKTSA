@@ -592,7 +592,7 @@ p.tip {
 
 /**APPOINTMENTS PAGE**/
 #appointment-container > div {
-    margin: 1em;
+    margin: 2em 1em;
 }
 #appointment-container button {
     padding: 0.65em 2.5em;

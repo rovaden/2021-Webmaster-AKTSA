@@ -5,7 +5,8 @@ const counselors = {
         img: "../media/testimonial_jane.png",
         focus: ["Substance abuse", "Recovery"],
         description: "Insert description here...Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tempor, tortor in bibendum egestas, metus elit mattis felis, eget tempor justo nibh quis sem. Praesent auctor felis et sapien venenatis fermentum. Fusce id auctor urna. Nulla semper metus felis, id placerat odio vulputate eget.",
-        recommended: true
+        recommended: true,
+        sent: true
     },
     "hazel": {
         name: "Hazel Jones",
@@ -36,7 +37,8 @@ const groups = [
         closed: true,
         size: 14,
         description: "Insert description here...Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tempor, tortor in bibendum egestas, metus elit mattis felis, eget tempor justo nibh quis sem. Praesent auctor felis et sapien venenatis fermentum. Fusce id auctor urna. Nulla semper metus felis, id placerat odio vulputate eget.",
-        recommended: true
+        recommended: true,
+        sent: true
     },
     {
         name: "Title of Group",
@@ -74,5 +76,14 @@ const events = [
         time: "10:00 - 10:45 AM",
         description: "Insert description here...Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tempor, tortor in bibendum egestas, metus elit mattis felis, eget tempor justo nibh quis sem. Praesent auctor felis et sapien venenatis fermentum. Fusce id auctor urna. Nulla semper metus felis, id placerat odio vulputate eget.",
         shortDescrip: "A talk on the basics of meditation"
+    },
+    {
+        title: "Another Event",
+        leader: "Sarah Parker",
+        img: "../media/herbal.jpg",
+        date: "11",
+        time: "4:00 - 5:00 PM",
+        description: "Insert description here...Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tempor, tortor in bibendum egestas, metus elit mattis felis, eget tempor justo nibh quis sem. Praesent auctor felis et sapien venenatis fermentum. Fusce id auctor urna. Nulla semper metus felis, id placerat odio vulputate eget.",
+        shortDescrip: "An opportunity to share your story"
     }
 ];

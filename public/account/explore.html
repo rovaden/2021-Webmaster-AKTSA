@@ -296,6 +296,13 @@
         filterDrop.addEventListener("click", clickFunc);
       }
 
+      //getting signed up data, if any
+      let hasReqData = localStorage.getItem("accountReq") !== null;
+      let reqData = hasReqData ? JSON.parse(localStorage.getItem("accountReq")):{ counselors: {}, groups: [], events: [] };
+      function saveReqs(){
+        localStorage.setItem("accountReq", JSON.stringify(reqData));
+      }
+
       //creating page content based on data
       const explorePages = document.getElementsByClassName("explorePage");
       function createCounselorDiv(obj, requested, ind){
@@ -309,7 +316,7 @@
             (obj.recommended ? "<p class = \"recommended\">Recommended</p>":"") +
             "<p>" + obj.description + "</p>" +
             "<div class = \"buttons\">" +
-              "<button class = \"sendRequest accountButton" + (requested ? "grayedout":"") + "\">" + (requested ? "Sent":"Send request") + "</button>" +
+              "<button class = \"sendRequest accountButton" + (requested ? " grayedout":"") + "\" data-for = \"" + ind + "\">" + (requested ? "Sent":"Send request") + "</button>" +
             "</div>" +
           "</div>"
         newDiv.innerHTML = divContent;
@@ -343,7 +350,7 @@
             "<p>" + obj.description + "</p>" +
           "</div>" +
           "<div class = \"buttons\">" +
-            "<button class = \"sendRequest accountButton " + (requested || obj.closed ? "grayedout":"") + "\">" + (requested ? "Sent":"Join") + "</button>" +
+            "<button class = \"sendGroupRequest accountButton " + (requested || obj.closed ? "grayedout":"") + "\" data-for = \"" + ind + "\">" + (requested ? "Sent":"Join") + "</button>" +
           "</div>";
         newDiv.innerHTML = divContent;
         explorePages[2].appendChild(newDiv);
@@ -352,7 +359,7 @@
           explorePages[0].appendChild(copy);
         }
       }
-      function createEventDiv(obj, signedUp){
+      function createEventDiv(obj, signedUp, ind){
         let newDiv = document.createElement("div");
         newDiv.className = "listing event";
         let newDate = addDays(curTime, parseFloat(obj.date));
@@ -364,19 +371,142 @@
             "<p>" + obj.leader + "</p>" +
             "<p class = \"event-date\"><i class = \"material-icons\">calendar_today</i>" + createFullMonthStr(newDate) + "<span class = \"event-time\">" + obj.time + "</p>" +
             "<p>" + obj.description + "</p>" +
-            "<button class = \"sendRequest accountButton" + (signedUp ? "grayedout":"") + "\">" + (signedUp ? "Signed up":"Sign Up") + "</button>" +
+            "<button class = \"signUpEvent accountButton" + (signedUp ? " grayedout":"") + "\" data-for = \"" + ind + "\">" + (signedUp ? "Signed up":"Sign Up") + "</button>" +
           "</div>"
         newDiv.innerHTML = divContent;
         explorePages[3].appendChild(newDiv);
       }
       for(i in counselors){
-        createCounselorDiv(counselors[i], false, i);
+        //setting up req data if not already done
+        if(!hasReqData){
+          reqData.counselors[i] = counselors[i].sent === true;
+        }
+        createCounselorDiv(counselors[i], reqData.counselors[i], i);
       }
       for(let i = 0; i < groups.length; i++){
-        createGroupDiv(groups[i], false, i);
+        //setting up req data if not already done
+        if(!hasReqData){
+          reqData.groups[i] = groups[i].sent === true;
+        }
+        createGroupDiv(groups[i], reqData.groups[i], i);
       }
       for(let i = 0; i < events.length; i++){
-        createEventDiv(events[i], false);
+        //setting up req data if not already done
+        if(!hasReqData){
+          reqData.events[i] = i === 0;
+        }
+        createEventDiv(events[i], reqData.events[i], i);
+      }
+      if(!hasReqData){
+        saveReqs();
+      }
+
+      //setting up appointments if they haven't already, to anticipate signing up for events
+      const hasAppt = localStorage.getItem("accountAppt") !== null;
+      let appointments = hasAppt ? JSON.parse(localStorage.getItem("accountAppt")):[];
+      function saveAppts(){
+        localStorage.setItem("accountAppt", JSON.stringify(appointments));
+      }
+      if(!hasAppt){
+        //create appointment object function
+        function createAppt(date, type, options){
+          let appt = {};
+          appt.date = date.toString();
+          if(type === "counselor"){
+            appt.person = "Alina Miller";
+            appt.personCred = "Counselor, LMHC";
+            appt.time = "2:00 - 3:00 PM";
+            appt.title = "Individual session";
+            appt.descrip = "Weekly counseling meeting";
+          }
+          else if(type === "group"){
+            appt.person = "Hazel Jones";
+            appt.personCred = "Leader, LMHC";
+            appt.time = "9:00 - 10:00 AM";
+            appt.title = "Group session";
+            appt.descrip = "Weekly session with a closed group";
+          }
+          else {
+            appt.person = options.person;
+            appt.personCred = "Speaker";
+            appt.time = options.time;
+            appt.title = options.title;
+            appt.descrip = options.descrip;
+            appt.eventIndex = options.index;
+          }
+          appt.type = type;
+          return appt;
+        }
+
+        //creating objects
+        for(let i = 0; i < 3; i++){
+          appointments.push(createAppt(1 + i * 7, "group"));
+          appointments.push(createAppt(3 + i * 7, "counselor"));
+        }
+
+        //creating event that we're signed up for
+        appointments.push(createAppt(5, "event", { person: "Taylor Peterson", time: "10:00 - 10:45 AM", title: "How to Meditate", descrip: "A talk on the basics of meditation", index: 0 }));
+
+        //sorting in terms of closest to furthest away in date
+        appointments.sort(function(a, b){
+          return a.date - b.date;
+        });
+
+        //save this
+        saveAppts();
+      }
+
+      //adding event listeners to send request/sign up buttons
+      const reqButtons = document.getElementsByClassName("sendRequest");
+      const groupReqButtons = document.getElementsByClassName("sendGroupRequest");
+      const eventSignUpButtons = document.getElementsByClassName("signUpEvent");
+      function createEventAppt(event, index){
+        appointments.push({
+          date: event.date,
+          person: event.leader,
+          personCred: "Speaker",
+          time: event.time,
+          title: event.title,
+          descrip: event.shortDescrip,
+          eventIndex: index,
+          type: "event"
+        });
+        saveAppts();
+      }
+      let createReqClickFunc = function(el, isCounselor, ind){
+        let buttonEl = el;
+        let index = ind;
+        let target = isCounselor ? reqData.counselors:reqData.groups;
+        return function(){
+          target[ind] = true;
+          buttonEl.className += " grayedout";
+          buttonEl.textContent = "Sent";
+          saveReqs();
+        }
+      }
+      let createSignUpClickFunc = function(el, ind){
+        let buttonEl = el;
+        let index = ind;
+        let event = events[parseFloat(ind)];
+        return function(){
+          reqData.events[index] = true;
+          buttonEl.className += " grayedout";
+          buttonEl.textContent = "Signed up";
+          saveReqs();
+          createEventAppt(event, index);
+        }
+      }
+      for(let i = 0; i < reqButtons.length; i++){
+        let clickFunc = createReqClickFunc(reqButtons[i], true, reqButtons[i].dataset.for);
+        reqButtons[i].addEventListener("click", clickFunc);
+      }
+      for(let i = 0; i < groupReqButtons.length; i++){
+        let clickFunc = createReqClickFunc(groupReqButtons[i], false, groupReqButtons[i].dataset.for);
+        groupReqButtons[i].addEventListener("click", clickFunc);
+      }
+      for(let i = 0; i < eventSignUpButtons.length; i++){
+        let clickFunc = createSignUpClickFunc(eventSignUpButtons[i], eventSignUpButtons[i].dataset.for);
+        eventSignUpButtons[i].addEventListener("click", clickFunc);
       }
 
       //setting up explore page changing

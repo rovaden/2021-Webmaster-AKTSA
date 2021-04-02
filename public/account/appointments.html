@@ -92,12 +92,10 @@
     <script>
       let hasAppt = localStorage.getItem("accountAppt") !== null;
       let appointments = hasAppt ? JSON.parse(localStorage.getItem("accountAppt")):[];
-      console.log(JSON.parse(localStorage.getItem("accountAppt")))
 
       //function for "saving" appointments to localStorage
       function saveAppts(){
         localStorage.setItem("accountAppt", JSON.stringify(appointments));
-        console.log("saved");
       }
 
       //creating appointments, if there hasn't been any already
@@ -126,6 +124,7 @@
             appt.time = options.time;
             appt.title = options.title;
             appt.descrip = options.descrip;
+            appt.eventIndex = options.index;
           }
           appt.type = type;
           return appt;
@@ -138,16 +137,16 @@
         }
 
         //creating event that we're signed up for
-        appointments.push(createAppt(5, "event", { person: "Taylor Peterson", time: "10:00 - 10:45 AM", title: "How to Meditate", descrip: "A talk on the basics of meditation"}));
-
-        //sorting in terms of closest to furthest away in date
-        appointments.sort(function(a, b){
-          return a.date - b.date;
-        });
+        appointments.push(createAppt(5, "event", { person: "Taylor Peterson", time: "10:00 - 10:45 AM", title: "How to Meditate", descrip: "A talk on the basics of meditation", index: 0 }));
 
         //save this
         saveAppts();
       }
+      
+      //sorting in terms of closest to furthest away in date
+      appointments.sort(function(a, b){
+        return a.date - b.date;
+      });
 
       //adding content
       const appointmentCont = document.getElementById("appointment-upcoming");
@@ -177,6 +176,39 @@
         createApptDiv(appointments[i]);
       }
 
+      //setting up event requests if it hasn't already been done (for event removal)
+      let hasReqData = localStorage.getItem("accountReq") !== null;
+      let reqData = {};
+      if(!hasReqData){
+        let newScript = document.createElement("script");
+        newScript.setAttribute("src", "exploreData.js");
+        newScript.onload = function(){
+          console.log("hi")
+          reqData = {
+            counselors: {},
+            groups: [],
+            events: []
+          };
+          for(let i in counselors){
+            reqData.counselors[i] = counselors[i].sent === true;
+          }
+          for(let i = 0; i < groups.length; i++){
+            reqData.groups[i] = groups[i].sent === true;
+          }
+          for(let i = 0; i < events.length; i++){
+            reqData.events[i] = i === 0;
+          }
+          localStorage.setItem("accountReq", JSON.stringify(reqData));
+        }
+        document.body.appendChild(newScript);
+      }
+      else {
+        reqData = JSON.parse(localStorage.getItem("accountReq"));
+      }
+      function saveReqs(){
+        localStorage.setItem("accountReq", JSON.stringify(reqData));
+      }
+
       //adding cancel functionality
       const popupMask = document.getElementById("popupMask");
       //removing appointment div function (with animation)
@@ -199,6 +231,12 @@
         //remove from appointments and save
         appointments.splice(appointments.indexOf(obj), 1);
         saveAppts();
+
+        //remove from events, if it's an event
+        if(obj.type === "event"){
+          reqData.events[obj.eventIndex] = false;
+          saveReqs();
+        }
 
         //close popup and remove appointments div on the page
         closePopup(target);

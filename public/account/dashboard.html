@@ -196,8 +196,45 @@
         for(let i = 0; i < appointments.length; i++){
           let apptDate = appointments[i].getElementsByClassName("appointment-date")[0];
           let actualDate = addDays(curTime, 2 * i + 1);
-          apptDate.textContent = createSlashStr(actualDate);
+          apptDate.textContent = createSlashStr(actualDate) + apptDate.textContent.substring(7, apptDate.textContent.length);
         }
+      }
+      else {
+        let appointmentsData = JSON.parse(localStorage.getItem("accountAppt"));
+        for(let i = 0; i < 3; i++){
+          let obj = appointmentsData[i];
+          //setting icon
+          appointments[i].getElementsByTagName("i")[0].textContent = obj.type === "counselor" ? "person":(obj.type === "group" ? "group":"self_improvement");
+          //setting other information
+          appointments[i].getElementsByClassName("appointment-title")[0].textContent = (obj.type === "event" ? "Live Event: ":"") + obj.title;
+          let apptDate = appointments[i].getElementsByClassName("appointment-date")[0];
+          apptDate.textContent = createSlashStr(addDays(curTime, parseFloat(obj.date))) + ", " + obj.time.split(" - ")[0];
+        }
+      }
+
+      //setting up event requests if they haven't already done so (preparing for appointments + explore pages)
+      let hasReqData = localStorage.getItem("accountReq") !== null;
+      if(!hasReqData){
+        let newScript = document.createElement("script");
+        newScript.setAttribute("src", "exploreData.js");
+        newScript.onload = function(){
+          let reqData = {
+            counselors: {},
+            groups: [],
+            events: []
+          };
+          for(let i in counselors){
+            reqData.counselors[i] = counselors[i].sent === true;
+          }
+          for(let i = 0; i < groups.length; i++){
+            reqData.groups[i] = groups[i].sent === true;
+          }
+          for(let i = 0; i < events.length; i++){
+            reqData.events[i] = i === 0;
+          }
+          localStorage.setItem("accountReq", JSON.stringify(reqData));
+        }
+        document.body.appendChild(newScript);
       }
     </script>
   </body>
