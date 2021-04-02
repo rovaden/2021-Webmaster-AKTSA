@@ -256,6 +256,9 @@
         </div>
       </div>
 
+      <!--alerts-->
+      <div id = "alerts"></div>
+
       <!--footer-->
       <footer class = "footer account-footer">
         <div class = "footer-text">Copyright KatKure 2021 <i class = "material-icons">copyright</i></div>
@@ -460,6 +463,40 @@
       const reqButtons = document.getElementsByClassName("sendRequest");
       const groupReqButtons = document.getElementsByClassName("sendGroupRequest");
       const eventSignUpButtons = document.getElementsByClassName("signUpEvent");
+      const alertDiv = document.getElementById("alerts");
+      function createAlert(message){
+        //creating div
+        let newDiv = document.createElement("div");
+        newDiv.className = "explore-alert";
+        newDiv.innerHTML = "<i class = \"material-icons\">check_circle_outline</i><p>" + message + "</p>";
+        let closeButton = document.createElement("span");
+        closeButton.className = "close-alert";
+        closeButton.innerHTML = "<i class = \"material-icons\">close</i>"
+        newDiv.appendChild(closeButton);
+        alertDiv.appendChild(newDiv);
+
+        //adding fade in animation (and automatically fading out if left alone)
+        window.setTimeout(function(){
+          newDiv.style.opacity = "1";
+          newDiv.addEventListener("transitionend", function(){
+            //fading out after 4 seconds of staying there
+            window.setTimeout(function(){
+              newDiv.style.opacity = "0";
+              newDiv.addEventListener("transitionend", function(){
+                alertDiv.removeChild(newDiv);
+              });
+            }, 4000);
+          });
+        }, 1);
+
+        //adding event listener to close it
+        closeButton.addEventListener("click", function(){
+          newDiv.style.opacity = "0";
+          newDiv.addEventListener("transitionend", function(){
+            alertDiv.removeChild(newDiv);
+          });
+        });
+      }
       function createEventAppt(event, index){
         appointments.push({
           date: event.date,
@@ -482,6 +519,7 @@
           buttonEl.className += " grayedout";
           buttonEl.textContent = "Sent";
           saveReqs();
+          createAlert("Request successfully sent!");
         }
       }
       let createSignUpClickFunc = function(el, ind){
@@ -494,6 +532,7 @@
           buttonEl.textContent = "Signed up";
           saveReqs();
           createEventAppt(event, index);
+          createAlert("Successfully signed up!");
         }
       }
       for(let i = 0; i < reqButtons.length; i++){
