@@ -262,6 +262,7 @@
       </footer>
     </div>
     <script src = "../script.js"></script>
+    <script src = "eventTimes.js"></script>
     <script src = "exploreData.js"></script>
     <script>
       //setting up filters' dropdowns
@@ -354,13 +355,14 @@
       function createEventDiv(obj, signedUp){
         let newDiv = document.createElement("div");
         newDiv.className = "listing event";
+        let newDate = addDays(curTime, parseFloat(obj.date));
         let divContent = "<div class = \"imgWrapper\">" +
             "<img src = \"" + obj.img + "\">" +
           "</div>" +
           "<div class = \"event-description\">" +
             "<p>" + obj.title + "</p>" +
             "<p>" + obj.leader + "</p>" +
-            "<p class = \"event-date\"><i class = \"material-icons\">calendar_today</i>" + obj.date + "<span class = \"event-time\">" + obj.time + "</p>" +
+            "<p class = \"event-date\"><i class = \"material-icons\">calendar_today</i>" + createFullMonthStr(newDate) + "<span class = \"event-time\">" + obj.time + "</p>" +
             "<p>" + obj.description + "</p>" +
             "<button class = \"sendRequest accountButton" + (signedUp ? "grayedout":"") + "\">" + (signedUp ? "Signed up":"Sign Up") + "</button>" +
           "</div>"

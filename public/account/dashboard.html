@@ -107,7 +107,7 @@
               <div class = "alert">
                 <i class = "material-icons">grading</i>
                 <div>
-                  <p class = "alert-date">3/12/21, 2:00 PM</p>
+                  <p class = "alert-date">Two days ago</p>
                   <p class = "alert-content">You have new recommendations to review! Check out the Explore tab for more.</p>
                 </div>
               </div>
@@ -186,5 +186,19 @@
       </footer>
     </div>
     <script src = "../script.js"></script>
+    <script src = "eventTimes.js"></script>
+    <script>
+      //setting up upcoming appointments
+      const apptCont = document.getElementById("dashboard-appointment-container");
+      const appointments = apptCont.getElementsByClassName("dashboard-appointment");
+      let hasAppt = localStorage.getItem("accountAppt") !== null;
+      if(!hasAppt){
+        for(let i = 0; i < appointments.length; i++){
+          let apptDate = appointments[i].getElementsByClassName("appointment-date")[0];
+          let actualDate = addDays(curTime, 2 * i + 1);
+          apptDate.textContent = createSlashStr(actualDate);
+        }
+      }
+    </script>
   </body>
 </html>

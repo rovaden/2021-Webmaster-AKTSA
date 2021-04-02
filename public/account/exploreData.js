@@ -70,7 +70,7 @@ const events = [
         title: "How to Meditate",
         leader: "Taylor Peterson",
         img: "../media/herbal.jpg",
-        date: "+5",
+        date: "5",
         time: "10:00 - 10:45 AM",
         description: "Insert description here...Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tempor, tortor in bibendum egestas, metus elit mattis felis, eget tempor justo nibh quis sem. Praesent auctor felis et sapien venenatis fermentum. Fusce id auctor urna. Nulla semper metus felis, id placerat odio vulputate eget.",
         shortDescrip: "A talk on the basics of meditation"
