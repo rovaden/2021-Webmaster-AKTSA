@@ -98,6 +98,31 @@
       <!--chat (right side)-->
       <div id = "chat-container">
         <!--conversations-->
+
+        <!--FORMAT, IMPORTANT!
+          ALL messages will have the "message" class. If you want to have a quick reply (without the little carrot on the side), make the class "message quickly-after"
+          ALWAYS set data-chat-from to either "you" or "other" depending on who the message is from
+
+          Example:
+          <div class = "message" data-chat-from = "you">
+            <img src = ""/> Image here, only add image if it's not a quick reply
+            
+            <div class = "chat-text">
+              Add text here using <p> tags
+            </div>
+          </div>
+
+          If you are doing stuff for the group chat and the message is from another person, add the name of the person it's from to the div like this:
+          <div class = "message" data-chat-from = "other" data-person = "Luke">...</div>
+          This will create a message div with the name "Luke" underneath it. Again, this is only necessary for the group chat (the second conversation)
+
+          If you want to create a time divider, add 
+          <div class = "time-divider">
+            <span>Month Day 2021</span>
+          </div>
+        -->
+
+        <!--chat with alina-->
         <div class = "conversation" data-for = "Alina">
           <div class = "conversation-back">
             <p class = "back-button"><i class = "material-icons">navigate_before</i> Back</p>
@@ -171,6 +196,7 @@
           </div>
         </div>
 
+        <!--group chat-->
         <div class = "conversation" data-for = "Group">
           <div class = "conversation-back">
             <p class = "back-button"><i class = "material-icons">navigate_before</i> Back</p>
@@ -224,6 +250,7 @@
           </div>
         </div>
 
+        <!--last chat with hazel-->
         <div class = "conversation" data-for = "Hazel">
           <div class = "conversation-back">
             <p class = "back-button"><i class = "material-icons">navigate_before</i> Back</p>
