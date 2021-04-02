@@ -70,67 +70,17 @@
         <h1>Appointments</h1>
       </div>
       <div id = "appointment-container">
-          <div id = "appointment-cont-heading">
-            <h2>Upcoming</h2>
-            <button id = "scheduleApp" class = "accountButton">Schedule</button>
-          </div>
-          <div id = "appointment-upcoming">
-            <div class = "appointment">
-              <p><span class = "appointment-date">Mar 14, 2021</span>
-              <span class = "appointment-time">9:00 - 10:00 AM</span></p>
-              <div class = "appointment-text">
-                <div class = "appointment-description">
-                  <p class = "appointment-title">Group session</p>
-                  <p>First meeting in a closed group meeting</p>
-                </div>
-                <div class = "appointment-person">
-                  <p class = "doctor-name">Hazel Jones</p>
-                  <p>Leader, LMHC</p>
-                </div>
-              </div>
-              <div class = "action-buttons">
-                <button class = "cancel">Cancel</button>
-                <button class = "meet">Meet</button>
-              </div>
-            </div>
-            <div class = "appointment">
-              <p><span class = "appointment-date">Mar 21, 2021</span>
-              <span class = "appointment-time">2:00 - 3:00 PM</span></p>
-              <div class = "appointment-text">
-                <div class = "appointment-description">
-                  <p class = "appointment-title">Individual session</p>
-                  <p>Weekly counseling meeting</p>
-                </div>
-                <div class = "appointment-person">
-                  <p class = "doctor-name">Alina Miller</p>
-                  <p>Counselor, LMHC</p>
-                </div>
-              </div>
-              <div class = "action-buttons">
-                <button class = "cancel">Cancel</button>
-                <button class = "meet">Meet</button>
-              </div>
-            </div>
-            <div class = "appointment">
-              <p><span class = "appointment-date">Mar 25, 2021</span>
-              <span class = "appointment-time">10:00 - 10:45 AM</span></p>
-              <div class = "appointment-text">
-                <div class = "appointment-description">
-                  <p class = "appointment-title">Live Event: How to Meditate</p>
-                  <p>A talk on the basics of meditation</p>
-                </div>
-                <div class = "appointment-person">
-                  <p class = "doctor-name">Taylor Peterson</p>
-                  <p>Speaker</p>
-                </div>
-              </div>
-              <div class = "action-buttons">
-                <button class = "cancel">Cancel</button>
-                <button class = "meet">Meet</button>
-              </div>
-            </div>
-          </div>
+        <!--heading-->
+        <div id = "appointment-cont-heading">
+          <h2>Upcoming</h2>
+          <button id = "scheduleApp" class = "accountButton">Schedule</button>
+        </div>
+
+        <!--upcoming appointments-->
+        <div id = "appointment-upcoming"></div>
       </div>
+
+      <div id = "popupMask"></div>
 
       <!--footer-->
       <footer class = "footer account-footer">
@@ -138,5 +88,186 @@
       </footer>
     </div>
     <script src = "../script.js"></script>
+    <script src = "eventTimes.js"></script>
+    <script>
+      let hasAppt = localStorage.getItem("accountAppt") !== null;
+      let appointments = hasAppt ? JSON.parse(localStorage.getItem("accountAppt")):[];
+      console.log(JSON.parse(localStorage.getItem("accountAppt")))
+
+      //function for "saving" appointments to localStorage
+      function saveAppts(){
+        localStorage.setItem("accountAppt", JSON.stringify(appointments));
+        console.log("saved");
+      }
+
+      //creating appointments, if there hasn't been any already
+      if(!hasAppt){
+        //create appointment object function
+        function createAppt(date, type, options){
+          let appt = {};
+          appt.date = date.toString();
+          if(type === "counselor"){
+            appt.person = "Alina Miller";
+            appt.personCred = "Counselor, LMHC";
+            appt.time = "2:00 - 3:00 PM";
+            appt.title = "Individual session";
+            appt.descrip = "Weekly counseling meeting";
+          }
+          else if(type === "group"){
+            appt.person = "Hazel Jones";
+            appt.personCred = "Leader, LMHC";
+            appt.time = "9:00 - 10:00 AM";
+            appt.title = "Group session";
+            appt.descrip = "Weekly session with a closed group";
+          }
+          else {
+            appt.person = options.person;
+            appt.personCred = "Speaker";
+            appt.time = options.time;
+            appt.title = options.title;
+            appt.descrip = options.descrip;
+          }
+          appt.type = type;
+          return appt;
+        }
+
+        //creating objects
+        for(let i = 0; i < 3; i++){
+          appointments.push(createAppt(1 + i * 7, "group"));
+          appointments.push(createAppt(3 + i * 7, "counselor"));
+        }
+
+        //creating event that we're signed up for
+        appointments.push(createAppt(5, "event", { person: "Taylor Peterson", time: "10:00 - 10:45 AM", title: "How to Meditate", descrip: "A talk on the basics of meditation"}));
+
+        //sorting in terms of closest to furthest away in date
+        appointments.sort(function(a, b){
+          return a.date - b.date;
+        });
+
+        //save this
+        saveAppts();
+      }
+
+      //adding content
+      const appointmentCont = document.getElementById("appointment-upcoming");
+      function createApptDiv(obj){
+        let newDiv = document.createElement("div");
+        newDiv.className = "appointment";
+        let dateObj = addDays(curTime, parseFloat(obj.date));
+        newDiv.innerHTML = "<p><span class = \"appointment-date\">" + createThreeMonthStr(dateObj) + "</span>" +
+          "<span class = \"appointment-time\">" + obj.time + "</span></p>" +
+          "<div class = \"appointment-text\">" +
+            "<div class = \"appointment-description\">" +
+              "<p class = \"appointment-title\">" + obj.title + "</p>" +
+              "<p>" + obj.descrip + "</p>" +
+            "</div>" +
+            "<div class = \"appointment-person\">" +
+              "<p class = \"doctor-name\">" + obj.person + "</p>" +
+              "<p>" + obj.personCred + "</p>" +
+            "</div>" +
+          "</div>" +
+          "<div class = \"action-buttons\">" +
+            "<button class = \"cancel\" data-for = \"" + appointments.indexOf(obj) + "\">Cancel</button>" +
+            "<button class = \"meet\">Meet</button>" +
+          "</div>";
+        appointmentCont.appendChild(newDiv);
+      }
+      for(let i = 0; i < appointments.length; i++){
+        createApptDiv(appointments[i]);
+      }
+
+      //adding cancel functionality
+      const popupMask = document.getElementById("popupMask");
+      //removing appointment div function (with animation)
+      function removeApptDiv(el){
+        el.style.maxHeight = el.scrollHeight;
+        if(el.nextElementSibling){
+          el.nextElementSibling.style.marginTop = "0";
+        }
+        window.setTimeout(function(){
+          el.style.maxHeight = "0";
+          el.style.padding = "0";
+        }, 1);
+        el.style.animation = "removeAppt 0.5s ease forwards";
+        el.addEventListener("animationend", function(){
+          el.nextElementSibling.style.marginTop = "2em";
+          appointmentCont.removeChild(el);
+        });
+      }
+      function cancelAppt(obj, target, apptDiv){
+        //remove from appointments and save
+        appointments.splice(appointments.indexOf(obj), 1);
+        saveAppts();
+
+        //close popup and remove appointments div on the page
+        closePopup(target);
+        removeApptDiv(apptDiv);
+      }
+      //opening and closing popup functions
+      function closePopup(target){
+        popupMask.style.opacity = "0";
+        target.style.opacity = "0";
+        window.setTimeout(function(){
+          popupMask.style.display = "none";
+          target.style.display = "none";
+        }, 500);
+      }
+      function openPopup(target){
+        popupMask.style.display = "block";
+        target.style.display = "block";
+        window.setTimeout(function(){
+          popupMask.style.opacity = "1";
+          target.style.opacity = "1";
+        }, 1);
+      }
+      //create popup functions + create click function for "cancel" button on homepage
+      function createPopup(ind, obj, apptDiv){
+        let newPop = document.createElement("div");
+        newPop.className = "popup";
+        newPop.innerHTML = "<i class = \"material-icons\">delete_forever</i><h2>Confirm</h2><p>Are you sure you want to cancel " + obj.title + " with " + obj.person + "?</p>";
+
+        //creating buttons
+        let newButtons = document.createElement("div");
+        newButtons.className = "buttons";
+        let continueButton = document.createElement("button");
+        continueButton.textContent = "Yes, cancel";
+        continueButton.className = "accountButton";
+        newButtons.appendChild(continueButton);
+
+        //cancel button
+        let cancelButton = document.createElement("button");
+        cancelButton.textContent = "No, go back";
+        cancelButton.className = "accountButton outline";
+        newButtons.appendChild(cancelButton);
+        newPop.appendChild(newButtons);
+        document.body.appendChild(newPop);
+
+        //adding event listeners
+        continueButton.addEventListener("click", function(e){
+          cancelAppt(obj, e.target.parentElement.parentElement, apptDiv);
+        });
+        cancelButton.addEventListener("click", function(e){
+          closePopup(e.target.parentElement.parentElement);
+        });
+
+        //return this popup
+        return newPop;
+      }
+      let createCancelClickFunc = function(ind, obj, apptDiv){
+        const popUp = createPopup(ind, obj, apptDiv);
+        return function(){
+          openPopup(popUp);
+        }
+      };
+
+      //putting it all together with the cancel button
+      const cancelButtons = document.getElementsByClassName("cancel");
+      for(let i = 0; i < cancelButtons.length; i++){
+        cancelButtons[i].dataset.index = i.toString();
+        let clickFunc = createCancelClickFunc(i, appointments[i], cancelButtons[i].parentElement.parentElement);
+        cancelButtons[i].addEventListener("click", clickFunc);
+      }
+    </script>
   </body>
 </html>

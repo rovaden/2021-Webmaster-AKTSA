@@ -405,7 +405,7 @@ footer.footer.account-footer {
     margin-top: 0;
     font-size: 0.9em;
 }
-@media (max-width: 80em) and (min-width: 65em) {
+@media (max-width: 80em) and (min-width: 65em), (max-width: 25em) {
     .connection {
         flex-direction: column;
         justify-content: center;
@@ -498,6 +498,11 @@ p.alert-date {
 p.alert-date + p {
     margin-top: 0.1em;
 }
+@media (max-width: 30em){
+    .alert {
+        flex-direction: column;
+    }
+}
 
 /*treatment plan overview*/
 #treatment-goal-arc {
@@ -569,6 +574,15 @@ p.alert-date + p {
         flex-grow: 1;
     }
 }
+@media (max-width: 25em){
+    #treatment-goal-arc {
+        max-width: 100%;
+        max-height: 100%;
+    }
+    #treatment-goal-arc svg {
+        display: none;
+    }
+}
 
 /*tip of the day*/
 p.tip {
@@ -594,6 +608,7 @@ p.tip {
 #appointment-container #appointment-cont-heading {
     position: relative;
     display: flex;
+    flex-wrap: wrap;
     align-items: flex-end;
 }
 #appointment-container #appointment-cont-heading h2 {
@@ -602,6 +617,14 @@ p.tip {
 }
 #scheduleApp {
     margin-left: auto;
+}
+@media (max-width: 40em){
+    #appointment-container #appointment-cont-heading {
+        display: block;
+    }
+    #scheduleApp {
+        margin-left: 0;
+    }
 }
 @media (min-width: 65em) {
     #appointment-container {
@@ -613,6 +636,11 @@ p.tip {
 #appointment-upcoming div.appointment {
     display: flex;
     align-items: center;
+    overflow-y: hidden;
+    opacity: 1;
+    max-height: none;
+    transform: scale(1);
+    transform-origin: center center;
     width: 100%;
     padding: 2em;
     padding: 2em calc(0.75em + 1vw);
@@ -621,6 +649,7 @@ p.tip {
     border-radius: 15px;
     color: gray;
     box-shadow: 0 0.3em 0.7em rgba(7, 55, 99, 0.15);
+    transition: 0.5s ease;
 }
 #appointment-upcoming div.appointment > * {
     padding: 0 0.75em;
@@ -712,6 +741,79 @@ p.tip {
 #appointment-upcoming div.action-buttons button.cancel:hover {
     background: rgb(199, 31, 31);
     color: white;
+}
+
+/*creating modal popup*/ 
+@keyframes removeAppt {
+    to {
+        opacity: 0;
+        transform: scale(0);
+        margin: 0 0;
+    }
+}
+#popupMask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 20;
+    opacity: 0;
+    display: none;
+    transition: 0.5s ease;
+}
+.popup {
+    width: 80%;
+    max-width: 35em;
+    text-align: center;
+    margin: 0;
+    padding: 2em;
+    background: white;
+    border-radius: 15px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 30;
+    opacity: 0;
+    display: none;
+    transition: 0.5s ease;
+}
+.popup i.material-icons { 
+    font-size: 4em;
+    color: rgb(7, 55, 99);
+}
+.popup h2 {
+    font-size: 2em;
+}
+.popup div.buttons {
+    margin-top: 2.5em;
+    text-align: center;
+}
+.popup div.buttons button {
+    margin: 0 0.5em;
+}
+@media (max-height: 30em) {
+    .popup {
+        padding-top: 1em;
+        padding-bottom: 1em;
+    }
+    .popup i.material-icons {
+        display: none;
+    }
+    .popup div.buttons {
+        margin-top: 0;
+    }
+}
+@media (max-width: 40em){
+    .popup i.material-icons {
+        display: none;
+    }
+    .popup div.buttons button {
+        display: block;
+        margin: 0.5em auto;
+    }
 }
 
 /*changing layout based on width*/
@@ -1471,6 +1573,7 @@ div.group.recommended div.group-description > p:first-of-type::after {
 /*groups styling*/
 .explorePage div.group {
     padding: 2em 4em;
+    padding: 2em calc(0.5em + 4vw);
     align-items: start;
 }
 .group .group-description p {
