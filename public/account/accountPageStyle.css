@@ -907,6 +907,8 @@ p.tip {
     width: 3em;
     height: 3em;
     margin-right: 2em;
+    border-radius: 50%;
+    box-shadow: 0 0.25em 1em rgba(15, 86, 153, 0.25);
 }
 #chat-container .message div.chat-text {
     position: relative;
@@ -930,6 +932,13 @@ p.tip {
 }
 #chat-container .message div.chat-text p:last-of-type {
     margin-bottom: 0;
+}
+#chat-container .message .chat-text span.chat-msg-name {
+    position: absolute;
+    font-size: 0.75em;
+    left: 0;
+    bottom: -2em;
+    color: rgba(7, 55, 99, 0.5);
 }
 #chat-container .message[data-chat-from = "other"] div.chat-text {
     color: white;
@@ -995,6 +1004,7 @@ p.tip {
     box-sizing: border-box;
     padding: 0.75em 1.5em 1.5em 1.5em;
     background: rgba(7, 55, 99, 0.15);
+    box-shadow: 0 0.25em 1em rgba(15, 86, 153, 0.3);
     flex-grow: 0;
     z-index: 0;
 }
@@ -1006,9 +1016,14 @@ p.tip {
     border: none;
     border-radius: 2em;
     background: rgb(250, 250, 250);
+    box-shadow: 0 0.1em 1em rgba(15, 86, 153, 0.1);
     padding: 0.75em 1.5em;
     font-size: 1em;
     box-sizing: border-box;
+    transition: 0.2s ease;
+}
+#chat-typing-box #chatInput:hover, #chat-typing-box #chatInput:focus {
+    box-shadow: 0 0.15em 1em rgba(15, 86, 153, 0.3);
 }
 #chat-typing-box #chatInput::placeholder {
     opacity: 1;
@@ -1177,7 +1192,7 @@ p.tip {
     box-shadow: 0 0.15em 1em rgba(7, 55, 99, 0.25);
     display: none;
     opacity: 0;
-    z-index: 10;
+    z-index: 5;
     transition: 0.3s ease;
 }
 #exploreSearchForm div.filter.active span.filter-title {

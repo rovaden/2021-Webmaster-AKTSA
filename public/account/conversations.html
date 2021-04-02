@@ -176,7 +176,7 @@
             <p class = "back-button"><i class = "material-icons">navigate_before</i> Back</p>
             <p class = "conversation-name">Group Session</p>
           </div>
-          <div class = "message" data-chat-from = "other">
+          <div class = "message" data-chat-from = "other" data-person = "Luke">
             <img src = "../media/testimonial_luke.png"/>
             <div class = "chat-text">
               <p>message here</p>
@@ -190,13 +190,13 @@
           <div class = "time-divider">
             <span>March 18 2021</span>
           </div>
-          <div class = "message" data-chat-from = "other">
+          <div class = "message" data-chat-from = "other" data-person = "Someone">
             <img src = "../media/testimonial_luke.png"/>
             <div class = "chat-text">
               <p>another message here</p>
             </div>
           </div>
-          <div class = "message quickly-after" data-chat-from = "other">
+          <div class = "message quickly-after" data-chat-from = "other" data-person = "Someone">
             <div class = "chat-text">
               <p>reply</p>
             </div>
@@ -211,7 +211,7 @@
               <p>quick reply from you</p>
             </div>
           </div>
-          <div class = "message" data-chat-from = "other">
+          <div class = "message" data-chat-from = "other" data-person = "Rick">
             <img src = "../media/testimonial_luke.png"/>
             <div class = "chat-text">
               <p>sounds good</p>
@@ -295,6 +295,22 @@
     let activeIndex = 0;
     let prevIndex = 0;
     let isNarrow = getComputedStyle(chatPeopleContainer).position === "relative";
+
+    //setting up person name at the end of messages
+    const chatMessages = document.getElementsByClassName("message");
+    for(let i = 0; i < conversations.length; i++){
+      let chatMessages = conversations[i].querySelectorAll("div.message[data-chat-from = \"other\"]");
+      for(let j = 0; j < chatMessages.length; j++){
+        if(j === chatMessages.length - 1 || chatMessages[j+1].className.indexOf("quickly-after") === -1){
+          let newSpanName = document.createElement("span");
+          newSpanName.textContent = i === 1 ? chatMessages[j].dataset.person:conversations[i].dataset.for;
+          newSpanName.className = "chat-msg-name";
+          chatMessages[j].getElementsByClassName("chat-text")[0].appendChild(newSpanName);
+        }
+      }
+    }
+
+    //showing chat functions
     let showChatFuncWide = function(index){
       const ind = index;
       return function(){
