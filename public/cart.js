@@ -11,6 +11,7 @@ function ready(){
 
   //hide no items display if there are items
   if(document.getElementsByClassName("item").length !== 0){
+    let noItemsDiv = document.getElementById("no-items");
     noItemsDiv.style.display = "none";
     noItemsDiv.style.opacity = "1";
   }
@@ -150,23 +151,23 @@ function buildCart(index){
       return
     }
   }
-  var cartRowContent = `
-      <div class="buttons">
-        <span class="delete-btn"><i class="material-icons">delete</i></span>
-      </div>
-      <div class = "item-info-div">
-        <div class="image">
-          <img src="${imageSrc}" alt="medicine"/>
-        </div>
-        <div class="description">
-          <span class = "cart-item-title">${title}</span>
-          <span>Dogsy Research and Production</span>
-        </div>
-        <div class="quantity">
-          <input class="cart-quantity-input" type="number" value="${quantity}" min = "1">
-        </div>
-        <div class="total-price">${price}</div>
-      </div>`
-  cartRow.innerHTML = cartRowContent
+  //changed to string bc IE apparently doesn't support template literals
+  var cartRowContent = "<div class=\"buttons\">" +
+    "<span class=\"delete-btn\"><i class=\"material-icons\">delete</i></span>" +
+    "</div>" +
+    "<div class = \"item-info-div\">" +
+      "<div class=\"image\">" +
+        "<img src=" + imageSrc + " alt=\"medicine\"/>" +
+      "</div>" +
+      "<div class=\"description\">" +
+        "<span class = \"cart-item-title\">" + title + "</span>" +
+        "<span>Dogsy Research and Production</span>" +
+      "</div>" +
+      "<div class=\"quantity\">" +
+        "<input class=\"cart-quantity-input\" type=\"number\" value=\"" + quantity + "\" min = \"1\">" +
+      "</div>" +
+      "<div class=\"total-price\">" + price + "</div>" +
+    "</div>";
+  cartRow.innerHTML = cartRowContent;
   cartItems.append(cartRow);
 }
