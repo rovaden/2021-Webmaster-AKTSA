@@ -54,6 +54,11 @@
     </div>
 
     <div class = "content">
+      <!--back to shop-->
+      <div id = "backToShop">
+        <a href = "products.html"><i class = "material-icons">arrow_back</i><span>Back to Shop</span></a>
+      </div>
+
       <div class="shopping-cart">
         <!-- Title -->
         <div class="title">
@@ -61,14 +66,17 @@
         </div>
         <!-- Products -->
         <div class="cart-items">
-
+        </div>
+        <div id = "no-items">
+          <h2>Your order is currently empty</h2>
+          <p>Add items to your order in the shop, and they will appear here!</p>
         </div>
       </div>
 
       <!--div at the bottom-->
       <div class="cart-total">
         <!--check out button-->
-        <div>
+        <div class = "cart-total-buttons">
           <button id="cart-check-out" class="cart-check-out shop-button" onclick="logCart()">Check Out</button>
         </div>
 

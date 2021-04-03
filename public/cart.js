@@ -8,8 +8,14 @@ function ready(){
   for (var i =0; i<localStorage.length; i++){
     buildCart(i)
   }
-  // var button = document.getElementById('cart-check-out')
-  // button.addEventListener('click', logCart())  
+
+  //hide no items display if there are items
+  if(document.getElementsByClassName("item").length !== 0){
+    noItemsDiv.style.display = "none";
+    noItemsDiv.style.opacity = "1";
+  }
+  
+  //adding event listeners to buttons and quantities
   var removeItemButtons = document.getElementsByClassName('delete-btn')
   for (var i = 0; i < removeItemButtons.length; i++) {
     var button = removeItemButtons[i];
@@ -87,15 +93,36 @@ function updateCartTotal() {
 
 function removeCartItemFuncCreator(button){
   var target = button.parentElement.parentElement;
-  target.style.maxHeight = target.parentElement.getBoundingClientRect().height + "px";
   var localStorageName = target.getElementsByClassName('cart-item-title')[0].innerText;
   return function(){
     window.setTimeout(function(){
       target.remove();
+      //if there's nothing left, show the no items in cart div (with transition)
+      if(document.getElementsByClassName("item").length === 0){
+        let noItemsDiv = document.getElementById("no-items");
+        noItemsDiv.style.display = "block";
+        let curHeight = noItemsDiv.scrollHeight;
+        window.setTimeout(function(){
+          noItemsDiv.style.height = "0";
+          noItemsDiv.style.padding = "0em 1em";
+          noItemsDiv.style.opacity = "1";
+          window.setTimeout(function(){
+            noItemsDiv.style.height = curHeight + "px";
+            noItemsDiv.style.padding = "3em 1em";
+            noItemsDiv.style.transition = "1s ease";
+          }, 10);
+          noItemsDiv.addEventListener("transitionend", function(){
+            noItemsDiv.style.height = "auto";
+          });
+        }, 1);
+      }
     }, 500);
     target.style.animation = "removedItem 0.5s ease forwards";
-    target.style.maxHeight = "0";
-    target.style.padding = "0";
+    target.style.maxHeight = target.scrollHeight + "px";
+    window.setTimeout(function(){
+      target.style.maxHeight = "0";
+      target.style.padding = "0";
+    }, 1);
     localStorage.removeItem(localStorageName);
     updateCartTotal();
   }
@@ -142,6 +169,4 @@ function buildCart(index){
       </div>`
   cartRow.innerHTML = cartRowContent
   cartItems.append(cartRow);
-  cartRow.getElementsByClassName('delete-btn')[0].addEventListener('click', removeCartItemFuncCreator(document.getElementsByClassName("delete-btn")[index]))
-  cartRow.getElementsByClassName('cart-quantity-input')[0].addEventListener('change', quantityChanged)
 }

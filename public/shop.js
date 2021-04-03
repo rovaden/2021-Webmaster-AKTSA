@@ -72,17 +72,37 @@ function addAlert(headerMessage, message){
   var newAlert = document.createElement("div");
   newAlert.className = "shop-alert";
   newAlert.innerHTML = "<h3>" + headerMessage + "</h3><p>" + message + "</p>";
+  var xOut = document.createElement("i");
+  xOut.className = "material-icons";
+  xOut.textContent = "close";
+  newAlert.appendChild(xOut);
   alertEl.appendChild(newAlert);
+
+  //adding animation
   window.setTimeout(function(){
-    newAlert.remove();
-  }, 3000);
+    newAlert.style.opacity = "1";
+    newAlert.addEventListener("transitionend", function(){
+      window.setTimeout(function(){
+        newAlert.style.opacity = "0";
+        window.setTimeout(function(){
+          newAlert.remove();
+        }, 500);
+      }, 4000);
+    });
+  }, 1);
+  
+  //closing on click
+  xOut.addEventListener("click", function(){
+    newAlert.style.opacity = "0";
+    window.setTimeout(function(){
+      newAlert.remove();
+    }, 500);
+  });
 }
 
 function createAddCartFunction(index){
-  var quantity = 0;
   var index = index;
   return function(){
-    quantity++;
     console.log("clicked!")
     var title = document.getElementsByClassName('shop-item-title')[index].innerText
     var price = document.getElementsByClassName('shop-item-price')[index].innerText
@@ -91,17 +111,17 @@ function createAddCartFunction(index){
     //alert
     if(localStorage.getItem(title) === null){
       addAlert("Success!", title + " has been added to your cart!");
+      addItemToCart(title, price, imageSrc, 1);
     }
     else {
+      let quantity = parseFloat(localStorage.getItem(title).split(",")[3]);
+      quantity++;
       addAlert("Success!", "You have added more " + title + " to your cart!");
+      addItemToCart(title, price, imageSrc, quantity);
     }
-
-    //add item to cart
-    addItemToCart(title, price, imageSrc, quantity);
   }
 }
 
 function addItemToCart(title, price, imageSrc, quantity) {
-  localStorage.setItem(title, [title, price, imageSrc, quantity])
-  console.log(localStorage.getItem(title).split(',')[1])
+  localStorage.setItem(title, [title, price, imageSrc, quantity]);
 }

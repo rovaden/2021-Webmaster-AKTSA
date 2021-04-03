@@ -492,10 +492,19 @@
   box-shadow: 0 0 0 rgb(200, 200, 200);
   transition: 0.2s ease;
 }
+.shop-button.outline {
+  border: 1px solid #1155cc;
+  color: #1155cc;
+  background: transparent;
+}
 #shop-container .shop-item button:hover, .shop-button:hover {
   cursor: pointer;
   background: #0d3a8a;
   box-shadow: 0 5px 20px rgb(200, 200, 200);
+}
+.shop-button.outline:hover {
+  background: #1155cc;
+  color: white;
 }
 #search-no-results {
   text-align: center;
@@ -524,35 +533,21 @@
 }
 
 /*shop alert styling*/
-@keyframes shopFadeOut {
-  0% {
-    opacity: 0;
-  }
-  5% {
-    opacity: 1;
-  }
-  15% {
-    opacity: 1;
-  }
-  100% {
-    display: none;
-    opacity: 0;
-  }
-}
 div.alerts {
   position: fixed;
   bottom: 3em;
   width: 25em;
 }
 .shop-alert {
+  position: relative;
   opacity: 0;
   font-size: 0.9em;
   max-width: 100%;
   background: #1155cc;
   border-top: 2px solid #0d3a8a;
+  box-shadow: 0 0.25em 1em rgba(7, 55, 99, 0.5);
   color: white;
   padding: 0.5em 3em;
-  animation: shopFadeOut 3s ease forwards;
   transition: 0.5s ease;
 }
 .shop-alert h3 {
@@ -560,6 +555,17 @@ div.alerts {
 }
 .shop-alert h3 + p {
   margin-top: 0.5em;
+}
+.shop-alert i.material-icons {
+  position: absolute;
+  top: 0.5em;
+  right: 0.5em;
+  opacity: 0.7;
+  transition: 0.2s ease;
+}
+.shop-alert i.material-icons:hover {
+  cursor: pointer;
+  opacity: 1;
 }
 @media (max-width: 25em) {
   div.alerts {
