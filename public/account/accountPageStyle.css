@@ -1003,7 +1003,7 @@ p.tip {
     display: flex;
     align-items: center;
     margin: 0;
-    margin-top: 1em;
+    margin-top: 1.25em;
 }
 #chat-container .message img {
     width: 3em;
@@ -1038,8 +1038,10 @@ p.tip {
 #chat-container .message .chat-text span.chat-msg-name {
     position: absolute;
     font-size: 0.75em;
+    line-height: 1.5em;
     left: 0;
-    bottom: -2em;
+    bottom: 0;
+    transform: translateY(102%);
     color: rgba(7, 55, 99, 0.5);
 }
 #chat-container .message[data-chat-from = "other"] div.chat-text {
@@ -1063,7 +1065,7 @@ p.tip {
 }
 #chat-container .message.quickly-after {
     margin-left: 5em;
-    margin-top: 0em;
+    margin-top: 0.25em;
 }
 #chat-container .message[data-chat-from = "you"].quickly-after {
     margin-left: 0;
@@ -1174,6 +1176,15 @@ p.tip {
     }
     #chat-container .conversation .conversation-back {
         display: flex;
+    }
+    #chat-container .message {
+        margin-top: 1.5em;
+    }
+    #chat-container .message img { 
+        margin-right: 1.25em;
+    }
+    #chat-container .message.quickly-after {
+        margin-left: 4.25em;
     }
 }
 @media (max-width: 25em), (min-width: 40em) and (max-width: 45em), (min-width: 55em) and (max-width: 65em) {

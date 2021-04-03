@@ -103,19 +103,17 @@ function removeCartItemFuncCreator(button){
         let noItemsDiv = document.getElementById("no-items");
         noItemsDiv.style.display = "block";
         let curHeight = noItemsDiv.scrollHeight;
+        noItemsDiv.style.height = "0";
+        noItemsDiv.style.padding = "0em 1em";
         window.setTimeout(function(){
-          noItemsDiv.style.height = "0";
-          noItemsDiv.style.padding = "0em 1em";
           noItemsDiv.style.opacity = "1";
-          window.setTimeout(function(){
-            noItemsDiv.style.height = curHeight + "px";
-            noItemsDiv.style.padding = "3em 1em";
-            noItemsDiv.style.transition = "1s ease";
-          }, 10);
+          noItemsDiv.style.height = curHeight + "px";
+          noItemsDiv.style.padding = "3em 1em";
+          noItemsDiv.style.transition = "1s ease";
           noItemsDiv.addEventListener("transitionend", function(){
             noItemsDiv.style.height = "auto";
           });
-        }, 1);
+        }, 10);
       }
     }, 500);
     target.style.animation = "removedItem 0.5s ease forwards";
