@@ -7,7 +7,7 @@ body {
   padding: 0;
   font-family: "Lato", sans-serif;
 }
-h1, h2, h3, h4, h5, h6, nav.navbar, button.pageLink {
+h1, h2, h3, h4, h5, h6, nav.navbar, div.pageLink {
   font-family: "Comfortaa";
 }
 div {
@@ -179,7 +179,7 @@ div {
   border-bottom-color: rgb(245, 245, 245);
   left: 50%;
   top: 0;
-  transform: translate(-50%, -20px);
+  transform: translate(-50%, -19px);
 }
 .navbar ul.dropdown li {
   position: relative;
@@ -212,7 +212,7 @@ div {
   border-radius: 0 0 7px 7px;
 }
 .navbar ul.dropdown li:first-of-type a::before { /*caret at top of first list item, coloring*/
-  border-bottom-color: rgba(7, 55, 99);
+  border-bottom-color: rgb(7, 55, 99);
   opacity: 0;
   transition: inherit;
 }
@@ -552,9 +552,10 @@ div.content img.float-left {
 /*button styling*/
 .pageLink {
   position: relative;
-  display: block;
+  display: inline-block;
+  margin-left: 50%;
+  transform: translateX(-50%);
   padding: 0;
-  margin: 0 auto;
   font-size: 1em;
   letter-spacing: 1.5px;
   border: 1px solid black;
@@ -564,12 +565,14 @@ div.content img.float-left {
   transition: 0.3s ease;
 }
 .pageLink a {
-  display: block;
+  display: inline-block;
   position: relative;
-  color: inherit;
+  color: black;
+  text-shadow: none;
   text-decoration: none;
   z-index: 1;
   padding: 0.6em 1.5em;
+  transition: inherit;
 }
 .pageLink::before, .pageLink::after {
   content: "";
@@ -591,16 +594,21 @@ div.content img.float-left {
 }
 .pageLink:hover, .pageLink:focus {
   cursor: pointer;
+}
+.pageLink:hover a, .pageLink:focus a {
   color: white;
 }
 .pageLink.light {
   border-color: white;
   color: white;
 }
+.pageLink.light a {
+  color: white;
+}
 .pageLink.light::before, .pageLink.light::after {
   background: white;
 }
-.pageLink.light:hover {
+.pageLink.light:hover a {
   color: #073763;
 }
 .pageLink:hover::before, .pageLink:hover::after, .pageLink:focus::before, .pageLink:focus::after {

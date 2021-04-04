@@ -543,7 +543,8 @@ body[data-aos-duration = "501"] [data-aos = "news-fade-up"].aos-animate, [data-a
 #homeGetStarted div {
   text-align: center;
 }
-#homeGetStarted div button {
-  display: inline;
+#homeGetStarted div .pageLink {
+  display: inline-block;
   margin: 1em 3em;
+  transform: none;
 }
