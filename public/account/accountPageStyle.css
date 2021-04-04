@@ -3,7 +3,7 @@
 .navbar.light a.dropdown-top + div > ul.dropdown {
   z-index: 40;
   background: rgba(245, 245, 245, 0.95);
-  box-shadow: 0 10px 50px rgb(245, 245, 245, 0.4);
+  box-shadow: 0 10px 50px rgba(245, 245, 245, 0.4);
 }
 .navbar.light a.dropdown-top + div > ul.dropdown a {
   color: gray;
@@ -102,13 +102,13 @@
     outline: none;
     font-size: 1em;
     border-radius: 2em;
-    box-shadow: 0 0 1em rgb(0, 0, 0, 0);
+    box-shadow: 0 0 1em rgba(0, 0, 0, 0);
     transition: 0.2s ease;
 }
 #loginModule button:hover {
     cursor: pointer;
     background: #0d3a8a;
-    box-shadow: 0 0.3em 1em rgb(0, 0, 0, 0.3);
+    box-shadow: 0 0.3em 1em rgba(0, 0, 0, 0.3);
 }
 
 /*changing navbar styling (top) in account pages*/
@@ -124,9 +124,10 @@ nav.navbar.account-topNav, nav.navbar.account-topNav.scrolledDown {
 /*general account page navbar*/
 body {
     position: relative; /*for position absolute on sidebar when height is small*/
+    overflow-x: hidden;
 }
 nav.sidebar {
-    background: rgba(7, 55, 99);
+    background: rgb(7, 55, 99);
     /*background: rgb(35, 138, 163);*/
     color: white;
     height: 100vh;
@@ -142,6 +143,7 @@ nav.sidebar {
 nav.sidebar ul {
     margin: 0;
     padding-inline-start: 0;
+    padding: 0;
 }
 nav.sidebar ul li {
     position: relative;
@@ -231,6 +233,7 @@ nav.sidebar ul li:last-of-type::before {
 .account-content {
     margin-left: 15em;
     padding: 1em 1em;
+    max-width: 100%;
 }
 button.accountButton {
     position: relative;
@@ -314,7 +317,7 @@ footer.footer.account-footer {
         display: block;
         content: "";
         border: 0.4em solid transparent;
-        border-right: 0.4em solid rgb(3, 28, 51, 0.9);
+        border-right: 0.4em solid rgba(3, 28, 51, 0.9);
         left: -0.8em;
         top: 50%;
         transform: translateY(-50%);
@@ -381,7 +384,7 @@ footer.footer.account-footer {
 }
 .connection:hover {
     cursor: pointer;
-    background: rgb(0, 0, 0, 0.05);
+    background: rgba(0, 0, 0, 0.05);
 }
 .connection img {
     width: 5em;
@@ -715,12 +718,12 @@ p.tip {
 #appointment-upcoming div.action-buttons button.cancel {
     border-color: rgb(199, 31, 31);
     color: rgb(199, 31, 31);
-    background: rgb(199, 31, 31, 0);
+    background: rgba(199, 31, 31, 0);
 }
 #appointment-upcoming div.action-buttons button.meet {
     position: relative;
-    background: rgba(17, 85, 204);
-    border-color: rgba(17, 85, 204);
+    background: rgb(17, 85, 204);
+    border-color: rgb(17, 85, 204);
     color: white;
     pointer-events: none;
 }
@@ -887,6 +890,7 @@ p.tip {
 #chat-content {
     position: relative;
     width: 100%;
+    overflow-x: hidden;
     margin-left: 0;
     padding: 0;
     overflow: hidden;
@@ -923,7 +927,7 @@ p.tip {
 }
 #chat-side .chat-people:hover {
     cursor: pointer;
-    background: rgb(0, 0, 0, 0.05);
+    background: rgba(0, 0, 0, 0.05);
 }
 #chat-side .chat-people p {
     margin: 0.25em 0;
@@ -961,6 +965,7 @@ p.tip {
     padding: 2.5em 2em;
     flex-grow: 1;
     overflow-y: auto;
+    overflow-x: hidden;
 }
 #chat-container .conversation .conversation-back {
     position: sticky;
@@ -971,8 +976,8 @@ p.tip {
     transform: translate(-2em, -2.5em);
     padding: 0.75em 1em;
     padding-right: 2em;
-    background: rgba(250, 250, 250);
-    box-shadow: 0 0.2em 1em rgb(7, 55, 99, 0.3);
+    background: rgb(250, 250, 250);
+    box-shadow: 0 0.2em 1em rgba(7, 55, 99, 0.3);
     width: 100vw;
     z-index: 2;
     display: none;
@@ -1110,6 +1115,7 @@ p.tip {
     background: rgba(7, 55, 99, 0.15);
     box-shadow: 0 0.25em 1em rgba(15, 86, 153, 0.3);
     flex-grow: 0;
+    flex-shrink: 0;
     z-index: 0;
 }
 #chat-typing-box > * {
@@ -1170,6 +1176,7 @@ p.tip {
         left: 0;
         width: 100%;
         height: 100vh;
+        overflow-x: hidden;
         transform: translateX(100%);
         z-index: 60;
         transition: 0.7s ease;
@@ -1335,49 +1342,55 @@ p.tip {
     background: rgba(7, 55, 99, 0.1);
 }
 #exploreSearchForm div.filter form .checkLi input {
+    position: absolute;
     margin: 0;
     margin-top: 0;
-    margin-right: 1.25em;
-    transform: translateY(0.2em);
-    transition: 0.2s ease;
     width: 0;
     height: 0;
 }
-#exploreSearchForm div.filter form .checkLi input::before { /*check mark*/
+#exploreSearchForm div.filter form .checkLi input + div.checkbox::before { /*check mark*/
     display: block;
     position: absolute;
     content: "";
     width: 0.3em;
     height: 0.5em;
+    top: 0;
+    left: 0;
     border: solid white;
     border-width: 0 0.15em 0.15em 0;
     box-sizing: border-box;
     transform-origin: center;
-    transform: translate(0.3em, 25%) rotate(45deg) scale(0);
+    transform: translate(70%, 5%) rotate(45deg) scale(0);
     transition: inherit;
 }
-#exploreSearchForm div.filter form .checkLi input::after { /*styled box*/
-    content: "";
-    display: block;
+#exploreSearchForm div.filter form .checkLi div.checkbox { /*styled box*/
+    position: absolute;
+    top: 50%;
+    left: 0;
     width: 0.75em;
     height: 0.75em;
+    transform: translateY(-50%);
+    transition: 0.2s ease;
     border-radius: 2px;
     border: 1px solid gray;
     background: transparent;
     transition: inherit;
 }
-#exploreSearchForm div.filter form .checkLi input:checked::after {
+#exploreSearchForm div.filter form .checkLi input:checked + div.checkbox {
     background: rgb(31, 106, 236);
     border-color: rgb(31, 106, 236);
 }
-#exploreSearchForm div.filter form .checkLi input:checked::before {
-    transform: translate(100%, 20%) rotate(45deg) scale(1);
+#exploreSearchForm div.filter form .checkLi input:checked + div.checkbox::before {
+    transform: translate(70%, 5%) rotate(45deg) scale(1);
 }
 #exploreSearchForm div.filter form .checkLi input:hover, #exploreSearchForm div.filter form .checkLi label:hover {
     cursor: pointer;
 }
 #exploreSearchForm div.filter form .checkLi label {
+    position: relative;
     flex-grow: 1;
+    padding-left: 1.25em;
+    transition: 0.2s ease;
 }
 #groupSize {
     color: rgb(7, 55, 99);
@@ -1473,6 +1486,7 @@ p.tip {
     justify-content: center;
     align-items: center;
     padding: 1em 0.75em;
+    margin: 0 0.5em;
     color: rgb(7, 55, 99);
     transition: 0.2s ease;
 }
@@ -1489,6 +1503,7 @@ p.tip {
     border-radius: 10px 10px 0 0;
     background:rgb(7, 55, 99);
     bottom: 0;
+    left: 0;
     opacity: 0;
     transition: inherit;
 }
