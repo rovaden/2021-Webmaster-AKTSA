@@ -71,7 +71,7 @@ const events = [
     {
         title: "How to Meditate",
         leader: "Taylor Peterson",
-        img: "../media/herbal.jpg",
+        img: "../media/meditation.jpg",
         date: "5",
         time: "10:15 - 11:00 AM",
         description: "Meditation is simple, inexpensive, and surprisingly beneficial. Not only can you relieve stress, but you can gain new perspectives and increase your imagination and self-awareness at the same time. Join us as Peterson explains how you can get started with meditation anywhere, at any time.",
@@ -80,7 +80,7 @@ const events = [
     {
         title: "The Healing Arts",
         leader: "Sarah Parker",
-        img: "../media/herbal.jpg",
+        img: "../media/art_supplies.jpg",
         date: "10",
         time: "4:00 - 5:00 PM",
         description: "Arts, whether it be music or painting or dance, have long played a role in enhancing our well-being. Even if you may not consider yourself an artistic or creative person, simply engaging in these activities can not only lift your mood but substantially improve your health, as well. Discover more about the power of creative expression in our lives.",
@@ -89,7 +89,7 @@ const events = [
     {
         title: "Sharing Your Story",
         leader: "Kayden Wheatley",
-        img: "../media/herbal.jpg",
+        img: "../media/table_group_event.jpg",
         date: "14",
         time: "3:00 - 4:30 PM",
         description: "Struggles are hard to share - Kayden Wheatley knows that just as well as anyone else. But these stories also offer a powerful way to connect with and to inspire others, to show that they are not alone. The session will start off with Kayden sharing her recovery journey, and she'll talk through how to share yours, as well. At the end, there'll be an opportunity for you to join in the discussion with your story.",
@@ -98,7 +98,7 @@ const events = [
     {
         title: "Connection with Nature",
         leader: "Avery Johnson",
-        img: "../media/herbal.jpg",
+        img: "../media/forest_event.jpg",
         date: "17",
         time: "8:00 - 9:00 AM",
         description: "Surrounding yourself with some nature is a great way to quickly lower stress levels and boost your mental health. Join us for an overview of the benefits nature has to offer us and participate in a virtual group walk from your local area.",
@@ -107,7 +107,7 @@ const events = [
     {
         title: "Sparking Gratitude",
         leader: "Haley Morrison",
-        img: "../media/herbal.jpg",
+        img: "../media/thank_you_note.jpg",
         date: "23",
         time: "1:30 - 2:15 PM",
         description: "An excellent exercise in self-awareness and a wonderful mood-booster is finding something to be grateful about. It may be big, or it may be small, but what matters most is recognizing the things that give us joy in our lives. Find out more on how to practice gratitude and how it could benefit you.",

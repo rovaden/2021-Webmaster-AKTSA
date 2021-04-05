@@ -222,13 +222,11 @@ nav.sidebar ul li:last-of-type::before {
 /*general account page styling*/
 .pageHeading, .account-content {
     background: rgb(239, 242, 247);
+    overflow-wrap: break-word;
 }
 .pageHeading {
     padding-top: 2em;
     padding-bottom: 1em;
-}
-.pageHeading h1 {
-    word-wrap: break-word;
 }
 .account-content h1, .account-content h2, .account-content h3, .account-content h4, .account-content h5, .account-content h6 {
     color: rgb(7, 55, 99);
@@ -804,7 +802,7 @@ p.tip {
 }
 .popup h2 {
     font-size: 2em;
-    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 .popup div.buttons {
     margin-top: 2.5em;
@@ -1576,6 +1574,7 @@ p.tip {
     text-align: center;
     color: gray;
     box-shadow: 0 0.3em 0.7em rgba(7, 55, 99, 0.15);
+    overflow-wrap: break-word;
 }
 @media (min-width: 40em) and (max-width: 45em), (min-width: 55em){ 
     .explorePage div.listing {
@@ -1707,20 +1706,15 @@ div.group.recommended div.group-description > p:first-of-type::after {
     margin-right: 0.25em;
 }
 .group .group-description .group-info .group-focus p {
-    display: inline;
+    display: inline-block;
     margin: 0.25em 0.25em;
-    line-height: 2em;
 }
-.group .group-description .group-info .group-focus p:first-of-type {
-    margin-right: 0.25em;
-}
-.group .group-description .group-info .group-focus p.focus {
-    padding: 0.25em 0.75em;
-    border-radius: 1em;
-    background:rgba(7, 55, 99, 0.5);
-    color: white;
+.group .group-description .group-info .group-focus p.focus:not(:last-child)::after {
+    content: ",";
 }
 .group div.buttons {
+    flex-shrink: 0;
+    flex-grow: 0;
     margin-top: 1em;
     width: 100%;
 }
@@ -1746,6 +1740,28 @@ div.group.recommended div.group-description > p:first-of-type::after {
         margin-left: 1em;
         width: auto;
     }
+    .group .group-description .group-info .group-focus {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        align-content: flex-start;
+    }
+    .group .group-description .group-info .group-focus p {
+        margin: 0.25em 0.25em;
+    }
+    .group .group-description .group-info .group-focus p:first-of-type {
+        margin-right: 0.25em;
+    }
+    .group .group-description .group-info .group-focus p.focus {
+        padding: 0.25em 0.75em;
+        border-radius: 1em;
+        background:rgba(7, 55, 99, 0.5);
+        color: white;
+        white-space: nowrap;
+    }
+    .group .group-description .group-info .group-focus p.focus::after {
+        display: none;
+    }
 }
 
 /*event styling*/
@@ -1758,7 +1774,7 @@ div.group.recommended div.group-description > p:first-of-type::after {
     width: 100%;
     height: 0;
     padding-bottom: 40%;
-    flex-basis: 25%;
+    flex-basis: 30%;
     flex-shrink: 0;
     align-self: stretch;
 }
@@ -1792,7 +1808,19 @@ div.group.recommended div.group-description > p:first-of-type::after {
 .explorePage div.event .event-description button {
     margin-top: 0.75em;
 }
-@media (min-width: 40em) and (max-width: 45em), (min-width: 55em) {
+@media (max-width: 60em) {
+    .explorePage div.listing.event {
+        flex-direction: column;
+        text-align: center;
+    }
+    .explorePage div.listing.event .event-description p:first-of-type {
+        font-size: 1.75em;
+    }
+    .explorePage div.listing.event .event-description p:first-of-type + p {
+        font-size: 1.25em;
+    }
+}
+@media (min-width: 60em) {
     .explorePage div.event div.imgWrapper {
         border-radius: 15px 0 0 15px;
         padding-bottom: 0;
