@@ -41,7 +41,7 @@
           <li class = "accountLink"><a class = "dropdown-top loggedIn"><i class = "material-icons">account_circle</i>Jane Doe</a>
             <div>
               <ul class = "dropdown">
-                <li class = "nav-active"><a href = "dashboard.html">Dashboard</a></li>
+                <li><a href = "dashboard.html">Dashboard</a></li>
                 <li><a href = "../index.html">Log Out</a></li>
               </ul>
             </div>
@@ -312,25 +312,35 @@
     <script>
       //setting up filters' dropdowns
       const filters = document.getElementsByClassName("filter");
+      let closeDropDown = (function(){
+        function handleTransitionEnd(e){
+          e.target.style.display = "none";
+          e.target.removeEventListener("transitionend", handleTransitionEnd);
+        }
+        return function(el){
+          el.style.opacity = "0";
+          el.addEventListener("transitionend", handleTransitionEnd);
+        }
+      })();
       let createFilterDropFunc = function(ind){
         const target = filters[ind].getElementsByTagName("form")[0];
         const parentEl = filters[ind];
-        let clicks = 0;
-        function handleTransitionEnd(){
-          target.style.display = "none";
-          target.removeEventListener("transitionend", handleTransitionEnd);
-        }
         return function(){
-          clicks++;
-          if(clicks % 2 === 1){
+          if(!parentEl.className.includes("active")){
+            //fade in the form
             target.style.display = "block";
             window.setTimeout(function(){
               target.style.opacity = "1";
             }, 1);
+            //close other active drop downs
+            let prevActive = document.querySelector("div.filter.active");
+            if(prevActive){
+              prevActive.classList.remove("active");
+              closeDropDown(prevActive.getElementsByTagName("form")[0]);
+            }
           }
           else {
-            target.style.opacity = "0";
-            target.addEventListener("transitionend", handleTransitionEnd);
+            closeDropDown(target);
           }
           parentEl.classList.toggle("active");
         }
