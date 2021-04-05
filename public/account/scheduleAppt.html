@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Schedule Appointment</title>
+    <link rel = "icon" href = "../favicon.ico"/>
+    <link href="../style.css" rel="stylesheet" type="text/css"/>
+    <link href="accountPageStyle.css" rel="stylesheet" type="text/css"/>
+  </head>
+  <body>
+    <!--navigation bar-->
+    <nav class = "navbar account-topNav scrolledDown">
+      <!--company name to display on mobile outside of menu-->
+      <span class = "navName nav-backup"><a href = "../index.html">KatKure</a></span>
+      
+      <!--links-->
+      <div class = "navbar-collapse">
+        <ul>
+          <li><span class = "navName"><a href = "../index.html">KatKure</a></span></li>
+          <li><a href = "../index.html">Home</a></li>
+          <li><a class = "dropdown-top">About</a>
+            <div>
+              <ul class = "dropdown">
+                <li><a href = "../about.html">Company</a></li>
+                <li><a href = "../about-webpage.html">This page</a></li>
+              </ul>
+            </div>
+          </li>
+          <li><a class = "dropdown-top">Products</a>
+            <div>
+              <ul class = "dropdown">
+                <li><a href = "../services.html">Platform</a></li>
+                <li><a href = "../products.html">Shop</a></li>
+                <li><a href = "../cart.html">Cart</a></li>
+              </ul>
+            </div>
+          </li>
+          <li><a href = "../news/index.html">News</a></li>
+          <li><a href = "../faq.html">FAQs</a></li>
+          <li class = "accountLink"><a class = "dropdown-top loggedIn"><i class = "material-icons">account_circle</i>Jane Doe</a>
+            <div>
+              <ul class = "dropdown">
+                <li><a href = "dashboard.html">Dashboard</a></li>
+                <li><a href = "../index.html">Log Out</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!--menu icon for mobile display-->
+      <i class = "material-icons" id = "navMenu">menu</i>
+    </nav>
+
+    <!--side nav with account navigation-->
+    <nav class = "sidebar">
+      <ul>
+        <li><a href = "dashboard.html"><i class = "material-icons">space_dashboard</i><span>Dashboard</span></a></li>
+        <li><a href = "appointments.html"><i class = "material-icons">date_range</i><span>Appointments</span></a></li>
+        <li><a href = "conversations.html"><i class = "material-icons">question_answer</i><span>Conversations</span></a></li>
+        <li><a href = "explore.html"><i class = "material-icons">explore</i><span>Explore</span></a></li>
+        <li><a href = "settings.html"><i class = "material-icons">manage_accounts</i><span>Account</span></a></li>
+        <li><a class = "log-out-button"><i class = "material-icons">logout</i><span>Log out</span></a></li>
+      </ul>
+    </nav>
+
+    <div class = "account-content">
+      <div class = "pageHeading">
+        <h1>Schedule Appointment</h1>
+      </div>
+      <div id = "form-container">
+        <!--book appointment form-->
+        <form>
+            <label for = "choose-doctor" class = "question">
+              <div class = "tooltip-container">Who would you like to meet with?
+                <div class = "tooltip right error">Please select a counselor to meet with</div>
+              </div>
+            </label>
+            <!--choosing doctor with cards-->
+            <div id = "choose-doctor">
+              <div class = "doctor" data-doctor = "alina">
+                <img src = "../media/testimonial_jane.png"/>
+                <div>
+                  <p>Alina Miller</p>
+                  <p>Counselor, LMHC</p>
+                </div>
+              </div>
+              <div class = "doctor" data-doctor = "hazel">
+                <img src = "../media/testimonial_leia.png"/>
+                <div>
+                  <p>Hazel Jones</p>
+                  <p>Counselor, LMHC</p>
+                </div>
+              </div>
+            </div>
+            <!--choosing doctor with dropdown-->
+            <label for = "doctor">If you have another counselor in mind, please select them from the dropdown below:</label>
+            <div id = "doctor"></div>
+
+            <!--choosing dates-->
+            <label for = "date-container" class = "question">Please choose the date and time below:</label>
+            <div id = "date-container">
+              <!--calendar-->
+              <div id = "calendar-container">
+                <div>
+                  <i class = "material-icons grayedout" id = "prevMonth">chevron_left</i>
+                  <p id = "calendar-month">April 2021</p>
+                  <i class = "material-icons" id = "nextMonth">chevron_right</i>
+                </div>
+                <table id = "calendar">
+                  <thead></thead>
+                  <tbody>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr></tr>
+                  </tbody>
+                </table>
+              </div>
+              <!--times container-->
+              <div id = "times-container">
+                <div id = "times-title">Times:
+                  <div class = "tooltip right error">Please select a valid time</div>
+                </div>
+                <div id = "times">
+                  <div class = "half-day-cont"><span class = "half-day-label">Morning </span></div>
+                  <div class = "half-day-cont"><span class = "half-day-label">Afternoon </span></div>
+                </div>
+                <div id = "pastDates">
+                  <p>Sorry, but you cannot make an appointment for a date in the past</p>
+                </div>
+              </div>
+            </div>
+
+            <!--reason for appointment, if any-->
+            <label for = "reason" class = "question">Please give a brief reason for your appointment</label>
+            <div class = "tooltip-container">
+              <textarea id = "reason" placeholder = "Example: Recently, my symptoms have been flaring up again"></textarea>
+              <div class = "tooltip bottom error">Please write a reason here</div>
+            </div>
+
+            <!--submit-->
+            <button id = "submit" class = "accountButton" type = "button">Submit</button>
+          </form>
+      </div>
+
+      <!--popup stuff-->
+      <div id = "popupMask"></div>
+      <div id = "formSuccessPopup" class = "popup">
+        <i class = "material-icons">event_available</i>
+        <h2>Confirmation</h2>
+        <p>You've successfully booked an appointment with <span id = "doctor-confirm" class = "strong">Alina Miller</span>.</p>
+        <p id = "date-time-success"><span id = "date-confirm" class = "strong">Mar 17, 2021</span><span id = "time-confirm" class = "strong">3:00 PM</span></p>
+        <button class = "accountButton" id = "appointmentsLink">My appointments</button>
+        <button class = "accountButton outline" id = "reschedule">Schedule another</button>
+      </div>
+
+      <!--footer-->
+      <footer class = "footer account-footer">
+        <div class = "footer-text">Copyright KatKure 2021 <i class = "material-icons">copyright</i></div>
+      </footer>
+    </div>
+    <script src = "../script.js"></script>
+    <script src = "exploreData.js"></script>
+    <script src = "eventTimes.js"></script>
+    <script>
+      //errors for checking
+      let errors = document.querySelectorAll("div.tooltip.error");
+      function fadeIn(el){
+        el.style.display = "block";
+        window.setTimeout(function(){
+          el.style.opacity = "1";
+        }, 5);
+      }
+      let fadeOut = (function(){
+        function handleFadeEnd(e){
+          e.target.style.display = "none";
+          e.target.removeEventListener("transitionend", handleFadeEnd);
+        }
+        return function(el){
+          el.style.opacity = "0";
+          el.addEventListener("transitionend", handleFadeEnd);
+        }
+      })();
+
+      //setting up doctor click
+      const doctorDivs = document.getElementsByClassName("doctor");
+      let createDoctorClickFunc = function(el){
+        let target = el;
+        let counselor = counselors[parseFloat(el.dataset.doctor)];
+        return function(){
+          //toggling active class if it's clicked again
+          if(target.className.includes("active")){
+            target.className = "doctor";
+            document.getElementById("doctorSelect").className = "";
+          }
+          //otherwise, switch active class to this div and grayout the dropdown select
+          else {
+            if(document.querySelector("div.doctor.active")){
+              document.querySelector("div.doctor.active").className = "doctor";
+            }
+            target.className += " active";
+            document.getElementById("doctorSelect").className = "grayedout";
+
+            //fade out error
+            if(errors[0].style.display === "block"){
+              fadeOut(errors[0]);
+            }
+          }
+        }
+      }
+      for(let i = 0; i < doctorDivs.length; i++){
+        let clickFunc = createDoctorClickFunc(doctorDivs[i])
+        doctorDivs[i].addEventListener("click", clickFunc);
+      }
+
+      //setting up select dropdown menu
+      (function(){
+        let clicks = 0;
+        const doctorSelect = document.getElementById("doctor");
+        //creating elements
+        const newSelect = document.createElement("div");
+        let newSelected = document.createElement("div");
+        newSelected.className = "selected";
+        let newSelectedText = document.createElement("span");
+        newSelected.appendChild(newSelectedText);
+        newSelectedText.textContent = "Select";
+        newSelectedText.id = "doctorSelectText";
+        let newDropDown = document.createElement("div");
+        newSelect.id = "doctorSelect";
+
+        //close/open dropdown functions
+        function openDrop(){
+          newSelected.className += " active";
+          newDropDown.style.display = "block";
+          window.setTimeout(function(){
+            newDropDown.style.opacity = "1";
+          }, 5);
+        };
+        function handleTransitionEnd(){
+          newDropDown.style.display = "none";
+          newDropDown.removeEventListener("transitionend", handleTransitionEnd);
+        }
+        function closeDrop(){
+          newSelected.className = "selected";
+          newDropDown.style.opacity = "0";
+          newDropDown.addEventListener("transitionend", handleTransitionEnd);
+        }
+
+        //creating options
+        let createOptionClickFunc = function(el){
+          let target = el;
+          let optionVal = el.textContent;
+          return function(){
+            if(newSelectedText.textContent !== "Select"){
+              document.querySelector("div.option.active").className = "option";
+            }
+            newSelectedText.textContent = optionVal;
+            target.className += " active";
+            closeDrop();
+            //fade out error
+            if(errors[0].style.display === "block"){
+              fadeOut(errors[0]);
+            }
+          }
+        }
+        for(let i in counselors){
+          let newOption = document.createElement("div");
+          newOption.className = "option";
+          newOption.textContent = counselors[i].name + ", " + counselors[i].license;
+          newOption.dataset.doctor = i;
+          newDropDown.appendChild(newOption);
+          let clickFunc = createOptionClickFunc(newOption);
+          newOption.addEventListener("click", clickFunc);
+        }
+
+        //adding event listener on top of select
+        newSelected.addEventListener("click", function(){
+          if(newSelected.className.includes("active")){
+            closeDrop();
+          }
+          else {
+            openDrop();
+          }
+        });
+
+        //appending dropdowns
+        newSelect.appendChild(newSelected);
+        newSelect.appendChild(newDropDown);
+
+        //appending this to the body
+        doctorSelect.appendChild(newSelect);
+
+        //closing drop if we click outside the dropdown
+        document.body.addEventListener("click", function(e){
+          if(!newSelect.contains(e.target) && newSelected.className.includes("active")){
+            closeDrop();
+          }
+        })
+      })();
+
+      //generating calendar
+      const calendarDiv = document.getElementById("calendar-container");
+      const calendarEl = document.getElementById("calendar");
+      const calendarRows = calendarEl.getElementsByTagName("tr");
+      let curMonth = curTime.getMonth();
+      let curYear = curTime.getFullYear();
+      let chosenDate = new Date(curTime.getTime());
+      chosenDate.setHours(0, 0, 0, 0);
+      let chosenTime = null;
+      let generateMonth = (function(){
+        const calendarCells = document.getElementsByClassName("calendarCell");
+        const todayDay = curTime.getDate();
+        function daysInMonth(month, year){
+          const lastDay = new Date(year, month + 1, 0);
+          return lastDay.getDate();
+        }
+        return function(month, year){
+          let firstDay = new Date(year, month, 1);
+          let startDay = firstDay.getDay();
+          let endDay = daysInMonth(month, year);
+          for(let i = 0; i < calendarRows.length; i++){
+            for(let j = 0; j < 7; j++){
+              let index = i * 7 + j;
+              //if part of month
+              if(index >= startDay && index < startDay + endDay){
+                calendarCells[index].className = "calendarCell";
+                if(index - startDay + 1 === chosenDate.getDate()){
+                  calendarCells[index].className += " active";
+                }
+                calendarCells[index].getElementsByTagName("span")[0].textContent = (index - startDay + 1).toString();
+              }
+
+              //gray out if not part of month
+              else {
+                calendarCells[index].className = "calendarCell inactive";
+                let day = new Date(year, month, index - startDay + 1);
+                calendarCells[index].getElementsByTagName("span")[0].textContent = day.getDate();
+              }
+            }
+          }
+        }
+      })();
+      //setting up changing month buttons in calendar
+      const backMonthButton = document.getElementById("prevMonth");
+      const nextMonthButton = document.getElementById("nextMonth");
+      let changeMonth = (function(){
+        const todayYear = curTime.getFullYear();
+        const todayMonth = curTime.getMonth();
+        const calendarTitle = document.getElementById("calendar-month");
+        return function(month, year){
+          //changing current month/date and updating proper year
+          curMonth = month;
+          let curMonthDate = new Date(year ? year:todayYear, curMonth);
+          curYear = curMonthDate.getFullYear();
+
+          //graying out back button if it's the current month
+          if(curMonth === todayMonth){
+            backMonthButton.className += " grayedout";
+          }
+          else {
+            backMonthButton.className = "material-icons";
+          }
+
+          //updating name in title
+          calendarTitle.textContent = monthNames[curMonthDate.getMonth()] + " " + curYear;
+
+          //generate new calendar
+          generateMonth(curMonthDate.getMonth(), curMonthDate.getFullYear());
+        }
+      })();
+      backMonthButton.addEventListener("click", function(){
+        changeMonth(curMonth - 1);
+      });
+      nextMonthButton.addEventListener("click", function(){
+        changeMonth(curMonth + 1);
+      });
+      //setting up days in the table head
+      const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+      const calendarDayHead = calendarEl.getElementsByTagName("thead")[0];
+      for(let i = 0; i < dayNames.length; i++){
+        let newCell = document.createElement("td");
+        newCell.innerHTML = dayNames[i][0] + "<span class = \"otherLetters\">" + dayNames[i].substring(1, 3) + "</span>";
+        calendarDayHead.appendChild(newCell);
+      }
+      //setting up table rows
+      for(let i = 0; i < calendarRows.length; i++){
+        for(let j = 0; j < 7; j++){
+          let newCell = document.createElement("td");
+          newCell.className = "calendarCell";
+          let newSpan = document.createElement("span");
+          newSpan.className = "calendarSpan";
+          newCell.appendChild(newSpan);
+          calendarRows[i].appendChild(newCell);
+        }
+      }
+      generateMonth(curMonth, curYear);
+
+      //generating times
+      let startToday = new Date(curTime.getTime());
+      startToday.setHours(0, 0, 0, 0);
+      let appointments = JSON.parse(localStorage.getItem("accountAppt"));
+      let apptDates = [];
+      const timesCont = document.getElementById("times-container");
+      function generateApptData(obj){
+        let newDate = addDays(startToday, parseFloat(obj.date));
+        let times = obj.time.split(" - ");
+        if(times[0].toLowerCase().indexOf("am") === -1 && times[0].toLowerCase().indexOf("pm") === -1){
+          times[0] += " " + times[1].substring(times[1].length - 2, times[1].length);
+        }
+        let startTime = timeToDate(times[0], newDate);
+        let endTime = timeToDate(times[1], newDate);
+        apptDates.push([newDate, startTime, endTime]);
+      }
+      function generateTime(time, index, target){
+        let newTime = document.createElement("div");
+        newTime.className = "time";
+        newTime.textContent = time;
+        newTime.dataset.index = index;
+        let newTooltip = document.createElement("div");
+        newTooltip.className = "tooltip top";
+        newTooltip.textContent = "You already have an appointment at this time";
+        newTime.appendChild(newTooltip);
+        target.appendChild(newTime);
+        return newTime;
+      }
+      let generateTimes = (function(){
+        const pastDiv = document.getElementById("pastDates");
+        const timesDiv = document.getElementById("times");
+        function timesDivTransEnd(){
+          timesDiv.style.display = "none";
+          timesDiv.removeEventListener("transitionend", timesDivTransEnd);
+          pastDiv.style.display = "block";
+          window.setTimeout(function(){
+            pastDiv.style.opacity = "1";
+          }, 5);
+        }
+        function pastDivTransEnd(){
+          pastDiv.style.display = "none";
+          pastDiv.removeEventListener("transitionend", pastDivTransEnd);
+          timesDiv.style.display = "block";
+          window.setTimeout(function(){
+            timesDiv.style.opacity = "1";
+          }, 5);
+        }
+
+        //getting date and start/end times (in form of date objects) of all current appointments
+        for(let i = 0; i < appointments.length; i++){
+          generateApptData(appointments[i]);
+        }
+        //initial generation of times
+        let timeDates = [];
+        const timeDivs = document.getElementsByClassName("time");
+        let timeContDivs = timesCont.getElementsByClassName("half-day-cont");
+        for(let i = 8; i < 20; i++){
+          let timeDay = addHours(startToday, i, 0);
+          timeDates.push([i, 45]);
+          let newTime = generateTime(dateToTime(timeDay), i - 8, timeContDivs[(i < 12 ? 0:1)]);
+          newTime.addEventListener("click", function(e){
+            if(!e.target.className.includes("grayedout")){
+              //removing active class from other time elements
+              if(chosenTime){
+                document.querySelector("div.time.active").className = "time";
+              }
+              //updating chosen time and adding active class to this element
+              chosenTime = timeDates[parseFloat(e.target.dataset.index)][0];
+              e.target.className += " active";
+              //fading out error if applicable
+              if(errors[1].style.display === "block"){
+                fadeOut(errors[1]);
+              }
+            }
+          });
+        }
+
+        //actual reusable function
+        return function(date){
+          //reset chosentime
+          chosenTime = null;
+
+          //check if current date is less than today's (in the past) and transition (or reset) accordingly
+          if(date < startToday){
+            timesDiv.style.opacity = "0";
+            timesDiv.addEventListener("transitionend", timesDivTransEnd);
+          }
+          else if(pastDiv.style.display === "block"){
+            pastDiv.style.opacity = "0";
+            pastDiv.addEventListener("transitionend", pastDivTransEnd);
+          }
+
+          //first, check if there's any potentially conflicting appointments
+          let needCheckAppt = false;
+          let checkAppts = [];
+          for(let i = 0; i < apptDates.length; i++){
+            if(checkSameDay(apptDates[i][0], date)){
+              needCheckAppt = true;
+              checkAppts.push(apptDates[i]);
+            }
+          }
+
+          //check if the date is today
+          let needCheckTimes = date.getTime() - startToday.getTime() === 0;
+          let now = new Date();
+          
+          //then loop through all time divs
+          for(let i = 0; i < timeDivs.length; i++){
+            let conflicting = false;
+            //checking potential conflicts
+            if(needCheckTimes){
+              if(timeDates[timeDivs[i].dataset.index][0] <= now.getHours()){
+                timeDivs[i].getElementsByClassName("tooltip")[0].textContent = "This time has already passed";
+                conflicting = true;
+              }
+            }
+            if(needCheckAppt && !conflicting){
+              let time = timeDates[timeDivs[i].dataset.index];
+              for(let j = 0; j < checkAppts.length; j++){
+                let appt = checkAppts[j];
+                let timeStart = addHours(date, time[0]);
+                let timeEnd = addHours(timeStart, 0, time[1]);
+                if(checkOverlap(appt[1], appt[2], timeStart, timeEnd)){
+                  timeDivs[i].getElementsByClassName("tooltip")[0].textContent = "You already have an appointment at this time";
+                  conflicting = true;
+                  break;
+                }
+              }
+            }
+            timeDivs[i].className = "time" + (conflicting ? " grayedout":"");
+          }
+        };
+      })();
+      generateTimes(chosenDate);
+
+      //setting up calendar so that when a date is chosen, times are generated
+      let spans = document.getElementsByClassName("calendarSpan");
+      for(let i = 0; i < spans.length; i++){
+        spans[i].addEventListener("click", function(e){
+          document.querySelector("td.calendarCell.active").className = "calendarCell";
+          chosenDate = new Date(curYear, curMonth, parseFloat(e.target.textContent));
+          e.target.parentElement.className += " active";
+          generateTimes(chosenDate);
+        });
+      }
+
+      //submitting
+      const popupMask = document.getElementById("popupMask");
+      const popup = document.getElementById("formSuccessPopup");
+      function resetForm(){
+        //fadeout popup
+        fadeOut(popupMask);
+        fadeOut(popup);
+
+        //scroll to top
+        window.scroll({ top: 0, behavior: "smooth" })
+
+        //removing all active classes from things
+        let activeEls = document.getElementsByClassName("active");
+        for(let i = activeEls.length - 1; i >= 0; i--){
+          activeEls[i].classList.remove("active");
+        }
+
+        //updating dropdown
+        document.getElementById("doctorSelectText").textContent = "Select";
+        document.getElementById("doctorSelect").classList.remove("grayedout");
+
+        //updating chosen dates/times
+        chosenDate = new Date();
+        chosenDate.setHours(0, 0, 0, 0);
+        chosenTime = null;
+        generateMonth(curMonth, curYear);
+        generateTimes(chosenDate);
+
+        //clearing textarea
+        document.getElementById("reason").value = "";
+      }
+      let checkForm = (function(){
+        const dropDown = document.getElementById("doctorSelect");
+        const reasonDiv = document.getElementById("reason");
+        const popupSpans = popup.getElementsByTagName("span");
+        function checkReason(){
+          fadeOut(errors[2]);
+          reasonDiv.className = "";
+          reasonDiv.removeEventListener("keyup", checkReason);
+        }
+        return function(){
+          let okay = true;
+          //checking doctor
+          if(!document.querySelector("div.doctor.active") && !document.querySelector("div.option.active")){
+            fadeIn(errors[0]);
+            okay = false;
+          }
+
+          //checking time
+          let now = new Date();
+          let conflictHours = addHours(chosenDate, chosenTime).getTime() - now.getTime() <= 0;
+          if(!chosenTime || conflictHours){
+            if(conflictHours){
+              generateTimes(chosenDate);
+            }
+            fadeIn(errors[1]);
+            okay = false;
+          }
+
+          //checking reason
+          if(!reasonDiv.value){
+            fadeIn(errors[2]);
+            reasonDiv.className = "error";
+            reasonDiv.addEventListener("keyup", checkReason);
+            okay = false;
+          }
+
+          //handling values
+          if(okay){
+            //getting doctor
+            let doctorCard = document.querySelector("div.doctor.active");
+            let doctorEl = doctorCard ? doctorCard:document.querySelector("div.option.active");
+            let doctorObj = counselors[doctorEl.dataset.doctor];
+            //getting appointment date + time
+            let startTime = addHours(chosenDate, chosenTime);
+            let endTime = addHours(chosenDate, chosenTime + 1);
+            let dateDiff = (chosenDate - startToday)/(24 * 60 * 60 * 1000);
+
+            //creating a new appointment object
+            let appt = {
+              date: dateDiff.toString(),
+              person: doctorObj.name,
+              personCred: doctorObj.license,
+              time: dateRangeToTime(startTime, endTime),
+              title: "Individual Session",
+              descrip: reasonDiv.value,
+              type: "counselor"
+            };
+            appointments.push(appt);
+            generateApptData(appt);
+            localStorage.setItem("accountAppt", JSON.stringify(appointments));
+
+            //fading in popup
+            popupSpans[0].textContent = doctorObj.name;
+            popupSpans[1].textContent = createThreeMonthStr(startTime);
+            popupSpans[2].textContent = dateToTime(startTime);
+            fadeIn(popupMask);
+            fadeIn(popup);
+          }
+        }
+      })();
+      document.getElementById("submit").addEventListener("click", checkForm);
+      document.getElementById("appointmentsLink").addEventListener("click", function(){
+        window.location.href = "appointments.html";
+      })
+      document.getElementById("reschedule").addEventListener("click", resetForm);
+    </script>
+  </body>
+</html>

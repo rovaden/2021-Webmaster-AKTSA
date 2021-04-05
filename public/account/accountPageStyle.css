@@ -227,6 +227,9 @@ nav.sidebar ul li:last-of-type::before {
     padding-top: 2em;
     padding-bottom: 1em;
 }
+.pageHeading h1 {
+    word-wrap: break-word;
+}
 .account-content h1, .account-content h2, .account-content h3, .account-content h4, .account-content h5, .account-content h6 {
     color: rgb(7, 55, 99);
 }
@@ -235,7 +238,7 @@ nav.sidebar ul li:last-of-type::before {
     padding: 1em 1em;
     max-width: 100%;
 }
-button.accountButton {
+button.accountButton, div.accountButton {
     position: relative;
     background: #1155cc;
     color: white;
@@ -247,10 +250,22 @@ button.accountButton {
     box-shadow: 0 0.25em 1em rgba(7, 55, 99, 0);
     transition: 0.2s ease;
 }
-button.accountButton.grayedout {
+div.accountButton.hasLink {
+    padding: 0;
+}
+div.accountButton.hasLink > a {
+    border-radius: inherit;
+    padding: 0.5em 2em;
+    display: inline-block;
+}
+button.accountButton > a, div.accountButton > a {
+    color: inherit;
+    text-decoration: none;
+}
+button.accountButton.grayedout, div.accountButton.grayedout {
     pointer-events: none;
 }
-button.grayedout::after {
+button.grayedout::after, div.accountButton.grayedout::after {
     content: "";
     display: block;
     position: absolute;
@@ -264,17 +279,17 @@ button.grayedout::after {
     height: calc(100% + 2px);
     transform: translate(-1px, -1px);
 }
-button.accountButton.outline {
+button.accountButton.outline, div.accountButton.outline {
     background: transparent;
     color: #1155cc;
 }
-button.accountButton:hover {
+button.accountButton:hover, div.accountButton:hover {
     cursor: pointer;
     border-color: #0d3a8a;
     background: #0d3a8a;
     box-shadow: 0 0.25em 1em rgba(7, 55, 99, 0.25);
 }
-button.accountButton.outline:hover {
+button.accountButton.outline:hover, div.accountButton.outline:hover {
     background: #1155cc;
     border-color: #1155cc;
     color: white;
@@ -789,6 +804,7 @@ p.tip {
 }
 .popup h2 {
     font-size: 2em;
+    word-wrap: break-word;
 }
 .popup div.buttons {
     margin-top: 2.5em;
@@ -1773,5 +1789,635 @@ div.group.recommended div.group-description > p:first-of-type::after {
         border-radius: 15px 0 0 15px;
         padding-bottom: 0;
         height: auto;
+    }
+}
+
+
+/**SCHEDULE APPOINTMENT PAGE**/
+/*general form styling*/
+@media (min-width: 50em){
+    #form-container {
+        padding: 0 10%;
+    }
+}
+#form-container form {
+    margin: 1em auto;
+    padding: 0 1em;
+    max-width: 55em;
+    color: gray;
+}
+#form-container form input, #form-container form textarea {
+    font-size: 1em;
+    font-family: inherit;
+    width: 100%;
+    max-width: 100%;
+    display: block;
+    box-sizing: border-box;
+    margin-bottom: 2em;
+    outline: none;
+    color: black;
+    border: 1px solid rgba(7, 55, 99, 0.1);
+    padding: 0.5em 1em;
+    border-radius: 10px;
+    background: rgba(7, 55, 99, 0.03);
+    box-shadow: 0 0em 0em rgba(7, 55, 99, 0);
+    transition: 0.2s ease;
+}
+#form-container form input:hover, #form-container form input:focus, #form-container form textarea:hover, #form-container form textarea:focus {
+    border: 1px solid rgba(7, 55, 99, 0.2);
+    box-shadow: 0 0.15em 1em rgba(7, 55, 99, 0.08);
+}
+#form-container form .question {
+    margin-top: 3em;
+    display: inline-block;
+    font-size: 1.4em;
+    color: rgb(7, 55, 99);
+    margin-bottom: 0.5em;
+}
+#form-container form select {
+    outline: none;
+    border: none;
+    border-bottom: 2px solid gray;
+    background: transparent;
+    font-size: 0.9em;
+    padding: 0.25em 0.5em;
+    max-width: 100%;
+    min-width: 8em;
+}
+
+/*tooltips styling for elements*/
+div.tooltip-container {
+    position: relative;
+}
+#form-container form .question .tooltip {
+    font-size: 0.64em;
+}
+div.tooltip.error {
+    color: rgb(199, 31, 31);
+    transition: 0.5s ease;
+}
+div.tooltip {
+    position: absolute;
+    padding: 0.75em;
+    box-shadow: 0 0.15em 1em rgba(7, 55, 99, 0.2);
+    line-height: 1.15em;
+    font-size: 0.9em;
+    color: gray;
+    background: white;
+    border-radius: 5px;
+    z-index: 4;
+    opacity: 0;
+    display: none;
+    pointer-events: none;
+    transition: inherit;
+}
+div.tooltip::after {
+    position: absolute;
+    content: "";
+    border: 0.4em solid transparent;
+}
+/*different orientations of tooltips*/
+div.tooltip.top {
+    top: -0.75em;
+    left: 50%;
+    transform: translate(-50%, -100%);
+}
+div.tooltip.top::after {
+    bottom: 0;
+    left: 50%;
+    border-top-color: white;
+    transform: translate(-50%, 0.75em);
+}
+div.tooltip.bottom {
+    bottom: -0.75em;
+    left: 50%;
+    transform: translate(-50%, 100%);
+}
+div.tooltip.bottom::after {
+    top: -0.75em;
+    left: 50%;
+    border-bottom-color: white;
+    transform: translate(-50%, 0);
+}
+div.tooltip.left {
+    top: 50%;
+    left: -0.75em;
+    transform: translate(-100%, -50%);
+}
+div.tooltip.left::after {
+    top: 50%;
+    right: -0.75em;
+    border-left-color: white;
+    transform: translate(0, -50%);
+}
+div.tooltip.right {
+    top: 50%;
+    right: -0.75em;
+    transform: translate(100%, -50%);
+}
+div.tooltip.right::after {
+    top: 50%;
+    left: -0.75em;
+    border-right-color: white;
+    transform: translate(0, -50%);
+}
+
+/*choosing doctor*/
+#choose-doctor {
+    margin-bottom: 1em;
+}
+#choose-doctor .doctor {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    padding: 2em 2em;
+    margin: 0.5em;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 0.1em 1em rgba(7, 55, 99, 0.25);
+    opacity: 0.7;
+    transition: 0.2s ease;
+}
+#choose-doctor .doctor:first-of-type {
+    margin-left: 0;
+}
+#choose-doctor .doctor:last-of-type {
+    margin-right: 0;
+}
+#choose-doctor .doctor:hover, #choose-doctor .doctor:focus {
+    cursor: pointer;
+    opacity: 1;
+}
+#choose-doctor .doctor.active { /*selected doctor*/
+    opacity: 1;
+    color: rgb(15, 86, 153);
+    box-shadow: 0 0em 1em rgba(15, 86, 153, 0.75);
+}
+#choose-doctor .doctor p {
+    margin: 0.5em 0;
+    line-height: 1em;
+}
+#choose-doctor .doctor p:first-of-type {
+    margin-top: 1em;
+    font-weight: bold;
+    color: rgb(7, 55, 99);
+}
+#choose-doctor .doctor p:last-of-type {
+    font-size: 0.9em;
+    color: gray;
+}
+#choose-doctor .doctor img {
+    width: 5em;
+    height: 5em;
+}
+
+/*select dropdown*/
+#doctorSelect {
+    margin-top: 0.5em;
+    display: inline-block;
+    position: relative;
+    color: inherit;
+    width: 17em;
+    max-width: 100%;
+    transition: 0.3s ease;
+    z-index: 5;
+}
+#doctorSelect div.selected { /*top of dropdown styling*/
+    position: relative;
+    padding: 0.45em 1em;
+    padding-right: 2em;
+    color: rgb(7, 55, 99);
+    border-bottom: 1px solid;
+    transition: inherit;
+    border-radius: 7px 7px 0 0;
+}
+#doctorSelect div.selected span {
+    transition: inherit;
+    position: relative;
+}
+#doctorSelect div.selected.active {
+    color: #1155cc;
+    border-bottom-color: transparent;
+    background: rgba(255, 255, 255, 0.9);
+}
+#doctorSelect.grayedout div.selected { /*grayedout styling*/
+    color: gray;
+    pointer-events: none;
+}
+#doctorSelect.grayedout div.selected span {
+    opacity: 0.2;
+}
+#doctorSelect.grayedout div.selected::after {
+    border-color: gray;
+}
+#doctorSelect div.selected:hover {
+    cursor: pointer;
+}
+#doctorSelect div.selected:not(.active):hover {
+    background: rgba(7, 55, 99, 0.05);
+    color: rgb(15, 86, 153);
+}
+#doctorSelect div.selected:not(.active):hover::after {
+    border-color: rgb(15, 86, 153);
+}
+#doctorSelect div.selected::after { /*arrow indicating dropdown*/
+    position: absolute;
+    content: "";
+    top: 50%;
+    right: 1em;
+    width: 0.6em;
+    height: 0.6em;
+    border: 1px solid rgb(7, 55, 99);
+    border-width: 0 0 2.5px 2.5px;
+    transform-origin: center;
+    transform: translateY(-0.3em) rotate(-45deg);
+    transition: inherit;
+}
+#doctorSelect div.selected.active::after {
+    transform: translateY(0) rotate(135deg);
+    border-color: #1155cc;
+}
+#doctorSelect div.selected + div { /*dropdown styling*/
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    transform: translateY(100%);
+    background: white;
+    border-radius: 0 0 7px 7px;
+    box-shadow: 0 0.15em 1em rgba(7, 55, 99, 0.2);
+    padding: 0;
+    opacity: 0;
+    display: none;
+    z-index: 3;
+    transition: inherit;
+}
+#doctorSelect div.selected + div div.option {
+    padding: 0.5em 1em;
+    background: transparent;
+    transition: 0.2s ease;
+}
+#doctorSelect div.selected + div div.option:last-of-type {
+    padding-bottom: 0.5em;
+    border-radius: inherit;
+}
+#doctorSelect div.selected + div div.option.active {
+    background: rgba(15, 86, 153, 0.3);
+    color: white;
+    pointer-events: none;
+}
+#doctorSelect div.selected + div div.option:hover {
+    cursor: pointer;
+    background: rgba(7, 55, 99, 0.1);
+}
+
+/*date container*/
+div#date-container {
+    text-align: center;
+}
+@media (min-width: 85em) {
+    div#date-container {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+/*calendar*/
+#calendar-container {
+    width: 100%;
+    max-width: 32em;
+    flex-grow: 0;
+    flex-shrink: 0;
+    margin-top: 1em;
+}
+#calendar-container > div { /*top div with month and navigation*/
+    text-align: center;
+    padding-bottom: 1em;
+}
+#calendar-container > div p#calendar-month {
+    font-weight: bold;
+    color: rgb(7, 55, 99);
+    font-size: 1.25em;
+    display: inline;
+    line-height: 1em;
+    margin: 0 2em;
+}
+#calendar-container > div i.material-icons {
+    position: relative;
+    font-size: 2em;
+    vertical-align: middle;
+    padding: 0.5em;
+    color: rgb(7, 55, 99);
+    transition: 0.2s ease;
+}
+#calendar-container > div i.material-icons::after {
+    content: "";
+    position: absolute;
+    width: 1em;
+    height: 1em;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    background: rgba(7, 55, 99, 0.1);
+    transform: translate(-50%, -50%) scale(0);
+    transition: inherit;
+}
+#calendar-container > div i.material-icons.grayedout {
+    pointer-events: none;
+    color: rgb(180, 180, 180);
+    opacity: 0.7;
+}
+#calendar-container > div i.material-icons:hover {
+    color: rgb(15, 86, 153);
+    cursor: pointer;
+}
+#calendar-container > div i.material-icons:hover::after {
+    transform: translate(-50%, -50%) scale(1.25);
+}
+#calendar {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+#calendar thead { /*heading (days of week)*/
+    font-weight: bold;
+    text-align: center;
+    color: rgb(7, 55, 99);
+    border-bottom: 2px solid rgba(7, 55, 99, 0.1);
+}
+#calendar thead td {
+    padding-bottom: 1em;
+}
+#calendar tr:first-child td {
+    padding-top: 1em;
+}
+#calendar tbody td { /*date cells*/
+    vertical-align: middle;
+    text-align: center;
+    margin: 0.5em;
+    padding: 0.125em;
+}
+#calendar tbody td.inactive { /*previous/next month dates, grayed out*/
+    opacity: 0.5;
+    pointer-events: none;
+}
+#calendar tbody td.inactive span::after {
+    display: none;
+}
+#calendar tbody td.active span {
+    color: white;
+    pointer-events: none;
+}
+#calendar tbody td.active span::after { /*selected date*/
+    background-color: #1155cc;
+    background: linear-gradient(rgb(31, 106, 236), #1155cc);
+    opacity: 1;
+    box-shadow: 0 0.15em 0.4em rgba(7, 55, 99, 0.3);
+}
+#calendar tbody td span {
+    position: relative;
+    padding: 0.5em 0.75em;
+    display: inline-block;
+    z-index: 1;
+    transition: 0.2s ease;
+}
+#calendar tbody td span::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(2.3);
+    background: rgba(7, 55, 99, 0.4);
+    box-shadow: 0 0.15em 0.4em rgba(7, 55, 99, 0.4);
+    opacity: 0;
+    z-index: -1;
+    transition: inherit;
+}
+#calendar tbody td:not(.active) span:hover {
+    cursor: pointer;
+}
+#calendar tbody td:not(.active) span:hover::after {
+    opacity: 0.3;
+}
+
+/*responsive styling on calendar*/
+@media (max-width: 35em) {
+    #calendar thead span.otherLetters {
+        display: none;
+    }
+}
+@media (max-width: 45em) {
+    #calendar-container > div p#calendar-month {
+        margin: 0 0.25em;
+    }
+    #calendar-container > div i.material-icons {
+        padding: 0.5em 0.1em;
+    }
+}
+
+/*times container*/
+div#times-container {
+    padding-top: 2em;
+    min-width: 17em;
+    flex-grow: 1;
+    text-align: left;
+    max-width: 100%;
+    z-index: 5;
+}
+div#times-container #times-title {
+    position: relative;
+    display: inline-block;
+    color: rgb(7, 55, 99);
+    font-size: 1.25em;
+    margin-bottom: 0;
+    margin-top: 0;
+    line-height: 1em;
+}
+div#times-container #times-title div.tooltip {
+    width: 10em;
+    font-size: 0.72em;
+}
+div#times-container div.half-day-cont {
+    position: relative;
+    padding: 0.5em 0;
+    max-width: 100%;
+}
+div#times-container div.half-day-cont span.half-day-label {
+    display: block;
+    font-size: 0.9em;
+    margin-left: 0.25em;
+    line-height: 1.1em;
+    margin-top: 0.5em;
+}
+div#times-container div.time {
+    position: relative;
+    display: inline-block;
+    font-size: 0.9em;
+    padding: 0.75em 1.25em;
+    color: rgba(7, 55, 99, 0.75);
+    border: 1px solid rgba(7, 55, 99, 0.3);
+    box-shadow: 0 0em 1em rgba(7, 55, 99, 0);
+    background: transparent;
+    border-radius: 5px;
+    transition: 0.25s ease;
+    margin: 0.25em;
+}
+div#times-container div.time:not(.grayedout):not(.active):hover {
+    cursor: pointer;
+    background: rgba(7, 55, 99, 0.3);
+    border-color: transparent;
+    color: white;
+    box-shadow: 0 0.15em 1em rgba(7, 55, 99, 0.25);
+}
+div#times-container div.time.active { /*selected time styling*/
+    color: white;
+    background: transparent;
+    border-color: transparent;
+    pointer-events: none;
+    z-index: 2;
+}
+div#times-container div.time::before, div#times-container div.time::after {
+    display: block;
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border-radius: 5px;
+    transition: inherit;
+    opacity: 0;
+    z-index: -1;
+}
+div#times-container div.time::before { /*selected blue background styling*/
+    background-color: #1155cc;
+    background: linear-gradient(rgb(31, 106, 236), #1155cc);
+}
+div#times-container div.time::after { /*selected border around styling*/
+    background-color: rgba(15, 86, 153, 0.3);
+    transform-origin: center;
+    padding: 0.25em;
+    top: -0.25em;
+    left: -0.25em;
+    border-radius: 8px;
+    transform: scale(0);
+    opacity: 0;
+    z-index: -2;
+}
+div#times-container div.time.active::before, div#times-container div.time.active::after {
+    opacity: 1;
+}
+div#times-container div.time.active::after {
+    transform: scale(1);
+}
+div#times-container div.time.grayedout { /*disabled time styling*/
+    background: rgba(100, 100, 100, 0.2);
+    color: gray;
+    border-color: rgba(100, 100, 100, 0.2);
+}
+div#times-container div.time.grayedout div.tooltip {
+    display: block;
+    opacity: 0;
+}
+div#times-container div.time.grayedout:hover div.tooltip {
+    opacity: 1;
+}
+div#times-container div.time div.tooltip {
+    width: 10em;
+}
+@media (min-width: 85em) {
+    div#times-container {
+        padding: 2em 3em;
+        padding-bottom: 0;
+        padding-right: 0;
+    }
+}
+
+/*past dates error message*/
+#times, #pastDates {
+    transition: 0.25s ease;
+}
+#pastDates {
+    opacity: 0;
+    display: none;
+}
+
+/*reason textarea*/
+#form-container form textarea#reason {
+    resize: none;
+    min-height: 5.5em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+#form-container form textarea.error {
+    border-color: rgba(199, 31, 31, 0.5);
+}
+
+/*submit button*/
+#submit {
+    padding-top: 0.75em;
+    padding-bottom: 0.75em;
+}
+
+/*success popup styling*/
+#formSuccessPopup {
+    max-width: 30em;
+    padding-left: calc(2em + 2vw);
+    padding-right: calc(2em + 2vw);
+}
+#formSuccessPopup i.material-icons {
+    text-shadow: 5px 5px rgba(15, 86, 153, 0.3);
+    font-size: 7em;
+}
+#formSuccessPopup span.strong {
+    font-weight: bold;
+    color: rgb(7, 55, 99);
+}
+#formSuccessPopup #doctor-confirm {
+    font-weight: normal;
+}
+#formSuccessPopup #date-time-success {
+    display: flex;
+    font-size: 1.25em;
+    justify-content: center;
+}
+#formSuccessPopup #date-time-success span {
+    display: block;
+    padding: 0.5em 1em;
+    flex: 1 1 0;
+    text-align: left;
+}
+#formSuccessPopup #date-time-success span#date-confirm {
+    border-right: 2px solid rgba(7, 55, 99, 0.1);
+    text-align: right;
+}
+#formSuccessPopup #appointmentsLink {
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+}
+@media (max-width: 30em) {
+    #formSuccessPopup {
+        padding-left: 1em;
+        padding-right: 1em;
+    }
+}
+@media (max-width: 40em){
+    #formSuccessPopup #date-time-success {
+        flex-direction: column;
+        align-items: center;
+    }
+    #formSuccessPopup #date-time-success span, #formSuccessPopup #date-time-success span#date-confirm {
+        flex-basis: auto;
+        text-align: center;
+    }
+    #formSuccessPopup #date-time-success span#date-confirm {
+        border-bottom: 2px solid rgba(7, 55, 99, 0.1);
+        border-right: none;
+    }
+    #formSuccessPopup #appointmentsLink {
+        margin-top: 0;
     }
 }
