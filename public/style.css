@@ -179,7 +179,7 @@ div {
   border-bottom-color: rgb(245, 245, 245);
   left: 50%;
   top: 0;
-  transform: translate(-50%, -19px);
+  transform: translate(-50%, -20px);
 }
 .navbar ul.dropdown li {
   position: relative;
