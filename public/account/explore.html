@@ -516,11 +516,13 @@
       const groupReqButtons = document.getElementsByClassName("sendGroupRequest");
       const eventSignUpButtons = document.getElementsByClassName("signUpEvent");
       const alertDiv = document.getElementById("alerts");
-      function createAlert(message){
+      let startToday = new Date(curTime);
+      startToday.setHours(0, 0, 0, 0);
+      function createAlert(message, isError){
         //creating div
         let newDiv = document.createElement("div");
-        newDiv.className = "explore-alert";
-        newDiv.innerHTML = "<i class = \"material-icons\">check_circle_outline</i><p>" + message + "</p>";
+        newDiv.className = "explore-alert" + (isError ? " error":"");
+        newDiv.innerHTML = "<i class = \"material-icons\">" + (isError ? "highlight_off":"check_circle_outline") + "</i><p>" + message + "</p>";
         let closeButton = document.createElement("span");
         closeButton.className = "close-alert";
         closeButton.innerHTML = "<i class = \"material-icons\">close</i>"
@@ -535,7 +537,7 @@
             window.setTimeout(function(){
               newDiv.style.opacity = "0";
               newDiv.addEventListener("transitionend", function(){
-                alertDiv.removeChild(newDiv);
+                newDiv.parentElement.remove(newDiv);
               });
             }, 4000);
           });
@@ -578,13 +580,34 @@
         let buttonEl = el;
         let index = ind;
         let event = events[parseFloat(ind)];
+        let dateObj = addDays(startToday, parseFloat(event.date));
+        let dateTime = timeRangeToDate(event.time, dateObj);
         return function(){
-          reqData.events[index] = true;
-          buttonEl.className += " grayedout";
-          buttonEl.textContent = "Signed up";
-          saveReqs();
-          createEventAppt(event, index);
-          createAlert("Successfully signed up!");
+          //check if conflicting with other appointments
+          let conflicting = false;
+          for(let i = 0; i < appointments.length; i++){
+            let apptDate = addDays(startToday, parseFloat(appointments[i].date));
+            if(checkSameDay(apptDate, dateObj)){
+              let apptTime = timeRangeToDate(appointments[i].time, apptDate);
+              if(checkOverlap(apptTime[0], apptTime[1], dateTime[0], dateTime[1])){
+                conflicting = true;
+                break;
+              }
+            }
+          }
+          //if not conflicting
+          if(!conflicting){
+            reqData.events[index] = true;
+            buttonEl.className += " grayedout";
+            buttonEl.textContent = "Signed up";
+            saveReqs();
+            createEventAppt(event, index);
+            createAlert("Successfully signed up!");
+          }
+          //otherwise
+          else {
+            createAlert("Couldn't sign up due to conflicting appointments", true);
+          }
         }
       }
       for(let i = 0; i < reqButtons.length; i++){

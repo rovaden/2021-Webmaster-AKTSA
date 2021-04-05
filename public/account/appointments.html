@@ -137,7 +137,7 @@
         }
 
         //creating event that we're signed up for
-        appointments.push(createAppt(5, "event", { person: "Taylor Peterson", time: "10:00 - 10:45 AM", title: "How to Meditate", descrip: "A talk on the basics of meditation", index: 0 }));
+        appointments.push(createAppt(5, "event", { person: "Taylor Peterson", time: "10:15 - 11:00 AM", title: "How to Meditate", descrip: "A talk on the basics of meditation", index: 0 }));
 
         //save this
         saveAppts();
@@ -151,9 +151,14 @@
       //adding content
       const appointmentCont = document.getElementById("appointment-upcoming");
       function createApptDiv(obj){
+        let dateObj = addDays(curTime, parseFloat(obj.date));
+        let timeRange = timeRangeToDate(obj.time, dateObj);
+        //checking if start time is less than current time
+        if(timeRange[0] < curTime){
+          return;
+        }
         let newDiv = document.createElement("div");
         newDiv.className = "appointment";
-        let dateObj = addDays(curTime, parseFloat(obj.date));
         newDiv.innerHTML = "<p><span class = \"appointment-date\">" + createThreeMonthStr(dateObj) + "</span>" +
           "<span class = \"appointment-time\">" + obj.time + "</span></p>" +
           "<div class = \"appointment-text\">" +

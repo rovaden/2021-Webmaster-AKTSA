@@ -1447,23 +1447,31 @@ p.tip {
 }
 #alerts div.explore-alert {
     position: relative;
+    display: flex;
+    align-items: center;
     background: #1155cc;
-    border-top: 2px solid #0d3a8a;
+    border-top: 3px solid #0d3a8a;
     box-shadow: 0 0.25em 1em rgba(7, 55, 99, 0.5);
     color: white;
-    padding: 1em 2em;
+    padding: 1em 1em;
+    padding-right: 2em;
     opacity: 0;
     max-width: 100%;
     transition: 0.5s ease;
 }
+#alerts div.explore-alert.error {
+    border-top-color: rgb(151, 16, 16);
+    background: rgb(199, 31, 31);
+}
 #alerts div.explore-alert > i.material-icons {
     font-size: 2.5em;
-    vertical-align: middle;
+    flex-grow: 0;
+    flex-shrink: 0;
 }
 #alerts div.explore-alert > p {
     display: inline;
     margin: 0;
-    margin-left: 0.5em;
+    margin-left: 0.75em;
 }
 #alerts div.explore-alert .close-alert {
     position: absolute;

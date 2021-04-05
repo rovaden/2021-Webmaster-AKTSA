@@ -620,7 +620,7 @@
             let doctorObj = counselors[doctorEl.dataset.doctor];
             //getting appointment date + time
             let startTime = addHours(chosenDate, chosenTime);
-            let endTime = addHours(chosenDate, chosenTime + 1);
+            let endTime = addHours(chosenDate, chosenTime, 45);
             let dateDiff = (chosenDate - startToday)/(24 * 60 * 60 * 1000);
 
             //creating a new appointment object

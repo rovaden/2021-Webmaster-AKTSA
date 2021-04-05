@@ -73,3 +73,13 @@ function dateRangeToTime(start, end){
     }
     return time1 + " - " + time2;
 }
+function timeRangeToDate(str, day){
+    let pieces = str.split(" - ");
+    let lastTwoLetters = pieces[0].substring(pieces[0].length - 2, pieces[0].length).toLowerCase();
+    if(lastTwoLetters !== "pm" && lastTwoLetters !== "am"){
+        pieces[0] += " " + pieces[1].substring(pieces[1].length - 2, pieces[1].length);
+    }
+    let time1 = timeToDate(pieces[0], day);
+    let time2 = timeToDate(pieces[1], day);
+    return [time1, time2];
+}
