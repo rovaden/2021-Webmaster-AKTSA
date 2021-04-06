@@ -16,10 +16,10 @@ const counselors = {
         description: "Insert description here...Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tempor, tortor in bibendum egestas, metus elit mattis felis, eget tempor justo nibh quis sem. Praesent auctor felis et sapien venenatis fermentum. Fusce id auctor urna. Nulla semper metus felis, id placerat odio vulputate eget.",
         recommended: true
     },
-    "anonymous": {
-        name: "Another Name",
+    "paris": {
+        name: "Paris Croiss",
         license: "LPC",
-        img: "../media/testimonial_leia.png",
+        img: "../media/paris-croiss.png",
         focus: ["Anxiety disorders", "Mood disorders"],
         description: "Insert description here...Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tempor, tortor in bibendum egestas, metus elit mattis felis, eget tempor justo nibh quis sem. Praesent auctor felis et sapien venenatis fermentum. Fusce id auctor urna. Nulla semper metus felis, id placerat odio vulputate eget.",
         recommended: false
@@ -36,12 +36,12 @@ const groups = [
         focus: ["Substance abuse", "Self-improvement"],
         closed: true,
         size: 14,
-        description: "Insert description here...Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tempor, tortor in bibendum egestas, metus elit mattis felis, eget tempor justo nibh quis sem. Praesent auctor felis et sapien venenatis fermentum. Fusce id auctor urna. Nulla semper metus felis, id placerat odio vulputate eget.",
+        description: "In this group, we avert our focus from the burden of previous abuse and blossom it into a journey. There will be ups and downs, but here we make sure those ‘ups’ are significantly greater and lead to an overall improvement. What you will find is not a dull, gray feeling, but a yellow, orange cloud of reassurance above you.",
         recommended: true,
         sent: true
     },
     {
-        name: "Title of Group",
+        name: "The Road to Discovery",
         leader: "alina",
         meetDay: "Saturdays",
         meetTime: "10:00 - 11:00 AM",
@@ -50,12 +50,12 @@ const groups = [
         focus: ["Self-improvement"],
         closed: false,
         size: 10,
-        description: "Insert description here...Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tempor, tortor in bibendum egestas, metus elit mattis felis, eget tempor justo nibh quis sem. Praesent auctor felis et sapien venenatis fermentum. Fusce id auctor urna. Nulla semper metus felis, id placerat odio vulputate eget.",
+        description: "Rather than a group, this is a community. We strive for greatness and focus on the small activities that can collectively uplift your mood. Whether it is baking your grandmother’s pumpkin pie, or painting your outdoor landscape, we find those specific enjoyables that foster self improvement.",
         recommended: true
     },
     {
-        name: "Another title",
-        leader: "anonymous",
+        name: "Helping with Anxiety & Depression",
+        leader: "paris",
         meetDay: "Sundays",
         meetTime: "7:00 - 7:45 PM",
         meetLength: 0.75, //in hours
@@ -63,7 +63,7 @@ const groups = [
         focus: ["Anxiety", "Depression"],
         closed: false,
         size: 11,
-        description: "Insert description here...Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tempor, tortor in bibendum egestas, metus elit mattis felis, eget tempor justo nibh quis sem. Praesent auctor felis et sapien venenatis fermentum. Fusce id auctor urna. Nulla semper metus felis, id placerat odio vulputate eget.",
+        description: "When there is an impending feeling of constant gray skies and heavy weights pulling you down, it’s hard to hope for a light at the end of the tunnel, or when the space around you seems to be getting smaller and smaller.The journey is never one or two steps, but we will be there for you.",
         recommended: false
     },
 ];
