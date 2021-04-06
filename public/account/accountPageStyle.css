@@ -2392,6 +2392,15 @@ div#times-container div.time div.tooltip {
     border-color: rgba(199, 31, 31, 0.5);
 }
 
+/*submit error*/
+#submitError {
+    margin-top: 1em;
+    color: rgb(199, 31, 31);
+    display: block;
+    opacity: 0;
+    transition: 0.3s ease;
+}
+
 /*submit button*/
 #submit {
     padding-top: 0.75em;

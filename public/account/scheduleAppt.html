@@ -144,6 +144,9 @@
 
             <!--submit-->
             <button id = "submit" class = "accountButton" type = "button">Submit</button>
+
+            <!--error message-->
+            <span id = "submitError">Error: please scroll to the top and check that all areas are filled in correctly.</span>
           </form>
       </div>
 
@@ -580,6 +583,7 @@
         const dropDown = document.getElementById("doctorSelect");
         const reasonDiv = document.getElementById("reason");
         const popupSpans = popup.getElementsByTagName("span");
+        const errorMessage = document.getElementById("submitError");
         function checkReason(){
           fadeOut(errors[2]);
           reasonDiv.className = "";
@@ -614,6 +618,9 @@
 
           //handling values
           if(okay){
+            //fade out error message
+            errorMessage.style.opacity = "0";
+
             //getting doctor
             let doctorCard = document.querySelector("div.doctor.active");
             let doctorEl = doctorCard ? doctorCard:document.querySelector("div.option.active");
@@ -643,6 +650,11 @@
             popupSpans[2].textContent = dateToTime(startTime);
             fadeIn(popupMask);
             fadeIn(popup);
+          }
+
+          //show error message if not okay
+          else {
+            errorMessage.style.opacity = "1";
           }
         }
       })();
