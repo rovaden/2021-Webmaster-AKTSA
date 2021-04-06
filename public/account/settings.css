@@ -47,7 +47,7 @@
 /*ACCOUNT INFO*/
 .account-info {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     margin: 0.25em 0;
     padding: 0.5em 1em;
     transition: 0.2s ease;
@@ -67,14 +67,26 @@
 .account-info p.account-name {
     font-size: 1.6em;
     font-weight: bold;
+    line-height: 1em;
     color: rgb(7, 55, 99);
     margin-bottom: 0.25em;
+    font-family: "Comfortaa";
 }
-.account-info p.account-description {
+.account-info p.account-email {
     margin-top: 0;
-    font-size: 0.9em;
 }
-@media (max-width: 80em) and (min-width: 65em) {
+.account-name::after {
+  content: "Member";
+  display: inline-block;
+  margin-left: 1.5em;
+  padding: 0.1em 1.2em;
+  border-radius: 1.5em;
+  background-color: rgba(123, 69, 181, 0.5);
+  color: white;
+  font-size: 0.5em;
+  font-weight: bold;
+}
+@media (max-width: 80em) and (min-width: 65em), (max-width: 40em) {
     .account-info {
         flex-direction: column;
         justify-content: center;
@@ -82,38 +94,176 @@
         margin: 1em 0;
     }
     .account-info img {
-        margin-right: 0;
+        margin: 0 auto;
+    }
+    .account-name::after {
+      display: table;
+      margin: 0 auto;
+      margin-top: 0.5em;
     }
 }
 
-.account-name::after {
-  content: "Trial";
-  align-items: center;
-  display: inline-block;
-  margin-left: 2em;
-  padding: 0.1em 1.2em;
-  border-radius: 1.5em;
-  background-color: rgba(123, 69, 181, 0.5);
-  color: white;
-  font-size: 0.5em;
-  font-weight: bold;
-  float: right;
-}
-
-#settings-button {
-  padding: 0.65em 2.5em;
-  font-size: 0.85em;
-  border-radius: 2em;
+/*inputs general styling*/
+.dashboard-card input, .dashboard-card textarea {
+  display: block;
+  font-size: 1em;
+  font-family: inherit;
   outline: none;
+  border: 1px solid rgba(7, 55, 99, 0.25);
+  box-shadow: 0 0 1em rgba(7, 55, 99, 0);
+  border-radius: 5px;
+  box-sizing: border-box;
+  padding: 0.5em 1em;
+  max-width: 100%;
   transition: 0.2s ease;
-  border: none;
-  background: #1155cc;
-  color: white;
-  box-shadow: 0 0.25em 1em rgba(7, 55, 99, 0);
+}
+.dashboard-card textarea {
+  resize: none;
+}
+.dashboard-card input:hover, .dashboard-card textarea:hover {
+  border-color: rgba(17, 85, 204, 0.5);
+  box-shadow: 0 0.15em 1em rgba(7, 55, 99, 0.1);
+}
+.dashboard-card input:focus, .dashboard-card textarea:focus {
+  border-color: rgba(17, 85, 204, 0.75);
+  box-shadow: 0 0.15em 1em rgba(7, 55, 99, 0.1);
+}
+.settings-info > div {
+  margin: 1.25em 0;
+}
+.settings-info div label {
+  display: block;
+}
+.settings-info div input {
+  width: 100%;
+  min-width: 6em;
+}
+.settings-info button {
+  margin-top: 0.5em;
+  margin-bottom: 1em;
 }
 
-#settings-button:hover {
+/*account info div*/
+#accountInfo #password-cont {
+  position: relative;
+}
+#accountInfo #password-cont:hover input#password:not(:focus) {
+  border-color: rgba(17, 85, 204, 0.5);
+  box-shadow: 0 0.15em 1em rgba(7, 55, 99, 0.1);
+}
+#accountInfo input#password {
+  padding-right: 1.5em;
+}
+#accountInfo input#password + i.material-icons {
+  font-size: 1.5em;
+  position: absolute;
+  right: 0.5em;
+  top: 50%;
+  transform: translate(0, -50%);
+  color: rgba(7, 55, 99, 0.25);
+  transition: 0.2s ease;
+}
+#accountInfo input#password + i.material-icons:hover {
   cursor: pointer;
-  background: #0d3a8a;
-  box-shadow: 0 0.25em 1em rgba(7, 55, 99, 0.25);
+  color: rgba(17, 85, 204, 0.5);
+}
+#accountInfo label.sublabel {
+  margin-top: 1em;
+  font-size: 0.8em;
+}
+#accountInfo #addressDiv #state {
+  text-transform: uppercase;
+}
+@media (min-width: 40em) and (max-width: 65em), (min-width: 80em) {
+  #accountInfo label.sublabel {
+    margin-top: 0;
+  }
+  #accountInfo #addressDiv {
+    display: flex;
+  }
+  #accountInfo #addressDiv + label.sublabel {
+    margin-top: 1em;
+  }
+  #accountInfo #addressDiv > div {
+    margin: 0 0.5em;
+  }
+  #accountInfo #addressDiv > div:first-of-type {
+    margin-left: 0;
+  }
+  #accountInfo #addressDiv > div:last-of-type {
+    margin-right: 0;
+  }
+  #accountInfo #addressDiv input {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+}
+
+/*personal info*/
+#personalInfo textarea {
+  width: 100%;
+  min-height: 10em;
+}
+#personalInfo #bioAfter {
+  margin-top: 0.5em;
+  font-size: 0.8em;
+}
+
+/*notes*/
+#settings-button {
+  margin-top: 0.5em;
+  margin-bottom: 1em;
+}
+
+/*plans styling*/
+.plan {
+  display: flex;
+  align-items: flex-start;
+  margin: 1.5em 0;
+}
+.plan i.material-icons {
+  position: relative;
+  font-size: 2em;
+  color: rgb(17, 85, 204);
+  margin-right: 0.75em;
+  vertical-align: middle;
+  z-index: 2;
+}
+.plan i.material-icons::after {
+  content: "";
+  position: absolute;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  background-color: rgba(17, 85, 204, 0.1);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1.5);
+  z-index: -1;
+}
+.plan i.material-icons + div > p:first-child {
+  font-size: 1.1em;
+  color: rgb(7, 55, 99);
+  font-weight: bold;
+  display: inline;
+  margin-bottom: 0;
+}
+.plan i.material-icons + div > p:first-child + p {
+  margin-top: 0.25em;
+  margin-bottom: 0.5em;
+}
+.plan i.material-icons + div > p:last-child {
+  font-style: italic;
+  margin-top: 0;
+}
+@media (min-width: 65em) and (max-width: 85em), (max-width: 30em) {
+  .plan {
+    flex-direction: column;
+    text-align: center;
+  }
+  .plan i.material-icons { 
+    margin: 0 auto;
+    display: block;
+    margin-bottom: 0.5em;
+  }
 }

@@ -25,7 +25,8 @@ window.onclick = function(event) {
 }
 
 //Checkbox
-function saveInfo() {
+//commented out because apparently there's an error here and the script won't function
+/*function saveInfo() {
   for (i=1; i<=8; i++){
     String tempVar = (("checkbox").concat(i));
     var tempVar = document.getElementById(("symp").concat(i));
@@ -35,4 +36,26 @@ function saveInfo() {
 
 //for loading
 var checked = JSON.parse(localStorage.getItem(("symp").concat(i)));
-    document.getElementById(("symp").concat(i)).checked = checked;
+    document.getElementById(("symp").concat(i)).checked = checked;*/
+
+//toggling show password/show dots
+const passwordButton = document.getElementById("passwordEye");
+const passwordEl = document.getElementById("password");
+passwordButton.addEventListener("click", function(e){
+  if(passwordEl.type === "password"){
+    passwordEl.type = "text";
+    e.target.textContent = "visibility_off";
+  }
+  else {
+    passwordEl.type = "password";
+    e.target.textContent = "visibility";
+  }
+});
+
+//character count on bio
+const bioEl = document.getElementById("bio");
+const characterCount = document.getElementById("bioAfter");
+characterCount.textContent = bioEl.value.length + "/250 characters";
+bioEl.addEventListener("keyup", function(){
+  characterCount.textContent = bioEl.value.length + "/250 characters";
+})
