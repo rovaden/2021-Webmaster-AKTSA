@@ -1268,6 +1268,10 @@ p.tip {
 }
 
 /*explore search filters styling*/
+#exploreSearchForm #exploreFilterContainer {
+    transition: 0.5s ease;
+    overflow-y: hidden;
+}
 #exploreSearchForm #exploreFilter {
     color: rgb(7, 55, 99);
     display: inline;
@@ -1562,6 +1566,9 @@ p.tip {
 }
 
 /*explore tabs content*/
+.explorePage {
+    transition: 0.5s ease;
+}
 .explorePage div.listing {
     background: white;
     border-radius: 15px;

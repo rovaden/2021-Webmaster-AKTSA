@@ -78,178 +78,180 @@
         </div>
         <div>
           <div>
-            <span id = "exploreFilter">Filters: </span>
-            <!--filtering doctors-->
-            <div class = "filter-container">
-              <!--license type-->
-              <div class = "filter" data-for = "license">
-                <span class = "filter-title">License</span>
-                <form>
-                  <div class = "checkLi">
-                    <label for = "LMHC">LMHC
-                      <input type = "checkbox" id = "LMHC" checked>
-                      <div class = "checkbox"></div>
-                    </label>
-                  </div>
-                  <div class = "checkLi">
-                    <label for = "LPC">LPC
-                      <input type = "checkbox" id = "LPC" checked>
-                      <div class = "checkbox"></div>
-                    </label>
-                  </div>
-                  <div class = "checkLi">
-                    <label for = "LCSW">LCSW
-                      <input type = "checkbox" id = "LCSW" checked>
-                      <div class = "checkbox"></div>
-                    </label>
-                  </div>
-                  <div class = "checkLi">
-                    <label for = "PsyD">PsyD
-                      <input type = "checkbox" id = "PsyD" checked>
-                      <div class = "checkbox"></div>
-                    </label>
-                  </div>
-                </form>
+            <div id = "exploreFilterContainer">
+              <span id = "exploreFilter">Filters: </span>
+              <!--filtering doctors-->
+              <div class = "filter-container">
+                <!--license type-->
+                <div class = "filter" data-for = "license">
+                  <span class = "filter-title">License</span>
+                  <form>
+                    <div class = "checkLi">
+                      <label for = "LMHC">LMHC
+                        <input type = "checkbox" id = "LMHC" checked>
+                        <div class = "checkbox"></div>
+                      </label>
+                    </div>
+                    <div class = "checkLi">
+                      <label for = "LPC">LPC
+                        <input type = "checkbox" id = "LPC" checked>
+                        <div class = "checkbox"></div>
+                      </label>
+                    </div>
+                    <div class = "checkLi">
+                      <label for = "LCSW">LCSW
+                        <input type = "checkbox" id = "LCSW" checked>
+                        <div class = "checkbox"></div>
+                      </label>
+                    </div>
+                    <div class = "checkLi">
+                      <label for = "PsyD">PsyD
+                        <input type = "checkbox" id = "PsyD" checked>
+                        <div class = "checkbox"></div>
+                      </label>
+                    </div>
+                  </form>
+                </div>
+                <!--focus of doctor-->
+                <div class = "filter" style = "min-width: 10em" data-for = "focus">
+                  <span class = "filter-title">Focus</span>
+                  <form>
+                    <div class = "checkLi">
+                      <label for = "subAbuse">Substance abuse
+                        <input type = "checkbox" id = "subAbuse" checked>
+                        <div class = "checkbox"></div>
+                      </label>
+                    </div>
+                    <div class = "checkLi">
+                      <label for = "recovery">Recovery
+                        <input type = "checkbox" id = "recovery" checked>
+                        <div class = "checkbox"></div>
+                      </label>
+                    </div>
+                    <div class = "checkLi">
+                      <label for = "moodDis">Mood disorders
+                        <input type = "checkbox" id = "moodDis" checked>
+                        <div class = "checkbox"></div>
+                      </label>
+                    </div>
+                    <div class = "checkLi">
+                      <label for = "anxietyDis">Anxiety disorders
+                        <input type = "checkbox" id = "anxietyDis" checked>
+                        <div class = "checkbox"></div>
+                      </label>
+                    </div>
+                    <div class = "checkLi">
+                      <label for = "personDis">Personality disorders
+                        <input type = "checkbox" id = "personDis" checked>
+                        <div class = "checkbox"></div>
+                      </label>
+                    </div>
+                  </form>
+                </div>
               </div>
-              <!--focus of doctor-->
-              <div class = "filter" style = "min-width: 10em" data-for = "focus">
-                <span class = "filter-title">Focus</span>
-                <form>
-                  <div class = "checkLi">
-                    <label for = "subAbuse">Substance abuse
-                      <input type = "checkbox" id = "subAbuse" checked>
-                      <div class = "checkbox"></div>
-                    </label>
-                  </div>
-                  <div class = "checkLi">
-                    <label for = "recovery">Recovery
-                      <input type = "checkbox" id = "recovery" checked>
-                      <div class = "checkbox"></div>
-                    </label>
-                  </div>
-                  <div class = "checkLi">
-                    <label for = "moodDis">Mood disorders
-                      <input type = "checkbox" id = "moodDis" checked>
-                      <div class = "checkbox"></div>
-                    </label>
-                  </div>
-                  <div class = "checkLi">
-                    <label for = "anxietyDis">Anxiety disorders
-                      <input type = "checkbox" id = "anxietyDis" checked>
-                      <div class = "checkbox"></div>
-                    </label>
-                  </div>
-                  <div class = "checkLi">
-                    <label for = "personDis">Personality disorders
-                      <input type = "checkbox" id = "personDis" checked>
-                      <div class = "checkbox"></div>
-                    </label>
-                  </div>
-                </form>
-              </div>
-            </div>
-            <!--filtering groups-->
-            <div class = "filter-container">
-              <!--focus-->
-              <div class = "filter" style = "min-width: 10em" data-for = "focus">
-                <span class = "filter-title">Focus</span>
-                <form>
-                  <div class = "checkLi">
-                    <label for = "subAbuseG">Substance abuse
-                      <input type = "checkbox" id = "subAbuseG" checked>
-                      <div class = "checkbox"></div>
-                    </label>
-                  </div>
-                  <div class = "checkLi">
-                    <label for = "depression">Depression
-                      <input type = "checkbox" id = "depression" checked>
-                      <div class = "checkbox"></div>
-                    </label>
-                  </div>
-                  <div class = "checkLi">
-                    <label for = "anxiety">Anxiety
-                      <input type = "checkbox" id = "anxiety" checked>
-                      <div class = "checkbox"></div>
-                    </label>
-                  </div>
-                  <div class = "checkLi">
-                    <label for = "selfImprov">Self-Improvement
-                      <input type = "checkbox" id = "selfImprov" checked>
-                      <div class = "checkbox"></div>
-                    </label>
-                  </div>
-                </form>
-              </div>
-              <!--meeting frequency-->
-              <div class = "filter" style = "min-width: 11em" data-for = "meeting">
-                <span class = "filter-title">Meetings</span>
-                <form>
-                  <label>Meeting Frequency</label>
-                  <div class = "checkLi">
-                    <label for = "weekly">Weekly
-                      <input type = "checkbox" id = "weekly" checked>
-                      <div class = "checkbox"></div>
-                    </label>
-                  </div>
-                  <div class = "checkLi">
-                    <label for = "biweekly">Biweekly
-                      <input type = "checkbox" id = "biweekly" checked>
-                      <div class = "checkbox"></div>
-                    </label>
-                  </div>
-                  <label>Meeting Length</label>
-                  <div class = "checkLi">
-                    <label for = "45min">45 minutes
-                      <input type = "checkbox" id = "45min" checked>
-                      <div class = "checkbox"></div>
-                    </label>
-                  </div>
-                  <div class = "checkLi">
-                    <label for = "1hr">1 hour
-                      <input type = "checkbox" id = "1hr" checked>
-                      <div class = "checkbox"></div>
-                    </label>
-                  </div>
-                  <div class = "checkLi">
-                    <label for = "1-halfhr">1.5 hours
-                      <input type = "checkbox" id = "1-halfhr" checked>
-                      <div class = "checkbox"></div>
-                    </label>
-                  </div>
-                  <div class = "checkLi">
-                    <label for = "2hr">2 hours
-                      <input type = "checkbox" id = "2hr" checked>
-                      <div class = "checkbox"></div>
-                    </label>
-                  </div>
-                </form>
-              </div>
-              <!--open/closed group-->
-              <div class = "filter" data-for = "closed">
-                <span class = "filter-title">Type</span>
-                <form>
-                  <div class = "checkLi">
-                    <label for = "openGroup">Open
-                      <input type = "checkbox" id = "openGroup" checked>
-                      <div class = "checkbox"></div>
-                    </label>
-                  </div>
-                  <div class = "checkLi">
-                    <label for = "closedGroup">Closed
-                      <input type = "checkbox" id = "closedGroup" checked>
-                      <div class = "checkbox"></div>
-                    </label>
-                  </div>
-                </form>
-              </div>
-              <!--group size-->
-              <div id = "groupSize" data-for = "size">
-                <span class = "filter-title">Size: </span>
-                <form>
-                  <input type = "number" min = "5" max = "15" id = "groupMin" value = "5"/>
-                  <label for = "groupMax">to</label>
-                  <input type = "number" min = "5" max = "15" id = "groupMax" value = "15"/>
-                </form>
+              <!--filtering groups-->
+              <div class = "filter-container">
+                <!--focus-->
+                <div class = "filter" style = "min-width: 10em" data-for = "focus">
+                  <span class = "filter-title">Focus</span>
+                  <form>
+                    <div class = "checkLi">
+                      <label for = "subAbuseG">Substance abuse
+                        <input type = "checkbox" id = "subAbuseG" checked>
+                        <div class = "checkbox"></div>
+                      </label>
+                    </div>
+                    <div class = "checkLi">
+                      <label for = "depression">Depression
+                        <input type = "checkbox" id = "depression" checked>
+                        <div class = "checkbox"></div>
+                      </label>
+                    </div>
+                    <div class = "checkLi">
+                      <label for = "anxiety">Anxiety
+                        <input type = "checkbox" id = "anxiety" checked>
+                        <div class = "checkbox"></div>
+                      </label>
+                    </div>
+                    <div class = "checkLi">
+                      <label for = "selfImprov">Self-Improvement
+                        <input type = "checkbox" id = "selfImprov" checked>
+                        <div class = "checkbox"></div>
+                      </label>
+                    </div>
+                  </form>
+                </div>
+                <!--meeting frequency-->
+                <div class = "filter" style = "min-width: 11em" data-for = "meeting">
+                  <span class = "filter-title">Meetings</span>
+                  <form>
+                    <label>Meeting Frequency</label>
+                    <div class = "checkLi">
+                      <label for = "weekly">Weekly
+                        <input type = "checkbox" id = "weekly" checked>
+                        <div class = "checkbox"></div>
+                      </label>
+                    </div>
+                    <div class = "checkLi">
+                      <label for = "biweekly">Biweekly
+                        <input type = "checkbox" id = "biweekly" checked>
+                        <div class = "checkbox"></div>
+                      </label>
+                    </div>
+                    <label>Meeting Length</label>
+                    <div class = "checkLi">
+                      <label for = "45min">45 minutes
+                        <input type = "checkbox" id = "45min" checked>
+                        <div class = "checkbox"></div>
+                      </label>
+                    </div>
+                    <div class = "checkLi">
+                      <label for = "1hr">1 hour
+                        <input type = "checkbox" id = "1hr" checked>
+                        <div class = "checkbox"></div>
+                      </label>
+                    </div>
+                    <div class = "checkLi">
+                      <label for = "1-halfhr">1.5 hours
+                        <input type = "checkbox" id = "1-halfhr" checked>
+                        <div class = "checkbox"></div>
+                      </label>
+                    </div>
+                    <div class = "checkLi">
+                      <label for = "2hr">2 hours
+                        <input type = "checkbox" id = "2hr" checked>
+                        <div class = "checkbox"></div>
+                      </label>
+                    </div>
+                  </form>
+                </div>
+                <!--open/closed group-->
+                <div class = "filter" data-for = "closed">
+                  <span class = "filter-title">Type</span>
+                  <form>
+                    <div class = "checkLi">
+                      <label for = "openGroup">Open
+                        <input type = "checkbox" id = "openGroup" checked>
+                        <div class = "checkbox"></div>
+                      </label>
+                    </div>
+                    <div class = "checkLi">
+                      <label for = "closedGroup">Closed
+                        <input type = "checkbox" id = "closedGroup" checked>
+                        <div class = "checkbox"></div>
+                      </label>
+                    </div>
+                  </form>
+                </div>
+                <!--group size-->
+                <div id = "groupSize" data-for = "size">
+                  <span class = "filter-title">Size: </span>
+                  <form>
+                    <input type = "number" min = "5" max = "15" id = "groupMin" value = "5"/>
+                    <label for = "groupMax">to</label>
+                    <input type = "number" min = "5" max = "15" id = "groupMax" value = "15"/>
+                  </form>
+                </div>
               </div>
             </div>
             <button id = "exploreGo" class = "accountButton">Search</button>
@@ -627,25 +629,36 @@
       const exploreTabs = document.getElementById("exploreTabs").getElementsByTagName("div");
       const filterSpanText = document.getElementById("exploreFilter");
       const filterConts = document.getElementsByClassName("filter-container");
+      const exploreFilterCont = document.getElementById("exploreFilterContainer");
       let curPage = 0;
       let prevPage = 0;
+      function fadeIn(el){
+        el.style.display = "block";
+        window.setTimeout(function(){
+          el.style.opacity = "1";
+        }, 10);
+      }
+      let fadeOut = (function(){
+        function handleFadeEnd(e){
+          e.target.style.display = "none";
+          e.target.removeEventListener("transitionend", handleFadeEnd);
+          fadeIn(explorePages[curPage]);
+        }
+        return function(el){
+          el.style.opacity = "0";
+          el.addEventListener("transitionend", handleFadeEnd);
+        }
+      })();
       let createTabClickFunc = function(ind){
         const tabTarg = exploreTabs[ind];
         const filterTarg = (ind === 1 || ind === 2) ? filterConts[ind - 1]:null;
         const pageTarg = explorePages[ind];
         const index = ind;
-        return function(){
-          //updating previous and current pages
-          prevPage = curPage;
-          explorePages[prevPage].style.display = "none";
-          curPage = index;
-          pageTarg.style.display = "block";
-          
-          //updating explore tabs
-          exploreTabs[prevPage].className = "";
-          tabTarg.className = "active";
-
-          //updating filters
+        function handleTransEnd(){
+          exploreFilterCont.style.height = "auto"
+          exploreFilterCont.removeEventListener("transitionend", handleTransEnd);
+        }
+        function handleExploreFilterHeight(curHeight){
           for(var i = 0; i < filterConts.length; i++){
             filterConts[i].style.display = "none";
           }
@@ -655,6 +668,35 @@
           else {
             filterTarg.style.display = "inline";
             filterSpanText.style.display = "inline";
+          }
+          let targetHeight = exploreFilterCont.scrollHeight;
+          exploreFilterCont.style.height = curHeight + "px";
+          window.setTimeout(function(){
+            exploreFilterCont.style.height = targetHeight + "px";
+            exploreFilterCont.addEventListener("transitionend", handleTransEnd)
+          }, 10);
+        }
+        return function(){
+          //updating previous and current pages
+          prevPage = curPage;
+          fadeOut(explorePages[prevPage]);
+          curPage = index;
+          
+          //updating explore tabs
+          exploreTabs[prevPage].className = "";
+          tabTarg.className = "active";
+
+          //updating filters
+          let curHeight = exploreFilterCont.scrollHeight;
+          if(parseFloat(curHeight) !== 0){
+            exploreFilterCont.style.opacity = "0";
+            window.setTimeout(function(){
+              handleExploreFilterHeight(curHeight);
+              exploreFilterCont.style.opacity = "1";
+            }, 500);
+          }
+          else {
+            handleExploreFilterHeight(curHeight);
           }
         }
       }
@@ -666,6 +708,7 @@
       for(let i = 0; i < explorePages.length; i++){
         if(curPage !== i){
           explorePages[i].style.display = "none";
+          explorePages[i].style.opacity = "0";
         }
         if(i < filterConts.length){
           filterConts[i].style.display = "none";
