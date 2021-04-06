@@ -399,7 +399,8 @@
             "<div class = \"group-info\">" +
               "<div>" +
                 "<p><i class = \"material-icons\">calendar_today</i>Meets " + (obj.meetWeekly ? "weekly":"biweekly") + " " + obj.meetDay + " from " + obj.meetTime + "</p>" +
-                "<p><i class = \"material-icons\">lock_open</i>" + (obj.closed ? "Closed":"Open") + " group</p>" +
+                /*"<p><i class = \"material-icons\">lock_open</i>" + (obj.closed ? "Closed":"Open") + " group</p>" +*/
+                (obj.closed ? "<i class = \"material-icons\">lock_outline</i> ":"<i class = \"material-icons\">lock_open</i> ") + (obj.closed ? "Closed":"Open") + " group</p>" +
                 "<p><i class = \"material-icons\">people</i>" + obj.size + " people</p>" +
               "</div>" +
               "<div class = \"group-focus\"><p>Focus:</p>" + focusDiv + "</div>" +
