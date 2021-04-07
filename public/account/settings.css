@@ -1,47 +1,97 @@
-/*MODAL*/
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 5; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+/*modal styling*/
+#symptomsPopup {
+  max-width: 30em;
+  text-align: left;
+  color: gray;
+  position: relative;
 }
-
-/* Modal Content/Box */
-#modal-content {
-  background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
-  border-radius: 1.3em;
-  animation-name: animateModal;
-  animation-duration: 0.3s
+@media (max-height: 40em){
+  #symptomsPopup {
+    top: 0;
+    left: 0;
+    margin: 15vh auto;
+    transform: none;
+  }
+  #popupMask {
+    overflow: auto;
+  }
 }
-
-@keyframes animateModal {
-  from {top:-300px; opacity:0}
-  to {top:0; opacity:1}
+#symptomsPopup h2 {
+  margin-top: 1em;
+  color: rgb(7, 55, 99);
 }
-
-/* The Close Button */
-.close {
-  color: #aaa;
+#symptomsPopup #closePopup { /*x-out button*/
+  font-size: 1.5em;
+  color: gray;
   float: right;
-  font-size: 28px;
-  font-weight: bold;
+  transition: 0.2s ease;
 }
-
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
+#symptomsPopup #closePopup::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+#symptomsPopup #closePopup:hover {
   cursor: pointer;
+  color: rgb(7, 55, 99);
+}
+#symptomsPopup form label {
+  position: relative;
+  display: block;
+  padding: 0.2em;
+  padding-left: 1.75em;
+  transition: 0.2s ease;
+}
+#symptomsPopup form label:hover {
+  background: rgba(7, 55, 99, 0.1);
+}
+#symptomsPopup form input {
+  position: absolute;
+  margin: 0;
+  margin-top: 0;
+  width: 0;
+  height: 0;
+}
+#symptomsPopup form input + div.checkbox::before { /*check mark*/
+  display: block;
+  position: absolute;
+  content: "";
+  width: 0.3em;
+  height: 0.5em;
+  top: 0;
+  left: 0;
+  border: solid white;
+  border-width: 0 0.15em 0.15em 0;
+  box-sizing: border-box;
+  transform-origin: center;
+  transform: translate(70%, 5%) rotate(45deg) scale(0);
+  transition: inherit;
+}
+#symptomsPopup form div.checkbox { /*styled box*/
+  position: absolute;
+  top: 50%;
+  left: 0.5em;
+  width: 0.75em;
+  height: 0.75em;
+  transform: translateY(-50%);
+  transition: 0.2s ease;
+  border-radius: 2px;
+  border: 1px solid gray;
+  background: transparent;
+  transition: inherit;
+}
+#symptomsPopup form input:checked + div.checkbox {
+  background: rgb(31, 106, 236);
+  border-color: rgb(31, 106, 236);
+}
+#symptomsPopup form input:checked + div.checkbox::before {
+  transform: translate(70%, 5%) rotate(45deg) scale(1);
+}
+#symptomsPopup form input:hover, #symptomsPopup form label:hover {
+  cursor: pointer;
+}
+#symptomsPopup #settings-submit {
+  margin-top: 1em;
 }
 
 /*ACCOUNT INFO*/

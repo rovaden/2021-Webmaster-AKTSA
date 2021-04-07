@@ -155,38 +155,6 @@
               <li>Anxiety</li>
             </ul>
             <button id="settings-button" class = "accountButton">Add Symptoms</button>
-            <div id="myModal" class="modal">
-              <div id="modal-content">
-                <span class="close">&times;</span>
-                <form>
-                  <input type="checkbox" id="symp1" name="symp1" value="appetite">
-                  <label for="symp1"> Changes in appetite</label><br>
-
-                  <input type="checkbox" id="symp2" name="symp2" value="mood">
-                  <label for="symp2"> Changes in mood</label><br>
-
-                  <input type="checkbox" id="symp3" name="symp3" value="congestion">
-                  <label for="symp3"> Congestion</label><br>
-
-                  <input type="checkbox" id="symp4" name="symp4" value="nausea" checked>
-                  <label for="symp4"> Nausea</label><br>
-
-                  <input type="checkbox" id="symp5" name="symp5" value="vomiting">
-                  <label for="symp5"> Vomiting</label><br>
-
-                  <input type="checkbox" id="symp6" name="symp6" value="sweating" checked>
-                  <label for="symp6"> Sweating</label><br>
-
-                  <input type="checkbox" id="symp7" name="symp7" value="anxiety" checked>
-                  <label for="symp7"> Anxiety</label><br>
-
-                  <input type="checkbox" id="symp8" name="symp8" value="tremors">
-                  <label for="symp8"> Tremors</label><br><br>
-
-                  <button id="settings-button" type="button" onClick="saveInfo()">Submit</button>
-                </form>
-              </div>
-            </div>
           </div>
           <div class = "dashboard-card">
             <h2>Plans</h2>
@@ -213,6 +181,57 @@
       <footer class="footer account-footer">
         <div class="footer-text">Copyright KatKure 2021 <i class = "material-icons">copyright</i></div>
       </footer>
+
+      <div id = "popupMask">
+        <div class = "popup" id = "symptomsPopup">
+          <i class = "material-icons" id = "closePopup">close</i>
+          <h2>Update Symptoms</h2>
+          <p>Please check all symptoms that apply to you right now</p>
+          <form>
+            <label for="symp1"> Changes in appetite
+              <input type="checkbox" id="symp1" name="symp1" value="appetite">
+              <div class = "checkbox"></div>
+            </label>
+
+            <label for="symp2">Changes in mood
+              <input type="checkbox" id="symp2" name="symp2" value="mood">
+              <div class = "checkbox"></div>
+            </label>
+
+            <label for="symp3">Congestion
+              <input type="checkbox" id="symp3" name="symp3" value="congestion">
+              <div class = "checkbox"></div>
+            </label>
+
+            <label for="symp4">Nausea
+              <input type="checkbox" id="symp4" name="symp4" value="nausea" checked>
+              <div class = "checkbox"></div>
+            </label>
+            
+            <label for="symp5">Vomiting
+              <input type="checkbox" id="symp5" name="symp5" value="vomiting">
+              <div class = "checkbox"></div>
+            </label>
+
+            <label for="symp6">Sweating
+              <input type="checkbox" id="symp6" name="symp6" value="sweating" checked>
+              <div class = "checkbox"></div>
+            </label>
+
+            <label for="symp7">Anxiety
+              <input type="checkbox" id="symp7" name="symp7" value="anxiety" checked>
+              <div class = "checkbox"></div>
+            </label>
+            
+            <label for="symp8">Tremors
+              <input type="checkbox" id="symp8" name="symp8" value="tremors">
+              <div class = "checkbox"></div>
+            </label>
+
+            <button id="settings-submit" type="button" onClick="saveInfo()" class = "accountButton">Submit</button>
+          </form>
+        </div>
+      </div>
     </div>
 
     <script src = "../script.js"></script>

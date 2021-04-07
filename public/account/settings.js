@@ -1,5 +1,5 @@
 //MODAL
-var modal = document.getElementById("myModal");
+/*var modal = document.getElementById("myModal");
 
 // Get the button that opens the modal
 var btn = document.getElementById("settings-button");
@@ -22,7 +22,68 @@ window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
   }
+}*/
+
+//handling popup
+const popupMask = document.getElementById("popupMask");
+const popup = document.getElementById("symptomsPopup");
+const settingsButton = document.getElementById("settings-button");
+let scrollBarWidth = (function(){
+  const testDiv = document.createElement("div");
+  testDiv.style.width = "100%";
+  testDiv.style.visibility = "hidden";
+  testDiv.style.overflow = "scroll";
+  document.body.appendChild(testDiv);
+  const testInnerDiv = document.createElement("div");
+  testInnerDiv.style.width = "100%";
+  testDiv.appendChild(testInnerDiv);
+  let value = testDiv.offsetWidth - testInnerDiv.offsetWidth;
+  testDiv.remove();
+  return value;
+})();
+function checkClick(e){
+  if(!popup.contains(e.target) && e.target !== settingsButton){
+    closePopup(popup);
+  }
 }
+function closePopup(target){
+  popupMask.style.opacity = "0";
+  target.style.opacity = "0";
+  window.setTimeout(function(){
+    popupMask.style.display = "none";
+    target.style.display = "none";
+    if(popupMask.scrollHeight > popupMask.clientHeight){
+      let scrollTop = parseFloat(document.body.style.top);
+      document.body.style.top = "";
+      document.body.style.position = "";
+      document.body.style.paddingRight = "0";
+      window.scrollTo(0, Math.abs(scrollTop));
+    }
+  }, 500);
+}
+function openPopup(target){
+  popupMask.style.display = "block";
+  target.style.display = "block";
+  window.setTimeout(function(){
+    popupMask.style.opacity = "1";
+    target.style.opacity = "1";
+  }, 1);
+
+  //fixing body on scroll if the mask is overflowing
+  if(popupMask.scrollHeight > popupMask.clientHeight){
+    let scrollTop = window.pageYOffset;
+    document.body.style.position = "fixed";
+    document.body.style.top = "-" + scrollTop + "px";
+    document.body.style.paddingRight = scrollBarWidth + "px";
+  }
+}
+document.body.addEventListener("click", checkClick)
+settingsButton.addEventListener("click", function(){
+  openPopup(popup);
+});
+popup.getElementsByTagName("i")[0].addEventListener("click", function(){
+  closePopup(popup);
+});
 
 //Checkbox
 //commented out because apparently there's an error here and the script won't function
