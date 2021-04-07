@@ -1,5 +1,6 @@
 const curTime = new Date();
 const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+const weekNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 function addDays(date, days){
   const newDate = new Date(date.getTime());
   newDate.setDate(date.getDate() + days);

@@ -254,8 +254,8 @@
                 </div>
               </div>
             </div>
-            <button id = "exploreGo" class = "accountButton">Search</button>
           </div>
+          <button id = "exploreGo" class = "accountButton">Search</button>
         </div>
       </div>
 
@@ -392,13 +392,17 @@
         for(let i = 0; i < obj.focus.length; i++){
           focusDiv += "<p class = \"focus\">" + obj.focus[i] + "</p>";
         }
+        let meetDay = obj.meetDay;
+        if(obj.name === "Recovering From Addiction Group"){
+          meetDay = weekNames[addDays(new Date(), 1).getDay()]; //to handle the fact that this group changes dates based on current date
+        }
         let divContent = "<div class = \"group-description\">" +
             "<p>" + obj.name + "</p>" +
             "<p>Led by " + counselor.name + ", " + counselor.license + "</p>" +
             (obj.recommended ? "<p class = \"recommended\">Recommended</p>":"") +
             "<div class = \"group-info\">" +
               "<div>" +
-                "<p><i class = \"material-icons\">calendar_today</i>Meets " + (obj.meetWeekly ? "weekly":"biweekly") + " " + obj.meetDay + " from " + obj.meetTime + "</p>" +
+                "<p><i class = \"material-icons\">calendar_today</i>Meets " + (obj.meetWeekly ? "weekly":"biweekly") + " " + meetDay + " from " + obj.meetTime + "</p>" +
                 /*"<p><i class = \"material-icons\">lock_open</i>" + (obj.closed ? "Closed":"Open") + " group</p>" +*/
                 (obj.closed ? "<i class = \"material-icons\">lock_outline</i> ":"<i class = \"material-icons\">lock_open</i> ") + (obj.closed ? "Closed":"Open") + " group</p>" +
                 "<p><i class = \"material-icons\">people</i>" + obj.size + " people</p>" +
@@ -656,7 +660,8 @@
         const pageTarg = explorePages[ind];
         const index = ind;
         function handleTransEnd(){
-          exploreFilterCont.style.height = "auto"
+          exploreFilterCont.style.height = "auto";
+          exploreFilterCont.style.overflowY = "visible";
           exploreFilterCont.removeEventListener("transitionend", handleTransEnd);
         }
         function handleExploreFilterHeight(curHeight){
@@ -672,6 +677,7 @@
           }
           let targetHeight = exploreFilterCont.scrollHeight;
           exploreFilterCont.style.height = curHeight + "px";
+          exploreFilterCont.style.overflowY = "hidden";
           window.setTimeout(function(){
             exploreFilterCont.style.height = targetHeight + "px";
             exploreFilterCont.addEventListener("transitionend", handleTransEnd)
@@ -686,6 +692,13 @@
           //updating explore tabs
           exploreTabs[prevPage].className = "";
           tabTarg.className = "active";
+
+          //closing dropdowns
+          let prevActive = document.querySelector("div.filter.active");
+          if(prevActive){
+            prevActive.classList.remove("active");
+            closeDropDown(prevActive.getElementsByTagName("form")[0]);
+          }
 
           //updating filters
           let curHeight = exploreFilterCont.scrollHeight;
