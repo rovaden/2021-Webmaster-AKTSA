@@ -145,16 +145,20 @@
         </div>
 
         <div class = "dashboard-column left">
-          <div class="dashboard-card">
+          <div class="dashboard-card" id = "notesDiv">
             <h2>Notes</h2>
             <ul>
-              <li>Started KatKure October 2020</li>
-              <li>Previously had opoid addiction</li>
+              <li>Started KatKure in October 2020</li>
+              <li>Previously had opioid addiction</li>
+              <li>First time working with counselors and therapy</li>
+            </ul>
+            <h2>Symptoms</h2>
+            <ul id = "symptomsListEl">
               <li>Nausea</li>
               <li>Sweating</li>
               <li>Anxiety</li>
             </ul>
-            <button id="settings-button" class = "accountButton">Add Symptoms</button>
+            <button id="settings-button" class = "accountButton">Update Symptoms</button>
           </div>
           <div class = "dashboard-card">
             <h2>Plans</h2>
@@ -188,47 +192,47 @@
           <h2>Update Symptoms</h2>
           <p>Please check all symptoms that apply to you right now</p>
           <form>
-            <label for="symp1"> Changes in appetite
-              <input type="checkbox" id="symp1" name="symp1" value="appetite">
+            <label for="symp1">Changes in appetite
+              <input type="checkbox" id="symp1" name="symp1" value="Changes-in-appetite">
               <div class = "checkbox"></div>
             </label>
 
             <label for="symp2">Changes in mood
-              <input type="checkbox" id="symp2" name="symp2" value="mood">
+              <input type="checkbox" id="symp2" name="symp2" value="Changes-in-mood">
               <div class = "checkbox"></div>
             </label>
 
             <label for="symp3">Congestion
-              <input type="checkbox" id="symp3" name="symp3" value="congestion">
+              <input type="checkbox" id="symp3" name="symp3" value="Congestion">
               <div class = "checkbox"></div>
             </label>
 
             <label for="symp4">Nausea
-              <input type="checkbox" id="symp4" name="symp4" value="nausea" checked>
+              <input type="checkbox" id="symp4" name="symp4" value="Nausea" checked>
               <div class = "checkbox"></div>
             </label>
             
             <label for="symp5">Vomiting
-              <input type="checkbox" id="symp5" name="symp5" value="vomiting">
+              <input type="checkbox" id="symp5" name="symp5" value="Vomiting">
               <div class = "checkbox"></div>
             </label>
 
             <label for="symp6">Sweating
-              <input type="checkbox" id="symp6" name="symp6" value="sweating" checked>
+              <input type="checkbox" id="symp6" name="symp6" value="Sweating" checked>
               <div class = "checkbox"></div>
             </label>
 
             <label for="symp7">Anxiety
-              <input type="checkbox" id="symp7" name="symp7" value="anxiety" checked>
+              <input type="checkbox" id="symp7" name="symp7" value="Anxiety" checked>
               <div class = "checkbox"></div>
             </label>
             
             <label for="symp8">Tremors
-              <input type="checkbox" id="symp8" name="symp8" value="tremors">
+              <input type="checkbox" id="symp8" name="symp8" value="Tremors">
               <div class = "checkbox"></div>
             </label>
 
-            <button id="settings-submit" type="button" onClick="saveInfo()" class = "accountButton">Submit</button>
+            <button id="settings-submit" type="button" class = "accountButton">Save</button>
           </form>
         </div>
       </div>

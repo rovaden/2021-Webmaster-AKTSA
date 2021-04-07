@@ -264,6 +264,12 @@
   margin-top: 0.5em;
   margin-bottom: 1em;
 }
+#notesDiv h2 {
+  margin-bottom: 0.5em;
+}
+#notesDiv h2 + ul {
+  margin-top: 0;
+}
 
 /*plans styling*/
 .plan {

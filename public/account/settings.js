@@ -85,6 +85,44 @@ popup.getElementsByTagName("i")[0].addEventListener("click", function(){
   closePopup(popup);
 });
 
+//handling symptoms
+const popupForm = popup.getElementsByTagName("form")[0];
+const popupInputs = popupForm.getElementsByTagName("input");
+const popupSubmit = document.getElementById("settings-submit");
+const symptomsListEl = document.getElementById("symptomsListEl");
+const hasSymptomsList = localStorage.getItem("settingsSymptoms") ? true:false;
+let symptomsList = hasSymptomsList ? JSON.parse(localStorage.getItem("settingsSymptoms")):{};
+function saveSymptoms(){
+  localStorage.setItem("settingsSymptoms", JSON.stringify(symptomsList));
+}
+function processSymptoms(){
+  for(let i = 0; i < popupInputs.length; i++){
+    let symptomVal = popupInputs[i].value.replace(/-/g, " ");
+    symptomsList[symptomVal] = popupInputs[i].checked;
+  }
+}
+function listSymptoms(){
+  symptomsListEl.innerHTML = "";
+  for(let i in symptomsList){
+    if(symptomsList[i]){
+      let newLi = document.createElement("li");
+      newLi.textContent = i;
+      symptomsListEl.appendChild(newLi);
+    }
+  }
+}
+if(!hasSymptomsList){
+  processSymptoms();
+  saveSymptoms();
+}
+listSymptoms();
+popupSubmit.addEventListener("click", function(){
+  processSymptoms();
+  listSymptoms();
+  saveSymptoms();
+  closePopup(popup);
+})
+
 //Checkbox
 //commented out because apparently there's an error here and the script won't function
 /*function saveInfo() {
