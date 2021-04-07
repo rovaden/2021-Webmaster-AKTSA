@@ -78,7 +78,7 @@
 .account-name::after {
   content: "Member";
   display: inline-block;
-  margin-left: 1.5em;
+  margin-left: 1em;
   padding: 0.1em 1.2em;
   border-radius: 1.5em;
   background-color: rgba(123, 69, 181, 0.5);
