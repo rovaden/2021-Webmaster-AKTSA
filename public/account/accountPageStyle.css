@@ -1093,6 +1093,23 @@ p.tip {
 #chat-container .message.quickly-after div.chat-text::after {
     display: none;
 }
+.chat-text p a {
+  position: relative;
+  text-decoration: none;
+  padding-bottom: 2px;
+  border-bottom: 2px solid rgba(35, 138, 163, 0.3);
+  color:rgb(76, 173, 197);
+  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(35, 138, 163, 0.1));
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 100% 0%;
+  transition: 0.2s ease;
+}
+
+.chat-text p a:hover {
+  color:rgb(76, 173, 197);
+  background-size: 100% 100%;
+}
 
 /*time divider styling*/
 #chat-container .time-divider {
