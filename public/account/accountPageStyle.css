@@ -980,6 +980,7 @@ p.tip {
     flex-grow: 1;
     overflow-y: auto;
     overflow-x: hidden;
+    transition: 0.25s ease;
 }
 #chat-container .conversation .conversation-back {
     position: sticky;

@@ -2,7 +2,7 @@ const counselors = {
     "alina": {
         name: "Alina Miller",
         license: "LMHC",
-        img: "../media/testimonial_jane.png",
+        img: "../media/alina-miller.png",
         focus: ["Substance abuse", "Recovery"],
         description: "Insert description here...Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tempor, tortor in bibendum egestas, metus elit mattis felis, eget tempor justo nibh quis sem. Praesent auctor felis et sapien venenatis fermentum. Fusce id auctor urna. Nulla semper metus felis, id placerat odio vulputate eget.",
         recommended: true,
@@ -11,7 +11,7 @@ const counselors = {
     "hazel": {
         name: "Hazel Jones",
         license: "LMHC",
-        img: "../media/testimonial_leia.png",
+        img: "../media/hazel-jones.png",
         focus: ["Substance abuse", "Recovery", "Mood disorders"],
         description: "Insert description here...Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tempor, tortor in bibendum egestas, metus elit mattis felis, eget tempor justo nibh quis sem. Praesent auctor felis et sapien venenatis fermentum. Fusce id auctor urna. Nulla semper metus felis, id placerat odio vulputate eget.",
         recommended: true
