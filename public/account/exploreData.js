@@ -13,7 +13,7 @@ const counselors = {
         license: "LMHC",
         img: "../media/hazel-jones.png",
         focus: ["Substance abuse", "Recovery", "Mood disorders"],
-        description: "Insert description here...Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tempor, tortor in bibendum egestas, metus elit mattis felis, eget tempor justo nibh quis sem. Praesent auctor felis et sapien venenatis fermentum. Fusce id auctor urna. Nulla semper metus felis, id placerat odio vulputate eget.",
+        description: "Hazel Jones is a licensed mental health counselor who worked with many patients in order to continue being sober and offer medically-sound advice and tips for staying clean. She also specializes in mood disorders, such as clinical depression and bipolar disorder. She graduated from Walden University with her license/degree in 2014.",
         recommended: true
     },
     "paris": {
