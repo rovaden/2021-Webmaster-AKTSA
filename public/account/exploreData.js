@@ -19,6 +19,7 @@ const counselors = {
     "mark": {
         name: "Mark Garcia",
         license: "LPCC",
+        img: "../media/mark-garcia.png",
         focus: ["Mood disorders", "Anxiety disorders", "Eating disorders"],
         description: "Mark Garcia is a licensed professional clinical counselor who has worked with many patients in therapy, both in-person and virtually. He utilizes unconditional positive regard and systematic desensitization with his patients. He also uses cognitive-behavioral therapy (CBT) with a few of his patients as well. He graduated from Northeastern University in 2003.",
         recommended: false
@@ -34,6 +35,7 @@ const counselors = {
     "alex": {
         name: "Alex Johnson",
         license: "LCADC",
+        img: "../media/alex-johnson.png",
         focus: ["Substance abuse", "Recovery"],
         description: "Alex Johnson is a licensed Clinical Alcohol and Drug Abuse Counselor who has worked with many patients to recover from alcoholism and alcohol addictions and continue the road towards remaining sober. He also specializes in patients who have and/or on a recovery path from drug addiction, specifically fentanyl. He graduated from the University of South Dakota in 2008.",
         recommended: false
@@ -41,6 +43,7 @@ const counselors = {
     "keisha": {
         name: "Keisha Moore",
         license: "CEDS",
+        img: "../media/keisha-moore.png",
         focus: ["Eating disorders"],
         description: "Keisha Moore is a Certified Eating Disorder Specialist who has worked with many patients to recover from a wide spectrum of eating disorders. Some of the disorders she helps patients work through include pica, bulimia nervosa, anorexia nervosa, rumination disorder, orthorexia. She graduated from University of California, Berkeley in 2012.",
         recommended: false
@@ -48,6 +51,7 @@ const counselors = {
     "lyla": {
         name: "Lyla Adams",
         license: "MD",
+        img: "../media/lyla-adams.png",
         focus: ["Substance abuse", "Recovery"],
         description: "Lyla Adams is a licensed psychiatrist who has worked with many patients to recover from drug addictions, typically heroin and cocaine. She works with prescribing medication that does not contain opiods and narcotics. She works closely with prescribing the medications offered at the KatKure store and is constantly researching on ways to break the prescription misuse cycle. She graduated from Johns Hopkins in 1998.",
         recommended: true
