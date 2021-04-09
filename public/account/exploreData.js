@@ -55,6 +55,14 @@ const counselors = {
         focus: ["Substance abuse", "Recovery"],
         description: "Lyla Adams is a licensed psychiatrist who has worked with many patients to recover from drug addictions, typically heroin and cocaine. She works with prescribing medication that does not contain opioids and narcotics. She works closely with prescribing the medications offered at the KatKure store and is constantly researching ways to break the prescription misuse cycle. She graduated from Johns Hopkins in 1998.",
         recommended: true
+    },
+    "harding": {
+        name: "Harding Hoo",
+        license: "LPCC",
+        img: "../media/harding-hoo.png",
+        focus: ["Depression", "Recovery"],
+        description: "Harding Hoo is a licensed professional that specializes in patients that deal with depression and anxiety, specifically those who have a history of substance abuse. Dr. Hoo uses various strategies depending on the patients and ensures they are always in a place of comfort and trust. He graduated from NYU Steinhardt in 2000.",
+        recommended: false
     }
 };
 const groups = [
@@ -148,6 +156,19 @@ const groups = [
         closed: false,
         size: 7,
         description: "This group will focus on changing and managing negative thoughts and behaviors that contribute to anxiety and depression. We will also look at different and more healthy ways to look at your life, your worries, and yourself.",
+        recommended: false
+    },
+    {
+        name: "Overcoming Depression",
+        leader: "harding",
+        meetDay: "Tuesdays",
+        meetTime: "6:00 - 7:00 PM",
+        meetLength: 1, //in hours
+        meetWeekly: true,
+        focus: ["Depression"],
+        closed: true,
+        size: 12,
+        description: "Depression is a hard challenge to overcome, and sometimes a joint effort is what’s needed. During these sessions, you will find that this gloomy feeling is not permanent, but simply an obstacle in your journey. Alongside your fellow peers and Dr. Hoo, you will find the yellow brick path that uplifts your spirits.",
         recommended: false
     }
 ];
