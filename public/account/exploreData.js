@@ -4,7 +4,7 @@ const counselors = {
         license: "LPCC",
         img: "../media/paris-croiss.png",
         focus: ["Anxiety disorders", "Mood disorders"],
-        description: "Paris Cross is a licensed professional clinical counselor who has worked with many patients who have anixety disorders, such as post traumatic stress disorder (PTSD), obsessive-compulsive disorder (OCD) and panic disorders. She also specializes in bipolar disorder. She graduated from Auburn University in 2009.",
+        description: "Paris Cross is a licensed professional clinical counselor who has worked with many patients who have anxiety disorders, such as post-traumatic stress disorder (PTSD), obsessive-compulsive disorder (OCD) and panic disorders. She also specializes in bipolar disorder. She graduated from Auburn University in 2009.",
         recommended: false
     },
     "alina": {
@@ -12,7 +12,7 @@ const counselors = {
         license: "LMHC",
         img: "../media/alina-miller.png",
         focus: ["Substance abuse", "Recovery"],
-        description: "Alina Miller is a licensed mental health counselor who has worked with many patients and clients in order to lead the road towards recovering from substance abuse, such as opiods and narcotics overdose. She graduated from Capella University with her degree/license in 2006.",
+        description: "Alina Miller is a licensed mental health counselor who has worked with many patients and clients in order to lead the way towards recovering from substance abuse, such as opioids and narcotics. She graduated from Capella University with her degree and license in 2006.",
         recommended: true,
         sent: true
     },
@@ -29,7 +29,7 @@ const counselors = {
         license: "LMHC",
         img: "../media/hazel-jones.png",
         focus: ["Substance abuse", "Recovery", "Mood disorders"],
-        description: "Hazel Jones is a licensed mental health counselor who worked with many patients in order to continue being sober and offer medically-sound advice and tips for staying clean. She also specializes in mood disorders, such as clinical depression and bipolar disorder. She graduated from Walden University with her license/degree in 2014.",
+        description: "Hazel Jones is a licensed mental health counselor who has worked with many patients to continue their sobriety and to offer medically-sound advice and tips for staying clean. She also specializes in mood disorders, such as clinical depression and bipolar disorder. She graduated from Walden University with her license and degree in 2014.",
         recommended: true
     },
     "alex": {
@@ -37,7 +37,7 @@ const counselors = {
         license: "LCADC",
         img: "../media/alex-johnson.png",
         focus: ["Substance abuse", "Recovery"],
-        description: "Alex Johnson is a licensed Clinical Alcohol and Drug Abuse Counselor who has worked with many patients to recover from alcoholism and alcohol addictions and continue the road towards remaining sober. He also specializes in patients who have and/or on a recovery path from drug addiction, specifically fentanyl. He graduated from the University of South Dakota in 2008.",
+        description: "Alex Johnson is a licensed Clinical Alcohol and Drug Abuse Counselor who has worked with many patients to recover from alcoholism and alcohol addictions and continue the road towards remaining sober. He also specializes in patients who have been or are on a recovery path from drug addiction, especially fentanyl. He graduated from the University of South Dakota in 2008.",
         recommended: false
    },
     "keisha": {
@@ -45,7 +45,7 @@ const counselors = {
         license: "CEDS",
         img: "../media/keisha-moore.png",
         focus: ["Eating disorders"],
-        description: "Keisha Moore is a Certified Eating Disorder Specialist who has worked with many patients to recover from a wide spectrum of eating disorders. Some of the disorders she helps patients work through include pica, bulimia nervosa, anorexia nervosa, rumination disorder, orthorexia. She graduated from University of California, Berkeley in 2012.",
+        description: "Keisha Moore is a Certified Eating Disorder Specialist who has worked with many patients to recover from a wide spectrum of eating disorders. Some of the disorders she helps patients work through include pica, bulimia nervosa, anorexia nervosa, rumination disorder, and orthorexia. She graduated from University of California, Berkeley in 2012.",
         recommended: false
    },
     "lyla": {
@@ -53,7 +53,7 @@ const counselors = {
         license: "MD",
         img: "../media/lyla-adams.png",
         focus: ["Substance abuse", "Recovery"],
-        description: "Lyla Adams is a licensed psychiatrist who has worked with many patients to recover from drug addictions, typically heroin and cocaine. She works with prescribing medication that does not contain opiods and narcotics. She works closely with prescribing the medications offered at the KatKure store and is constantly researching on ways to break the prescription misuse cycle. She graduated from Johns Hopkins in 1998.",
+        description: "Lyla Adams is a licensed psychiatrist who has worked with many patients to recover from drug addictions, typically heroin and cocaine. She works with prescribing medication that does not contain opioids and narcotics. She works closely with prescribing the medications offered at the KatKure store and is constantly researching ways to break the prescription misuse cycle. She graduated from Johns Hopkins in 1998.",
         recommended: true
     }
 };
@@ -65,39 +65,91 @@ const groups = [
         meetTime: "3:00 - 4:00 PM",
         meetLength: 1, //in hours
         meetWeekly: true, 
-        focus: ["Substance abuse", "Self-improvement"],
+        focus: ["Substance abuse", "Recovery"],
         closed: true,
         size: 14,
-        description: "In this group, we avert our focus from the burden of previous abuse and blossom it into a journey. There will be ups and downs, but here we make sure those ‘ups’ are significantly greater and lead to an overall improvement. What you will find is not a dull, gray feeling, but a yellow, orange cloud of reassurance above you.",
+        description: "In this closed group program, we focus on continuing our journey away from substance abuse and towards a better future. On every journey there will be ups and downs, but we're here to make sure those 'ups' are significantly greater and that we know how to successfully overcome and grow beyond those 'downs' if they appear.",
         recommended: true,
         sent: true
+    },
+    {
+        name: "Helping with Depression",
+        leader: "paris",
+        meetDay: "Sundays and Wednesdays",
+        meetTime: "6:30 - 7:30 PM",
+        meetLength: 1, //in hours
+        meetWeekly: false, 
+        focus: ["Depression"],
+        closed: false,
+        size: 11,
+        description: "Depression, while complex and undeniably daunting, ultimately can be managed. This group is centered around developing beneficial skills, habits, and knowledge that can be employed to help cope with depression and to lessen its impact on daily life.",
+        recommended: false
     },
     {
         name: "The Road to Discovery",
         leader: "alina",
         meetDay: "Saturdays",
-        meetTime: "10:00 - 11:00 AM",
-        meetLength: 1, //in hours
-        meetWeekly: false, 
+        meetTime: "9:00 - 11:00 AM",
+        meetLength: 2, //in hours
+        meetWeekly: true, 
         focus: ["Self-improvement"],
         closed: false,
         size: 10,
-        description: "Rather than a group, this is a community. We strive for greatness and focus on the small activities that can collectively uplift your mood. Whether it is baking your grandmother’s pumpkin pie, or painting your outdoor landscape, we find those specific enjoyables that foster self improvement.",
+        description: "This is not only a group but a community. We strive for greatness and focus on the small activities that collectively can uplift your mood. Whether it is baking your grandmother’s pumpkin pie or painting your outdoor landscape, we find those specific enjoyable activities that foster self-improvement and do them.",
+        recommended: false
+    },
+    {
+        name: "Overcoming Anxiety",
+        leader: "mark",
+        meetDay: "Fridays",
+        meetTime: "8:00 - 9:30 AM",
+        meetLength: 1.5, //in hours
+        meetWeekly: true, 
+        focus: ["Anxiety", "Self-improvement"],
+        closed: true,
+        size: 6,
+        description: "This closed group program seeks to help people better understand their anxiety and, by extension, learn how to manage and overcome their fears. In a supportive and lively group setting, members will be able to participate in discussions, practice beneficial techniques, and ultimately grow into who they want to be.",
+        recommended: false
+    },
+    {
+        name: "Developing Life Skills",
+        leader: "alex",
+        meetDay: "Tuesdays and Thursdays",
+        meetTime: "5:00 - 5:45 PM",
+        meetLength: 45, //in hours
+        meetWeekly: false, 
+        focus: ["Self-improvement", "Recovery"],
+        closed: false,
+        size: 9,
+        description: "This group is focused on developing various useful skills - from cooking to holding conversations to nailing job interviews - that will help you participate in your daily life to the fullest. By gaining proficiency in these skills, you'll be able to feel more prepared for and in control of your day-to-day activities.",
+        recommended: false
+    },
+    {
+        name: "Preventing Relapse",
+        leader: "lyla",
+        meetDay: "Wednesdays",
+        meetTime: "3:00 - 5:00 PM",
+        meetLength: 2, //in hours
+        meetWeekly: true, 
+        focus: ["Substance abuse", "Recovery"],
+        closed: true,
+        size: 12,
+        description: "In this group, members will learn how to identify and to successfully deal with high-risk situations that could potentially lead to relapse. Learning and practicing new, healthy strategies to cope with these situations not only prevents relapse but also increases your feeling of preparedness and self-control.",
         recommended: true
     },
     {
-        name: "Helping with Anxiety & Depression",
-        leader: "paris",
-        meetDay: "Sundays",
-        meetTime: "7:00 - 7:45 PM",
-        meetLength: 0.75, //in hours
+        name: "Healing Minds",
+        leader: "mark",
+        meetDay: "Thursdays",
+        meetTime: "1:00 - 2:30 PM",
+        meetLength: 1.5, //in hours
         meetWeekly: true, 
         focus: ["Anxiety", "Depression"],
         closed: false,
-        size: 11,
-        description: "When there is an impending feeling of constant gray skies and heavy weights pulling you down or when the space around you seems to be getting smaller and smaller, it’s hard to hope for a light at the end of the tunnel. The journey out of that tunnel may seem far, but we will alwats be there for you every step of the way.",
+        size: 7,
+        description: "This group will focus on changing and managing negative thoughts and behaviors that contribute to anxiety and depression. We will also look at different and more healthy ways to look at your life, your worries, and yourself.",
         recommended: false
-    },
+    }
 ];
 const events = [
     {

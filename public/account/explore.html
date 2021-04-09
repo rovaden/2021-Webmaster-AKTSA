@@ -168,6 +168,12 @@
                       </label>
                     </div>
                     <div class = "checkLi">
+                      <label for = "recoveryG">Recovery
+                        <input type = "checkbox" id = "recoveryG" checked>
+                        <div class = "checkbox"></div>
+                      </label>
+                    </div>
+                    <div class = "checkLi">
                       <label for = "depression">Depression
                         <input type = "checkbox" id = "depression" checked>
                         <div class = "checkbox"></div>
@@ -199,8 +205,8 @@
                       </label>
                     </div>
                     <div class = "checkLi">
-                      <label for = "biweekly">Biweekly
-                        <input type = "checkbox" id = "biweekly" checked>
+                      <label for = "semiweekly">Twice weekly
+                        <input type = "checkbox" id = "semiweekly" checked>
                         <div class = "checkbox"></div>
                       </label>
                     </div>
@@ -410,7 +416,7 @@
             (obj.recommended ? "<p class = \"recommended\">Recommended</p>":"") +
             "<div class = \"group-info\">" +
               "<div>" +
-                "<p><i class = \"material-icons\">calendar_today</i>Meets " + (obj.meetWeekly ? "weekly":"biweekly") + " " + meetDay + " from " + obj.meetTime + "</p>" +
+                "<p><i class = \"material-icons\">calendar_today</i>Meets " + (obj.meetWeekly ? "weekly":"twice a week") + " " + meetDay + " from " + obj.meetTime + "</p>" +
                 /*"<p><i class = \"material-icons\">lock_open</i>" + (obj.closed ? "Closed":"Open") + " group</p>" +*/
                 (obj.closed ? "<i class = \"material-icons\">lock_outline</i> ":"<i class = \"material-icons\">lock_open</i> ") + (obj.closed ? "Closed":"Open") + " group</p>" +
                 "<p><i class = \"material-icons\">people</i>" + obj.size + " people</p>" +
