@@ -271,6 +271,9 @@
           }
         }
         for(let i in counselors){
+          if(i === "alina" || i === "hazel"){
+            continue;
+          }
           let newOption = document.createElement("div");
           newOption.className = "option";
           newOption.textContent = counselors[i].name + ", " + counselors[i].license;

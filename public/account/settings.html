@@ -74,19 +74,11 @@
 
       <div id = "dashboard-container">
         <div class = "dashboard-column">
-          <div class="dashboard-card">
-            <!--<div class="settings-info">
-              <img class="stuf" id="pfp" src="../media/jane-pfp.png" height="100">
-              <h1 class="stuf" id="settings-name">Jane Doe</h1>
-              <h5>Email</h5>
-            </div>-->
-            <div class = "account-info">
-              <img src = "../media/jane-pfp.png"/>
-              <div>
-                <p class = "account-name">Jane Doe</p>
-                <p class = "account-email">janedoe@gmail.com</p>
-                <p>Hi there, I'm Jane! I'm excited to be using KatKure and love the community here. I enjoy playing soccer and tennis in my free time. I also love to read thriller books, especially Stephen King, and I'm always up for a conversation over some tea.</p>
-              </div>
+          <div class="dashboard-card account-info">
+            <img src = "../media/jane-pfp.png"/>
+            <div>
+              <p class = "account-name">Jane Doe</p>
+              <p class = "account-email">janedoe@gmail.com</p>
             </div>
           </div>
           <div class="dashboard-card">
@@ -108,7 +100,9 @@
                 <input type = "text" id = "email" value = "janedoe@gmail.com" placeholder = "Email">
               </div>
               <div>
-                <label>Address: </label>
+                <label>Address: <div class = "info">?
+                  <div class = "tooltip right">Optional, used for shop orders with your account</div>
+                </div></label>
                 <div id = "addressDiv">
                   <div>
                     <label for = "city" class = "sublabel">City</label>
@@ -136,7 +130,9 @@
                 <input type = "text" id = "fullName" value = "Jane Doe" placeholder = "Full name">
               </div>
               <div>
-                <label for = "bio">Bio:</label>
+                <label for = "bio">Bio: <div class = "info">?
+                  <div class = "tooltip right">Can be seen by counselors and those in your group sessions</div>
+                </div></label>
                 <textarea placeholder = "Write a little about yourself here" id = "bio" maxlength = "250">Hi there, I'm Jane! I'm excited to be using KatKure and love the community here. I enjoy playing soccer and tennis in my free time. I also love to read thriller books, especially Stephen King, and I'm always up for a conversation over some tea.</textarea>
                 <span id = "bioAfter"></span>
               </div>
