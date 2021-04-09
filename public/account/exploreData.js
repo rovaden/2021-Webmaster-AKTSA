@@ -44,6 +44,13 @@ const counselors = {
         focus: ["Eating disorders", "Recovery"],
         description: "Keisha Moore is a Certified Eating Disorder Specialist who has worked with many patients to recover from a wide spectrum of eating disorders. Some of the disorders she helps patients work through include pica, bulimia nervosa, anorexia nervosa, rumination disorder, orthorexia. She graduated from University of California, Berkeley in 2012.",
         recommended: false
+   },
+    "Lyla": {
+        name: "Lyla Adams",
+        license: "M.D",
+        focus: ["Drug addiction, "Non-Opiod/Narcotic containing prescriptions"],
+        description: "Lyla Adams is a psychiatrist who has worked with many patients to recover from drug addictions, typically heroin and cocaine. She works with prescribing medication that does not contain opiods and narcotics. She works closely with prescribing the medications offered at the KatKure store and is constantly researching on ways to break the prescription misuse cycle. She graduated from Johns Hopkins in 1998.",
+        recommended: true
 };
 const groups = [
     {
