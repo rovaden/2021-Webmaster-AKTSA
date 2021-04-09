@@ -37,6 +37,13 @@ const counselors = {
         focus: ["Alcohol addiction", "Sobriety"],
         description: "Alex Johnson is a licensed Clinical Alcohol and Drug Abuse Counselor who has worked with many patients to recover from alcoholism and alcohol addictions and continue the road towards remaining sober. He also specializes in patients who have and/or on a recovery path from drug addiction, specifically fentanyl. He graduated from the University of South Dakota in 2008.",
         recommended: true
+   },
+    "keisha": {
+        name: "Keisha Moore",
+        license: "CEDS",
+        focus: ["Eating disorders", "Recovery"],
+        description: "Keisha Moore is a Certified Eating Disorder Specialist who has worked with many patients to recover from a wide spectrum of eating disorders. Some of the disorders she helps patients work through include pica, bulimia nervosa, anorexia nervosa, rumination disorder, orthorexia. She graduated from University of California, Berkeley in 2012.",
+        recommended: false
 };
 const groups = [
     {
