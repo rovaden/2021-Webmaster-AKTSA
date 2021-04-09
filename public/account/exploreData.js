@@ -1,4 +1,12 @@
 const counselors = {
+    "paris": {
+        name: "Paris Croiss",
+        license: "LPCC",
+        img: "../media/paris-croiss.png",
+        focus: ["Anxiety disorders", "Mood disorders"],
+        description: "Paris Cross is a licensed professional clinical counselor who has worked with many patients who have anixety disorders, such as post traumatic stress disorder (PTSD), obsessive-compulsive disorder (OCD) and panic disorders. She also specializes in bipolar disorder. She graduated from Auburn University in 2009.",
+        recommended: false
+    },
     "alina": {
         name: "Alina Miller",
         license: "LMHC",
@@ -8,6 +16,13 @@ const counselors = {
         recommended: true,
         sent: true
     },
+    "mark": {
+        name: "Mark Garcia",
+        license: "LPCC",
+        focus: ["Mood disorders", "Anxiety disorders", "Eating disorders"],
+        description: "Mark Garcia is a licensed professional clinical counselor who has worked with many patients in therapy, both in-person and virtually. He utilizes unconditional positive regard and systematic desensitization with his patients. He also uses cognitive-behavioral therapy (CBT) with a few of his patients as well. He graduated from Northeastern University in 2003.",
+        recommended: false
+   },
     "hazel": {
         name: "Hazel Jones",
         license: "LMHC",
@@ -16,41 +31,27 @@ const counselors = {
         description: "Hazel Jones is a licensed mental health counselor who worked with many patients in order to continue being sober and offer medically-sound advice and tips for staying clean. She also specializes in mood disorders, such as clinical depression and bipolar disorder. She graduated from Walden University with her license/degree in 2014.",
         recommended: true
     },
-    "paris": {
-        name: "Paris Croiss",
-        license: "LPC",
-        img: "../media/paris-croiss.png",
-        focus: ["Anxiety disorders", "Mood disorders"],
-        description: "Paris Cross is a licensed professional counselor who has worked with many patients who have anixety disorders, such as post traumatic stress disorder (PTSD), obsessive-compulsive disorder (OCD) and panic disorders. She also specializes in bipolar disorder. She graduated from Auburn University in 2009.",
-        recommended: false
-    },
-    "mark": {
-        name: "Mark Garcia",
-        license: "LPCC",
-        focus: ["Behavioral therapy", "Talk therapy"],
-        description: "Mark Garcia is a licensed professional clinical counselor who has worked with many patients in therapy, both in-person and virtually. He utilizes unconditional positive regard and systematic desensitization with his patients. He also uses cognitive-behavioral therapy (CBT) with a few of his patients as well. He graduated from Northeastern University in 2003.",
-        recommended: false
-   },
     "alex": {
         name: "Alex Johnson",
-        license: "LCADAC",
-        focus: ["Alcohol addiction", "Sobriety"],
+        license: "LCADC",
+        focus: ["Substance abuse", "Recovery"],
         description: "Alex Johnson is a licensed Clinical Alcohol and Drug Abuse Counselor who has worked with many patients to recover from alcoholism and alcohol addictions and continue the road towards remaining sober. He also specializes in patients who have and/or on a recovery path from drug addiction, specifically fentanyl. He graduated from the University of South Dakota in 2008.",
-        recommended: true
+        recommended: false
    },
     "keisha": {
         name: "Keisha Moore",
         license: "CEDS",
-        focus: ["Eating disorders", "Recovery"],
+        focus: ["Eating disorders"],
         description: "Keisha Moore is a Certified Eating Disorder Specialist who has worked with many patients to recover from a wide spectrum of eating disorders. Some of the disorders she helps patients work through include pica, bulimia nervosa, anorexia nervosa, rumination disorder, orthorexia. She graduated from University of California, Berkeley in 2012.",
         recommended: false
    },
-    "Lyla": {
+    "lyla": {
         name: "Lyla Adams",
-        license: "M.D",
-        focus: ["Drug addiction, "Non-Opiod/Narcotic containing prescriptions"],
-        description: "Lyla Adams is a psychiatrist who has worked with many patients to recover from drug addictions, typically heroin and cocaine. She works with prescribing medication that does not contain opiods and narcotics. She works closely with prescribing the medications offered at the KatKure store and is constantly researching on ways to break the prescription misuse cycle. She graduated from Johns Hopkins in 1998.",
+        license: "MD",
+        focus: ["Substance abuse", "Recovery"],
+        description: "Lyla Adams is a licensed psychiatrist who has worked with many patients to recover from drug addictions, typically heroin and cocaine. She works with prescribing medication that does not contain opiods and narcotics. She works closely with prescribing the medications offered at the KatKure store and is constantly researching on ways to break the prescription misuse cycle. She graduated from Johns Hopkins in 1998.",
         recommended: true
+    }
 };
 const groups = [
     {
@@ -90,7 +91,7 @@ const groups = [
         focus: ["Anxiety", "Depression"],
         closed: false,
         size: 11,
-        description: "When there is an impending feeling of constant gray skies and heavy weights pulling you down, it’s hard to hope for a light at the end of the tunnel, or when the space around you seems to be getting smaller and smaller.The journey is never one or two steps, but we will be there for you.",
+        description: "When there is an impending feeling of constant gray skies and heavy weights pulling you down or when the space around you seems to be getting smaller and smaller, it’s hard to hope for a light at the end of the tunnel. The journey out of that tunnel may seem far, but we will alwats be there for you every step of the way.",
         recommended: false
     },
 ];

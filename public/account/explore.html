@@ -93,20 +93,26 @@
                       </label>
                     </div>
                     <div class = "checkLi">
-                      <label for = "LPC">LPC
-                        <input type = "checkbox" id = "LPC" checked>
+                      <label for = "LPCC">LPCC
+                        <input type = "checkbox" id = "LPCC" checked>
                         <div class = "checkbox"></div>
                       </label>
                     </div>
                     <div class = "checkLi">
-                      <label for = "LCSW">LCSW
-                        <input type = "checkbox" id = "LCSW" checked>
+                      <label for = "LCADC">LCADC
+                        <input type = "checkbox" id = "LCADC" checked>
                         <div class = "checkbox"></div>
                       </label>
                     </div>
                     <div class = "checkLi">
-                      <label for = "PsyD">PsyD
-                        <input type = "checkbox" id = "PsyD" checked>
+                      <label for = "CEDS">CEDS
+                        <input type = "checkbox" id = "CEDS" checked>
+                        <div class = "checkbox"></div>
+                      </label>
+                    </div>
+                    <div class = "checkLi">
+                      <label for = "MD">MD
+                        <input type = "checkbox" id = "MD" checked>
                         <div class = "checkbox"></div>
                       </label>
                     </div>
@@ -141,8 +147,8 @@
                       </label>
                     </div>
                     <div class = "checkLi">
-                      <label for = "personDis">Personality disorders
-                        <input type = "checkbox" id = "personDis" checked>
+                      <label for = "eatingDis">Eating disorders
+                        <input type = "checkbox" id = "eatingDis" checked>
                         <div class = "checkbox"></div>
                       </label>
                     </div>
@@ -316,8 +322,10 @@
       const filters = document.getElementsByClassName("filter");
       let closeDropDown = (function(){
         function handleTransitionEnd(e){
-          e.target.style.display = "none";
-          e.target.removeEventListener("transitionend", handleTransitionEnd);
+          if(e.target.tagName.toLowerCase() === "form"){
+            e.target.style.display = "none";
+            e.target.removeEventListener("transitionend", handleTransitionEnd);
+          }
         }
         return function(el){
           el.style.opacity = "0";
@@ -645,9 +653,11 @@
       }
       let fadeOut = (function(){
         function handleFadeEnd(e){
-          e.target.style.display = "none";
-          e.target.removeEventListener("transitionend", handleFadeEnd);
-          fadeIn(explorePages[curPage]);
+          if(e.target.className.includes("explorePage")){
+            e.target.style.display = "none";
+            e.target.removeEventListener("transitionend", handleFadeEnd);
+            fadeIn(explorePages[curPage]);
+          }
         }
         return function(el){
           el.style.opacity = "0";
@@ -741,6 +751,8 @@
           }
         }
         const noResultsDiv = document.getElementById("noSearchResults");
+        noSearchResults.style.display = "none";
+        noSearchResults.style.opacity = "0";
 
         //function to filter based on a function
         function checkFilter(curEl, curObj, filtersForm, checkFunc){
@@ -760,9 +772,15 @@
         }
         let meetTimes = [0.75, 1, 1.5, 2]; //for filtering by groups meeting times
 
-        //actual function on click
-        return function(){
-          let curPageEl = explorePages[curPage];
+        //handling fade functions
+        function fadeOutEnd(e){
+          e.target.style.display = "none";
+          e.target.removeEventListener("transitionend", fadeOutEnd);
+          filterAll(explorePages[curPage]);
+        }
+
+        //filtering function
+        function filterAll(curPageEl){
           let allDivs = curPageEl.getElementsByClassName("listing");
 
           //setting up filtering
@@ -794,7 +812,6 @@
                   for(let k = 0; k < checkList.length; k++){
                     let focus = checkList[k].parentElement.innerText.toLowerCase();
                     focus = focus.split(/[\n\r ]/g).join("");
-                    console.log(focus === curObj.focus[j].toLowerCase().split(" ").join(""))
                     if(checkList[k].checked && focus === curObj.focus[j].toLowerCase().split(" ").join("")){
                       return true;
                     }
@@ -904,12 +921,32 @@
             }
           }
 
-          //handling no results
+          //handling no results fade in
           if(noResults){
-            noResultsDiv.style.display = "block";
+            if(noResultsDiv.style.display === "none"){
+              fadeIn(noResultsDiv);
+            }
           }
+
+          //otherwise, fading in current page again
           else {
-            noResultsDiv.style.display = "none";
+            fadeIn(curPageEl);
+          }
+        }
+
+        //actual function on click
+        return function(){
+          //fade out no results if it's on display
+          if(noResultsDiv.style.display === "block"){
+            noResultsDiv.style.opacity = "0";
+            noResultsDiv.addEventListener("transitionend", fadeOutEnd);
+          }
+
+          //otherwise, fade out the current page again
+          else {
+            let curPageEl = explorePages[curPage];
+            curPageEl.style.opacity = "0";
+            curPageEl.addEventListener("transitionend", fadeOutEnd);
           }
         }
       })();
