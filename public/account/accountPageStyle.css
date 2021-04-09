@@ -442,8 +442,10 @@ footer.footer.account-footer {
 .dashboard-appointment {
     flex-basis: 9em;
     flex-grow: 1;
+    position: relative;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     margin: 0.5em;
     margin: calc(0.2em + 0.3vw);
     padding: 1em 0.5em;
@@ -481,6 +483,32 @@ footer.footer.account-footer {
 .dashboard-appointment p:last-of-type {
     margin-top: auto;
     margin-bottom: 0;
+}
+
+/*dashboard appointments if there's no data*/
+.dashboard-appointment.noData {
+    padding-bottom: 2em;
+    border-color: transparent;
+    background-color: rgba(200, 200, 200, 0.3);
+}
+.dashboard-appointment.noData::after {
+    content: "No appointment";
+}
+.dashboard-appointment.noData > * {
+    display: none;
+}
+#dashboard-appointment-container #noDashboardAppointments {
+    padding: 3em 1em;
+    text-align: center;
+    display: none;
+}
+#dashboard-appointment-container #noDashboardAppointments i.material-icons {
+    font-size: 4em;
+    color: gray;
+}
+#dashboard-appointment-container #noDashboardAppointments > p:first-of-type {
+    margin-top: 0.5em;
+    font-size: 1.25em;
 }
 
 /*alerts styling*/
@@ -646,6 +674,25 @@ p.tip {
     #appointment-container {
         padding: 0 10%;
     }
+}
+
+/*no appointments div*/
+#noAppointments {
+    text-align: center;
+    padding: 10vh 2em;
+    overflow-y: hidden;
+    display: none;
+    opacity: 0;
+}
+#noAppointments i.material-icons {
+    color: rgb(7, 55, 99);
+    font-size: 6.5em;
+}
+#noAppointments h3 {
+    font-size: 1.5em;
+}
+#noAppointments p {
+    color: gray;
 }
 
 /*upcoming*/

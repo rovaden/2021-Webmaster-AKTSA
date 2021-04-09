@@ -91,6 +91,11 @@
                 <p class = "appointment-date">3/25/21, 10:15 AM</p>
               </div>
             </div>
+            <div id = "noDashboardAppointments">
+              <i class = "material-icons">event_busy</i>
+              <p>You have no upcoming appointments</p>
+              <p>Schedule one in the appointments tab and it'll show up here</p>
+            </div>
           </div>
 
           <!--alerts-->
@@ -208,14 +213,26 @@
       }
       else {
         let appointmentsData = JSON.parse(localStorage.getItem("accountAppt"));
-        for(let i = 0; i < 3; i++){
-          let obj = appointmentsData[i];
-          //setting icon
-          appointments[i].getElementsByTagName("i")[0].textContent = obj.type === "counselor" ? "person":(obj.type === "group" ? "group":"self_improvement");
-          //setting other information
-          appointments[i].getElementsByClassName("appointment-title")[0].textContent = (obj.type === "event" ? "Live Event: ":"") + obj.title;
-          let apptDate = appointments[i].getElementsByClassName("appointment-date")[0];
-          apptDate.textContent = createSlashStr(addDays(curTime, parseFloat(obj.date))) + ", " + obj.time.split(" - ")[0];
+        if(appointmentsData.length !== 0){
+          for(let i = 0; i < 3; i++){
+            let obj = appointmentsData[i];
+            if(!obj){
+              appointments[i].className += " noData";
+              continue;
+            }
+            //setting icon
+            appointments[i].getElementsByTagName("i")[0].textContent = obj.type === "counselor" ? "person":(obj.type === "group" ? "group":"self_improvement");
+            //setting other information
+            appointments[i].getElementsByClassName("appointment-title")[0].textContent = (obj.type === "event" ? "Live Event: ":"") + obj.title;
+            let apptDate = appointments[i].getElementsByClassName("appointment-date")[0];
+            apptDate.textContent = createSlashStr(addDays(curTime, parseFloat(obj.date))) + ", " + obj.time.split(" - ")[0];
+          }
+        }
+        else {
+          document.getElementById("noDashboardAppointments").style.display = "block";
+          for(let i = 0; i < 3; i++){
+            appointments[i].style.display = "none";
+          }
         }
       }
 

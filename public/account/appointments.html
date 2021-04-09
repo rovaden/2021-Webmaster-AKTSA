@@ -78,6 +78,13 @@
 
         <!--upcoming appointments-->
         <div id = "appointment-upcoming"></div>
+
+        <!--no appointments-->
+        <div id = "noAppointments">
+          <i class = "material-icons">event_busy</i>
+          <h3>You have no appointments</h3>
+          <p>Schedule an appointment by clicking the "schedule" button above, and it'll appear here</p>
+        </div>
       </div>
 
       <div id = "popupMask"></div>
@@ -92,6 +99,11 @@
     <script>
       let hasAppt = localStorage.getItem("accountAppt") !== null;
       let appointments = hasAppt ? JSON.parse(localStorage.getItem("accountAppt")):[];
+      const noAppointments = document.getElementById("noAppointments");
+      if(hasAppt && appointments.length === 0){
+        noAppointments.style.display = "block";
+        noAppointments.style.opacity = "1";
+      }
 
       //function for "saving" appointments to localStorage
       function saveAppts(){
@@ -228,7 +240,9 @@
         }, 1);
         el.style.animation = "removeAppt 0.5s ease forwards";
         el.addEventListener("animationend", function(){
-          el.nextElementSibling.style.marginTop = "2em";
+          if(el.nextElementSibling){
+            el.nextElementSibling.style.marginTop = "2em";
+          }
           appointmentCont.removeChild(el);
         });
       }
@@ -246,6 +260,27 @@
         //close popup and remove appointments div on the page
         closePopup(target);
         removeApptDiv(apptDiv);
+
+        //if there's no more appointments left, fade in the no appointments div
+        if(appointments.length === 0){
+          window.setTimeout(function(){
+            noAppointments.style.display = "block";
+            let targetHeight = noAppointments.scrollHeight;
+            noAppointments.style.padding = "0 2em";
+            noAppointments.style.height = "0";
+            noAppointments.style.margin = "0 1em";
+            window.setTimeout(function(){
+              noAppointments.style.transition = "0.75s ease";
+              noAppointments.style.margin = "2em 1em";
+              noAppointments.style.height = targetHeight + "px";
+              noAppointments.style.padding = "10vh 2em";
+              noAppointments.style.opacity = "1";
+              noAppointments.addEventListener("transitionend", function(){
+                noAppointments.style.height = "auto";
+              })
+            }, 10);
+          }, 500);
+        }
       }
       //opening and closing popup functions
       function closePopup(target){
