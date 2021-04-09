@@ -115,6 +115,17 @@ if(!hasSymptomsList){
   processSymptoms();
   saveSymptoms();
 }
+else {
+  for(let i = 0; i < popupInputs.length; i++){
+    let symptomVal = popupInputs[i].value.replace(/-/g, " ");
+    if(symptomsList[symptomVal]){
+      popupInputs[i].checked = true;
+    }
+    else {
+      popupInputs[i].checked = false;
+    }
+  }
+}
 listSymptoms();
 popupSubmit.addEventListener("click", function(){
   processSymptoms();
