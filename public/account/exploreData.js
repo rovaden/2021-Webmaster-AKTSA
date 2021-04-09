@@ -4,7 +4,7 @@ const counselors = {
         license: "LMHC",
         img: "../media/alina-miller.png",
         focus: ["Substance abuse", "Recovery"],
-        description: "Insert description here...Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tempor, tortor in bibendum egestas, metus elit mattis felis, eget tempor justo nibh quis sem. Praesent auctor felis et sapien venenatis fermentum. Fusce id auctor urna. Nulla semper metus felis, id placerat odio vulputate eget.",
+        description: "Alina Miller is a licensed mental health counselor who has worked with many patients and clients in order to lead the road towards recovering from substance abuse, such as opiods and narcotics overdose. She graduated from Capella University with her degree/license in 2006.",
         recommended: true,
         sent: true
     },
