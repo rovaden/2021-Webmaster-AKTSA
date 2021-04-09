@@ -24,6 +24,12 @@ const counselors = {
         description: "Paris Cross is a licensed professional counselor who has worked with many patients who have anixety disorders, such as post traumatic stress disorder (PTSD), obsessive-compulsive disorder (OCD) and panic disorders. She also specializes in bipolar disorder. She graduated from Auburn University in 2009.",
         recommended: false
     },
+    "mark": {
+        name: "Mark Garcia",
+        license: "LPCC",
+        focus: ["Behavioral therapy", "Talk therapy"],
+        description: "Mark Garcia is a licensed professional clinical counselor who has worked with many patients in therapy, both in-person and virtually. He utilizes unconditional positive regard and systematic desensitization with his patients. He also uses cognitive-behavioral therapy (CBT) with a few of his patients as well. He graduated from Northeastern University in 2003.",
+        recommended: false
 };
 const groups = [
     {
