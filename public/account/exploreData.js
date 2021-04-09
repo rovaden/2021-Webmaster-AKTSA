@@ -30,6 +30,13 @@ const counselors = {
         focus: ["Behavioral therapy", "Talk therapy"],
         description: "Mark Garcia is a licensed professional clinical counselor who has worked with many patients in therapy, both in-person and virtually. He utilizes unconditional positive regard and systematic desensitization with his patients. He also uses cognitive-behavioral therapy (CBT) with a few of his patients as well. He graduated from Northeastern University in 2003.",
         recommended: false
+   },
+    "alex": {
+        name: "Alex Johnson",
+        license: "LCADAC",
+        focus: ["Alcohol addiction", "Sobriety"],
+        description: "Alex Johnson is a licensed Clinical Alcohol and Drug Abuse Counselor who has worked with many patients to recover from alcoholism and alcohol addictions and continue the road towards remaining sober. He also specializes in patients who have and/or on a recovery path from drug addiction, specifically fentanyl. He graduated from the University of South Dakota in 2008.",
+        recommended: true
 };
 const groups = [
     {
