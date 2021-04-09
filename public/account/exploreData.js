@@ -21,7 +21,7 @@ const counselors = {
         license: "LPC",
         img: "../media/paris-croiss.png",
         focus: ["Anxiety disorders", "Mood disorders"],
-        description: "Insert description here...Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tempor, tortor in bibendum egestas, metus elit mattis felis, eget tempor justo nibh quis sem. Praesent auctor felis et sapien venenatis fermentum. Fusce id auctor urna. Nulla semper metus felis, id placerat odio vulputate eget.",
+        description: "Paris Cross is a licensed professional counselor who has worked with many patients who have anixety disorders, such as post traumatic stress disorder (PTSD), obsessive-compulsive disorder (OCD) and panic disorders. She also specializes in bipolar disorder. She graduated from Auburn University in 2009.",
         recommended: false
     },
 };
