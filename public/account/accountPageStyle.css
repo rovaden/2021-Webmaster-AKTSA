@@ -396,7 +396,6 @@ footer.footer.account-footer {
     transition: 0.2s ease;
 }
 .connection:hover {
-    cursor: pointer;
     background: rgba(0, 0, 0, 0.05);
 }
 .connection img {
@@ -2435,7 +2434,7 @@ div#times-container div.time.grayedout div.tooltip {
     display: block;
     opacity: 0;
 }
-div#times-container div.time.grayedout:hover div.tooltip {
+div#times-container div.time.grayedout:hover div.tooltip, div#times-container div.time.grayedout:focus div.tooltip {
     opacity: 1;
 }
 div#times-container div.time div.tooltip {
