@@ -60,8 +60,8 @@ const counselors = {
         name: "Harding Hoo",
         license: "LPCC",
         img: "../media/harding-hoo.png",
-        focus: ["Depression", "Recovery"],
-        description: "Harding Hoo is a licensed professional that specializes in patients that deal with depression and anxiety, specifically those who have a history of substance abuse. Dr. Hoo uses various strategies depending on the patients and ensures they are always in a place of comfort and trust. He graduated from NYU Steinhardt in 2000.",
+        focus: ["Mood disorders", "Anxiety disorders", "Recovery"],
+        description: "Harding Hoo is a licensed professional clinical counselor that specializes in patients that deal with depression and anxiety, specifically those who have a history of substance abuse. Dr. Hoo uses various strategies depending on the patients and ensures they are always in a place of comfort and trust. He graduated from NYU Steinhardt in 2000.",
         recommended: false
     }
 };
@@ -168,7 +168,7 @@ const groups = [
         focus: ["Depression"],
         closed: true,
         size: 12,
-        description: "Depression is a hard challenge to overcome, and sometimes a joint effort is what’s needed. During these sessions, you will find that this gloomy feeling is not permanent, but simply an obstacle in your journey. Alongside your fellow peers and Dr. Hoo, you will find the yellow brick path that uplifts your spirits.",
+        description: "Depression is a hard challenge to overcome, and sometimes a joint effort is what’s needed. During these sessions, you will find that this gloomy feeling is not permanent, but simply an obstacle in your journey. Alongside your fellow peers and Dr. Hoo, you will find the path to uplifted spirits and a more fulfilling life.",
         recommended: false
     }
 ];

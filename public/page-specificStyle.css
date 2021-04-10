@@ -763,7 +763,14 @@ div.faq-question > p {
 }
 .faq-question:hover {
   cursor: pointer;
+  color: #1155cc;
   /*background-color: #0d3a8a;*/
+}
+.faq:hover::after {
+  background-color: #1155cc;
+}
+.faq-question:hover::after {
+  border-color: #1155cc;
 }
 .faq-question::after {
   content: "";

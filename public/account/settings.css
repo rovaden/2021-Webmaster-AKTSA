@@ -123,14 +123,14 @@ div.info div.tooltip {
   font-weight: normal;
   box-shadow: 0 0.25em 1.2em rgba(7, 55, 99, 0.3);
 }
-div.info:hover {
+div.info:hover, div.info:focus {
   cursor: pointer;
   color: rgb(31, 106, 236);
 }
-div.info:hover::after {
+div.info:hover::after, div.info:focus::after {
   border-color: rgba(17, 85, 204, 0.75);
 }
-div.info:hover div.tooltip {
+div.info:hover div.tooltip, div.info:focus div.tooltip {
   opacity: 1;
 }
 
