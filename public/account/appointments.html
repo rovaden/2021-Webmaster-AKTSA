@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Appointments</title>
+    <link rel = "icon" href = "../favicon.ico"/>
+    <link href="../style.css" rel="stylesheet" type="text/css"/>
+    <link href="accountPageStyle.css" rel="stylesheet" type="text/css"/>
+  </head>
+  <body>
+    <!--navigation bar-->
+    <nav class = "navbar account-topNav scrolledDown">
+      <!--company name to display on mobile outside of menu-->
+      <span class = "navName nav-backup"><a href = "../index.html">KatKure</a></span>
+      
+      <!--links-->
+      <div class = "navbar-collapse">
+        <ul>
+          <li><span class = "navName"><a href = "../index.html">KatKure</a></span></li>
+          <li><a href = "../index.html">Home</a></li>
+          <li><a class = "dropdown-top">About</a>
+            <div>
+              <ul class = "dropdown">
+                <li><a href = "../about.html">Company</a></li>
+                <li><a href = "../about-webpage.html">This page</a></li>
+              </ul>
+            </div>
+          </li>
+          <li><a class = "dropdown-top">Products</a>
+            <div>
+              <ul class = "dropdown">
+                <li><a href = "../services.html">Platform</a></li>
+                <li><a href = "../products.html">Shop</a></li>
+                <li><a href = "../cart.html">Cart</a></li>
+              </ul>
+            </div>
+          </li>
+          <li><a href = "../news/index.html">News</a></li>
+          <li><a href = "../faq.html">FAQs</a></li>
+          <li class = "accountLink"><a class = "dropdown-top loggedIn"><i class = "material-icons">account_circle</i>Jane Doe</a>
+            <div>
+              <ul class = "dropdown">
+                <li><a href = "dashboard.html">Dashboard</a></li>
+                <li><a href = "../index.html">Log Out</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!--menu icon for mobile display-->
+      <i class = "material-icons" id = "navMenu">menu</i>
+    </nav>
+
+    <!--side nav with account navigation-->
+    <nav class = "sidebar">
+      <ul>
+        <li><a href = "dashboard.html"><i class = "material-icons">space_dashboard</i><span>Dashboard</span></a></li>
+        <li class = "nav-active"><a href = "appointments.html"><i class = "material-icons">date_range</i><span>Appointments</span></a></li>
+        <li><a href = "conversations.html"><i class = "material-icons">question_answer</i><span>Conversations</span></a></li>
+        <li><a href = "explore.html"><i class = "material-icons">explore</i><span>Explore</span></a></li>
+        <li><a href = "settings.html"><i class = "material-icons">manage_accounts</i><span>Account</span></a></li>
+        <li><a class = "log-out-button"><i class = "material-icons">logout</i><span>Log out</span></a></li>
+      </ul>
+    </nav>
+
+    <div class = "account-content">
+      <div class = "pageHeading">
+        <h1>Appointments</h1>
+      </div>
+      <div id = "appointment-container">
+        <!--heading-->
+        <div id = "appointment-cont-heading">
+          <h2>Upcoming</h2>
+          <div id = "scheduleApp" class = "accountButton hasLink"><a href = "scheduleAppt.html">Schedule</a></div>
+        </div>
+
+        <!--upcoming appointments-->
+        <div id = "appointment-upcoming"></div>
+
+        <!--no appointments-->
+        <div id = "noAppointments">
+          <i class = "material-icons">event_busy</i>
+          <h3>You have no appointments</h3>
+          <p>Schedule an appointment by clicking the "schedule" button above, and it'll appear here</p>
+        </div>
+      </div>
+
+      <div id = "popupMask"></div>
+
+      <!--footer-->
+      <footer class = "footer account-footer">
+        <div class = "footer-text">Copyright KatKure 2021 <i class = "material-icons">copyright</i></div>
+      </footer>
+    </div>
+    <script src = "../script.js"></script>
+    <script src = "eventTimes.js"></script>
+    <script>
+      let hasAppt = localStorage.getItem("accountAppt") !== null;
+      let appointments = hasAppt ? JSON.parse(localStorage.getItem("accountAppt")):[];
+      const noAppointments = document.getElementById("noAppointments");
+      if(hasAppt && appointments.length === 0){
+        noAppointments.style.display = "block";
+        noAppointments.style.opacity = "1";
+      }
+
+      //function for "saving" appointments to localStorage
+      function saveAppts(){
+        localStorage.setItem("accountAppt", JSON.stringify(appointments));
+      }
+
+      //creating appointments, if there hasn't been any already
+      if(!hasAppt){
+        //create appointment object function
+        function createAppt(date, type, options){
+          let appt = {};
+          appt.date = date.toString();
+          if(type === "counselor"){
+            appt.person = "Alina Miller";
+            appt.personCred = "Counselor, LMHC";
+            appt.time = "2:00 - 3:00 PM";
+            appt.title = "Individual session";
+            appt.descrip = "Weekly counseling meeting";
+          }
+          else if(type === "group"){
+            appt.person = "Hazel Jones";
+            appt.personCred = "Leader, LMHC";
+            appt.time = "9:00 - 10:00 AM";
+            appt.title = "Group session";
+            appt.descrip = "Weekly session with a closed group";
+          }
+          else {
+            appt.person = options.person;
+            appt.personCred = "Speaker";
+            appt.time = options.time;
+            appt.title = options.title;
+            appt.descrip = options.descrip;
+            appt.eventIndex = options.index;
+          }
+          appt.type = type;
+          return appt;
+        }
+
+        //creating objects
+        for(let i = 0; i < 3; i++){
+          appointments.push(createAppt(1 + i * 7, "group"));
+          appointments.push(createAppt(3 + i * 7, "counselor"));
+        }
+
+        //creating event that we're signed up for
+        appointments.push(createAppt(5, "event", { person: "Taylor Peterson", time: "10:15 - 11:00 AM", title: "How to Meditate", descrip: "A talk on the basics of meditation", index: 0 }));
+
+        //save this
+        saveAppts();
+      }
+      
+      //sorting in terms of closest to furthest away in date
+      appointments.sort(function(a, b){
+        return a.date - b.date;
+      });
+
+      //adding content
+      const appointmentCont = document.getElementById("appointment-upcoming");
+      function createApptDiv(obj){
+        let dateObj = addDays(curTime, parseFloat(obj.date));
+        let timeRange = timeRangeToDate(obj.time, dateObj);
+        //checking if start time is less than current time
+        if(timeRange[0] < curTime){
+          return;
+        }
+        let newDiv = document.createElement("div");
+        newDiv.className = "appointment";
+        newDiv.innerHTML = "<p><span class = \"appointment-date\">" + createThreeMonthStr(dateObj) + "</span>" +
+          "<span class = \"appointment-time\">" + obj.time + "</span></p>" +
+          "<div class = \"appointment-text\">" +
+            "<div class = \"appointment-description\">" +
+              "<p class = \"appointment-title\">" + obj.title + "</p>" +
+              "<p>" + obj.descrip + "</p>" +
+            "</div>" +
+            "<div class = \"appointment-person\">" +
+              "<p class = \"doctor-name\">" + obj.person + "</p>" +
+              "<p>" + obj.personCred + "</p>" +
+            "</div>" +
+          "</div>" +
+          "<div class = \"action-buttons\">" +
+            "<button class = \"cancel\" data-for = \"" + appointments.indexOf(obj) + "\">Cancel</button>" +
+            "<button class = \"meet\">Meet</button>" +
+          "</div>";
+        appointmentCont.appendChild(newDiv);
+      }
+      for(let i = 0; i < appointments.length; i++){
+        createApptDiv(appointments[i]);
+      }
+
+      //setting up event requests if it hasn't already been done (for event removal)
+      let hasReqData = localStorage.getItem("accountReq") !== null;
+      let reqData = {};
+      if(!hasReqData){
+        let newScript = document.createElement("script");
+        newScript.setAttribute("src", "exploreData.js");
+        newScript.onload = function(){
+          console.log("hi")
+          reqData = {
+            counselors: {},
+            groups: [],
+            events: []
+          };
+          for(let i in counselors){
+            reqData.counselors[i] = counselors[i].sent === true;
+          }
+          for(let i = 0; i < groups.length; i++){
+            reqData.groups[i] = groups[i].sent === true;
+          }
+          for(let i = 0; i < events.length; i++){
+            reqData.events[i] = i === 0;
+          }
+          localStorage.setItem("accountReq", JSON.stringify(reqData));
+        }
+        document.body.appendChild(newScript);
+      }
+      else {
+        reqData = JSON.parse(localStorage.getItem("accountReq"));
+      }
+      function saveReqs(){
+        localStorage.setItem("accountReq", JSON.stringify(reqData));
+      }
+
+      //adding cancel functionality
+      const popupMask = document.getElementById("popupMask");
+      //removing appointment div function (with animation)
+      function removeApptDiv(el){
+        el.style.maxHeight = el.scrollHeight;
+        if(el.nextElementSibling){
+          el.nextElementSibling.style.marginTop = "0";
+        }
+        window.setTimeout(function(){
+          el.style.maxHeight = "0";
+          el.style.padding = "0";
+        }, 1);
+        el.style.animation = "removeAppt 0.5s ease forwards";
+        el.addEventListener("animationend", function(){
+          if(el.nextElementSibling){
+            el.nextElementSibling.style.marginTop = "2em";
+          }
+          appointmentCont.removeChild(el);
+        });
+      }
+      function cancelAppt(obj, target, apptDiv){
+        //remove from appointments and save
+        appointments.splice(appointments.indexOf(obj), 1);
+        saveAppts();
+
+        //remove from events, if it's an event
+        if(obj.type === "event"){
+          reqData.events[obj.eventIndex] = false;
+          saveReqs();
+        }
+
+        //close popup and remove appointments div on the page
+        closePopup(target);
+        removeApptDiv(apptDiv);
+
+        //if there's no more appointments left, fade in the no appointments div
+        if(appointments.length === 0){
+          window.setTimeout(function(){
+            noAppointments.style.display = "block";
+            let targetHeight = noAppointments.scrollHeight;
+            noAppointments.style.padding = "0 2em";
+            noAppointments.style.height = "0";
+            noAppointments.style.margin = "0 1em";
+            window.setTimeout(function(){
+              noAppointments.style.transition = "0.75s ease";
+              noAppointments.style.margin = "2em 1em";
+              noAppointments.style.height = targetHeight + "px";
+              noAppointments.style.padding = "10vh 2em";
+              noAppointments.style.opacity = "1";
+              noAppointments.addEventListener("transitionend", function(){
+                noAppointments.style.height = "auto";
+              })
+            }, 10);
+          }, 500);
+        }
+      }
+      //opening and closing popup functions
+      function closePopup(target){
+        popupMask.style.opacity = "0";
+        target.style.opacity = "0";
+        window.setTimeout(function(){
+          popupMask.style.display = "none";
+          target.style.display = "none";
+        }, 500);
+      }
+      function openPopup(target){
+        popupMask.style.display = "block";
+        target.style.display = "block";
+        window.setTimeout(function(){
+          popupMask.style.opacity = "1";
+          target.style.opacity = "1";
+        }, 1);
+      }
+      //create popup functions + create click function for "cancel" button on homepage
+      function createPopup(ind, obj, apptDiv){
+        let newPop = document.createElement("div");
+        newPop.className = "popup";
+        newPop.innerHTML = "<i class = \"material-icons\">delete_forever</i><h2>Confirm</h2><p>Are you sure you want to cancel " + obj.title + " with " + obj.person + "?</p>";
+
+        //creating buttons
+        let newButtons = document.createElement("div");
+        newButtons.className = "buttons";
+        let continueButton = document.createElement("button");
+        continueButton.textContent = "Yes, cancel";
+        continueButton.className = "accountButton";
+        newButtons.appendChild(continueButton);
+
+        //cancel button
+        let cancelButton = document.createElement("button");
+        cancelButton.textContent = "No, go back";
+        cancelButton.className = "accountButton outline";
+        newButtons.appendChild(cancelButton);
+        newPop.appendChild(newButtons);
+        document.body.appendChild(newPop);
+
+        //adding event listeners
+        continueButton.addEventListener("click", function(e){
+          cancelAppt(obj, e.target.parentElement.parentElement, apptDiv);
+        });
+        cancelButton.addEventListener("click", function(e){
+          closePopup(e.target.parentElement.parentElement);
+        });
+
+        //return this popup
+        return newPop;
+      }
+      let createCancelClickFunc = function(ind, obj, apptDiv){
+        const popUp = createPopup(ind, obj, apptDiv);
+        return function(){
+          openPopup(popUp);
+        }
+      };
+
+      //putting it all together with the cancel button
+      const cancelButtons = document.getElementsByClassName("cancel");
+      for(let i = 0; i < cancelButtons.length; i++){
+        cancelButtons[i].dataset.index = i.toString();
+        let clickFunc = createCancelClickFunc(i, appointments[i], cancelButtons[i].parentElement.parentElement);
+        cancelButtons[i].addEventListener("click", clickFunc);
+      }
+    </script>
+  </body>
+</html>

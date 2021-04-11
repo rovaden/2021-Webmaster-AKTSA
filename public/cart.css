@@ -9,22 +9,53 @@
     opacity: 0;
   }
 }
+
+/*back to shop link*/
+#backToShop {
+  width: 90%;
+  max-width: 50em;
+  margin: 0 auto;
+}
+#backToShop i.material-icons {
+  vertical-align: middle;
+  font-size: 1.2em;
+  padding-right: 0.5em;
+}
+#backToShop a {
+  text-decoration: none;
+  color: gray;
+  font-size: 1.2em;
+  transition: all 0.2s ease;
+}
+#backToShop a span {
+  padding-bottom: 0.25em;
+  border-bottom: 1px solid transparent;
+  transition: inherit;
+}
+#backToShop a:hover, #backToShop a:hover span {
+  color: #1155cc;
+}
+#backToShop a:hover span {
+  border-bottom-color: #1155cc;
+}
+
 .shopping-cart {
   width: 90%;
   max-width: 50em;
-  margin: 4em auto;
+  margin: 1.5em auto 3em auto;
   background: #FFFFFF;
   box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.10);
   border-radius: 6px;
   border: 1px solid #E1E8EE;
+  transition: 0.5s ease;
 }
 
 .title {
   border-bottom: 1px solid #E1E8EE;
   padding: 1.5em 2em;
-  color: #5E6977;
   font-size: 1.3em;
-  font-weight: 400;
+  font-weight: bold;
+  font-family: "Comfortaa";
 }
 
 .item {
@@ -122,6 +153,17 @@ button[class*=btn] {
 button:focus,
 input:focus {
   outline:0;
+}
+
+/*no items div*/
+#no-items {
+  padding: 3em 1em;
+  text-align: center;
+  opacity: 1;
+  overflow-y: hidden;
+}
+#no-items h2 {
+  font-size: 1.3em;
 }
 
 /* Total Price */

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Account</title>
+    <link rel = "icon" href = "../favicon.ico"/>
+    <link href="../style.css" rel="stylesheet" type="text/css"/>
+    <link href="accountPageStyle.css" rel="stylesheet" type="text/css"/>
+    <link href="settings.css" rel="stylesheet" type="text/css"/>
+  </head>
+  <body>
+    <!--navigation bar-->
+    <nav class = "navbar account-topNav scrolledDown">
+      <!--company name to display on mobile outside of menu-->
+      <span class = "navName nav-backup"><a href = "../index.html">KatKure</a></span>
+
+      <!--links-->
+      <div class = "navbar-collapse">
+        <ul>
+          <li><span class = "navName"><a href = "../index.html">KatKure</a></span></li>
+          <li><a href = "../index.html">Home</a></li>
+          <li><a class = "dropdown-top">About</a>
+            <div>
+              <ul class = "dropdown">
+                <li><a href = "../about.html">Company</a></li>
+                <li><a href = "../about-webpage.html">This page</a></li>
+              </ul>
+            </div>
+          </li>
+          <li><a class = "dropdown-top">Products</a>
+            <div>
+              <ul class = "dropdown">
+                <li><a href = "../services.html">Platform</a></li>
+                <li><a href = "../products.html">Shop</a></li>
+                <li><a href = "../cart.html">Cart</a></li>
+              </ul>
+            </div>
+          </li>
+          <li><a href = "../news/index.html">News</a></li>
+          <li><a href = "../faq.html">FAQs</a></li>
+          <li class = "accountLink"><a class = "dropdown-top loggedIn"><i class = "material-icons">account_circle</i>Jane Doe</a>
+            <div>
+              <ul class = "dropdown">
+                <li><a href = "dashboard.html">Dashboard</a></li>
+                <li><a href = "../index.html">Log Out</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!--menu icon for mobile display-->
+      <i class = "material-icons" id = "navMenu">menu</i>
+    </nav>
+
+    <!--side nav with account navigation-->
+    <nav class = "sidebar">
+      <ul>
+        <li><a href = "dashboard.html"><i class = "material-icons">space_dashboard</i><span>Dashboard</span></a></li>
+        <li><a href = "appointments.html"><i class = "material-icons">date_range</i><span>Appointments</span></a></li>
+        <li><a href = "conversations.html"><i class = "material-icons">question_answer</i><span>Conversations</span></a></li>
+        <li><a href = "explore.html"><i class = "material-icons">explore</i><span>Explore</span></a></li>
+        <li class = "nav-active"><a href = "settings.html"><i class = "material-icons">manage_accounts</i><span>Account</span></a></li>
+        <li><a class = "log-out-button"><i class = "material-icons">logout</i><span>Log out</span></a></li>
+      </ul>
+    </nav>
+
+    <!--content-->
+    <div class = "account-content">
+      <div class = "pageHeading">
+        <h1>Account Settings</h1>
+      </div>
+
+      <div id = "dashboard-container">
+        <div class = "dashboard-column">
+          <div class="dashboard-card account-info">
+            <img src = "../media/jane-pfp.png"/>
+            <div>
+              <p class = "account-name">Jane Doe</p>
+              <p class = "account-email">janedoe@gmail.com</p>
+            </div>
+          </div>
+          <div class="dashboard-card">
+            <h2>Account Information</h2>
+            <form id = "accountInfo" class = "settings-info">
+              <div>
+                <label for = "username">Username: </label>
+                <input type = "text" id = "username" value = "jane_doe" placeholder = "Username">
+              </div>
+              <div>
+                <label for = "password">Password: </label>
+                <div id = "password-cont">
+                  <input type = "password" id = "password" value = "12345" placeholder = "Password">
+                  <i class = "material-icons" id = "passwordEye">visibility</i>
+                </div>
+              </div>
+              <div>
+                <label for = "email">Email: </label>
+                <input type = "text" id = "email" value = "janedoe@gmail.com" placeholder = "Email">
+              </div>
+              <div>
+                <label>Address: <div class = "info">?
+                  <div class = "tooltip right">Primarily used for shop orders associated with your account</div>
+                </div></label>
+                <div id = "addressDiv">
+                  <div>
+                    <label for = "city" class = "sublabel">City</label>
+                    <input type = "text" id = "city" value = "Charlotte" placeholder = "City">
+                  </div>
+                  <div>
+                    <label for = "state"  class = "sublabel">State</label>
+                    <input type = "text" id = "state" value = "NC" maxlength = "2">
+                  </div>
+                  <div>
+                    <label for = "zip"  class = "sublabel">Zipcode</label>
+                    <input type = "number" id = "zip" value = "28277" placeholder = "Zip" maxlength = "5">
+                  </div>
+                </div>
+                <label for = "zip"  class = "sublabel">Address</label>
+                <input type = "text" id = "zip" value = "1111 Mulberry Road">
+              </div>
+            </form>
+          </div>
+          <div class = "dashboard-card">
+            <h2>Personal Information</h2>
+            <form id = "personalInfo" class = "settings-info">
+              <div>
+                <label for = "fullName">Name: </label>
+                <input type = "text" id = "fullName" value = "Jane Doe" placeholder = "Full name">
+              </div>
+              <div>
+                <label for = "bio">Bio: <div class = "info">?
+                  <div class = "tooltip right">Can be seen by counselors and those in your group sessions</div>
+                </div></label>
+                <textarea placeholder = "Write a little about yourself here" id = "bio" maxlength = "250">Hi there, I'm Jane! I'm excited to be using KatKure and love the community here. I enjoy playing soccer and tennis in my free time. I also love to read thriller books, especially Stephen King, and I'm always up for a conversation over some tea.</textarea>
+                <span id = "bioAfter"></span>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class = "dashboard-column left">
+          <div class="dashboard-card" id = "notesDiv">
+            <h2>Notes</h2>
+            <ul>
+              <li>Started KatKure in October 2020</li>
+              <li>Previously had opioid addiction</li>
+              <li>First time working with counselors and therapy</li>
+            </ul>
+            <h2>Symptoms</h2>
+            <ul id = "symptomsListEl">
+              <li>Nausea</li>
+              <li>Sweating</li>
+              <li>Anxiety</li>
+            </ul>
+            <button id="settings-button" class = "accountButton">Update Symptoms</button>
+          </div>
+          <div class = "dashboard-card">
+            <h2>Plans</h2>
+            <div class = "plan">
+              <i class = "material-icons">person</i>
+              <div>
+                <p>Individual Sessions</p>
+                <p>With Alina Miller, weekly for sixty minutes.</p>
+                <p>$295 per month</p>
+              </div>
+            </div>
+            <div class = "plan">
+              <i class = "material-icons">group</i>
+              <div>
+                <p>Group Sessions</p>
+                <p>With Hazel Jones, weekly for sixty minutes. 12 sessions total.</p>
+                <p>$35 per session</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer class="footer account-footer">
+        <div class="footer-text">Copyright KatKure 2021 <i class = "material-icons">copyright</i></div>
+      </footer>
+
+      <div id = "popupMask">
+        <div class = "popup" id = "symptomsPopup">
+          <i class = "material-icons" id = "closePopup">close</i>
+          <h2>Update Symptoms</h2>
+          <p>Please check all symptoms that apply to you right now</p>
+          <form>
+            <label for="symp1">Changes in appetite
+              <input type="checkbox" id="symp1" name="symp1" value="Changes-in-appetite">
+              <div class = "checkbox"></div>
+            </label>
+
+            <label for="symp2">Changes in mood
+              <input type="checkbox" id="symp2" name="symp2" value="Changes-in-mood">
+              <div class = "checkbox"></div>
+            </label>
+
+            <label for="symp3">Congestion
+              <input type="checkbox" id="symp3" name="symp3" value="Congestion">
+              <div class = "checkbox"></div>
+            </label>
+
+            <label for="symp4">Nausea
+              <input type="checkbox" id="symp4" name="symp4" value="Nausea" checked>
+              <div class = "checkbox"></div>
+            </label>
+            
+            <label for="symp5">Vomiting
+              <input type="checkbox" id="symp5" name="symp5" value="Vomiting">
+              <div class = "checkbox"></div>
+            </label>
+
+            <label for="symp6">Sweating
+              <input type="checkbox" id="symp6" name="symp6" value="Sweating" checked>
+              <div class = "checkbox"></div>
+            </label>
+
+            <label for="symp7">Anxiety
+              <input type="checkbox" id="symp7" name="symp7" value="Anxiety" checked>
+              <div class = "checkbox"></div>
+            </label>
+            
+            <label for="symp8">Tremors
+              <input type="checkbox" id="symp8" name="symp8" value="Tremors">
+              <div class = "checkbox"></div>
+            </label>
+
+            <button id="settings-submit" type="button" class = "accountButton">Save</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src = "../script.js"></script>
+    <script src = "settings.js"></script>
+
+  </body>
+</html>

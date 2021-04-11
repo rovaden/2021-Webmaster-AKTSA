@@ -7,7 +7,7 @@ body {
   padding: 0;
   font-family: "Lato", sans-serif;
 }
-h1, h2, h3, h4, h5, h6, nav.navbar, button.pageLink {
+h1, h2, h3, h4, h5, h6, nav.navbar, div.pageLink {
   font-family: "Comfortaa";
 }
 div {
@@ -16,16 +16,21 @@ div {
 
 /*styling navigation bar*/
 .navbar {
-  background: rgb(240, 240, 240);
+  width: 100%;
+  position: absolute;
+  top: 0;
+  background: transparent;
   padding: 1em 1em;
   box-sizing: border-box;
-  position: relative;
   z-index: 10;
   color: grey;
+  transition: 0.5s ease;
 }
 .navbar ul {
   margin: 0;
   padding: 0;
+  display: flex;
+  align-items: center;
 }
 .navbar ul li {
   position: relative;
@@ -63,11 +68,13 @@ div {
 }
 .navbar span.navName, .navbar span.navName a {
   color: inherit;
-  font-size: 1.3em;
+  font-size: 1.2em;
   font-weight: bold;
   text-decoration: none;
   outline: none;
   transition: inherit;
+  text-transform: none;
+  letter-spacing: 0;
 }
 .navbar .navName a:hover {
   color: gray;
@@ -82,6 +89,47 @@ div {
   pointer-events: none;
   color: black;
 }
+
+/*sign in button styling*/
+.navbar li.accountLink {
+  margin-right: 1em;
+  margin-left: auto;
+}
+.navbar li.accountLink > a {
+  padding: 0.5em 1.5em;
+  border-radius: 2em;
+  background: rgba(0, 0, 0, 0.07);
+  border: 1px solid;
+}
+.navbar li.accountLink > a::after {
+  display: none;
+}
+.navbar li.accountLink > a:hover {
+  background: rgb(127, 149, 170);
+  color: white;
+  border-color: rgb(127, 149, 170);
+}
+
+/*logged in account styling*/
+.navbar li.accountLink > a.loggedIn {
+  padding: 0;
+  margin: 0.5em 1.5em;
+}
+.navbar li.accountLink > a.loggedIn, .navbar li.accountLink > a.loggedIn:hover, .navbar.light li.accountLink > a.loggedIn:hover {
+  border: none;
+  background: transparent;
+}
+.navbar li.accountLink > a.loggedIn::after {
+  display: block;
+}
+.navbar li.accountLink > a.loggedIn i.material-icons {
+  font-size: 1.3em;
+  vertical-align: middle;
+  margin-right: 0.25em;
+  transform: translateY(-0.1em);
+}
+
+/*nav menu styling*/
 .navbar #navMenu, .navbar .navName.nav-backup {
   display: none;
 }
@@ -117,10 +165,10 @@ div {
   text-align: center;
   padding: 0;
   background: rgb(245, 245, 245);
-  box-shadow: 0 8px 30px rgba(100, 100, 100, 0.3);
+  box-shadow: 0 8px 2em rgba(100, 100, 100, 0.4);
   border-radius: 7px;
 }
-.navbar ul.dropdown::before, .navbar ul.dropdown li:first-of-type::after { /*up caret at top of dropdown*/
+.navbar ul.dropdown::before, .navbar ul.dropdown li:first-of-type a::before { /*up caret at top of dropdown*/
   position: absolute;
   content: "";
   display: block;
@@ -128,7 +176,7 @@ div {
   height: 0;
   opacity: 1;
   border: 10px solid transparent;
-  border-bottom-color :rgb(245, 245, 245);
+  border-bottom-color: rgb(245, 245, 245);
   left: 50%;
   top: 0;
   transform: translate(-50%, -20px);
@@ -163,36 +211,32 @@ div {
 .navbar ul.dropdown li:last-of-type, .navbar ul.dropdown li:last-of-type a {
   border-radius: 0 0 7px 7px;
 }
-.navbar ul.dropdown li:first-of-type::after {
-  border-bottom-color: rgba(7, 55, 99, 0.15);
+.navbar ul.dropdown li:first-of-type a::before { /*caret at top of first list item, coloring*/
+  border-bottom-color: rgb(7, 55, 99);
   opacity: 0;
   transition: inherit;
 }
 
 /*hover transitions with dropdown*/
-.navbar li:hover a.dropdown-top + div, .navbar li a.dropdown-top + div:hover {
+.navbar li:hover a.dropdown-top + div, .navbar li a.dropdown-top + div:hover,
+.navbar li:focus a.dropdown-top + div, .navbar li a.dropdown-top + div:focus {
   visibility: visible;
   opacity: 1;
 }
-.navbar li:hover a.dropdown-top::before {
+.navbar li:hover a.dropdown-top::before, .navbar li:focus a.dropdown-top::before {
   border-color: black;
 }
-.navbar ul.dropdown a:hover {
+.navbar ul.dropdown a:hover, .navbar ul.dropdown a:focus {
   background: rgba(7, 55, 99, 0.15);
 }
-.navbar ul.dropdown li:first-of-type:hover::after {
-  opacity: 1;
+.navbar ul.dropdown li:first-of-type a:hover::before, .navbar ul.dropdown li:first-of-type a:focus::before {
+  opacity: 0.15;
 }
-.navbar ul.dropdown li.nav-active::after {
+.navbar ul.dropdown li.nav-active a::before {
   opacity: 0.3;
 }
 
 /*navbar "light" styling with white text*/
-.navbar.light {
-  position: absolute;
-  top: 0;
-  background: transparent;
-}
 .navbar.light *, .navbar.light ul li a, .navbar.light ul li .navName a:hover {
   color: white;
 }
@@ -204,6 +248,11 @@ div {
 }
 .navbar.light ul li a:hover, .navbar.light ul li .navName a, .navbar.light ul li:hover a.dropdown-top {
   opacity: 1;
+}
+.navbar.light li.accountLink > a:hover {
+  background: white;
+  color: gray;
+  border-color: white;
 }
 
 /*navbar "light" styling dropdown*/
@@ -220,8 +269,25 @@ div {
   border-bottom-color: rgba(255, 255, 255, 0.4);
 }
 
+/*scrolled down version of navbar*/
+.navbar.scrolledDown:not(.active) {
+  background: rgb(250, 250, 250);
+  /*background: rgb(244, 249, 253);*/
+  box-shadow: 0 0.2em 1em rgba(0, 0, 0, 0.3);
+  padding: 0.5em 1em;
+}
+.navbar.scrolledDown:not(.active) li a.dropdown-top + div {
+  padding-top: 1.7em;
+}
+.navbar.scrolledDown:not(.active) ul.dropdown {
+  background: white;
+}
+.navbar.scrolledDown:not(.active) ul.dropdown::before {
+  border-bottom-color: white;
+}
+
 /*mobile version of navigation*/
-@media (max-width: 45em){
+@media (max-width: 55em){
   .navbar {
     width: 100%;
   }
@@ -264,6 +330,9 @@ div {
   .navbar div.navbar-collapse ul li a {
     opacity: 0.8;
   }
+  .navbar.active .navName.nav-backup {
+    opacity: 0;
+  } 
   .navbar div.navbar-collapse ul li .navName {
     opacity: 1;
     font-size: 1.2em;
@@ -323,7 +392,7 @@ div {
   .navbar li ul.dropdown::before, .navbar ul.dropdown li:first-of-type::after {
     display: none;
   }
-  .navbar li ul.dropdown li.nav-active, .navbar ul.dropdown a:hover {
+  .navbar li ul.dropdown li.nav-active, .navbar ul.dropdown a:hover, .navbar ul.dropdown li a {
     background: transparent;
   }
   .navbar li ul.dropdown li.nav-active {
@@ -335,6 +404,19 @@ div {
   }
   .navbar li ul.dropdown li.nav-active > a::after {
     display: block;
+  }
+
+  /*handling account link*/
+  .navbar li.accountLink > a:hover, .navbar li.accountLink > a:focus {
+    background: white;
+    color: black;
+    border-color: black;
+  }
+  .navbar li.accountLink > a.loggedIn:hover, .navbar li.accountLink > a.loggedIn:focus {
+    background: transparent;
+    color: white;
+    border-color: transparent;
+    cursor: default;
   }
 
   /*menu symbol*/
@@ -361,6 +443,7 @@ div {
 .pageHeading {
   width: 100%;
   padding: 2em 1em;
+  padding-top: 5em;
   background: rgb(240, 240, 240);
   font-size: 1.5em;
   text-align: center;
@@ -377,7 +460,7 @@ div.content.light-gray {
 }
 div.content.light {
   background-color: #c0d0df;
-  text-shadow: 0 1px white;
+  text-shadow: 0 1px rgba(255, 255, 255, 0.75);
   color: black;
 }
 div.content.dark {
@@ -459,8 +542,8 @@ div.content img.float-left {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 100%;
-  height: 100%;
+  width: 102%; /*prevent white sliver due to rounding and stuff (slightly larger)*/
+  height: 102%;
   object-fit: cover;
   transform: translate(-50%, -50%);
 }
@@ -469,9 +552,10 @@ div.content img.float-left {
 /*button styling*/
 .pageLink {
   position: relative;
-  display: block;
+  display: inline-block;
+  margin-left: 50%;
+  transform: translateX(-50%);
   padding: 0;
-  margin: 0 auto;
   font-size: 1em;
   letter-spacing: 1.5px;
   border: 1px solid black;
@@ -481,12 +565,14 @@ div.content img.float-left {
   transition: 0.3s ease;
 }
 .pageLink a {
-  display: block;
+  display: inline-block;
   position: relative;
-  color: inherit;
+  color: black;
+  text-shadow: none;
   text-decoration: none;
   z-index: 1;
   padding: 0.6em 1.5em;
+  transition: inherit;
 }
 .pageLink::before, .pageLink::after {
   content: "";
@@ -508,16 +594,21 @@ div.content img.float-left {
 }
 .pageLink:hover, .pageLink:focus {
   cursor: pointer;
+}
+.pageLink:hover a, .pageLink:focus a {
   color: white;
 }
 .pageLink.light {
   border-color: white;
   color: white;
 }
+.pageLink.light a {
+  color: white;
+}
 .pageLink.light::before, .pageLink.light::after {
   background: white;
 }
-.pageLink.light:hover {
+.pageLink.light:hover a {
   color: #073763;
 }
 .pageLink:hover::before, .pageLink:hover::after, .pageLink:focus::before, .pageLink:focus::after {

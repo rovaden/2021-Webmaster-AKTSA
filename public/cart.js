@@ -8,8 +8,15 @@ function ready(){
   for (var i =0; i<localStorage.length; i++){
     buildCart(i)
   }
-  // var button = document.getElementById('cart-check-out')
-  // button.addEventListener('click', logCart())  
+
+  //hide no items display if there are items
+  if(document.getElementsByClassName("item").length !== 0){
+    let noItemsDiv = document.getElementById("no-items");
+    noItemsDiv.style.display = "none";
+    noItemsDiv.style.opacity = "1";
+  }
+  
+  //adding event listeners to buttons and quantities
   var removeItemButtons = document.getElementsByClassName('delete-btn')
   for (var i = 0; i < removeItemButtons.length; i++) {
     var button = removeItemButtons[i];
@@ -87,15 +94,34 @@ function updateCartTotal() {
 
 function removeCartItemFuncCreator(button){
   var target = button.parentElement.parentElement;
-  target.style.maxHeight = target.parentElement.getBoundingClientRect().height + "px";
   var localStorageName = target.getElementsByClassName('cart-item-title')[0].innerText;
   return function(){
     window.setTimeout(function(){
       target.remove();
+      //if there's nothing left, show the no items in cart div (with transition)
+      if(document.getElementsByClassName("item").length === 0){
+        let noItemsDiv = document.getElementById("no-items");
+        noItemsDiv.style.display = "block";
+        let curHeight = noItemsDiv.scrollHeight;
+        noItemsDiv.style.height = "0";
+        noItemsDiv.style.padding = "0em 1em";
+        window.setTimeout(function(){
+          noItemsDiv.style.opacity = "1";
+          noItemsDiv.style.height = curHeight + "px";
+          noItemsDiv.style.padding = "3em 1em";
+          noItemsDiv.style.transition = "1s ease";
+          noItemsDiv.addEventListener("transitionend", function(){
+            noItemsDiv.style.height = "auto";
+          });
+        }, 10);
+      }
     }, 500);
     target.style.animation = "removedItem 0.5s ease forwards";
-    target.style.maxHeight = "0";
-    target.style.padding = "0";
+    target.style.maxHeight = target.scrollHeight + "px";
+    window.setTimeout(function(){
+      target.style.maxHeight = "0";
+      target.style.padding = "0";
+    }, 1);
     localStorage.removeItem(localStorageName);
     updateCartTotal();
   }
@@ -104,11 +130,16 @@ function removeCartItemFuncCreator(button){
 function buildCart(index){
   var title = localStorage.key(index)
   var currentData = localStorage.getItem(title).split(",");
+  if(currentData.length !== 4){ //checking if data is right
+    return;
+  }
   var price = currentData[1]
   var imageSrc = currentData[2]
   var quantity = currentData[3] || 1;
+  if(price.split("$").length === 1){ //just another check if the data is right
+    return;
+  }
   var cartRow = document.createElement('div')
-  console.log(localStorage.key(index))
   cartRow.classList.add('item')
   var cartItems = document.getElementsByClassName('cart-items')[0]
   var cartItemNames = cartItems.getElementsByClassName('cart-item-title')
@@ -118,25 +149,23 @@ function buildCart(index){
       return
     }
   }
-  var cartRowContent = `
-      <div class="buttons">
-        <span class="delete-btn"><i class="material-icons">delete</i></span>
-      </div>
-      <div class = "item-info-div">
-        <div class="image">
-          <img src="${imageSrc}" alt="medicine"/>
-        </div>
-        <div class="description">
-          <span class = "cart-item-title">${title}</span>
-          <span>Dogsy Research and Production</span>
-        </div>
-        <div class="quantity">
-          <input class="cart-quantity-input" type="number" value="${quantity}" min = "1">
-        </div>
-        <div class="total-price">${price}</div>
-      </div>`
-  cartRow.innerHTML = cartRowContent
+  //changed to string bc IE apparently doesn't support template literals
+  var cartRowContent = "<div class=\"buttons\">" +
+    "<span class=\"delete-btn\"><i class=\"material-icons\">delete</i></span>" +
+    "</div>" +
+    "<div class = \"item-info-div\">" +
+      "<div class=\"image\">" +
+        "<img src=" + imageSrc + " alt=\"medicine\"/>" +
+      "</div>" +
+      "<div class=\"description\">" +
+        "<span class = \"cart-item-title\">" + title + "</span>" +
+        "<span>Dogsy Research and Production</span>" +
+      "</div>" +
+      "<div class=\"quantity\">" +
+        "<input class=\"cart-quantity-input\" type=\"number\" value=\"" + quantity + "\" min = \"1\">" +
+      "</div>" +
+      "<div class=\"total-price\">" + price + "</div>" +
+    "</div>";
+  cartRow.innerHTML = cartRowContent;
   cartItems.append(cartRow);
-  cartRow.getElementsByClassName('delete-btn')[0].addEventListener('click', removeCartItemFuncCreator(document.getElementsByClassName("delete-btn")[index]))
-  cartRow.getElementsByClassName('cart-quantity-input')[0].addEventListener('change', quantityChanged)
 }

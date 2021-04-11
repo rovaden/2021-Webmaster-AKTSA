@@ -56,7 +56,7 @@
 .navbar.light a.dropdown-top + div > ul.dropdown {
   z-index: 40;
   background: rgba(245, 245, 245, 0.95);
-  box-shadow: 0 10px 50px rgb(245, 245, 245, 0.4);
+  box-shadow: 0 10px 50px rgb(245, 245, 245, 0.3);
 }
 .navbar.light a.dropdown-top + div > ul.dropdown a {
   color: gray;
