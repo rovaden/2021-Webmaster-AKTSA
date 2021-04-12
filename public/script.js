@@ -28,7 +28,7 @@ if(loggedIn === "true"){
         newDashLink.innerHTML = "<a href = \"" + window.location.href.split("public/")[0] + "public/account/dashboard.html\">Dashboard</a>";
       }
       else {
-        newDashLink.innerHTML = "<a href = \"account/dashboard.html\">Dashboard</a>";
+        newDashLink.innerHTML = "<a href = \"" + window.location.href.split("/")[0] + "account/dashboard.html\">Dashboard</a>";
       }
 
       //logout button
@@ -46,11 +46,9 @@ if(loggedIn === "true"){
     }
     else {
       const logOuts = document.getElementsByClassName("log-out-button");
-      console.log(logOuts);
       for(let i = 0; i < logOuts.length; i++){
         logOuts[i].addEventListener("click", function(){
           localStorage.setItem("katKureLoggedIn", "false");
-          console.log(localStorage.getItem("katKureLoggedIn"))
           if(window.location.href.includes("account")){
             window.location.href = window.location.href.split("account/")[0] + "index.html";
           }
