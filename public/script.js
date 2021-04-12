@@ -24,7 +24,12 @@ if(loggedIn === "true"){
       newDropList = document.createElement("ul"),
       newDashLink = document.createElement("li"),
       logOut = document.createElement("li");
-      newDashLink.innerHTML = "<a href = \"" + window.location.href.split("public/")[0] + "public/account/dashboard.html\">Dashboard</a>";
+      if(window.location.href.includes("public")){
+        newDashLink.innerHTML = "<a href = \"" + window.location.href.split("public/")[0] + "public/account/dashboard.html\">Dashboard</a>";
+      }
+      else {
+        newDashLink.innerHTML = "<a href = \"account/dashboard.html\">Dashboard</a>";
+      }
 
       //logout button
       logOut.innerHTML = "<a href = \"" + location.href + "\" class = \"log-out-button\">Log out</a>";
@@ -41,10 +46,17 @@ if(loggedIn === "true"){
     }
     else {
       const logOuts = document.getElementsByClassName("log-out-button");
+      console.log(logOuts);
       for(let i = 0; i < logOuts.length; i++){
         logOuts[i].addEventListener("click", function(){
           localStorage.setItem("katKureLoggedIn", "false");
-          window.location.href = window.location.href.split("public/")[0] + "public/index.html";
+          console.log(localStorage.getItem("katKureLoggedIn"))
+          if(window.location.href.includes("account")){
+            window.location.href = window.location.href.split("account/")[0] + "index.html";
+          }
+          else {
+            window.location.href = "index.html";
+          }
         });
       }
     }
