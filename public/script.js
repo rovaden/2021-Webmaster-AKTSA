@@ -28,7 +28,7 @@ if(loggedIn === "true"){
         newDashLink.innerHTML = "<a href = \"" + window.location.href.split("public/")[0] + "public/account/dashboard.html\">Dashboard</a>";
       }
       else if(window.location.href.includes("news/")){
-        newDashLink.innerHTML = "<a href = \"../account/dashboard.html\">Dashboard</a>";
+        newDashLink.innerHTML = "<a href = \"" + window.location.href.split("news/")[0] + "account/dashboard.html\">Dashboard</a>";
       }
       else {
         newDashLink.innerHTML = "<a href = \"account/dashboard.html\">Dashboard</a>";
